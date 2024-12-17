@@ -1,0 +1,636 @@
+{% extends "base.html" %}
+{% block title %}Personal Chat{% endblock %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ffa726;
+    }
+
+    .chat-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
+        max-width: 600px;
+        margin: 0 auto;
+        border: 1px solid #ddd;
+        background-color: #fff;
+    }
+
+    .chat-header {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        position: relative;
+    }
+
+    .chat-messages {
+        flex-grow: 1;
+        padding: 15px;
+        overflow-y: auto;
+        background-color: #f9f9f9;
+    }
+
+    .chat-message {
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 70%;
+        word-wrap: break-word;
+        position: relative;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chat-message.sender {
+        background-color: #e1ffc7;
+        align-self: flex-end;
+        margin-left: auto;
+    }
+
+    .chat-message.receiver {
+        background-color: #fff;
+        align-self: flex-start;
+        margin-right: auto;
+    }
+
+    .chat-message .username {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .chat-message .timestamp {
+        font-size: 0.8em;
+        color: #777;
+        position: absolute;
+        bottom: 5px;
+        right: 10px;
+    }
+
+    .chat-message .read-receipt {
+        font-size: 0.7em;
+        color: #007bff;
+        margin-left: 5px;
+        display: inline-block;
+        position: absolute;
+        right: 10px;
+        bottom: 25px;
+    }
+
+    .chat-message img {
+        max-width: 100%;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+
+    .chat-message a {
+        text-decoration: none;
+        color: #007bff;
+        margin-top: 5px;
+        word-wrap: break-word;
+    }
+
+    .chat-input-container {
+        display: flex;
+        padding: 10px;
+        background-color: #eee;
+        flex-wrap: wrap;
+        /* Allow wrapping */
+    }
+
+    .chat-input {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 10px;
+        min-width: 150px;
+        /* Minimum width for the input */
+        max-width: 70%;
+        /* Adjust max-width for responsiveness */
+    }
+
+    .send-button {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        flex: 1 1 auto;
+        /* Allow flex to grow and shrink */
+        min-width: 100px;
+        /* Minimum width for the button */
+    }
+
+    .file-label {
+        padding: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        flex: 1 1 auto;
+        /* Allow flex to grow and shrink */
+        min-width: 100px;
+        /* Minimum width for the label */
+    }
+
+    .file-input {
+        display: none;
+    }
+
+    .send-button:hover {
+        background-color: #0056b3;
+    }
+
+    .file-label:hover {
+        background-color: #218838;
+    }
+
+    .file-previews {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        background-color: #f1f1f1;
+        border-top: 1px solid #ddd;
+        overflow: auto;
+        max-height: 100%;
+        transition: padding 0.3s ease;
+        /* Smooth transition for padding change */
+    }
+
+    .file-previews img,
+    .file-previews video {
+        max-width: 400px;
+        border-radius: 8px;
+        object-fit: cover;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .file-previews img:hover,
+    .file-previews video:hover {
+        transform: scale(1.05);
+        /* Slight zoom effect on hover */
+    }
+
+    .file-previews .file-preview {
+        position: relative;
+        display: inline-block;
+        width: 200px;
+        /* Matches the size of the preview */
+        height: 200px;
+        /* Matches the size of the preview */
+    }
+
+    .file-previews .remove-preview {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .file-previews a.file-download {
+        display: inline-block;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .file-previews a.file-download:hover {
+        background-color: #0056b3;
+    }
+
+    .file-previews .file-name {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #555;
+        word-wrap: break-word;
+        max-width: 200px;
+        /* Prevent overflow */
+    }
+
+    @media (max-width: 600px) {
+        .file-previews .file-preview {
+            width: calc(100% - 10px);
+            /* Full width for small screens */
+        }
+    }
+
+    .chat-message {
+        position: relative;
+        /* Make the message div a positioning context */
+        padding-left: 30px;
+        /* Add some padding to the left for the icon space */
+        /* Add any other styles you need for your message container */
+    }
+
+    .delete-message {
+        position: absolute;
+        /* Position it absolutely */
+        left: -20px;
+        /* Move it outside the left side of the message div */
+        top: 50%;
+        /* Center it vertically */
+        transform: translateY(-50%);
+        /* Adjust for vertical centering */
+        cursor: pointer;
+        /* Change cursor to pointer for better UX */
+    }
+
+    /* Optional: Style for the delete icon */
+    .delete-message i {
+        color: #d9534f;
+        /* Change color to match your design */
+        font-size: 1.2em;
+        /* Adjust size as needed */
+    }
+
+
+    .fullscreen-modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+    }
+
+    .fullscreen-content {
+        max-width: 90%;
+        max-height: 90%;
+        position: relative;
+        /* Allow positioning of the close button */
+    }
+
+    .close-fullscreen {
+        position: absolute;
+        top: 10px;
+        /* Position it at the top */
+        right: 10px;
+        /* Position it at the right */
+        background-color: rgba(255, 255, 255, 0.8);
+        /* Slight transparency for better visibility */
+        border: none;
+        padding: 8px;
+        cursor: pointer;
+        border-radius: 5px;
+        /* Optional: rounded corners */
+        z-index: 1001;
+        /* Ensure it appears above the fullscreen content */
+    }
+</style>
+
+
+
+
+<div class="chat-container">
+    <div class="chat-header">
+        Chat with {{ other_user.username }}
+    </div>
+    <div id="typing-indicator" style="display: none; margin-left: 10px;">Typing...</div>
+
+    <div class="chat-messages"></div>
+
+    <div id="file-previews" class="file-previews"></div>
+
+    <div class="reply-container" style="display: none;">
+        <div class="reply-message" style="margin-left: 10px;">Replying to: <span id="reply-message-text"></span></div>
+        <button id="cancel-reply-button" type="button"
+            style="background-color: #0056b3; color: white; border: none; padding: 10px 15px; margin-left: 10px; border-radius: 5px; cursor: pointer;">Cancel
+            Reply</button>
+    </div>
+
+    <div class="chat-input-container">
+        <label for="file-input" class="file-label" style="text-align: center; display: block;">Attach File</label>
+        <input type="file" id="file-input" class="file-input" name="file" multiple>
+        <input type="text" class="chat-input" placeholder="Type your message...">
+        <button type="button" class="send-button">Send</button>
+    </div>
+</div>
+
+<script>
+    const chatId = "{{ chat.id }}";
+    const currentUser = "{{ request.user.username }}";
+    const messagesContainer = document.querySelector('.chat-messages');
+    const sendButton = document.querySelector('.send-button');
+    const chatInput = document.querySelector('.chat-input');
+    const fileInput = document.querySelector('#file-input');
+    const filePreviews = document.querySelector('#file-previews');
+    const replyContainer = document.querySelector('.reply-container');
+    const replyMessageTextElement = document.querySelector('#reply-message-text');
+    const cancelReplyButton = document.querySelector('#cancel-reply-button');
+    const typingIndicator = document.querySelector('#typing-indicator');
+
+    let replyMessageId = null; // To store the ID of the message being replied to
+    let lastMessageId = null; // To keep track of the last message ID
+    let typingTimeout;
+
+    function fetchMessages() {
+        fetch(`/chat/private_chat/get_private_messages/${chatId}/`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.messages.length > 0) {
+                    // Check if there's a new message
+                    const newLastMessageId = data.messages[data.messages.length - 1].id;
+                    const isNewMessage = lastMessageId !== newLastMessageId;
+
+                    // Update the last message ID
+                    lastMessageId = newLastMessageId;
+
+                    // Clear existing messages and append new ones
+                    messagesContainer.innerHTML = '';
+                    data.messages.forEach(message => {
+                        const messageDiv = document.createElement('div');
+                        messageDiv.classList.add('chat-message', message.sender__username === currentUser ? 'sender' : 'receiver');
+                        messageDiv.dataset.messageId = message.id;
+
+                        // Add click event for replying
+                        messageDiv.addEventListener('click', () => {
+                            replyToMessage(message);
+                        });
+
+                        // Show the reply-to message context if applicable
+                        messageDiv.innerHTML = `
+                            ${message.reply_to ? `<div class="reply-message">Replying to: "${message.reply_to__message}"</div>` : ''}
+                            <span class="username">${message.sender__username}</span>
+                            <span>${message.message}</span>
+                            ${renderFile(message.file)}
+                            <span class="timestamp">${new Date(message.timestamp).toLocaleTimeString()}</span>
+                            ${message.read && message.sender__username === currentUser ? '<span class="read-receipt"><i class="fas fa-check-double"></i> Read</span>' : ''}
+                            ${message.sender__username === currentUser ? '<a class="delete-message" data-message-id="' + message.id + '"><i class="fas fa-trash"></i></a>' : ''}
+                        `;
+
+                        messagesContainer.appendChild(messageDiv);
+
+                        const deleteIcon = messageDiv.querySelector('.delete-message');
+                        if (deleteIcon) {
+                            deleteIcon.addEventListener('click', (event) => {
+                                event.stopPropagation();
+                                deleteMessage(message.id);
+                            });
+                        }
+                    });
+
+                    markMessagesAsRead();
+                    // Scroll to the bottom only if there's a new message
+                    if (isNewMessage) {
+                        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                    }
+                }
+            });
+    }
+
+    function replyToMessage(message) {
+        replyMessageId = message.id;
+        replyMessageTextElement.textContent = `"${message.message}"`;
+        replyContainer.style.display = 'block';
+        chatInput.value = '';
+    }
+
+    cancelReplyButton.addEventListener('click', () => {
+        replyMessageId = null;
+        replyContainer.style.display = 'none';
+    });
+
+    function deleteMessage(messageId) {
+        const formData = new FormData();
+        formData.append('message_id', messageId);
+
+        fetch('/chat/private_chat/delete_message/', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    fetchMessages();
+                } else {
+                    alert(data.message || 'Failed to delete the message.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    function renderFile(fileUrl) {
+        if (!fileUrl) return '';
+        const fileExtension = fileUrl.split('.').pop().toLowerCase();
+        const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
+        const videoExtensions = ['mp4', 'webm'];
+
+        fileUrl = fileUrl.startsWith('/media/') ? fileUrl : '/media/' + fileUrl;
+
+        if (imageExtensions.includes(fileExtension)) {
+            return `<img src="${fileUrl}" class="file-preview" alt="Image Preview" onclick="viewInFullscreen('${fileUrl}', 'image')">`;
+        } else if (videoExtensions.includes(fileExtension)) {
+            return `<video src="${fileUrl}" class="file-preview" controls onclick="viewInFullscreen('${fileUrl}', 'video')"></video>`;
+        } else {
+            return `<a href="${fileUrl}" class="file-download" target="_blank">Download File</a>`;
+        }
+    }
+
+    function viewInFullscreen(fileUrl, type) {
+        const fullScreenModal = document.createElement('div');
+        fullScreenModal.classList.add('fullscreen-modal');
+
+        if (type === 'image') {
+            fullScreenModal.innerHTML = `<img src="${fileUrl}" alt="Full Screen Image" class="fullscreen-content">`;
+        } else if (type === 'video') {
+            fullScreenModal.innerHTML = `<video src="${fileUrl}" controls class="fullscreen-content"></video>`;
+        }
+
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'Close';
+        closeButton.classList.add('close-fullscreen');
+        closeButton.addEventListener('click', () => {
+            document.body.removeChild(fullScreenModal);
+        });
+
+        fullScreenModal.appendChild(closeButton);
+        document.body.appendChild(fullScreenModal);
+    }
+
+    fileInput.addEventListener('change', handleFilePreview);
+
+    function handleFilePreview() {
+        filePreviews.innerHTML = '';
+
+        Array.from(fileInput.files).forEach(file => {
+            if (file.size > 3 * 1024 * 1024) {
+                alert(`${file.name} exceeds the 3MB file size limit.`);
+                fileInput.value = ''; // Clear file input if file exceeds limit
+                return;
+            }
+
+            const filePreview = document.createElement('div');
+            filePreview.classList.add('file-preview');
+
+            if (file.type.startsWith('image/')) {
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                filePreview.appendChild(img);
+            } else if (file.type.startsWith('video/')) {
+                const video = document.createElement('video');
+                video.src = URL.createObjectURL(file);
+                video.controls = true;
+                filePreview.appendChild(video);
+            } else {
+                const fileLink = document.createElement('a');
+                fileLink.href = URL.createObjectURL(file);
+                fileLink.textContent = 'Download ' + file.name;
+                fileLink.download = file.name;
+                filePreview.appendChild(fileLink);
+            }
+
+            const removeButton = document.createElement('button');
+            removeButton.classList.add('remove-preview');
+            removeButton.innerHTML = '<i class="fas fa-times"></i>';
+            removeButton.addEventListener('click', () => {
+                filePreviews.removeChild(filePreview);
+                const filesArray = Array.from(fileInput.files);
+                const index = filesArray.indexOf(file);
+                filesArray.splice(index, 1);
+                const dataTransfer = new DataTransfer();
+                filesArray.forEach(file => dataTransfer.items.add(file));
+                fileInput.files = dataTransfer.files;
+            });
+
+            filePreview.appendChild(removeButton);
+            filePreviews.appendChild(filePreview);
+        });
+        updateFilePreviewsPadding(); // Update padding when files are added
+    }
+
+    function updateFilePreviewsPadding() {
+        if (filePreviews.children.length > 0) {
+            filePreviews.style.padding = '100px';
+        } else {
+            filePreviews.style.padding = '0'; // Reset to default padding
+        }
+    }
+
+    sendButton.addEventListener('click', sendMessage);
+
+    chatInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            sendMessage();
+        }
+    });
+
+    function markMessagesAsRead() {
+        fetch('/chat/private_chat/mark_messages_as_read/', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ chat_id: chatId })
+        });
+    }
+
+    function sendMessage() {
+        const message = chatInput.value.trim();
+
+        if (!message && fileInput.files.length === 0) {
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('chat_id', chatId);
+        formData.append('message', message);
+        if (replyMessageId) {
+            formData.append('reply_to', replyMessageId);
+        }
+
+        Array.from(fileInput.files).forEach(file => {
+            formData.append('files', file);
+        });
+
+        fetch('/chat/private_chat/send_private_message/', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+            },
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    fetchMessages();
+                    chatInput.value = '';
+                    fileInput.value = '';
+                    filePreviews.innerHTML = ''; // Clear file previews
+                    updateFilePreviewsPadding(); // Immediately update padding
+                    replyMessageId = null;
+                    replyContainer.style.display = 'none';
+                }
+            });
+    }
+
+    fetchMessages();
+    setInterval(fetchMessages, 3000);
+</script>
+
+
+
+<!--Script for typing status-->
+<script>
+    chatInput.addEventListener('input', () => {
+        typingIndicator.style.display = 'inline';
+        clearTimeout(typingTimeout);
+        typingTimeout = setTimeout(() => {
+            typingIndicator.style.display = 'none';
+        }, 2000);
+        notifyTyping();
+    });
+
+    function notifyTyping() {
+        fetch(`/chat/private_chat/notify_typing/${chatId}/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ typing: true })
+        });
+    }
+</script>
+
+
+
+
+{% endblock %}

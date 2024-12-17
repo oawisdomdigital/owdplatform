@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% block title %}My Notifications{% endblock %}
+{% load static %}
+{% block content %}
+<style>
+    /* Profile Image Container */
+    .profile-image-container {
+        display: flex;
+        align-items: center;
+        margin-right: 1em;
+    }
+
+    /* Profile Image */
+    .profile-image {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #ddd;
+    }
+
+    .verification-badge2 {
+        position: relative;
+        top: -2px;
+        right: -40px;
+        transform: translate(50%, -50%);
+        /* Center the badge at the top-right corner */
+        z-index: 10;
+        /* Ensure the badge is on top of the profile image */
+    }
+
+    .verification-badge2 .img2 {
+        width: 25px;
+        height: 25px;
+    }
+    
+    /* Page Title */
+    .page-title {
+        font-size: 2em;
+        margin-bottom: 1em;
+        text-align: center;
+    }
+
+    /* Notification List */
+    .notification-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .notification-item {
+        align-items: center;
+        padding: 1em;
+        border-bottom: 1px solid #ddd;
+        background-color: #fff;
+        transition: background-color 0.3s ease;
+    }
+
+    .notification-item:hover {
+        background-color: #f9f9f9;
+    }
+
+    /* Notification Message */
+    .notification-link {
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .notification-link:hover {
+        text-decoration: underline;
+    }
+
+    /* Timestamp */
+    .timestamp {
+        color: #888;
+        font-size: 0.9em;
+        margin-left: auto;
+    }
+
+    /* No Notifications */
+    .no-notifications {
+        text-align: center;
+        padding: 1em;
+        color: #888;
+    }
+</style>
+<h1 class="page-title">Notifications</h1>
+<button id="clear-all-notifications" class="btn btn-primary">Clear All Notifications</button>
+<ul id="notifications-list" class="notification-list">
+    {% for notification in notifications %}
+    <li class="notification-item" data-notification-id="{{ notification.id }}">
+        <div class="profile-image-container">
+            {% if notification.is_verified %}
+            <div class="verification-badge2">
+                <img src="{% static 'assets/img/verification_badge.png' %}" alt="Verified Badge" class="img2">
+            </div>
+            {% endif %}
+            {% if notification.profile_image %}
+            <img src="{{ notification.profile_image }}" class="profile-image" alt="Profile Image" />
+            {% else %}
+            <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png" class="profile-image"
+                alt="Default Profile Image" />
+            {% endif %}
+        </div>
+
+        <!-- Make the notification message clickable if there is a chat associated -->
+        {% if notification.chat %}
+        <a href="{% url 'private_chat' chat_id=notification.chat.id %}" class="notification-link">
+            {{ notification.message|safe }}
+        </a>
+        {% else %}
+        {{ notification.message|safe }}
+        {% endif %}
+
+        <!-- Display timestamp -->
+        <span class="timestamp">{{ notification.timestamp }}</span>
+    </li>
+    {% empty %}
+    <li class="no-notifications">No notifications</li>
+    {% endfor %}
+</ul>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const clearAllButton = document.getElementById('clear-all-notifications');
+
+        clearAllButton.addEventListener('click', function () {
+            fetch('/chat/notifications/clear_all/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // Remove all notification items from the DOM
+                        const notificationsList = document.getElementById('notifications-list');
+                        notificationsList.innerHTML = '<li class="no-notifications">No notifications</li>';
+                    } else {
+                        console.error('Error:', data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,2001 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta Description -->
+    <meta name="description"
+        content="Discover {{ profile.user.username }}'s personal profile. Learn more about their interests, projects, and achievements.">
+
+    <!-- Meta Keywords -->
+    <meta name="keywords"
+        content="{{ profile.user.username }}, profile, portfolio, personal page, interests, achievements, social profile">
+
+    <!-- Author -->
+    <meta name="author" content="{{ profile.user.username }}">
+
+    <!-- Open Graph (OG) Meta Tags for Social Sharing -->
+    <meta property="og:title" content="{{ profile.user.username }}'s Profile">
+    <meta property="og:description"
+        content="Explore {{ profile.user.username }}'s profile, including their interests, projects, and more.">
+    {% if profile.profile_image %}
+    <meta property="og:image" content="{{ profile.profile_image.url }}">
+    {% else %}
+    <meta property="og:image" content="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png">
+    {% endif %}
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="profile">
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ profile.user.username }}'s Profile">
+    <meta name="twitter:description" content="View {{ profile.user.username }}'s profile and learn more.">
+    {% if profile.profile_image %}
+    <meta name="twitter:image" content="{{ profile.profile_image.url }}">
+    {% else %}
+    <meta name="twitter:image" content="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png">
+    {% endif %}
+    <meta name="twitter:site" content="@YourTwitterHandle">
+    <title>{{ profile.user.username }}'s Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Favicons -->
+    {% if profile.profile_image %}
+    <link rel="icon" href="{{ profile.profile_image.url }}" type="image/png">
+    {% else %}
+    <link rel="icon" href="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png"
+        type="image/png">
+    {% endif %}
+    <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .navbar {
+            background-color: white;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand img {
+            height: 40px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #606060;
+            font-size: 14px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #000;
+        }
+
+        .profile-header {
+            position: relative;
+            text-align: center;
+        }
+
+        .profile-image-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-header1 {
+            position: relative;
+            text-align: center;
+            color: white;
+            padding-bottom: 50px;
+        }
+
+        .cover-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .no-profile-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            border: 2px solid #ccc;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -75px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid white;
+        }
+
+        .profile-info {
+            padding-top: 70px;
+            text-align: center;
+        }
+
+        .profile-info h1 {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .profile-info p {
+            color: #606060;
+        }
+
+        .nav-tabs {
+            border-bottom: 1px solid #e9ecef;
+            justify-content: center;
+            background-color: white;
+        }
+
+        .nav-tabs .nav-link {
+            color: #606060;
+            border: none;
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: #000;
+            border-bottom: 3px solid #ff0000;
+        }
+
+        .tab-content {
+            padding: 20px 0;
+        }
+
+        .post {
+            background: white;
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            background-color: #f1f1f1;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .footer .icon {
+            font-size: 20px;
+            color: #606060;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .footer .icon:hover {
+            color: #000;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .floating-button:hover {
+            background-color: #ffa726;
+        }
+
+        .profile-image1 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .post-info h2 {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .post-content .see-less {
+            display: none;
+        }
+
+        .clickable-image {
+            cursor: pointer;
+        }
+
+        .btn-primary1 {
+            background-color: #ffa726;
+            color: black;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .btn-primary1:hover {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+
+
+
+
+
+
+        .post-image {
+            height: 300px;
+            /* Fixed height for the image section */
+            overflow: hidden;
+            background-color: #f7f7f7;
+        }
+
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* Ensures image fits within the container */
+            display: block;
+        }
+
+        .post-content {
+            flex: 1;
+            /* Allows content to take available space */
+            padding: 15px;
+            overflow: hidden;
+        }
+
+        .post-content .post-text {
+            max-height: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* Adds "..." if text is too long */
+        }
+
+        .post-actions {
+            padding: 10px 15px;
+            border-top: 1px solid #e9ecef;
+            background-color: #fff;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .subscribers-list {
+            margin-top: 20px;
+        }
+
+        .profile-image3 {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        .profile-image3.rounded-circle {
+            border-radius: 50%;
+        }
+
+        .subscribers-list a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        .subscribers-list a:hover {
+            text-decoration: underline;
+        }
+
+        .subscriber-username {
+            margin-left: 10px;
+        }
+
+        .verification-badge {
+            position: relative;
+            top: -10px;
+            right: -51px;
+            width: 30px;
+            /* Adjust size as needed */
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .verification-badge img {
+            width: 20px;
+            height: 20px;
+            z-index: 999;
+        }
+
+        .profile-image_header {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+        }
+
+        .verification-badge2 {
+            position: relative;
+            top: -12px;
+            right: -61px;
+            width: 30px;
+            /* Adjust size as needed */
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .img2 {
+            width: 25px;
+            height: 25px;
+            z-index: 999;
+        }
+
+        .verification-badge1 {
+            position: relative;
+            top: -20px;
+            right: -61px;
+            width: 30px;
+            /* Adjust size as needed */
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .verification-badge1 .img1 {
+            width: 50px;
+            height: 50px;
+            z-index: 999;
+        }
+
+
+        .profile-info1 {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-item i {
+            font-size: 24px;
+            color: #007bff;
+            margin-right: 15px;
+        }
+
+        .info-item p {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .info-item strong {
+            color: #007bff;
+        }
+
+        /* Navbar Styling */
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-left: 20px;
+            margin-left: 0;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-right: 20px;
+        }
+
+        .nav-link {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background-color: orange;
+            color: #fff;
+        }
+
+        .nav-link.active {
+            background-color: #0056b3;
+            color: #fff;
+        }
+
+        /* Subscribe Link Styling */
+        .subscribe-button {
+            font-weight: 600;
+        }
+
+        .subscribe-button:hover {
+            color: white;
+            background-color: #0056b3;
+        }
+
+
+        /* Adjust layout for smaller screens */
+        @media (max-width: 768px) {
+            .navbar-nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-item {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .carousel-indicators button {
+            background-color: transparent;
+            border: none;
+        }
+
+        .carousel-indicators .active i {
+            color: #000;
+        }
+
+        .carousel-indicators i {
+            color: #fff;
+        }
+
+
+        .notifications-link {
+            position: relative;
+            /* Required to position the notification count */
+            font-size: 24px;
+            margin-right: 20px;
+        }
+
+        #notification-count {
+            position: absolute;
+            /* Position the count relative to the link */
+            top: -5px;
+            /* Adjust the vertical position */
+            right: -10px;
+            /* Adjust the horizontal position */
+            font-weight: bold;
+            /* Default color when no notifications */
+            font-size: 0.8em;
+            color: #0056b3;
+        }
+
+        #notification-count.has-notifications {
+            color: red;
+            /* Color when there are notifications */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'assets/img/logo.png' %}" alt="OWD"
+                    style=" margin-left: 10px;"></a>
+
+            <!-- profile.html -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    {% if not is_current_user %}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link subscribe-button" data-author-id="{{ user.id }}">
+                            {% if is_subscribed %}
+                            Unsubscribe
+                            {% else %}
+                            Subscribe to @{{ profile.user.username }}'s profile channel
+                            {% endif %}
+                        </a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Videos</a>
+                    </li>
+                    {% if is_current_user %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile_update' %}">Settings</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+
+            <a class="nav-link" style="margin: 1px;" href="{% url 'homechat' %}" title="Community">
+                <i class="fas fa-users"></i>
+            </a>
+            <style>
+                .nav-link i {
+                    margin-right: 8px;
+                    /* Space between icon and text */
+                    color: #555;
+                    /* Icon color */
+                    font-size: 1.5em;
+                }
+
+                .nav-link:hover i {
+                    color: #007bff;
+                    /* Icon color on hover */
+                }
+            </style>
+
+
+
+            {% if is_current_user %}
+            <a class="nav-link" style="margin: 1px;" href="{% url 'all_chats' %}" title="All my chats">
+                <i class="fas fa-envelope fa-lg"></i>
+            </a>
+
+            <a class="notifications-link" href="/chat/notifications/" title="Notifications">
+                <i class="fas fa-bell"></i> <!-- Font Awesome bell icon for notifications -->
+                <span id="notification-count" class="{% if notifications_count > 0 %}has-notifications{% endif %}">{{
+                    notifications_count }}</span>
+            </a>
+            {% endif %}
+
+            <div class="profile-container" style="margin-right: 10px;">
+                {% if profile.is_verified %}
+                <div class="verification-badge">
+                    <img src="{% static 'assets/img/verification_badge.png' %}" alt="Verified Badge">
+                </div>
+                {% endif %}
+                {% if profile.profile_image %}
+                <img src="{{ profile.profile_image.url }}" alt="{{ profile.user.username }}"
+                    class="profile-image_header">
+                {% else %}
+                <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png"
+                    alt="{{ profile.user.username }}" class="profile-image_header">
+                {% endif %}
+            </div>
+            <button style="margin-right: 20px;" class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <br>
+    {% if is_current_user %}
+    <div class="profile-header1">
+        <a href="#" data-toggle="modal" data-target="#profileUpdateModal"><i class="fas fa-edit edit-icon"
+                id="edit-cover-image"> Edit your profile</i></a>
+
+        <button class="share-button2 btn btn-link" data-profile-url="{{ request.build_absolute_uri }}"
+            data-username="{{ user.username }}">
+            <i class="fas fa-share-alt"> Share your profile</i>
+        </button>
+
+        <!-- Button with an icon for sharing the chat -->
+        <button class="btn btn-link" onclick="shareChat()">
+            <i class="fas fa-comments"> Chat with someone</i>
+        </button>
+    </div>
+    {% endif %}
+    {% if not is_current_user %}
+    <a id="share-chat-link" class="btn btn-link" href="{% url 'create_private_chat' user_id=user.id %}"
+        style="display: flex; justify-content: center; text-align: center; text-decoration: none;">
+        <i class="fas fa-comments"> Message {{ user.username }}</i>
+    </a>
+
+    {% endif %}
+
+    <a id="share-chat-link" href="{% url 'create_private_chat' user.id %}"></a>
+    <script>
+        function shareChat() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Let Us Chat',
+                    text: 'Click this link to chat with me!',
+                    url: document.getElementById('share-chat-link').href,
+                }).then(() => {
+                    console.log('Successfully shared');
+                }).catch((error) => {
+                    console.error('Error sharing:', error);
+                });
+            } else {
+                // Fallback for browsers that don't support navigator.share
+                const link = document.getElementById('share-chat-link').href;
+                navigator.clipboard.writeText(link).then(function () {
+                    alert('Link copied to clipboard!');
+                }, function (err) {
+                    console.error('Could not copy text: ', err);
+                });
+            }
+        }
+    </script>
+
+
+    <div class="profile-header">
+        <!-- Cover Image -->
+        {% if profile.cover_image %}
+        <img src="{{ profile.cover_image.url }}" alt="Cover Image" class="cover-image"
+            onclick="openLightbox('{{ profile.cover_image.url }}')">
+        {% else %}
+        <img src="https://img.icons8.com/?size=100&id=57475&format=png&color=000000" alt="No Cover Image"
+            class="cover-image"
+            onclick="openLightbox('https://img.icons8.com/?size=100&id=57475&format=png&color=000000')">
+        {% endif %}
+
+        <!-- Profile Image -->
+        <div class="profile-image-container">
+            {% if profile.profile_image %}
+            <img src="{{ profile.profile_image.url }}" alt="{{ profile.user.username }}" class="profile-image"
+                onclick="openLightbox('{{ profile.profile_image.url }}')">
+            {% else %}
+            <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png"
+                alt="{{ profile.user.username }}" class="profile-image"
+                onclick="openLightbox('https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png')">
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <img id="lightboxImage" class="lightbox-image" alt="Preview Image">
+    </div>
+
+
+    <style>
+        /* Lightbox modal styling */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Black background with opacity */
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Centering the image */
+        .lightbox-image {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 10px;
+            border: 3px solid white;
+            display: block;
+            margin: auto;
+        }
+
+        /* Close button styling */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            z-index: 10000;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: red;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .close-btn {
+                top: 10px;
+                right: 15px;
+                font-size: 30px;
+            }
+
+            .lightbox-image {
+                max-width: 95%;
+                max-height: 70%;
+            }
+        }
+    </style>
+
+    <script>
+        function openLightbox(imageUrl) {
+            const modal = document.getElementById("lightboxModal");
+            const lightboxImage = document.getElementById("lightboxImage");
+
+            modal.style.display = "flex"; // Show the modal
+            lightboxImage.src = imageUrl; // Set the image source
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById("lightboxModal");
+
+            modal.style.display = "none"; // Hide the modal
+        }
+
+    </script>
+
+
+    <div class="profile-info">
+        <h1>{{ profile.user.username }}</h1>
+        <p>Total Subscribers: {{ subscriber_count }}</p>
+        <p>{{ profile.bio }}</p>
+    </div>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts"
+                aria-selected="true">Posts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about"
+                aria-selected="false">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="friends-tab" data-toggle="tab" href="#friends" role="tab" aria-controls="friends"
+                aria-selected="false">Subscribers</a>
+        </li>
+        {% if is_current_user %}
+        <li class="nav-item">
+            <a class="nav-link" id="friends-tab" data-toggle="tab" href="#me" role="tab" aria-controls="me"
+                aria-selected="false">Me</a>
+        </li>
+        {% endif %}
+    </ul>
+
+
+    <script>
+        // Function to get CSRF token from cookies
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        // Share button functionality
+        document.querySelectorAll('.share-button2').forEach(button => {
+            button.addEventListener('click', function () {
+                const profileUrl = this.getAttribute('data-profile-url');
+                const username = this.getAttribute('data-username');
+
+                if (navigator.share) {
+                    navigator.share({
+                        title: `${username}'s Profile`,
+                        text: `Check out ${username}'s profile!`,
+                        url: profileUrl
+                    }).catch(error => console.error('Error sharing:', error));
+                } else {
+                    // Fallback for browsers that don't support the Share API
+                    const shareText = `Check out ${username}'s profile: ${profileUrl}`;
+                    const encodedText = encodeURIComponent(shareText);
+                    const fallbackUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedText}`;
+
+                    window.open(fallbackUrl, '_blank', 'width=600,height=400');
+                }
+            });
+        });
+    </script>
+
+    <div class="tab-content" id="myTabContent">
+        <!-- Posts Tab -->
+        <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+            <div class="col-lg-12">
+                {% if posts %}
+                {% for post in posts %}
+                <div class="post card mb-4 shadow-sm">
+                    <div class="post-header card-header d-flex align-items-center bg-white border-0">
+                        {% if profile.is_verified %}
+                        <div class="verification-badge2">
+                            <img src="{% static 'assets/img/verification_badge.png' %}" alt="Verified Badge" class="img2">
+                        </div>
+                        {% endif %}
+                        {% if profile.profile_image %}
+                        <img src="{{ profile.profile_image.url }}" alt="{{ profile.user.username }}" class="profile-image1">
+                        {% else %}
+                        <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png" alt="IMG"
+                            class="profile-image1">
+                        {% endif %}
+                        <div class="post-info">
+                            <h5 class="card-title">{{ post.title }}</h5>
+                            <h6 class="mb-0 font-weight-bold">{{ post.author.username }}</h6>
+                            <small class="text-muted">{{ post.created_at }}</small>
+                        </div>
+                    </div>
+                
+                    <div class="post-image text-center mt-3">
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid clickable-image">
+                    </div>
+                
+                    <div class="post-content card-body">
+                        <p class="post-text">{{ post.content }}</p>
+                        <a href="javascript:void(0);" class="see-more-link">See More</a>
+                        <a href="javascript:void(0);" class="see-less-link d-none">See Less</a>
+                    </div>
+                
+                    <div class="post-actions card-footer bg-white border-0 d-flex justify-content-between">
+                        <button class="like-button btn btn-primary1 btn-sm" data-post-id="{{ post.id }}">
+                            {% if user in post.likes.all %}
+                            Liked
+                            {% else %}
+                            Like
+                            {% endif %}
+                            <span class="total-likes">{{ post.total_likes }}</span>
+                        </button>
+                
+                        {% if not is_current_user %}
+                        <button class="subscribe-button btn btn-primary1 btn-sm" data-author-id="{{ user.id }}">
+                            {% if is_subscribed %}
+                            Subscribed
+                            {% else %}
+                            Subscribe
+                            {% endif %}
+                        </button>
+                        {% endif %}
+                
+                        <button class="view-comments-button btn btn-primary1 btn-sm" data-post-id="{{ post.id }}" data-toggle="modal"
+                            data-target="#commentModal-{{ post.id }}">
+                            Comments
+                        </button>
+                
+                        <button class="share-button1 btn btn-primary1 btn-sm" data-post-id="{{ post.id }}">
+                            Share
+                        </button>
+                
+                        {% if is_current_user %}
+                        <button class="btn btn-primary1 edit-post-button btn-sm" data-post-id="{{ post.id }}">Edit</button>
+                        <button class="btn btn-primary1 delete-post-button btn-sm" data-post-id="{{ post.id }}">Delete</button>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+                <style>
+                    /* Default button styles (for desktop and larger devices) */
+                    .post-actions .btn {
+                        font-size: 1rem;
+                        /* Normal font size */
+                        padding: 0.5rem 1rem;
+                        /* Regular padding */
+                        margin: 0.25rem;
+                        /* Some space between buttons */
+                    }
+
+                    /* Make sure buttons stay in one line on mobile */
+                    @media (max-width: 576px) {
+                        .post-actions {
+                            display: flex;
+                            flex-wrap: nowrap;
+                            /* Prevent buttons from wrapping to the next line */
+                            justify-content: space-between;
+                            /* Keep the buttons spaced out */
+                        }
+
+                        .post-actions .btn {
+                            font-size: 0.85rem;
+                            /* Smaller font size */
+                            padding: 0.25rem 0.5rem;
+                            /* Smaller padding */
+                            margin: 0.25rem;
+                            /* Maintain space between buttons */
+                        }
+                    }
+                </style>
+
+                <!-- Comment Modal for each post -->
+                <div class="modal fade" id="commentModal-{{ post.id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="commentModalLabel-{{ post.id }}" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="commentModalLabel-{{ post.id }}">Comments</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Display existing comments -->
+                                <div id="commentList-{{ post.id }}">
+                                    {% for comment in post.comments.all %}
+                                    <div class="comment" id="comment-{{ comment.id }}">
+                                        <p><strong>{{ comment.author.username }}</strong> {{ comment.content }}</p>
+                                        {% if comment.author == user %}
+                                        <button class="delete-comment-button btn btn-danger btn-sm"
+                                            data-comment-id="{{ comment.id }}">Delete</button>
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <!-- Add new comment form -->
+                                <form id="commentForm-{{ post.id }}" method="POST"
+                                    action="{% url 'add_comment' post.id %}">
+                                    {% csrf_token %}
+                                    <textarea name="content" class="form-control" placeholder="Add a comment..."
+                                        required></textarea>
+                                    <button type="submit" class="btn btn-primary1 mt-2">Post Comment</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="text-center mt-5">
+                    <h2>No Post Yet</h2>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Image Modal -->
+            <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body p-0 position-relative" style="padding: 0; margin: 0;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                style="background-color: blue; color: #ffffff; border-radius: 50%; width: 30px; height: 30px; border: none; font-size: 20px;">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <img id="fullImage" src="" class="img-fluid"
+                                style="width: 100%; height: 100%; object-fit: cover; border: 2px solid #333333;"
+                                alt="Full Size Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <script>
+                $(document).ready(function () {
+                    // Handle delete post
+                    $('.delete-post-button').on('click', function () {
+                        const postId = $(this).data('post-id');
+                        if (!postId) {
+                            console.error('Post ID is missing.');
+                            return;
+                        }
+
+                        if (confirm('Are you sure you want to delete this post?')) {
+                            fetch(`/delete_post/${postId}/`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRFToken': $('input[name="csrfmiddlewaretoken"]').val()
+                                },
+                                body: JSON.stringify({})
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        // Remove the post element from the DOM
+                                        $(`.post[data-post-id="${postId}"]`).remove();
+                                    } else {
+                                        alert('An error occurred while deleting the post.'); // Display error message
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    alert('An error occurred while processing your request.');
+                                });
+                        }
+                    });
+
+                    // Handle edit post
+                    $('.edit-post-button').on('click', function () {
+                        const postId = $(this).data('post-id');
+                        if (postId) {
+                            window.location.href = `/edit_post/${postId}/`; // Redirect to the edit page
+                        } else {
+                            console.error('Post ID is missing.');
+                        }
+                    });
+                });
+            </script>
+
+
+
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Like button functionality
+                    document.querySelectorAll('.like-button').forEach(button => {
+                        button.addEventListener('click', function () {
+                            const postId = this.getAttribute('data-post-id');
+                            fetch(`/posts/like/${postId}/`, {
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRFToken': getCookie('csrftoken')
+                                }
+                            }).then(response => response.json()).then(data => {
+                                if (data.liked) {
+                                    this.innerText = 'Unlike';
+                                } else {
+                                    this.innerText = 'Like';
+                                }
+                            });
+                        });
+                    });
+
+                    // Subscribe button functionality
+                    document.querySelectorAll('.subscribe-button').forEach(button => {
+                        button.addEventListener('click', function () {
+                            const authorId = this.getAttribute('data-author-id');
+                            fetch(`/subscribe-author/${authorId}/`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRFToken': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                },
+                                body: JSON.stringify({}),
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.error) {
+                                        alert(data.error); // Handle unauthorized errors
+                                        return;
+                                    }
+                                    // Update button text based on subscription status
+                                    this.textContent = data.subscribed ? 'Unsubscribe' : 'Subscribe';
+                                })
+                                .catch(error => console.error('Error:', error)); // Handle fetch errors
+                        });
+                    });
+
+                    // Share button functionality
+                    document.querySelectorAll('.share-button1').forEach(button => {
+                        button.addEventListener('click', function () {
+                            const postId = this.getAttribute('data-post-id');
+                            fetch(`/posts/share/${postId}/`, {
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRFToken': getCookie('csrftoken')
+                                }
+                            }).then(response => response.json()).then(data => {
+                                if (navigator.share) {
+                                    navigator.share({
+                                        title: data.title,
+                                        text: data.content,
+                                        url: data.shared_link
+                                    }).catch(error => console.error('Error sharing:', error));
+                                } else {
+                                    alert('Share API not supported in this browser.');
+                                }
+                            });
+                        });
+                    });
+
+                    // See More / See Less functionality
+                    document.querySelectorAll('.see-more-link').forEach(link => {
+                        link.addEventListener('click', function () {
+                            const postContent = this.previousElementSibling;
+                            postContent.style.maxHeight = 'none';
+                            this.classList.add('d-none');
+                            this.nextElementSibling.classList.remove('d-none');
+                        });
+                    });
+
+                    document.querySelectorAll('.see-less-link').forEach(link => {
+                        link.addEventListener('click', function () {
+                            const postContent = this.previousElementSibling.previousElementSibling;
+                            postContent.style.maxHeight = '150px';
+                            this.classList.add('d-none');
+                            this.previousElementSibling.classList.remove('d-none');
+                        });
+                    });
+
+                    // Delete comment functionality
+                    document.querySelectorAll('.delete-comment-button').forEach(button => {
+                        button.addEventListener('click', function () {
+                            const commentId = this.getAttribute('data-comment-id');
+                            fetch(`/posts/delete_comment/${commentId}/`, {  // Correct URL
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRFToken': getCookie('csrftoken')
+                                }
+                            }).then(response => response.json()).then(data => {
+                                if (data.success) {
+                                    document.getElementById(`comment-${commentId}`).remove();
+                                }
+                            });
+                        });
+                    });
+
+                    // View comments form submission
+                    document.querySelectorAll('.view-comments-button').forEach(button => {
+                        button.addEventListener('click', function () {
+                            const postId = this.getAttribute('data-post-id');
+                            const modal = document.getElementById(`commentModal-${postId}`);
+                            const commentList = modal.querySelector(`#commentList-${postId}`);
+                            const commentForm = modal.querySelector(`#commentForm-${postId}`);
+
+                            commentForm.addEventListener('submit', function (e) {
+                                e.preventDefault();
+                                const content = this.querySelector('textarea[name="content"]').value;
+                                fetch(`/posts/comment/${postId}/`, {  // Correct URL
+                                    method: 'POST',
+                                    headers: {
+                                        'X-CSRFToken': getCookie('csrftoken'),
+                                        'Content-Type': 'application/x-www-form-urlencoded'
+                                    },
+                                    body: new URLSearchParams({ 'content': content })
+                                }).then(response => response.json()).then(data => {
+                                    if (data.success) {
+                                        const newComment = document.createElement('div');
+                                        newComment.classList.add('comment');
+                                        newComment.innerHTML = `<p><strong>${data.username}</strong> ${content}</p>`;
+                                        commentList.appendChild(newComment);
+                                        commentForm.querySelector('textarea[name="content"]').value = '';
+                                    }
+                                });
+                            });
+                        });
+                    });
+
+                    // Expand image functionality
+                    document.querySelectorAll('.clickable-image').forEach(image => {
+                        image.addEventListener('click', function () {
+                            const fullImage = document.getElementById('fullImage');
+                            fullImage.src = this.src;
+                            const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+                            imageModal.show();
+                        });
+                    });
+
+                    function getCookie(name) {
+                        let cookieValue = null;
+                        if (document.cookie && document.cookie !== '') {
+                            const cookies = document.cookie.split(';');
+                            for (let i = 0; i < cookies.length; i++) {
+                                const cookie = cookies[i].trim();
+                                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                    break;
+                                }
+                            }
+                        }
+                        return cookieValue;
+                    }
+                });
+            </script>
+        </div>
+
+        <!-- About Tab -->
+        <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+            <div class="about">
+                <div class="container mt-5 profile-info1">
+                    <div class="info-item">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <p><strong>First Name:</strong> {% if user.first_name %}{{ user.first_name }}{% else %}No
+                                first name added{% endif %}</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <p><strong>Last Name:</strong> {% if user.last_name %}{{ user.last_name }}{% else %}No last
+                                name added{% endif %}</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p><strong>Email:</strong>{% if user.email %} {{ user.email }}{% else %}No email added{% endif %}</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-birthday-cake"></i>
+                        <div>
+                            <p><strong>Birthday:</strong>{% if user.birthday %} {{ profile.birthday }}{% else %} No
+                                birthday added{% endif %}</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <p><strong>Other informations about {{ profile.user.username }}:</strong> {{ profile.about
+                                }}</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-gift"></i>
+                        <div>
+                            <p><strong>Referral Code:</strong> {{ profile.referral_code }}</p>
+                        </div>
+                    </div>
+                    {% if marketplace_entry %}
+                    <div class="info-item">
+                        <i class="fas fa-briefcase"></i>
+                        <div>
+                            <p><strong>Occupation:</strong> {{ marketplace_entry.occupation }}</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-tags"></i>
+                        <div>
+                            <p><strong>Type:</strong> {{ marketplace_entry.sell_or_service }}</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-box"></i>
+                        <div>
+                            <p><strong>Product/Service:</strong> {{ marketplace_entry.product_or_service }}</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p><strong>Office Address:</strong> {{ marketplace_entry.office_address }}</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <p><strong>Years of Experience:</strong> {{ marketplace_entry.years_experience }}</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-star"></i>
+                        <div>
+                            <p><strong>Specialty:</strong> {{ marketplace_entry.get_specialty_display }}</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p><strong>Phone Number 1:</strong> {{ marketplace_entry.phone_number1 }}</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <p><strong>Phone Number 2:</strong> {{ marketplace_entry.phone_number2 }}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <p><strong>Portfolio Link:</strong> <a href="{{ marketplace_entry.portfolio_link }}"
+                                    target="_blank">{{ marketplace_entry.portfolio_link }}</a></p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="container mt-5">
+                    <div class="row">
+                        {% for item in marketplace_items %}
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm" style="height: 100%;">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="card-title mb-0">{{ item.name }}</h5>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <!-- Author Info -->
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="profile-container">
+                                            {% if profile.is_verified %}
+                                            <div class="verification-badge">
+                                                <img src="{% static 'assets/img/verification_badge.png' %}"
+                                                    alt="Verified Badge">
+                                            </div>
+                                            {% endif %}
+                                            {% if profile.profile_image %}
+                                            <img src="{{ profile.profile_image.url }}" alt="Profile Image"
+                                                class="profile-image_header">
+                                            {% else %}
+                                            <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png"
+                                                alt="No profile image" class="profile-image_header">
+                                            {% endif %}
+                                        </div>
+                                        <a href="{% url 'profile' item.user.username %}"
+                                            class="text-dark text-decoration-none">{{ item.user.username }}</a>
+                                    </div>
+
+                                    <!-- Image Carousel -->
+                                    <div id="carousel{{ item.id }}" class="carousel slide mb-3" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            {% for image in item.images.all %}
+                                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                                <img src="{{ image.image.url }}" class="d-block w-100"
+                                                    alt="{{ item.name }}" style="object-fit: cover; height: 200px;"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#imageModal{{ item.id }}-{{ forloop.counter0 }}">
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                        <button class="carousel-control-prev" type="button"
+                                            data-bs-target="#carousel{{ item.id }}" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Back</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button"
+                                            data-bs-target="#carousel{{ item.id }}" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                        <div
+                                            class="position-relative bottom-0 end-0 bg-dark text-white p-1 m-2 rounded">
+                                            <span>{{ item.images.count }} Images</span>
+                                        </div>
+                                        <div class="carousel-indicators">
+                                            {% for image in item.images.all %}
+                                            <button type="button" data-bs-target="#carousel{{ item.id }}"
+                                                data-bs-slide-to="{{ forloop.counter0 }}"
+                                                class="{% if forloop.first %}active{% endif %}" aria-current="true"
+                                                aria-label="Slide {{ forloop.counter }}">
+                                                <i class="bi bi-circle-fill"></i>
+                                            </button>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <p class="card-text">{{ item.description }}</p>
+                                    <p class="card-text"><strong>Price:</strong> &#8358;{{ item.price }}</p>
+                                    <p class="card-text"><strong>Date Listed:</strong> {{ item.created_at }}</p>
+                                    <p class="card-text"><strong>Views:</strong> {{ item.view_count }}</p>
+                                    <button class="btn btn-primary1 share-button mt-auto"
+                                        data-item-id="{{ item.id }}">Share</button><br>
+                                    {% if is_current_user %}
+                                    <!-- Edit and Delete Buttons -->
+                                    {% if user == item.user %}
+                                    <a class="btn btn-primary1" href="{% url 'edit_item' item.id %}"
+                                        class="btn btn-warning me-2">Edit</a><br>
+                                    <button class="btn btn-primary1 delete-button"
+                                        data-item-id="{{ item.id }}">Delete</button>
+                                    {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {% for item in marketplace_items %}
+                {% for image in item.images.all %}
+                <div class="modal fade" id="imageModal{{ item.id }}-{{ forloop.counter0 }}" tabindex="-1"
+                    aria-labelledby="imageModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="modal-body">
+                                <img src="{{ image.image.url }}" class="img-fluid" alt="{{ item.name }}"
+                                    style="width: 100%; height: 100%; object-fit: cover; border: 2px solid #333333;"
+                                    alt="Full Size Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endfor %}
+
+                <!-- Bootstrap JS -->
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+                <!-- Share and Delete Button Scripts -->
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        // Share Button Functionality
+                        document.querySelectorAll('.share-button').forEach(button => {
+                            button.addEventListener('click', function () {
+                                const itemId = this.getAttribute('data-item-id');
+                                fetch(`/marketplace/share/${itemId}/`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'X-CSRFToken': getCookie('csrftoken')
+                                    }
+                                })
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error('Network response was not ok');
+                                        }
+                                        return response.json();
+                                    })
+                                    .then(data => {
+                                        if (navigator.share) {
+                                            navigator.share({
+                                                title: data.title,
+                                                text: data.description,
+                                                url: data.shared_link
+                                            }).catch(error => console.error('Error sharing:', error));
+                                        } else {
+                                            alert('Share API not supported in this browser.');
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error('There was a problem with the fetch operation:', error);
+                                        alert('Failed to share the item. Please try again later.');
+                                    });
+                            });
+                        });
+
+                        // Delete Button Functionality
+                        document.querySelectorAll('.delete-button').forEach(button => {
+                            button.addEventListener('click', function () {
+                                if (confirm('Are you sure you want to delete this item?')) {
+                                    const itemId = this.getAttribute('data-item-id');
+                                    fetch(`/users/delete/${itemId}/`, {
+                                        method: 'DELETE',
+                                        headers: {
+                                            'X-CSRFToken': getCookie('csrftoken')
+                                        }
+                                    })
+                                        .then(response => {
+                                            if (!response.ok) {
+                                                throw new Error('Network response was not ok');
+                                            }
+                                            return response.json();
+                                        })
+                                        .then(data => {
+                                            if (data.success) {
+                                                location.reload();
+                                            } else {
+                                                alert('Failed to delete the item. Please try again later.');
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('There was a problem with the fetch operation:', error);
+                                            alert('Failed to delete the item. Please try again later.');
+                                        });
+                                }
+                            });
+                        });
+
+                        // Function to get CSRF token
+                        function getCookie(name) {
+                            let cookieValue = null;
+                            if (document.cookie && document.cookie !== '') {
+                                const cookies = document.cookie.split(';');
+                                for (let i = 0; i < cookies.length; i++) {
+                                    const cookie = cookies[i].trim();
+                                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                        break;
+                                    }
+                                }
+                            }
+                            return cookieValue;
+                        }
+                    });
+                </script>
+
+
+
+            </div>
+        </div>
+
+        <!-- Subscribers Tab -->
+        <div class="tab-pane fade" id="friends" role="tabpanel" aria-labelledby="friends-tab">
+            <div class="subscribers-list">
+                <div class="container mt-5">
+                    {% if subscribers %}
+                    <div class="row">
+                        {% for subscriber in subscribers %}
+                        <div class="col-md-4 mb-3">
+                            <a href="{% url 'profile' subscriber.username %}" class="d-flex align-items-center">
+                                <img src="{% if subscriber.user_profile.profile_image %}{{ subscriber.user_profile.profile_image.url }}{% else %}https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png{% endif %}"
+                                    alt="IMG" class="profile-image3 rounded-circle">
+                                <span class="ms-2 subscriber-username">{{ subscriber.username }}</span>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="text-center mt-5">
+                        <h2>No Subcribers Yet</h2>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="me" role="tabpanel" aria-labelledby="me-tab">
+
+            <div class="info-item" style="display: inline-block; margin: 20px;">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <p>My Coins</p> <a href="{% url 'buy_coins' %}">{{ profile.coins }}</a>
+                </div>
+            </div>
+
+            <div style="display: inline-block; margin: 20px;">
+                <i class="fas fa-heart"></i>
+                <div>
+                    <p><strong>Wishlist:</strong></p>
+                    {% if wishlist and wishlist.items.all %}
+                    <ul>
+                        {% for item in wishlist.items.all %}
+                        <li>
+                            <!-- Link to the wishlist item detail page -->
+                            <a href="{% url 'marketplace_item_detail' item.pk %}">
+                                {{ item.name }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p>No items in wishlist.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Cart -->
+            <div style="display: inline-block; margin: 20px;">
+                <i class="fas fa-shopping-cart"></i>
+                <div>
+                    <p><strong>Cart:</strong></p>
+                    {% if cart and cart.cart_items.all %}
+                    <ul>
+                        {% for cart_item in cart.cart_items.all %}
+                        <li>
+                            <!-- Link to the cart item detail page -->
+                            <a href="{% url 'marketplace_item_detail' cart_item.item.pk %}">
+                                {{ cart_item.item.name }} - Quantity: {{ cart_item.quantity }}
+                                - Total Price: {{ cart_item.total_price }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <p><strong>Total Items:</strong> {{ cart.total_items }}</p>
+                    {% else %}
+                    <p>No items in cart.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    {% if is_current_user %}
+    <button type="button" class="btn btn-primary floating-button" data-toggle="modal" data-target="#post-modal">
+        +
+    </button>
+    {% endif %}
+
+    <!-- Add Post Modal -->
+    <div class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="postModalLabel">Add Post</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="post-form" method="post" enctype="multipart/form-data" action="{% url 'add_post' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" placeholder="Enter a title for your post" id="title"
+                                name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="file" class="form-control-file" id="image" name="image" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Content</label>
+                            <textarea class="form-control" placeholder="What is your post about?" id="content"
+                                name="content" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="tags">Tags (comma-separated)</label>
+                            <input type="text" placeholder="Use a hashtag for your post to standout"
+                                class="form-control" id="tags" name="tags">
+                        </div>
+                        <button type="submit" class="btn btn-primary1">Add Post</button>
+                        <div class="spinner-border text-primary d-none" role="status" id="loading-spinner">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const postForm = document.getElementById("post-form");
+            const spinner = document.getElementById("loading-spinner");
+
+            postForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const formData = new FormData(postForm);
+                spinner.classList.remove("d-none");
+
+                fetch(postForm.action, {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "X-Requested-With": "XMLHttpRequest", // This header identifies the request as an AJAX request
+                        "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        spinner.classList.add("d-none");
+
+                        if (data.success) {
+                            console.log('Post added successfully:', data.post);
+
+                            // Check if data.post.post_id is defined
+                            if (data.post && data.post.id) {
+                                // Close the modal
+                                $('#post-modal').modal('hide');
+
+                                // Redirect to the post detail page
+                                window.location.href = `/post/${data.post.id}/`;
+                            } else {
+                                console.error('Post ID is undefined:', data.post);
+                                alert("An error occurred: Post ID is missing.");
+                            }
+                        } else {
+                            console.error('Error adding post:', data.errors);
+                            alert("An error occurred: " + JSON.stringify(data.errors));
+                        }
+                    })
+                    .catch(error => {
+                        spinner.classList.add("d-none");
+                        console.error('Error:', error);
+                        alert("An error occurred while adding the post.");
+                    });
+            });
+        });
+
+    </script>
+
+    {% if form.errors %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Error:</strong>
+        <ul>
+            {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <!-- Profile Update Modal -->
+    <div class="modal fade" id="profileUpdateModal" tabindex="-1" role="dialog"
+        aria-labelledby="profileUpdateModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileUpdateModalLabel">Update Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="profile-update-form" method="POST" enctype="multipart/form-data"
+                        action="{% url 'update_profile' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="profile_image">Profile Image</label>
+                            {% if profile.profile_image %}
+                            <img id="profile-image-preview" src="{{ profile.profile_image.url }}"
+                                alt="Current Profile Image" class="img-thumbnail" style="max-width: 150px;">
+                            <button type="button" class="btn btn-danger btn-sm" id="delete-profile-image">Delete Profile
+                                Image</button>
+                            {% else %}
+                            <p>No profile image available</p>
+                            {% endif %}
+                            <input type="file" class="form-control-file" id="profile_image" name="profile_image"
+                                onchange="previewImage(this, 'profile-image-preview')">
+                        </div>
+                        <div class="form-group">
+                            <label for="cover_image">Cover Image</label>
+                            {% if profile.cover_image %}
+                            <img id="cover-image-preview" src="{{ profile.cover_image.url }}" alt="Current Cover Image"
+                                class="img-thumbnail" style="max-width: 150px;">
+                            <button type="button" class="btn btn-danger btn-sm" id="delete-cover-image">Delete Cover
+                                Image</button>
+                            {% else %}
+                            <p>No cover image available</p>
+                            {% endif %}
+                            <input type="file" class="form-control-file" id="cover_image" name="cover_image"
+                                onchange="previewImage(this, 'cover-image-preview')">
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea class="form-control" id="bio" name="bio" rows="3">{{ profile.bio }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="about">About</label>
+                            <textarea class="form-control" id="about" name="about"
+                                rows="3">{{ profile.about }}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to handle form submission for profile update
+            document.getElementById('profile-update-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var formData = new FormData(this);
+
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    }
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            return response.json().then(errorData => {
+                                throw new Error(JSON.stringify(errorData));
+                            });
+                        }
+                    })
+                    .then(data => {
+                        console.log(data);
+                        $('#profileUpdateModal').modal('hide'); // Close the modal
+                        alert('Profile updated successfully!');
+                        window.location.reload(); // Refresh the page
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred. Please try again.');
+                    });
+            });
+
+            // Function to handle profile image deletion
+            document.getElementById('delete-profile-image').addEventListener('click', function () {
+                fetch('{% url "delete_profile_image" %}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.message) {
+                            alert(data.message);
+                            window.location.reload(); // Refresh the page
+                        } else if (data.error) {
+                            alert(data.error);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while deleting the profile image.');
+                    });
+            });
+
+            // Function to handle cover image deletion
+            document.getElementById('delete-cover-image').addEventListener('click', function () {
+                fetch('{% url "delete_cover_image" %}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.message) {
+                            alert(data.message);
+                            window.location.reload(); // Refresh the page
+                        } else if (data.error) {
+                            alert(data.error);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while deleting the cover image.');
+                    });
+            });
+        });
+
+        // Function to preview the selected image
+        function previewImage(input, previewId) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById(previewId).src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to handle subscribing and unsubscribing
+            function handleSubscription(button, authorId) {
+                fetch(`/subscribe-author/${authorId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify({})
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        button.textContent = data.subscribed ? 'Unsubscribe' : 'Subscribe';
+                        // Update subscriber list if subscription status changes
+                        if (data.subscribed) {
+                            const subscriberListContainer = document.getElementById('subscriberListContainer');
+                            const subscriberItem = document.createElement('a');
+                            subscriberItem.setAttribute('href', data.subscriber_profile_url);
+                            subscriberItem.innerHTML = `<img src="${data.subscriber_profile_image}" alt="${data.subscriber_username}" class="profile-image">`;
+                            subscriberListContainer.appendChild(subscriberItem);
+                        } else {
+                            // Remove subscriber from the list if unsubscribed
+                            const subscriberToRemove = document.querySelector(`a[href*='profile/${data.subscriber_username}']`);
+                            if (subscriberToRemove) {
+                                subscriberToRemove.remove();
+                            }
+                        }
+                    });
+            }
+
+            // Event listener for subscribe buttons
+            document.querySelectorAll('.subscribe-button').forEach(button => {
+                button.addEventListener('click', function () {
+                    const authorId = this.getAttribute('data-author-id');
+                    handleSubscription(this, authorId);
+                });
+            });
+
+            // Initial setup to handle subscribed state when page loads
+            document.querySelectorAll('.subscribe-button').forEach(button => {
+                const authorId = button.getAttribute('data-author-id');
+                fetch(`/check-subscription/${authorId}/`) // Assuming you have an endpoint to check subscription status
+                    .then(response => response.json())
+                    .then(data => {
+                        button.textContent = data.subscribed ? 'Unsubscribe' : 'Subscribe';
+                    });
+            });
+        });
+    </script>
+
+    <script>
+        function fetchNotificationsCount() {
+            fetch('{% url "get_notifications_count" %}', {
+                method: 'GET',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('notification-count').innerText = data.count;
+                })
+                .catch(error => console.error('Error fetching notifications count:', error));
+        }
+
+        function markNotificationsAsRead() {
+            fetch('{% url "mark_notifications_as_read" %}', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('notification-count').innerText = '0';
+                    }
+                })
+                .catch(error => console.error('Error marking notifications as read:', error));
+        }
+
+        // Fetch notification count on page load
+        document.addEventListener('DOMContentLoaded', fetchNotificationsCount);
+
+        // Optionally, mark notifications as read when opening the notification page
+        document.querySelector('.notifications-link').addEventListener('click', markNotificationsAsRead);
+    </script>
+
+</body>
+
+</html>

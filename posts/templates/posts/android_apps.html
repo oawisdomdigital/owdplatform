@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Premium Andriod Apps{% endblock %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        background-color: #ff6600;
+    }
+
+    #uploads {
+        padding: 50px 0;
+    }
+
+    #uploads h1 {
+        text-align: center;
+        color: #ff6600;
+        font-weight: bold;
+    }
+
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-title {
+        color: #ff6600;
+    }
+
+    .card-text {
+        color: #333;
+    }
+
+    .file i {
+        color: #ff6600;
+    }
+
+    .btn-success {
+        background-color: #ff6600;
+        border-color: #ff6600;
+    }
+
+    .btn-success:hover {
+        background-color: #e65c00;
+        border-color: #e65c00;
+    }
+
+    .cbt:hover {
+        color: white;
+        display: inline-block;
+    }
+</style>
+<div class="container section-title" data-aos="fade-up">
+    <h2>Paid for free andriod apps for you!</h2>
+        <p class="cbt">Reliable sources & virus free</p>
+</div>
+
+<section id="uploads" class="features container my-5">
+    {% if courses %}
+    {% for course in courses %}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4 class="card-title">{{ course.name }}</h4>
+            <p class="card-text">{{ course.description }}</p>
+            <div class="file mb-2">
+                {% if course.file %}
+                <a href="{{ course.file.url }}" target="_blank">
+                    <i class="{{ course.icon_class }} fa-3x"></i>
+                </a>
+                <a href="{{ course.file.url }}" target="_blank">{{ course.file.name }}</a>
+                {% if course.file.size %}
+                <span class="text-muted">({{ course.file.size }} bytes)</span>
+                {% endif %}
+                {% else %}
+                <p class="text-danger">File not available</p>
+                {% endif %}
+            </div>
+            <a href="{{ course.button }}" class="btn btn-success">Watch video</a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h1>Resources coming soon.</h1>
+    {% endif %}
+</section>
+
+
+{% endblock %}

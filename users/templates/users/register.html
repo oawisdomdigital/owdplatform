@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% block title %}Signup Form - OWD{% endblock %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        background-color: #ffc451;
+    }
+
+    .center-form {
+        padding-top: 5px;
+        /* Increased padding from top */
+    }
+
+    .card {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+    }
+
+    .card h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+
+    .btn-secondary {
+        background-color: #d8d8d8;
+        border: none;
+        color: green;
+    }
+
+    .btn-secondary:hover {
+        background-color: #c0c0c0;
+    }
+
+    .card-body {
+        text-align: center;
+    }
+
+    .card-body .card-title {
+        margin-bottom: 15px;
+    }
+
+    h3 {
+        color: red;
+    }
+
+    .is-invalid {
+        border-color: #dc3545;
+    }
+
+    .invalid-feedback {
+        display: block;
+        color: #dc3545;
+    }
+</style>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js"></script>
+
+<script>
+    // Initialize Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyDApv6AJ5uG0IMyioE7bYJHRtUWHfvomTE",
+        authDomain: "socialnetwork-6b6b4.firebaseapp.com",
+        projectId: "socialnetwork-6b6b4",
+        storageBucket: "socialnetwork-6b6b4.appspot.com",
+        messagingSenderId: "1009355837533",
+        appId: "1:1009355837533:web:b8544c848e99315bfafdb4",
+        measurementId: "G-BZFPYS1RZF"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    const messaging = firebase.messaging();
+
+    messaging.getToken({ vapidKey: 'BK380gf85WLdvfbu48sFEUmhKfB7q4vaOjknt2aH7syEq3S-PTUKBqxYfPmpVf2sb-o3--Vi7DisbfBKeve3fyQ' }).then((currentToken) => {
+        if (currentToken) {
+            // Set the FCM token in the hidden input field
+            document.getElementById('id_device_token').value = currentToken;
+
+            // Optionally, send the token to your backend for saving it
+            fetch('/save-fcm-token/', {
+                method: 'POST',
+                body: JSON.stringify({ token: currentToken }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' // Django CSRF token for security
+                }
+            }).then(response => {
+                if (!response.ok) {
+                    console.log('Failed to save token');
+                }
+            });
+        } else {
+            console.log('No registration token available. Request permission to generate one.');
+        }
+    }).catch((err) => {
+        console.log('An error occurred while retrieving token: ', err);
+    });
+</script>
+
+<div class="container-fluid center-form">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+            <div class="card p-4">
+                <h1 class="text-center mb-4">Signup Now</h1>
+                {% for message in messages %}
+                <h3>{{ message }}</h3>
+                {% endfor %}
+                <form action="{% url 'register' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <!-- Username Field -->
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">Username:</label>
+                        <input type="text" placeholder="Use, for example, Wisdom or OA_Wisdom" class="form-control {% if form.username.errors %}is-invalid{% endif %}"
+                            id="id_username" name="username" required>
+                        {% if form.username.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">Email:</label>
+                        <input type="email" class="form-control {% if form.email.errors %}is-invalid{% endif %}"
+                            id="id_email" name="email" placeholder="Enter your correct email address for OTP & verifications" required>
+                        {% if form.email.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- WhatsApp Number Field -->
+                    <div class="mb-3">
+                        <label for="id_whatsapp_number" class="form-label">Phone Number (Optional):</label>
+                        <input type="text"
+                            class="form-control {% if form.whatsapp_number.errors %}is-invalid{% endif %}"
+                            id="id_whatsapp_number" name="whatsapp_number"
+                            placeholder="Input whatsapp number to get notification and OTP on whatsapp">
+                        {% if form.whatsapp_number.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.whatsapp_number.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="mb-3">
+                        <label for="id_password1" class="form-label">Password:</label>
+                        <input type="password" placeholder="Use @, alphabet & numbers"
+                            class="form-control {% if form.password1.errors %}is-invalid{% endif %}" id="id_password1"
+                            name="password1" required>
+                        {% if form.password1.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.password1.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Repeat Password Field -->
+                    <div class="mb-3">
+                        <label for="id_password2" class="form-label">Repeat Password:</label>
+                        <input type="password" class="form-control {% if form.password2.errors %}is-invalid{% endif %}"
+                            id="id_password2" name="password2" required>
+                        {% if form.password2.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.password2.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Referral Code Field -->
+                    <div class="mb-3">
+                        <label for="id_referral_code" class="form-label">Referral Code (Optional):</label>
+                        <input type="text" class="form-control {% if form.referral_code.errors %}is-invalid{% endif %}"
+                            id="id_referral_code" name="referral_code" value="{{ form.referral_code.value }}">
+                        {% if form.referral_code.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.referral_code.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Hidden Device Token Field -->
+                    <input type="hidden" id="id_device_token" name="device_token" value="">
+
+                    <div class="mb-3">
+                        By clicking the signup button you agree to our <a href="{% url 'terms' %}">Terms of Service</a>
+                        and <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                </form>
+
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title">If you have already signed up</h5>
+                        <a href="{% url 'login' %}" class="btn btn-secondary w-100">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

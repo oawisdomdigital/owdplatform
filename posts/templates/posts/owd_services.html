@@ -1,0 +1,2028 @@
+{% extends "base.html" %}
+
+{% block title %}OWD Digital Services: Comprehensive Web Development, Digital Marketing & IT Solutions{% endblock %}
+
+{% block description %}
+Explore OWD's wide range of professional digital services. From custom web development, digital marketing, and IT
+support to expert cybersecurity solutions, we provide tailored solutions to help businesses thrive in the digital era.
+{% endblock %}
+
+{% block keywords %}
+OWD digital services, web development, custom websites, IT support, digital marketing, SEO, social media marketing,
+cybersecurity solutions, business technology solutions, e-commerce, online branding, app development
+{% endblock %}
+
+{% block og_title %}
+OWD Digital Services | Web Development, Digital Marketing, IT Support & Cybersecurity Solutions for Your Business
+{% endblock %}
+
+{% block og_description %}
+Discover the best digital services with OWD. We offer custom web development, effective digital marketing strategies,
+reliable IT support, and robust cybersecurity solutions to help your business grow and secure its online presence.
+{% endblock %}
+
+{% load static %}
+{% block content %}
+
+
+
+
+<section id="services" class="services section">
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Explore</h2>
+        <h1>
+            <p>Services from OWD</p>
+        </h1>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+        <div class="row gy-4">
+            {% for adspost in adsposts %}
+            <div class="container" data-aos="fade-up">
+                <div class="row align-items-center border rounded shadow-sm p-4">
+                    <!-- Image Section -->
+                    <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                        <img src="{{ adspost.image.url }}" alt="{{ adspost.description }}" class="img-fluid rounded">
+                    </div>
+
+                    <!-- Content Section -->
+                    <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right"
+                        data-aos-delay="100">
+                        <h1 class="display-5">{{ adspost.name }}</h1>
+                        <h3 class="text-secondary">{{ adspost.header }}</h3>
+                        <p class="fst-italic lead">{{ adspost.subheader }}</p>
+                        <ul class="list-unstyled">
+                            <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description1 }}</li>
+                            <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description2 }}</li>
+                            <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description3 }}</li>
+                            <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description4 }}</li>
+                            <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description5 }}</li>
+                            <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description6 }}</li>
+                            <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description7 }}</li>
+                            <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description8 }}</li>
+                        </ul>
+                        <p>{{ adspost.conclusion }}</p>
+                        <p>
+                            <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" data-adspost-id="{{ adspost.id }}">Get
+                                started</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-5">
+            {% endfor %}
+        </div>
+
+
+
+        <!-- Service Items -->
+        <div class="row gy-4">
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                    <div class="icon">
+                        <i class="ri-pencil-line"></i>
+                    </div>
+                    <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <h3>Copywriting, Books & Project Typing</h3>
+                    </a>
+                    <p>Let our team handle your project. Create any type of book, copywriting material
+                        etc, with just one
+                        click. Each project costs #10,000 - $6.29</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                    <div class="icon">
+                        <i class="bx bx-world"></i>
+                    </div>
+                    <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#selectWebsiteTypeModal">
+                        <h3>Web Development</h3>
+                    </a>
+                    <p>Enhance your business's online presence by creating, designing, or optimizing a
+                        unique website
+                        with OWD.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                    <div class="icon">
+                        <i class="ri-book-line"></i>
+                    </div>
+                    <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#searchModal">
+                        <h3>Thousands Of Digital Materials For Sale</h3>
+                    </a>
+                    <p>With just one click, access eBooks, e-learning materials, and more at highly
+                        affordable prices.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                    <div class="icon">
+                        <i class="ri-bill-line"></i>
+                    </div>
+                    <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#adsModal">
+                        <h3>Sponsored Ads Campaign</h3>
+                    </a>
+                    <p>Expand your business locally and globally, reaching customers around the world
+                        through our
+                        sponsored ads campaign.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                    <div class="icon">
+                        <i class="ri-robot-line"></i>
+                    </div>
+                    <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#aiIntegrationModal">
+                        <h3>Integrate AI Chat Support System In Your Website or App</h3>
+                    </a>
+                    <p>Integrate AI chatbot into your website or app to efficiently handle sales and
+                        answer customer inquiries based on your content and customization.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                    <div class="icon">
+                        <img src="{% static 'assets/img/All networks logo.jpeg' %}" alt="MTN, Airtel, Glo, 9Mobile" width="70px">
+                    </div>
+                    <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                        <h3>Buy Data</h3>
+                    </a>
+                    <p>Buy Data at a Cheaper Rate from Airtel, MTN, Glo, and 9Mobile.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-item position-relative">
+                    <div class="icon">
+                        <img src="{% static 'assets/img/cac logo.jpeg' %}" alt="CAC (Coporate Affairs Commission) Logo" width="100px">
+                    </div>
+                    <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#businessModal">
+                        <h3>Register Your Company/Organization with CAC</h3>
+                    </a>
+                    <p>Do your Company, Business/Organization registration with just a two steps</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-item position-relative">
+                    <div class="icon">
+                        <i class="ri-server-line"></i>
+                    </div>
+                    <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#domainModal">
+                        <h3>Domain Name Registration & Hosting</h3>
+                    </a>
+                    <p>Secure your business website or personal domain with easy and affordable hosting
+                        solutions.</p>
+                </div>
+            </div>
+        </div>
+        <!-- End Service Items -->
+    </div>
+</section>
+
+<!--Resource Section-->
+<section class="container-fluid mt-5">
+    <div class="row text-center">
+        <div class="col-12">
+            <h2 class="mb-4 gold-bg p-3">DIGITAL RESOURCES, APPS & GAMES</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            <div class="card app-card">
+                <img src="{% static 'assets/img/resources.png' %}" class="card-img-top" alt="Digital resources">
+                <div class="card-body">
+                    <h5 class="card-title">Digital Resources</h5>
+                    <p class="card-text">Discover a wealth of essential digital assets designed to
+                        enrich your journey
+                        through the digital landscape.</p>
+                    <a href="{% url 'useful_resources' %}" class="btn btn-primary">Get all</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card app-card">
+                <img src="{% static 'assets/img/desktop.jpg' %}" class="card-img-top" alt="Powerful desktop apps">
+                <div class="card-body">
+                    <h5 class="card-title">Desktop Apps</h5>
+                    <p class="card-text">Transform your desktop experience with versatile and powerful
+                        applications for
+                        Windows, macOS, and Linux.</p>
+                    <a href="{% url 'desktop_apps' %}" class="btn btn-primary">Get all</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card app-card">
+                <img src="{% static 'assets/img/andriod.jpg' %}" class="card-img-top" alt="Premium andriod apps">
+                <div class="card-body">
+                    <h5 class="card-title">Premium Android Apps</h5>
+                    <p class="card-text">Unlock premium features for a lifetime with our top-notch
+                        Android apps & games.
+                        Elevate your mobile experience instantly.</p>
+                    <a href="{% url 'andriod_apps' %}" class="btn btn-primary">Get all</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Resource Section-->
+
+<!-- Call To Action Section -->
+<section id="call-to-action" class="call-to-action section dark-background">
+
+    <img src="{% static 'assets/img/owd.jpeg' %}" alt="">
+
+    <div class="container">
+        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+            <div class="col-xl-10">
+                <div class="text-center">
+                    <h3>Partner With Us</h3>
+                    <p>Partner with OA Wisdom Digital Firm to conduct training sessions tailored for
+                        your company,
+                        organization, or school. Our expertise extends across various sectors, including
+                        schools,
+                        churches,
+                        the
+                        oil industry, non-profit organizations, healthcare institutions, government
+                        agencies, financial
+                        institutions, technology firms, manufacturing companies, retail businesses,
+                        consulting firms,
+                        legal
+                        firms, media, and entertainment companies. Elevate your team's digital skills
+                        with our specialized
+                        training programs.</p>
+                    <a class="btn btn-primary" href="https://wa.link/aj20qm">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Call To Action Section -->
+
+<!-- Contact Section -->
+<section id="contact" class="contact section">
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>Contact Us</p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+            <div class="col-lg-4">
+                <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                    <i class="bi bi-geo-alt flex-shrink-0"></i>
+                    <div>
+                        <h3>Address</h3>
+                        <p>Mini-Orlu Road Off Adageorge Road, Port Harcourt, Rivers State, Nigeria.</p>
+                    </div>
+                </div><!-- End Info Item -->
+
+                <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                    <i class="bi bi-telephone flex-shrink-0"></i>
+                    <div>
+                        <h3>Call Us</h3>
+                        <p>+2347081668601, +2349031314945</p>
+                    </div>
+                </div><!-- End Info Item -->
+
+                <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+                    <i class="bi bi-envelope flex-shrink-0"></i>
+                    <div>
+                        <h3>Email Us</h3>
+                        <p>oawisdomdigitalfirm@gmail.com</p>
+                    </div>
+                </div><!-- End Info Item -->
+            </div>
+
+            <div class="col-lg-8 mt-5 mt-lg-0">
+                <form id="contactForm" method="post" action="{% url 'contact' %}" class="php-email-form">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                                required>
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                                required>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+                            required>
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea class="form-control" name="message" rows="5" placeholder="Message"
+                            required></textarea>
+                    </div>
+                    <div class="my-3">
+                        <div class="loading" style="display: none;">Sending...</div>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="text-center"><button type="submit" class="custom-button">Send
+                            Message</button></div>
+                </form>
+                <div id="successMessage" class="alert alert-success" style="display: none;">
+                    Your message has been sent. We will get back to you via your email. Thank you!
+                </div>
+            </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const form = document.getElementById('contactForm');
+                    const loading = document.querySelector('.loading');
+                    const errorMessage = document.querySelector('.error-message');
+                    const successMessage = document.getElementById('successMessage');
+
+                    form.addEventListener('submit', function (event) {
+                        event.preventDefault();
+                        const formData = new FormData(form);
+
+                        // Show loading indicator
+                        loading.style.display = 'block';
+                        errorMessage.style.display = 'none';
+
+                        fetch(form.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'X-CSRFToken': form.querySelector('[name=csrfmiddlewaretoken]').value,
+                            },
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                loading.style.display = 'none';
+                                if (data.success) {
+                                    // Hide form and show success message
+                                    form.style.display = 'none';
+                                    successMessage.style.display = 'block';
+                                } else {
+                                    // Show error messages
+                                    let errors = data.errors;
+                                    let errorHtml = '';
+                                    for (let field in errors) {
+                                        errorHtml += `${errors[field]}<br>`;
+                                    }
+                                    errorMessage.innerHTML = errorHtml;
+                                    errorMessage.style.display = 'block';
+                                }
+                            })
+                            .catch(error => {
+                                loading.style.display = 'none';
+                                errorMessage.innerHTML = 'An error occurred. Please try again later.';
+                                errorMessage.style.display = 'block';
+                            });
+                    });
+                });
+            </script>
+
+        </div>
+    </div>
+</section>
+<!-- End of Contact Section -->
+</div>
+
+
+
+<!--All Modals-->
+<!-- Modal for Ads Campaign -->
+<div class="modal fade" id="adsModal" tabindex="-1" aria-labelledby="adsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="adsModalLabel">Sponsored Ads Campaign</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="adsForm" method="post" action="{% url 'facebook_ads_requirement' %}"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title"
+                            placeholder="Enter a title for your ad" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mediaFile" class="form-label">Upload Media</label>
+                        <input type="file" class="form-control" id="mediaFile" name="media_file"
+                            accept="image/*,video/*" required>
+                        <div class="mt-3" id="preview"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description"
+                            placeholder="Enter a description for your ad" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="adType" class="form-label">Select Ad Type</label>
+                        <select class="form-select" id="adType" name="ad_objective" required>
+                            <option value="" selected disabled>Select ad type</option>
+                            <option value="more_messages_whatsapp">Get More Messages on WhatsApp</option>
+                            <option value="more_website_visitors">Get More Website Visitors</option>
+                            <option value="more_calls">Get More Calls</option>
+                            <option value="more_followers">Get More Followers</option>
+                            <option value="grow_customer_base">Grow Customer Base</option>
+                        </select>
+                    </div>
+
+                    <!-- WhatsApp Options -->
+                    <div id="whatsappOptions" class="ad-options" style="display: none;">
+                        <div class="mb-3">
+                            <label for="whatsappNumber" class="form-label">WhatsApp Number</label>
+                            <input type="text" class="form-control" id="whatsappNumber" name="whatsapp_number"
+                                placeholder="Enter your WhatsApp number">
+                        </div>
+                        <div class="mb-3">
+                            <label for="messageTemplate" class="form-label">Message Template</label>
+                            <textarea class="form-control" id="messageTemplate" name="message_template"
+                                placeholder="Enter the message you want your customer to see in your direct message (DM)."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Website Visitors Options -->
+                    <div id="websiteVisitorsOptions" class="ad-options" style="display: none;">
+                        <div class="mb-3">
+                            <label for="websiteUrl" class="form-label">Website URL</label>
+                            <input type="url" class="form-control" id="websiteUrl" name="website_url">
+                        </div>
+                        <div class="mb-3">
+                            <label for="callToAction" class="form-label">Call to Action</label>
+                            <select class="form-select" id="callToAction" name="call_to_action">
+                                <option value="shopNow">Shop Now</option>
+                                <option value="learnMore">Learn More</option>
+                                <option value="signUp">Sign Up</option>
+                                <option value="contactUs">Contact Us</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Calls Options -->
+                    <div id="callsOptions" class="ad-options" style="display: none;">
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="phoneNumber" name="phone_number">
+                        </div>
+                        <div class="mb-3">
+                            <label for="callSchedule" class="form-label">Call Schedule</label>
+                            <input type="text" class="form-control" id="callSchedule" name="call_schedule">
+                        </div>
+                    </div>
+
+                    <!-- Followers Options -->
+                    <div id="followersOptions" class="ad-options" style="display: none;">
+                        <div class="mb-3">
+                            <label for="socialMediaPlatform" class="form-label">Social Media Platform</label>
+                            <select class="form-select" id="socialMediaPlatform" name="social_media_platform">
+                                <option value="facebook">Facebook</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="twitter">Twitter</option>
+                                <option value="linkedin">LinkedIn</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Customer Base Options -->
+                    <div id="customerBaseOptions" class="ad-options" style="display: none;">
+                        <div class="mb-3">
+                            <label for="customerBaseGoal" class="form-label">Customer Base Goal</label>
+                            <input type="text" class="form-control" id="customerBaseGoal" name="customer_base_goal"
+                                placeholder="Describe the outcomes you aim to achieve from this ad campaign.">
+                        </div>
+                        <div class="mb-3">
+                            <label for="growthStrategy" class="form-label">Growth Strategy</label>
+                            <textarea class="form-control" id="growthStrategy" name="growth_strategy"
+                                placeholder="Please enter the strategies you wish to implement, such as collecting contact details etc."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Common Fields -->
+                    <div class="mb-3">
+                        <label for="targetAgeRange" class="form-label">Target Age Range</label>
+                        <input type="text" class="form-control" id="targetAgeRange" name="target_age_range">
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Your Business Location</label>
+                        <input type="text" class="form-control" id="location" name="location">
+                    </div>
+                    <div class="mb-3">
+                        <label for="adsDisplayLocation" class="form-label">Ads Display Location</label>
+                        <input type="text" class="form-control" id="adsDisplayLocation" name="ads_display_location">
+                    </div>
+                    <div class="mb-3">
+                        <label for="daysDuration" class="form-label">Days Duration</label>
+                        <input type="number" class="form-control" id="daysDuration" name="days_duration"
+                            placeholder="Enter the duration in days" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="budgetNaira" class="form-label">Budget (Naira)</label>
+                        <input type="number" class="form-control" id="budgetNaira" name="budget_naira"
+                            placeholder="Enter your budget in Naira">
+                    </div>
+                    <div class="mb-3">
+                        <label for="budgetDollar" class="form-label">Budget (Dollar)</label>
+                        <input type="number" class="form-control" id="budgetDollar" name="budget_dollar"
+                            placeholder="Equivalent budget in Dollar" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="estimatedReach" class="form-label">Estimated Reach</label>
+                        <input type="text" class="form-control" id="estimatedReach" name="estimated_reach"
+                            placeholder="Estimated number of people reached" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="paymentOption" class="form-label">Select Payment Option</label>
+                        <div>
+                            <input type="radio" id="paystack" name="payment_option" value="paystack" required>
+                            <label for="paystack">Paystack</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="PayPal" name="payment_option" value="PayPal" required>
+                            <label for="PayPal">PayPal</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="USD bank_transfer" name="payment_option" value="USD bank_transfer"
+                                required>
+                            <label for="USD bank_transfer">Bank Transfer</label>
+                        </div>
+                        {% if form.payment_option.errors %}
+                        <div class="text-danger">
+                            {{ form.payment_option.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const exchangeRate = 1500; // Example exchange rate, replace with the actual rate
+    const reachPerDollar = {
+        more_messages_whatsapp: 100, // Example reach, replace with actual data
+        more_website_visitors: 80,
+        more_calls: 70,
+        more_followers: 60,
+        grow_customer_base: 50
+    };
+
+    document.getElementById('adType').addEventListener('change', function () {
+        const selectedAdType = this.value;
+        updateEstimatedReach();
+        // Show/Hide relevant options
+        document.querySelectorAll('.ad-options').forEach(option => option.style.display = 'none');
+        if (selectedAdType) {
+            document.getElementById(selectedAdType + 'Options').style.display = 'block';
+        }
+    });
+
+    document.getElementById('budgetNaira').addEventListener('input', function () {
+        const budgetNaira = parseFloat(this.value);
+        const budgetDollar = budgetNaira / exchangeRate;
+        document.getElementById('budgetDollar').value = budgetDollar.toFixed(2);
+        updateEstimatedReach();
+    });
+
+    function updateEstimatedReach() {
+        const budgetDollar = parseFloat(document.getElementById('budgetDollar').value);
+        const selectedAdType = document.getElementById('adType').value;
+        const reach = reachPerDollar[selectedAdType] ? reachPerDollar[selectedAdType] * budgetDollar : 0;
+        document.getElementById('estimatedReach').value = reach.toFixed(0);
+    }
+
+    document.getElementById('mediaFile').addEventListener('change', function () {
+        const file = this.files[0];
+        const preview = document.getElementById('preview');
+        preview.innerHTML = '';
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const img = document.createElement('img');
+                img.src = event.target.result;
+                img.style.maxWidth = '100%';
+                img.style.maxHeight = '200px';
+                preview.appendChild(img);
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+
+
+<!-- Modal for Upload Request -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">SEND US YOUR REQUEST NOW!</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="messageForm" method="post" enctype="multipart/form-data" action="{% url 'upload_message' %}">
+                    {% csrf_token %}
+                    <input type="hidden" id="adspost_id" name="adspost_id" value="">
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">What is the title of the project?</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter title"
+                            required>
+                    </div>
+
+                    <!-- File Upload Section -->
+                    <div class="mb-3" id="fileInputsContainer">
+                        <label class="form-label">Upload sample/prototype file:</label>
+                        <input type="file" class="form-control" name="files" accept="*" required>
+                    </div>
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-secondary" id="addFileButton">Add More Files</button>
+                    </div>
+                    <!-- End File Upload Section -->
+
+                    <div class="mb-3">
+                        <label for="text" class="form-label">Tell us exactly what you want in detail:</label>
+                        <textarea class="form-control" id="text" name="text" rows="3" placeholder="Enter your message"
+                            required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="paymentOption" class="form-label">Select Payment Option</label>
+                        <div>
+                            <input type="radio" id="paystack" name="payment_option" value="paystack" required>
+                            <label for="paystack">Paystack</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="PayPal" name="payment_option" value="PayPal" required>
+                            <label for="PayPal">PayPal</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="USD bank_transfer" name="payment_option" value="USD bank_transfer"
+                                required>
+                            <label for="USD bank_transfer">Bank Transfer</label>
+                        </div>
+                        {% if form.payment_option.errors %}
+                        <div class="text-danger">
+                            {{ form.payment_option.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Handle modal open and set adspost_id
+        var buttons = document.querySelectorAll('a[data-bs-toggle="modal"]');
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                var adspostId = this.getAttribute('data-adspost-id');
+                document.getElementById('adspost_id').value = adspostId;
+            });
+        });
+
+        // Handle adding more file inputs
+        var addFileButton = document.getElementById('addFileButton');
+        var fileInputsContainer = document.getElementById('fileInputsContainer');
+
+        addFileButton.addEventListener('click', function () {
+            // Create a new file input element
+            var newFileInput = document.createElement('input');
+            newFileInput.type = 'file';
+            newFileInput.name = 'files'; // Ensure it matches the form field name
+            newFileInput.classList.add('form-control', 'mt-2');
+            newFileInput.accept = '*'; // Accept any file type
+            fileInputsContainer.appendChild(newFileInput);
+        });
+    });
+</script>
+
+
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Search for E-books/Materials</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="searchForm">
+                    <div class="mb-3">
+                        <label for="searchInput" class="form-label">Search</label>
+                        <input type="text" class="form-control" id="searchInput"
+                            placeholder="Enter title or description of the material" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="searchButton">Search</button>
+                    <div class="mt-3" id="searchResult" style="display: none;">
+                        <p><strong>Looking for:</strong> <span id="resultText"></span>? Please click below to select
+                            from the available materials. If you cannot find what you are looking for, you can click the
+                            submit button to place your order.</p>
+                    </div>
+                    <div id="materialSelectContainer" class="mt-3" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-4" id="materialImageContainer" style="display: none;">
+                                <img id="materialImage" src="" alt="Material Image" class="img-fluid" />
+                            </div>
+                            <div class="col-md-8">
+                                <select id="materialSelect" class="form-select">
+                                    <!-- Options will be dynamically populated -->
+                                </select>
+                                <div class="mt-3 mb-3">
+                                    <label for="paymentOption" class="form-label">Select Payment Option</label>
+                                    <div>
+                                        <input type="radio" id="paystack" name="payment_option" value="paystack"
+                                            required>
+                                        <label for="paystack">Paystack</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="PayPal" name="payment_option" value="PayPal" required>
+                                        <label for="PayPal">PayPal</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="USD_bank_transfer" name="payment_option"
+                                            value="USD_bank_transfer" required>
+                                        <label for="USD_bank_transfer">Bank Transfer</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="display: none;"
+                        id="submitButton">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    /* General Modal Styles */
+    .modal-content {
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header Styles */
+    .modal-header {
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    /* Input Styles */
+    .form-control {
+        border: 1px solid #dcdcdc;
+        border-radius: 5px;
+        transition: border-color 0.3s;
+    }
+
+    .form-control:focus {
+        border-color: #4285f4;
+        box-shadow: 0 0 5px rgba(66, 133, 244, 0.5);
+    }
+
+    /* Result Container Styles */
+    #searchResult {
+        background-color: #f9f9f9;
+        border: 1px solid #eaeaea;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    #materialSelectContainer {
+        border: 1px solid #eaeaea;
+        border-radius: 5px;
+        padding: 15px;
+        background-color: #ffffff;
+    }
+
+    /* Image Styles */
+    #materialImage {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    /* Payment Options */
+    label {
+        margin-left: 10px;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        #materialSelectContainer {
+            padding: 10px;
+        }
+    }
+</style>
+
+<script>
+    document.getElementById('searchButton').addEventListener('click', function () {
+        const searchInput = document.getElementById('searchInput').value.trim();
+        const resultText = document.getElementById('resultText');
+        const searchResult = document.getElementById('searchResult');
+        const materialSelect = document.getElementById('materialSelect');
+        const materialSelectContainer = document.getElementById('materialSelectContainer');
+        const materialImage = document.getElementById('materialImage');
+        const submitButton = document.getElementById('submitButton');
+        const paymentOptions = document.querySelectorAll('input[name="payment_option"]');
+
+        if (searchInput !== '') {
+            this.innerHTML = 'Searching...'; // Show loading text
+            fetch("{% url 'search_motivational_books' %}?search_query=" + encodeURIComponent(searchInput), {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    this.innerHTML = 'Search'; // Revert button text
+                    if (data.books && data.books.length > 0) {
+                        let optionsHtml = '<option value="">Select a material</option>';
+                        data.books.forEach(book => {
+                            optionsHtml += `<option value="${book.id}" data-image="${book.image_url}">${book.title} by ${book.author} - ₦${book.price_naira} ($${book.price_dollars})</option>`;
+                        });
+                        materialSelect.innerHTML = optionsHtml;
+                        materialSelectContainer.style.display = 'block';
+                        submitButton.style.display = 'inline-block';
+                        resultText.textContent = searchInput;
+                        searchResult.style.display = 'block';
+
+                        // Show payment options if materials are found
+                        paymentOptions.forEach(option => option.required = true);
+                    } else {
+                        materialSelectContainer.style.display = 'none';
+                        materialImage.style.display = 'none';
+                        submitButton.style.display = 'inline-block';
+                        resultText.textContent = searchInput;
+                        searchResult.style.display = 'block';
+
+                        // Disable payment options when no materials are found
+                        paymentOptions.forEach(option => option.required = false);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching search results:', error);
+                    alert('An error occurred. Please try again.');
+                    this.innerHTML = 'Search'; // Revert button text
+                });
+        }
+    });
+
+    document.getElementById('materialSelect').addEventListener('change', function () {
+        const selectedOption = this.options[this.selectedIndex];
+        const materialImage = document.getElementById('materialImage');
+        const materialImageContainer = document.getElementById('materialImageContainer');
+
+        if (selectedOption.value) {
+            const imageUrl = selectedOption.getAttribute('data-image');
+            materialImage.src = imageUrl;
+            materialImage.alt = `Image for ${selectedOption.text}`;
+            materialImageContainer.style.display = 'block'; // Show the image container
+        } else {
+            materialImageContainer.style.display = 'none'; // Hide if no selection
+        }
+    });
+
+    document.getElementById('searchForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const searchInput = document.getElementById('searchInput').value.trim();
+
+        if (searchInput !== '') {
+            fetch("{% url 'submit_material_request' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({
+                    search_query: searchInput
+                }),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('Your request has been submitted. We will get back to you through your provided contact information.');
+                    window.location.reload();
+                })
+                .catch(error => {
+                    console.error('Error submitting material request:', error);
+                    alert('An error occurred while processing your request. Please try again.');
+                });
+        }
+    });
+
+    document.getElementById('submitButton').addEventListener('click', function () {
+        const selectedMaterial = document.getElementById('materialSelect').value;
+        const selectedPaymentOption = document.querySelector('input[name="payment_option"]:checked').value;
+
+        if (selectedMaterial !== '') {
+            fetch("{% url 'purchase_material' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({
+                    material_id: selectedMaterial,
+                    payment_option: selectedPaymentOption // Include payment option in the request
+                }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Server response:', data);
+
+                    if (data.redirect_url) {
+                        window.location.href = data.redirect_url; // Redirect to the appropriate payment page
+                    } else {
+                        alert('An error occurred while processing your purchase: ' + (data.error || 'Unknown error.'));
+                    }
+                })
+                .catch(error => {
+                    console.error('Error purchasing material:', error);
+                });
+        } else {
+            alert('You will be notified as soon as we get what you are looking for.');
+        }
+    });
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+</script>
+
+
+
+
+<!-- AI Integration Modal -->
+<div class="modal fade" id="aiIntegrationModal" tabindex="-1" aria-labelledby="aiIntegrationModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="aiIntegrationModalLabel">Request AI Integration (50,000 NGN - $30.46)
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data" action="{% url 'post_list' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="website_or_app" class="form-label">Website or App</label>
+                        <input type="text" class="form-control" id="website_or_app" name="website_or_app" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Information/Data of your business or link to your
+                            site</label>
+                        <textarea class="form-control" id="description" name="description"
+                            placeholder="provide the information you want to use to train the chatbot or provide a link to it"
+                            rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="media_file" class="form-label">Upload Website Files (Optional)</label>
+                        <input type="file" class="form-control" id="media_file" name="media_file" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="paymentOption" class="form-label">Select Payment Option</label>
+                        <div>
+                            <input type="radio" id="paystack" name="payment_option" value="paystack" required>
+                            <label for="paystack">Paystack</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="PayPal" name="payment_option" value="PayPal" required>
+                            <label for="PayPal">PayPal</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="USD bank_transfer" name="payment_option" value="USD bank_transfer"
+                                required>
+                            <label for="USD bank_transfer">Bank Transfer</label>
+                        </div>
+                        {% if form.payment_option.errors %}
+                        <div class="text-danger">
+                            {{ form.payment_option.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Request</button>
+                </form>
+                <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Buy Data Modal -->
+<div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="serviceModalLabel">Select Your Service</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="serviceForm" method="post" action="{% url 'purchase_data' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="phone_number">Phone Number</label>
+                        <input type="text" class="form-control" id="phone_number" name="phone_number"
+                            placeholder="Enter phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="network">Select Network</label>
+                        <select class="form-control" id="network" name="network">
+                            <option value="">Choose...</option>
+                            <option value="MTN">MTN</option>
+                            <option value="GLO">GLO</option>
+                            <option value="AIRTEL">AIRTEL</option>
+                            <option value="9MOBILE">9MOBILE</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dataPlan">Select Data Plan</label>
+                        <select class="form-control" id="dataPlan" name="dataPlan">
+                            <option value="">Choose...</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="submitBtn">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Register Company Modal -->
+<div class="modal fade" id="businessModal" tabindex="-1" aria-labelledby="businessModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="businessModalLabel">First Step: Business Name Reservation Process</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="businessRegistrationForm" method="post" action="{% url 'register_business' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="businessType">Business Type</label>
+                        <select class="form-control" id="businessType" name="business_type">
+                            <option value="" selected disabled>Select a business type</option>
+                            <option value="soleProprietorship">Sole Proprietorship</option>
+                            <option value="partnership">Partnership</option>
+                            <option value="llc">Limited Liability Company (LLC)</option>
+                            <option value="plc">Public Limited Company (PLC)</option>
+                            <option value="ngo">Non-Governmental Organization (NGO)</option>
+                            <option value="incorporatedTrustee">Incorporated Trustee</option>
+                            <option value="cooperativeSociety">Cooperative Society</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="businessName">Business Name</label>
+                        <input type="text" class="form-control" id="businessName" name="business_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Contact Email</label>
+                        <input type="email" class="form-control" id="contactEmail" name="contact_email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactPhone">Contact Phone</label>
+                        <input type="text" class="form-control" id="contactPhone" name="contact_phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3"
+                            placeholder="Enter description for your business"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Request</button>
+                </form>
+                <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Domain Hosting Modal -->
+<div class="modal fade" id="domainModal" tabindex="-1" aria-labelledby="domainModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="domainModalLabel">Domain Name Registration & Hosting</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            {% if form.non_field_errors %}
+            <div class="text-danger">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+            <div class="modal-body">
+                <form id="domainForm" method="post" action="{% url 'domain_hosting_request' %}"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="domainName">Domain Name</label>
+                        <input type="text" class="form-control" id="domainName" name="domainName"
+                            placeholder="Enter your desired domain name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="domainType">Domain Type</label>
+                        <select class="form-control" id="domainType" name="domainType" onchange="updatePricing()">
+                            <option value="">Choose...</option>
+                            <option value="com">.com</option>
+                            <option value="net">.net</option>
+                            <option value="org">.org</option>
+                            <option value="ng">.ng</option>
+                            <option value="info">.info</option>
+                            <option value="io">.io</option>
+                            <option value="tech">.tech</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="hostingPlan">Hosting Plan</label>
+                        <select class="form-control" id="hostingPlan" name="hostingPlan" onchange="updatePricing()">
+                            <option value="">Choose...</option>
+                            <option value="basic">Static, frontend without SEO - 20,000 NGN ($12.58). Yearly</option>
+                            <option value="pro">Static, frontend Including SEO - 40,000 NGN ($25.16). Yearly</option>
+                            <option value="business">Full Stack, frontend & backend Including SEO - 80,000 NGN
+                                ($50.32). Yearly</option>
+                            <option value="premium">Premium Package - 100,000 NGN ($62.90). Yearly</option>
+                            <option value="enterprise">Enterprise Package - 150,000 NGN ($94.34). Yearly</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="additionalServices">Additional Services</label>
+                        <textarea class="form-control" id="additionalServices" name="additionalServices" rows="3"
+                            placeholder="Enter additional services (optional)"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="websiteFiles">Upload Website Files</label>
+                        <input type="file" class="form-control-file" id="websiteFiles" name="websiteFiles">
+                    </div>
+                    <div class="mb-3">
+                        <label for="paymentOption" class="form-label">Select Payment Option</label>
+                        <div>
+                            <input type="radio" id="paystack" name="payment_option" value="paystack" required>
+                            <label for="paystack">Paystack</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="PayPal" name="payment_option" value="PayPal" required>
+                            <label for="PayPal">PayPal</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="USD bank_transfer" name="payment_option" value="USD bank_transfer"
+                                required>
+                            <label for="USD bank_transfer">Bank Transfer</label>
+                        </div>
+                        {% if form.payment_option.errors %}
+                        <div class="text-danger">
+                            {{ form.payment_option.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div id="pricingInfo" class="alert alert-info">
+                        <!-- Pricing info will be updated here -->
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Request</button>
+                </form>
+                <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updatePricing() {
+        const domainType = document.getElementById('domainType').value;
+        const hostingPlan = document.getElementById('hostingPlan').value;
+
+        // Define conversion rate
+        const conversionRate = 1589.95; // 1 USD = 1,589.95 NGN
+
+        let domainPriceNGN = 0;
+        let domainPriceUSD = 0;
+        let hostingPriceNGN = 0;
+        let hostingPriceUSD = 0;
+
+        // Define pricing (in NGN)
+        const domainPrices = {
+            'com': 5000,
+            'net': 5000,
+            'org': 5000,
+            'ng': 3000,
+            'info': 7000,
+            'io': 10000,
+            'tech': 12000,
+        };
+
+        const hostingPrices = {
+            'basic': { ngn: 20000, usd: 12.58 },
+            'pro': { ngn: 40000, usd: 25.16 },
+            'business': { ngn: 80000, usd: 50.32 },
+            'premium': { ngn: 100000, usd: 62.90 },
+            'enterprise': { ngn: 150000, usd: 94.34 },
+        };
+
+        // Calculate domain and hosting prices
+        domainPriceNGN = domainPrices[domainType] || 0;
+        domainPriceUSD = domainPriceNGN / conversionRate;
+        if (hostingPlan) {
+            hostingPriceNGN = hostingPrices[hostingPlan].ngn || 0;
+            hostingPriceUSD = hostingPrices[hostingPlan].usd || 0;
+        }
+
+        const totalNGN = domainPriceNGN + hostingPriceNGN;
+        const totalUSD = domainPriceUSD + hostingPriceUSD;
+
+        document.getElementById('pricingInfo').innerHTML = `
+      <strong>Total Price:</strong><br>
+      Domain Type: ${domainType ? '.' + domainType : 'N/A'}<br>
+      Hosting Plan: ${hostingPlan ? hostingPlan.charAt(0).toUpperCase() + hostingPlan.slice(1) : 'N/A'}<br>
+      Domain Price: ${domainPriceNGN.toLocaleString()} NGN ($${domainPriceUSD.toFixed(2)})<br>
+      Hosting Price: ${hostingPriceNGN.toLocaleString()} NGN ($${hostingPriceUSD.toFixed(2)})<br>
+      <strong>Total Price: ${totalNGN.toLocaleString()} NGN ($${totalUSD.toFixed(2)})</strong>
+    `;
+    }
+</script>
+
+
+
+
+
+
+
+<!-- Main Modal for Selecting Website Type -->
+<div class="modal fade" id="selectWebsiteTypeModal" tabindex="-1" aria-labelledby="selectWebsiteTypeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="selectWebsiteTypeModalLabel">Select Website Type</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="list-group">
+                    <!-- Buttons to trigger website form modal -->
+                    <button data-bs-toggle="modal" data-bs-target="#requestBasicWebsiteModal" type="button"
+                        class="list-group-item list-group-item-action" data-type="Basic Website"
+                        data-price="20000">Basic Static,
+                        Frontend Website - 40,000 NGN ($24.69)</button>
+                    <button data-bs-toggle="modal" data-bs-target="#requestAdvanceWebsiteModal" type="button"
+                        class="list-group-item list-group-item-action" data-type="Advance Website"
+                        data-price="40000">Advanced
+                        Static, Frontend Website - 80,000 NGN ($49.28)</button>
+                    <button data-bs-toggle="modal" data-bs-target="#requestComplexWebsiteModal" type="button"
+                        class="list-group-item list-group-item-action" data-type="Complex Website"
+                        data-price="80000">Full Stack,
+                        Frontend & Backend Website or App - 150,000 NGN ($96.00)</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Template for Requesting Basic Website -->
+<div class="modal fade" id="requestBasicWebsiteModal" tabindex="-1" aria-labelledby="requestBasicWebsiteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="requestBasicWebsiteModalLabel">Request Basic Website</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+                <form id="requestBasicWebsiteForm" method="post" action="{% url 'website_requirement' %}"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="basicWebsiteImage" class="form-label">Website Image</label>
+                        <input type="file" class="form-control" id="basicWebsiteImage" name="website_image"
+                            accept="image/*" onchange="previewImage(event, 'basicWebsiteImagePreview')">
+                        <div id="basicWebsiteImagePreview" class="mt-2"></div>
+                        {% if form.website_image.errors %}
+                        <div class="text-danger">
+                            {{ form.website_image.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <input type="hidden" id="basicWebsiteType" name="website_type" value="Basic Website">
+                    <div class="mb-3">
+                        <label for="basicWebsiteName" class="form-label">Website Name</label>
+                        <input type="text" class="form-control" id="basicWebsiteName" name="website_name"
+                            placeholder="Enter website name" required>
+                        {% if form.website_name.errors %}
+                        <div class="text-danger">
+                            {{ form.website_name.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="basicWebsiteDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="basicWebsiteDescription" name="website_description" rows="3"
+                            placeholder="Enter website description"></textarea>
+                        {% if form.website_description.errors %}
+                        <div class="text-danger">
+                            {{ form.website_description.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="basicBusinessType" class="form-label">Business Type</label>
+                        <input type="text" class="form-control" id="basicBusinessType" name="business_type"
+                            placeholder="Enter business type" required>
+                        {% if form.business_type.errors %}
+                        <div class="text-danger">
+                            {{ form.business_type.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="basicFeatures" class="form-label">Features Needed</label>
+                        <textarea class="form-control" id="basicFeatures" name="features" rows="3"
+                            placeholder="Enter features and functionalities"></textarea>
+                        {% if form.features.errors %}
+                        <div class="text-danger">
+                            {{ form.features.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="basicContactEmail" class="form-label">Contact Email</label>
+                        <input type="email" class="form-control" id="basicContactEmail" name="contact_email"
+                            placeholder="Enter contact email" required>
+                        {% if form.contact_email.errors %}
+                        <div class="text-danger">
+                            {{ form.contact_email.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="basicContactPhone" class="form-label">Contact Phone</label>
+                        <input type="text" class="form-control" id="basicContactPhone" name="contact_phone"
+                            placeholder="Enter contact phone number" required>
+                        {% if form.contact_phone.errors %}
+                        <div class="text-danger">
+                            {{ form.contact_phone.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="basicBudgetNaira" class="form-label">Budget (Naira)</label>
+                        <input type="number" class="form-control" id="basicBudgetNaira" name="budget_naira"
+                            placeholder="Enter budget in Naira, budget is quality" required>
+                        {% if form.budget_naira.errors %}
+                        <div class="text-danger">
+                            {{ form.budget_naira.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="basicBudgetUSD" class="form-label">Budget (USD)</label>
+                        <input type="text" class="form-control" id="basicBudgetUSD" name="budget_usd"
+                            placeholder="Budget in USD" readonly>
+                        {% if form.budget_usd.errors %}
+                        <div class="text-danger">
+                            {{ form.budget_usd.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="paymentOption" class="form-label">Select Payment Option</label>
+                        <div>
+                            <input type="radio" id="paystack" name="payment_option" value="paystack" required>
+                            <label for="paystack">Paystack</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="PayPal" name="payment_option" value="PayPal" required>
+                            <label for="PayPal">PayPal</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="USD bank_transfer" name="payment_option" value="USD bank_transfer"
+                                required>
+                            <label for="USD bank_transfer">Bank Transfer</label>
+                        </div>
+                        {% if form.payment_option.errors %}
+                        <div class="text-danger">
+                            {{ form.payment_option.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Template for Requesting Advance Website -->
+<div class="modal fade" id="requestAdvanceWebsiteModal" tabindex="-1" aria-labelledby="requestAdvanceWebsiteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="requestAdvanceWebsiteModalLabel">Request Advance Website</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+                <form id="requestAdvanceWebsiteForm" method="post" action="{% url 'website_requirement' %}"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="advanceWebsiteImage" class="form-label">Website Image</label>
+                        <input type="file" class="form-control {% if form.website_image.errors %}is-invalid{% endif %}"
+                            id="advanceWebsiteImage" name="website_image" accept="image/*"
+                            onchange="previewImage(event, 'advanceWebsiteImagePreview')">
+                        <div id="advanceWebsiteImagePreview" class="mt-2"></div>
+                        {% if form.website_image.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.website_image.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <input type="hidden" id="advanceWebsiteType" name="website_type" value="Advance Website">
+                    <div class="mb-3">
+                        <label for="advanceWebsiteName" class="form-label">Website Name</label>
+                        <input type="text" class="form-control {% if form.website_name.errors %}is-invalid{% endif %}"
+                            id="advanceWebsiteName" name="website_name" placeholder="Enter website name" required>
+                        {% if form.website_name.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.website_name.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="advanceWebsiteDescription" class="form-label">Description</label>
+                        <textarea class="form-control {% if form.website_description.errors %}is-invalid{% endif %}"
+                            id="advanceWebsiteDescription" name="website_description" rows="3"
+                            placeholder="Enter website description"></textarea>
+                        {% if form.website_description.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.website_description.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="advanceBusinessType" class="form-label">Business Type</label>
+                        <input type="text" class="form-control {% if form.business_type.errors %}is-invalid{% endif %}"
+                            id="advanceBusinessType" name="business_type" placeholder="Enter business type" required>
+                        {% if form.business_type.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.business_type.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="advanceFeatures" class="form-label">Features Needed</label>
+                        <textarea class="form-control {% if form.features.errors %}is-invalid{% endif %}"
+                            id="advanceFeatures" name="features" rows="3"
+                            placeholder="Enter features and functionalities"></textarea>
+                        {% if form.features.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.features.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="advanceContactEmail" class="form-label">Contact Email</label>
+                        <input type="email" class="form-control {% if form.contact_email.errors %}is-invalid{% endif %}"
+                            id="advanceContactEmail" name="contact_email" placeholder="Enter contact email" required>
+                        {% if form.contact_email.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.contact_email.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="advanceContactPhone" class="form-label">Contact Phone</label>
+                        <input type="text" class="form-control {% if form.contact_phone.errors %}is-invalid{% endif %}"
+                            id="advanceContactPhone" name="contact_phone" placeholder="Enter contact phone number"
+                            required>
+                        {% if form.contact_phone.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.contact_phone.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="advanceBudgetNaira" class="form-label">Budget (Naira)</label>
+                        <input type="number" class="form-control {% if form.budget_naira.errors %}is-invalid{% endif %}"
+                            id="advanceBudgetNaira" name="budget_naira"
+                            placeholder="Enter budget in Naira, budget is quality" required>
+                        {% if form.budget_naira.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.budget_naira.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="advanceBudgetUSD" class="form-label">Budget (USD)</label>
+                        <input type="text" class="form-control {% if form.budget_usd.errors %}is-invalid{% endif %}"
+                            id="advanceBudgetUSD" name="budget_usd" placeholder="Budget in USD" readonly>
+                        {% if form.budget_usd.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.budget_usd.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="paymentOption" class="form-label">Select Payment Option</label>
+                        <div>
+                            <input type="radio" id="paystack" name="payment_option" value="paystack" required
+                                class="{% if form.payment_option.errors %}is-invalid{% endif %}">
+                            <label for="paystack">Paystack</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="PayPal" name="payment_option" value="PayPal" required
+                                class="{% if form.payment_option.errors %}is-invalid{% endif %}">
+                            <label for="PayPal">PayPal</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="USD_bank_transfer" name="payment_option" value="USD bank_transfer"
+                                required class="{% if form.payment_option.errors %}is-invalid{% endif %}">
+                            <label for="USD_bank_transfer">Bank Transfer</label>
+                        </div>
+                        {% if form.payment_option.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.payment_option.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Template for Requesting Complex Website -->
+<div class="modal fade" id="requestComplexWebsiteModal" tabindex="-1" aria-labelledby="requestComplexWebsiteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="requestComplexWebsiteModalLabel">Request Complex Website</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+                <form id="requestComplexWebsiteForm" method="post" action="{% url 'website_requirement' %}"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="complexWebsiteImage" class="form-label">Website Image</label>
+                        <input type="file" class="form-control {% if form.website_image.errors %}is-invalid{% endif %}"
+                            id="complexWebsiteImage" name="website_image" accept="image/*"
+                            onchange="previewImage(event, 'complexWebsiteImagePreview')">
+                        <div id="complexWebsiteImagePreview" class="mt-2"></div>
+                        {% if form.website_image.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.website_image.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <input type="hidden" id="complexWebsiteType" name="website_type" value="Complex Website">
+                    <div class="mb-3">
+                        <label for="complexWebsiteName" class="form-label">Website Name</label>
+                        <input type="text" class="form-control {% if form.website_name.errors %}is-invalid{% endif %}"
+                            id="complexWebsiteName" name="website_name" placeholder="Enter website name" required>
+                        {% if form.website_name.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.website_name.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="complexWebsiteDescription" class="form-label">Description</label>
+                        <textarea class="form-control {% if form.website_description.errors %}is-invalid{% endif %}"
+                            id="complexWebsiteDescription" name="website_description" rows="3"
+                            placeholder="Enter website description"></textarea>
+                        {% if form.website_description.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.website_description.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="complexBusinessType" class="form-label">Business Type</label>
+                        <input type="text" class="form-control {% if form.business_type.errors %}is-invalid{% endif %}"
+                            id="complexBusinessType" name="business_type" placeholder="Enter business type" required>
+                        {% if form.business_type.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.business_type.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="complexFeatures" class="form-label">Features Needed</label>
+                        <textarea class="form-control {% if form.features.errors %}is-invalid{% endif %}"
+                            id="complexFeatures" name="features" rows="3"
+                            placeholder="Enter features and functionalities"></textarea>
+                        {% if form.features.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.features.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="complexContactEmail" class="form-label">Contact Email</label>
+                        <input type="email" class="form-control {% if form.contact_email.errors %}is-invalid{% endif %}"
+                            id="complexContactEmail" name="contact_email" placeholder="Enter contact email" required>
+                        {% if form.contact_email.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.contact_email.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="complexContactPhone" class="form-label">Contact Phone</label>
+                        <input type="text" class="form-control {% if form.contact_phone.errors %}is-invalid{% endif %}"
+                            id="complexContactPhone" name="contact_phone" placeholder="Enter contact phone number"
+                            required>
+                        {% if form.contact_phone.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.contact_phone.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="complexBudgetNaira" class="form-label">Budget (Naira)</label>
+                        <input type="number" class="form-control {% if form.budget_naira.errors %}is-invalid{% endif %}"
+                            id="complexBudgetNaira" name="budget_naira"
+                            placeholder="Enter budget in Naira, budget is quality" required>
+                        {% if form.budget_naira.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.budget_naira.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="complexBudgetUSD" class="form-label">Budget (USD)</label>
+                        <input type="text" class="form-control {% if form.budget_usd.errors %}is-invalid{% endif %}"
+                            id="complexBudgetUSD" name="budget_usd" placeholder="Budget in USD" readonly>
+                        {% if form.budget_usd.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.budget_usd.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="paymentOption" class="form-label">Select Payment Option</label>
+                        <div>
+                            <input type="radio" id="paystack" name="payment_option" value="paystack" required
+                                class="{% if form.payment_option.errors %}is-invalid{% endif %}">
+                            <label for="paystack">Paystack</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="PayPal" name="payment_option" value="PayPal" required
+                                class="{% if form.payment_option.errors %}is-invalid{% endif %}">
+                            <label for="PayPal">PayPal</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="USD_bank_transfer" name="payment_option" value="USD bank_transfer"
+                                required class="{% if form.payment_option.errors %}is-invalid{% endif %}">
+                            <label for="USD_bank_transfer">Bank Transfer</label>
+                        </div>
+                        {% if form.payment_option.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.payment_option.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- JavaScript for Calculating USD Equivalent -->
+<script>
+    // Function to preview selected image
+    function previewImage(event, previewId) {
+        const preview = document.getElementById(previewId);
+        preview.innerHTML = '';
+
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const img = document.createElement('img');
+                img.src = event.target.result;
+                img.style.maxWidth = '100%';
+                img.style.maxHeight = '200px';
+                preview.appendChild(img);
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function calculateUSDValue(inputId, outputId, exchangeRate) {
+        let amountNaira = document.getElementById(inputId).value;
+        let amountUSD = (amountNaira / exchangeRate).toFixed(2);
+        document.getElementById(outputId).value = amountUSD;
+    }
+
+    // Example usage for basic, advance, and complex modals
+    document.getElementById('basicBudgetNaira').addEventListener('input', function () {
+        calculateUSDValue('basicBudgetNaira', 'basicBudgetUSD', 1500); // Replace 414 with your actual exchange rate
+    });
+
+    document.getElementById('advanceBudgetNaira').addEventListener('input', function () {
+        calculateUSDValue('advanceBudgetNaira', 'advanceBudgetUSD', 1500); // Replace 414 with your actual exchange rate
+    });
+
+    document.getElementById('complexBudgetNaira').addEventListener('input', function () {
+        calculateUSDValue('complexBudgetNaira', 'complexBudgetUSD', 1500); // Replace 414 with your actual exchange rate
+    });
+</script>
+
+
+<script>
+    //Javascript for adspost photo id
+    document.addEventListener('DOMContentLoaded', function () {
+        var modal = document.getElementById('exampleModal');
+        modal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget; // Button that triggered the modal
+            var photoId = button.getAttribute('data-photo-id'); // Extract info from data-* attributes
+            var input = document.getElementById('photoId');
+            input.value = photoId; // Update the hidden input field
+        });
+    });
+
+
+    // JavaScript code for handling interactions (e.g., like, subscribe, comment)
+    document.addEventListener('DOMContentLoaded', function () {
+        // Example code for copying share link to clipboard
+        document.getElementById('copyLinkButton').addEventListener('click', function () {
+            var shareLink = document.getElementById('shareLink').innerText;
+            navigator.clipboard.writeText(shareLink).then(function () {
+                alert('Link copied to clipboard!');
+            }, function (err) {
+                console.error('Unable to copy link: ', err);
+            });
+        });
+
+        // Example code for handling like/unlike button click
+        document.querySelectorAll('.like-button').forEach(button => {
+            button.addEventListener('click', function () {
+                var postId = this.dataset.postId;
+                // Implement logic to toggle like/unlike and update UI
+                // Example: Simulate toggle effect
+                if (this.textContent.trim() === 'Like') {
+                    this.textContent = 'Unlike';
+                    this.classList.remove('btn-light');
+                    this.classList.add('btn-primary');
+                } else {
+                    this.textContent = 'Like';
+                    this.classList.remove('btn-primary');
+                    this.classList.add('btn-light');
+                }
+            });
+        });
+
+        // Example code for handling subscribe/unsubscribe button click
+        document.querySelectorAll('.subscribe-button').forEach(button => {
+            button.addEventListener('click', function () {
+                var authorId = this.dataset.authorId;
+                // Implement logic to toggle subscribe/unsubscribe and update UI
+                // Example: Simulate toggle effect
+                if (this.textContent.trim() === 'Subscribe') {
+                    this.textContent = 'Unsubscribe';
+                    this.classList.remove('btn-light');
+                    this.classList.add('btn-primary');
+                } else {
+                    this.textContent = 'Subscribe';
+                    this.classList.remove('btn-primary');
+                    this.classList.add('btn-light');
+                }
+            });
+        });
+
+        // Example code for displaying comments modal
+        document.querySelectorAll('.view-comments-button').forEach(button => {
+            button.addEventListener('click', function () {
+                var postId = this.dataset.postId;
+                // Implement logic to fetch comments via AJAX and populate modal
+                // Example: Simulate loading comments
+                var commentList = document.getElementById('commentList');
+                commentList.innerHTML = '<li class="list-group-item">Comment 1</li><li class="list-group-item">Comment 2</li>';
+            });
+        });
+
+        // Example code for sharing post modal
+        document.querySelectorAll('.share-button').forEach(button => {
+            button.addEventListener('click', function () {
+                var postId = this.dataset.postId;
+                // Implement logic to share post via modal
+                // Example: Display share modal
+                $('#shareModal').modal('show');
+            });
+        });
+    });
+
+
+    // Script to pop up modal based on the photo id
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('adType').addEventListener('change', function () {
+            var selectedOption = this.value;
+            var options = document.querySelectorAll('.ad-options');
+            options.forEach(function (option) {
+                option.style.display = 'none';
+            });
+            if (selectedOption === 'more_messages_whatsapp') {
+                document.getElementById('whatsappOptions').style.display = 'block';
+            } else if (selectedOption === 'more_website_visitors') {
+                document.getElementById('websiteVisitorsOptions').style.display = 'block';
+            } else if (selectedOption === 'more_calls') {
+                document.getElementById('callsOptions').style.display = 'block';
+            } else if (selectedOption === 'more_followers') {
+                document.getElementById('followersOptions').style.display = 'block';
+            } else if (selectedOption === 'grow_customer_base') {
+                document.getElementById('customerBaseOptions').style.display = 'block';
+            }
+        });
+    });
+
+
+    // Data purchase
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
+    $(document).ready(function () {
+        $('#network').change(function () {
+            let network = $(this).val();
+            let options = [];
+
+            switch (network) {
+                case 'MTN':
+                    options = [
+                        '500mb (N200) (30 Days)',
+                        '1gb (N400)',
+                        '2gb (N700) (30 Days)',
+                        '3gb (N1,000) (30 Days)',
+                        '5gb (N1500) (30 Days)',
+                        '10gb (N3,000) (30 Days)'
+                    ];
+                    break;
+                case 'AIRTEL':
+                    options = [
+                        '300mb (N100) (30 Days)',
+                        '500mb (N200) (30 Days)',
+                        '1gb (N300) (30 Days)',
+                        '2gb (N700) (30 Days)',
+                        '5gb (N1,600) (30 Days)',
+                        '10gb (N3,000) (30 Days)'
+                    ];
+                    break;
+                case 'GLO':
+                    options = [
+                        '500mb (N200) (30 Days)',
+                        '1gb (N400)',
+                        '2gb (N800) (30 Days)',
+                        '3gb (N1,200) (30 Days)',
+                        '5gb (N1,800) (30 Days)',
+                        '10gb (N3,500) (30 Days)'
+                    ];
+                    break;
+                case '9MOBILE':
+                    options = [
+                        '500mb (N200) (30 Days)',
+                        '1gb (N400)',
+                        '2gb (N800) (30 Days)',
+                        '3gb (N1,100) (30 Days)',
+                        '5gb (N1,500) (30 Days)',
+                        '10gb (N3,000) (30 Days)'
+                    ];
+                    break;
+                default:
+                    options = [];
+                    break;
+            }
+
+            // Clear previous options
+            $('#dataPlan').empty();
+
+            // Append new options
+            if (options.length > 0) {
+                options.forEach(option => {
+                    $('#dataPlan').append(new Option(option, option));
+                });
+            }
+        });
+
+        $('#submitBtn').click(function () {
+            // Perform form submission via AJAX
+            $.ajax({
+                type: 'POST',
+                url: $('#serviceForm').attr('action'),
+                data: $('#serviceForm').serialize(),
+                beforeSend: function (xhr, settings) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                },
+                success: function (response) {
+                    // Close the modal
+                    $('#serviceModal').modal('hide');
+                    // Check if there's a redirect_url in the response
+                    if (response.redirect_url) {
+                        // Redirect the user to Paystack
+                        window.location.replace(response.redirect_url);
+                    } else {
+                        // Show success message if no redirect_url
+                        alert('Purchase Successful! Thank you for your purchase.');
+                    }
+                },
+                error: function (error) {
+                    // Show error message
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
+    });
+
+
+
+
+
+</script>
+<!--End of all modals-->
+
+
+
+
+
+
+{% endblock %}

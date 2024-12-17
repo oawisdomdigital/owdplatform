@@ -1,0 +1,17 @@
+*WORKING WITH TABS* When working with tabs, once you put everything in there own tabs close the div for the tab and everything ootside that tab will not be included in the tab. Also wrap all the tabs in a div and close the div
+*LIKE, COMMENT, SUBSCRIBE AND SHARE FUNCTIONALITIES* If you are working with multible apps, for the not found to be resolved solely depends on this to work: path('', include('posts.urls')),  # Redirect the root URL to the posts app
+*NOT FOUND* If you have double slash at the end like this: Not Found: /subscribe-author// know that the problem is not from the url routing,but from id. If django can not locate your users url or anyother you can use this for example:  window.location.href = `/users/resend-otp/${username}/`;
+*NOT DEFINED IN MODEL* If you want to use an object in another object in the same model you must place them in order so that the one that will be used will be above and the one that is using it will be below.
+*RUN THIS TO VIEW PYTHON PATH* where python
+*SET PYTHON PATH IN COMMAND PROMPT TEMPORARILY* set PATH=C:\Users\USER\AppData\Local\Microsoft\WindowsApps;%PATH%
+*THIS COMMAND BRINGS UP MYSQL SHELL* mysql -u root -p
+*Twilio* If you lose your phone, or don’t have access to your verification device, this code is your failsafe to access your account: RPX34CMQ3EWAHCHCVW8B31WM
+*Specify the directory to download punkt* nltk.download('punkt', download_dir='C:/nltk_data')
+
+MAILJET API KEY: f378fb1358a57d5e6aba848d75f4a38c
+MAILJET SECRET KEY: f4d57c01bae3cb7496d978ebe5d78782
+
+
+
+
+

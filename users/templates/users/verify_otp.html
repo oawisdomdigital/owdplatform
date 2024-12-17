@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Verify OTP - OWD{% endblock %}
+{% load static %}
+{% block content %}
+    
+    <div class="container-fluid center-form">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-4">
+                <div class="card shadow-lg p-4">
+                    <h2 class="text-center mb-4">Verify OTP</h2>
+                    {% if messages %}
+                    <div class="alert alert-info" role="alert">
+                        {% for message in messages %}
+                        {{ message }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="otp" class="form-label">OTP:</label>
+                            <input type="text" id="otp" name="otp" class="form-control" placeholder="Enter your one time password (OTP)" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Verify OTP</button>
+                        <div id="countdown" class="mt-3 countdown">Time remaining: <span id="timer1"></span></div>
+                        <button id="resend-otp-btn" class="btn btn-secondary w-100 mt-3" type="button">Resend
+                            OTP</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const countdownMinutes = 1; // Initial countdown for resend
+        const cooldownElement = document.getElementById('resend-otp-btn');
+        const countdownElement = document.getElementById('timer1');
+        const endTime = new Date(Date.now() + countdownMinutes * 60000);
+
+        function updateCountdown() {
+            const now = new Date();
+            const remainingTime = endTime - now;
+            if (remainingTime <= 0) {
+                countdownElement.textContent = 'Check your spam folder';
+                cooldownElement.disabled = false; // Enable resend button
+                cooldownElement.textContent = 'Resend OTP';
+                return;
+            }
+            const minutes = Math.floor(remainingTime / 60000);
+            const seconds = Math.floor((remainingTime % 60000) / 1000);
+            countdownElement.textContent = `${minutes}m ${seconds}s`;
+            cooldownElement.disabled = true; // Disable resend button
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call to display the countdown immediately
+
+        document.getElementById('resend-otp-btn').addEventListener('click', function () {
+            // Fetch the username from the server or page context
+            const username = '{{ username }}';
+            window.location.href = `/users/resend-otp/${username}/`;
+        });
+    </script>
+{% endblock %}

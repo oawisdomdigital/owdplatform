@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Membership Requests - {{ room.name }}{% endblock %}
+
+{% block content %}
+<h2>Membership Requests for {{ room.name }}</h2>
+{% if membership_requests %}
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for membership in membership_requests %}
+        <tr>
+            <td>{{ membership.user.username }}</td>
+            <td>{{ membership.get_status_display }}</td>
+            <td>
+                <a href="{% url 'approve_request' request_id=membership.id %}">Approve</a> |
+                <a href="{% url 'reject_request' request_id=membership.id %}">Reject</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No pending membership requests.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+/* custom.css */
+
+/* Adjust padding and margin */
+.nav-tabs {
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* Change active tab color */
+.nav-tabs .nav-link.active {
+    background-color: #f0f2f5; /* Facebook-like background color for active tab */
+    border-color: #dddfe2 #dddfe2 #f0f2f5;
+    color: #1877f2; /* Facebook blue */
+}
+
+/* Icon styling */
+.nav-tabs .nav-link i {
+    margin-right: 5px; /* Adjust icon spacing */
+}
+
+/* Example content area */
+.tab-content {
+    padding: 20px;
+    border: 1px solid #dddfe2;
+    border-top: none;
+    background-color: #fff;
+}

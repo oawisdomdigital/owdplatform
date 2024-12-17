@@ -1,0 +1,496 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day",
+        "Hi OWD",
+        "Hello OA Wisdom Digital"
+      ],
+      "responses": [
+        "Hey :-)",
+        "Hello, thanks for visiting OWD",
+        "Hi there, what can I do for you?",
+        "Hi there, how can I help?",
+        "Hello! Welcome to OA Wisdom Digital. How can we assist you today?",
+        "Greetings! How can OWD help you today?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye",
+        "Goodbye OWD",
+        "Bye OA Wisdom Digital"
+      ],
+      "responses": [
+        "See you later, thanks for visiting OWD",
+        "Have a nice day",
+        "Bye! Come back again soon.",
+        "Thank you for visiting OA Wisdom Digital, have a great day!",
+        "Goodbye! We look forward to assisting you again."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Thank's a lot!",
+        "Thanks OWD",
+        "Thank you OA Wisdom Digital"
+      ],
+      "responses": [
+        "Happy to help!",
+        "Any time!",
+        "My pleasure",
+        "You're welcome!",
+        "We're glad to assist you at OWD!",
+        "Thank you for choosing OA Wisdom Digital!"
+      ]
+    },
+    {
+      "tag": "services",
+      "patterns": [
+        "What services do you offer?",
+        "Tell me about your services",
+        "What can you do?",
+        "What solutions do you provide?",
+        "What digital solutions do you offer?"
+      ],
+      "responses": [
+        "At OWD, we offer a wide range of digital solutions including web development, machine learning, graphic design, data analysis, office computing, photo editing, and video editing.",
+        "Our services at OA Wisdom Digital include website development, graphic design, data analysis, AI integration, and more.",
+        "We provide web development, graphic design, machine learning, data analysis, photo and video editing, and many other digital solutions.",
+        "OWD offers training in web development, machine learning, graphic design, data analysis, office computing, photo editing, and video editing.",
+        "From web development to graphic design and AI integration, OA Wisdom Digital covers all your digital solution needs."
+      ]
+    },
+    {
+      "tag": "websites",
+      "patterns": [
+        "Can you build websites?",
+        "Do you offer website development?",
+        "I need a website for my business",
+        "Can you create a website?",
+        "Website design services"
+      ],
+      "responses": [
+        "Yes, we specialize in building websites for brands. We offer custom website development to suit your business needs.",
+        "OWD provides professional website development services tailored to your brand.",
+        "We can create a stunning website for your business. Let us know your requirements!",
+        "Our team at OA Wisdom Digital can build a website that perfectly represents your brand.",
+        "Yes, we offer comprehensive website development services. Contact us to get started!"
+      ]
+    },
+    {
+      "tag": "graphic_design",
+      "patterns": [
+        "Do you offer graphic design?",
+        "I need graphic design services",
+        "Can you design logos?",
+        "Graphic design for my brand",
+        "Do you provide graphic design?"
+      ],
+      "responses": [
+        "Yes, we are graphic design masters. We design anything for any brand. Just mention it!",
+        "OWD offers professional graphic design services including logos, banners, brochures, and more.",
+        "We can design anything you need to visually represent your brand. Contact us for graphic design services.",
+        "Our graphic design services cover everything from logos to marketing materials. Let us know what you need!",
+        "At OA Wisdom Digital, we provide top-notch graphic design services tailored to your brand."
+      ]
+    },
+    {
+      "tag": "training",
+      "patterns": [
+        "Do you offer training?",
+        "What training programs do you have?",
+        "Can you train me in web development?",
+        "I want to learn machine learning",
+        "What courses do you offer?"
+      ],
+      "responses": [
+        "We offer comprehensive training programs in web development, machine learning, graphic design, data analysis, office computing, photo editing, and video editing.",
+        "Our training services include courses in web development, graphic design, machine learning, and more.",
+        "Yes, we provide training in various digital skills including web development and machine learning.",
+        "OWD offers training in web development, machine learning, graphic design, data analysis, and more. Contact us to enroll!",
+        "We have a wide range of courses available to help you master digital skills. Get in touch to learn more!"
+      ]
+    },
+    {
+      "tag": "payments",
+      "patterns": [
+        "Do you take credit cards?",
+        "Do you accept Mastercard?",
+        "Can I pay with Paypal?",
+        "Are you cash only?",
+        "What payment methods do you accept?"
+      ],
+      "responses": [
+        "We accept VISA, Mastercard, and Paypal.",
+        "OWD accepts most major credit cards, bank transfers, and Paypal.",
+        "You can pay using credit cards, bank transfers, and other convenient methods.",
+        "We accept any kind of payment method including credit cards, bank transfers, and more.",
+        "At OA Wisdom Digital, we offer flexible payment options including credit cards and bank transfers."
+      ]
+    },
+    {
+      "tag": "hosting",
+      "patterns": [
+        "Do you offer web hosting?",
+        "Can you host my website?",
+        "Do you provide hosting services?",
+        "I need web hosting",
+        "Website hosting solutions"
+      ],
+      "responses": [
+        "Yes, we offer reliable web hosting services for your website.",
+        "OWD provides fast and secure web hosting solutions.",
+        "We can host your website with our reliable and efficient hosting services.",
+        "Our hosting services ensure your website is always up and running smoothly.",
+        "At OA Wisdom Digital, we offer comprehensive web hosting solutions to meet your needs."
+      ]
+    },
+    {
+      "tag": "registration",
+      "patterns": [
+        "Can you register my business?",
+        "Do you offer business registration?",
+        "I need to register my business with CAC",
+        "Business registration services",
+        "Can you help with CAC registration?"
+      ],
+      "responses": [
+        "Yes, we can help you register your business with CAC.",
+        "OWD offers business registration services including CAC registration.",
+        "We provide comprehensive business registration services to get your business legally recognized.",
+        "Our team can assist you with all your business registration needs, including CAC registration.",
+        "At OA Wisdom Digital, we offer efficient business registration services to help you get started."
+      ]
+    },
+    {
+      "tag": "ai_integration",
+      "patterns": [
+        "Do you offer AI integration?",
+        "Can you integrate AI into my business?",
+        "AI solutions for businesses",
+        "I need AI integration",
+        "Can you provide AI integration services?"
+      ],
+      "responses": [
+        "Yes, we offer AI integration services to enhance your business operations.",
+        "OWD provides AI integration solutions tailored to your business needs.",
+        "We can help integrate AI technologies into your business to improve efficiency and performance.",
+        "Our AI integration services are designed to help your business leverage the power of artificial intelligence.",
+        "At OA Wisdom Digital, we offer comprehensive AI integration services to take your business to the next level."
+      ]
+    },
+    {
+      "tag": "customer_service",
+      "patterns": [
+        "Do you offer customer service?",
+        "How can I contact customer service?",
+        "Customer support",
+        "I need help with my order",
+        "Customer care"
+      ],
+      "responses": [
+        "Yes, we offer excellent customer service. You can contact us anytime for support.",
+        "Our customer care agents are here to help you with any inquiries or issues.",
+        "You can reach our customer service team via phone, email, or our website.",
+        "We provide reliable customer support to ensure your satisfaction with our services.",
+        "At OA Wisdom Digital, our customer care agents are ready to assist you with any needs."
+      ]
+    },
+    {
+      "tag": "delivery",
+      "patterns": [
+        "How long does delivery take?",
+        "How long does shipping take?",
+        "When do I get my delivery?",
+        "Delivery time",
+        "Shipping time"
+      ],
+      "responses": [
+        "Delivery typically takes between 30 minutes to 12 hours, as we offer online services.",
+        "Shipping usually takes between 30 minutes to 12 hours. We strive to deliver as quickly as possible.",
+        "You can expect your delivery within 30 minutes to 12 hours.",
+        "Our delivery time ranges from 30 minutes to 12 hours, ensuring prompt service.",
+        "At OWD, we aim to deliver your order within 30 minutes to 12 hours."
+      ]
+    },
+    {
+      "tag": "funny",
+      "patterns": [
+        "Tell me a joke!",
+        "Tell me something funny!",
+        "Do you know a joke?",
+        "Make me laugh",
+        "I need a laugh"
+      ],
+      "responses": [
+        "Why did the hipster burn his mouth? He drank the coffee before it was cool.",
+        "What did the buffalo say when his son left for college? Bison.",
+        "Why don’t scientists trust atoms? Because they make up everything!",
+        "Why did the scarecrow win an award? Because he was outstanding in his field!",
+        "Why don't programmers like nature? It has too many bugs.",
+        "Why do cows have hooves instead of feet? Because they lactose."
+      ]
+    },
+    {
+      "tag": "contact",
+      "patterns": [
+        "How can I contact you?",
+        "What is your contact information?",
+        "How do I get in touch?",
+        "Contact details",
+        "Can I call you?"
+      ],
+      "responses": [
+        "You can contact us via phone at +2347081668601 or +2349031314945, email at oawisdomdigitalfirm@gmail.com, or through our website's contact form.",
+        "Feel free to reach out to us via email at oawisdomdigitalfirm@gmail.com or call us at +2347081668601 or +2349031314945.",
+        "Our contact information is available on our website. You can also email us at oawisdomdigitalfirm@gmail.com.",
+        "You can get in touch with us by calling +2347081668601 or +2349031314945 or emailing oawisdomdigitalfirm@gmail.com.",
+        "For any inquiries, you can contact us through our website or email us at oawisdomdigitalfirm@gmail.com."
+      ]
+    },
+    {
+      "tag": "business_hours",
+      "patterns": [
+        "What are your business hours?",
+        "When are you open?",
+        "Business hours",
+        "Working hours",
+        "What time do you open?"
+      ],
+      "responses": [
+        "Our business hours are Monday to Friday, 9 AM to 6 PM.",
+        "We are open from 9 AM to 6 PM, Monday to Friday.",
+        "OWD operates from 9 AM to 6 PM, Monday to Friday.",
+        "Our working hours are Monday to Friday, 9 AM to 6 PM.",
+        "We are available from 9 AM to 6 PM on weekdays."
+      ]
+    },
+    {
+      "tag": "about_us",
+      "patterns": [
+        "Tell me about OA Wisdom Digital",
+        "What is OWD?",
+        "About OA Wisdom Digital",
+        "About OWD",
+        "What does OWD do?"
+      ],
+      "responses": [
+        "OA Wisdom Digital (OWD) is a digital solutions provider offering a wide range of services including web development, machine learning, graphic design, data analysis, and more.",
+        "At OWD, we provide comprehensive digital solutions and training programs to help businesses and individuals succeed in the digital world.",
+        "OA Wisdom Digital offers services in web development, graphic design, AI integration, and more, ensuring fast and reliable service with excellent customer care.",
+        "OWD is dedicated to providing high-quality digital solutions, from web hosting to business registration and beyond.",
+        "We at OA Wisdom Digital are committed to delivering top-notch digital services and training to meet all your needs."
+      ]
+    },
+    {
+      "tag": "location",
+      "patterns": [
+        "Where are you located?",
+        "What is your address?",
+        "Location of OWD",
+        "Where can I find you?",
+        "OWD address"
+      ],
+      "responses": [
+        "We are located at Mini-Orlu Road Off Adageorge Road, Port Harcourt, Rivers State, Nigeria. Feel free to visit us during our business hours.",
+        "Our office is at Mini-Orlu Road Off Adageorge Road, Port Harcourt, Rivers State, Nigeria. You are welcome to visit us anytime between 9 AM and 6 PM, Monday to Friday.",
+        "You can find us at Mini-Orlu Road Off Adageorge Road, Port Harcourt, Rivers State, Nigeria. We look forward to seeing you!",
+        "OWD is located at Mini-Orlu Road Off Adageorge Road, Port Harcourt, Rivers State, Nigeria. Visit us for any inquiries or assistance.",
+        "Our address is Mini-Orlu Road Off Adageorge Road, Port Harcourt, Rivers State, Nigeria. We are open from 9 AM to 6 PM, Monday to Friday."
+      ]
+    },
+    {
+      "tag": "testimonial",
+      "patterns": [
+        "What do your clients say?",
+        "Client testimonials",
+        "Customer reviews",
+        "Feedback from clients",
+        "OWD testimonials"
+      ],
+      "responses": [
+        "Our clients love our fast and reliable services. Here’s what one of them had to say: 'OWD exceeded our expectations with their professionalism and quality of work.'",
+        "We have received excellent feedback from our clients. One said, 'OA Wisdom Digital transformed our online presence with their superb web development skills.'",
+        "Customers appreciate our dedication to quality and service. One client noted, 'The team at OWD is fantastic! They delivered our project on time and beyond our expectations.'",
+        "Our clients have great things to say about us. 'OWD’s graphic design services helped our brand stand out,' said one satisfied customer.",
+        "We value our clients' feedback. One testimonial reads, 'The training programs at OA Wisdom Digital are top-notch and highly effective.'"
+      ]
+    },
+    {
+      "tag": "about_us",
+      "patterns": [
+        "Tell me about OA Wisdom Digital Firm",
+        "What is OA Wisdom Digital Firm?",
+        "Give me information about OWD",
+        "Who is OA Wisdom?",
+        "Tell me more about the founder"
+      ],
+      "responses": [
+        "Welcome to OA Wisdom Digital Firm (OWD). We are a forward-thinking digital enterprise founded by Oti Alid Wisdom, widely known as OA Wisdom, in 2024. Our mission is to harness innovation and creativity to drive digital transformation and excellence.",
+        "OA Wisdom Digital Firm (OWD) was founded by Oti Alid Wisdom in 2024. We focus on leveraging innovation and creativity to achieve digital excellence.",
+        "Our founder, Oti Alid Wisdom, also known as OA Wisdom, has a rich background in technology and digital services. Under his leadership, we strive to deliver outstanding results."
+      ]
+    },
+    {
+      "tag": "founder",
+      "patterns": [
+        "Who is Oti Alid Wisdom?",
+        "Tell me about the founder",
+        "What can you tell me about OA Wisdom?",
+        "Details about Oti Alid Wisdom"
+      ],
+      "responses": [
+        "Oti Alid Wisdom, also known as OA Wisdom, is the founder of OA Wisdom Digital Firm. Born on August 26, 2000, he is a Nigerian from Rivers State, ONELGA. Oti is passionate about technology and has guided our firm with great expertise and dedication.",
+        "Oti Alid Wisdom, or OA Wisdom, is the visionary behind our firm. He has a wealth of experience and a deep passion for technology and innovation. His educational and professional journey is key to our success."
+      ]
+    },
+    {
+      "tag": "journey",
+      "patterns": [
+        "What is the professional background of OA Wisdom?",
+        "Tell me about the journey of OA Wisdom",
+        "What has Oti Alid Wisdom done professionally?",
+        "Share the professional history of OA Wisdom"
+      ],
+      "responses": [
+        "Oti Alid Wisdom's journey includes roles such as Internet and Social Media Manager at Liberation Power Ministries (2021), Graphic Designer for the Social Democratic Party (2022), and Computer Instructor at various institutions. His diverse experience has greatly influenced OA Wisdom Digital Firm.",
+        "Our founder has a rich professional background including roles such as Graphic Designer for the Social Democratic Party, Computer Instructor at several schools, and Coding Instructor at Sitrid International School. This experience shapes our firm’s approach to digital solutions."
+      ]
+    },
+    {
+      "tag": "values_interests",
+      "patterns": [
+        "What are the values of OA Wisdom Digital Firm?",
+        "What interests drive OA Wisdom Digital Firm?",
+        "Tell me about the core values of OWD",
+        "What are the interests of OA Wisdom Digital Firm?"
+      ],
+      "responses": [
+        "At OA Wisdom Digital Firm, we value continuous learning, social engagement, and teaching and mentoring. We strive to stay at the cutting edge of technology, connect with diverse communities, and share our expertise.",
+        "Our core values include a commitment to continuous learning, social engagement, and teaching. We believe in embracing new knowledge, connecting with our community, and nurturing talent."
+      ]
+    },
+    {
+      "tag": "contact",
+      "patterns": [
+        "How can I contact OA Wisdom Digital Firm?",
+        "Give me the contact details for OWD",
+        "How do I reach OA Wisdom?",
+        "Contact information for OA Wisdom Digital Firm"
+      ],
+      "responses": [
+        "You can contact us at OA Wisdom Digital Firm via phone at +234 903 131 4945 or email at otiwisdom80@gmail.com. Feel free to reach out for any inquiries or collaborations.",
+        "For inquiries or to connect with us, use the following contact information: Phone: +234 903 131 4945, Email: otiwisdom80@gmail.com."
+      ]
+    },
+    {
+      "tag": "referees",
+      "patterns": [
+        "Who are the referees for OA Wisdom?",
+        "Tell me about the referees for OA Wisdom Digital Firm",
+        "Referees for OA Wisdom",
+        "Give me information on the referees for OWD"
+      ],
+      "responses": [
+        "Our referees include Dr. Ndibuisi Odota (Phone: +234 803 341 6564) and Mrs. Beauty Igoni (Phone: +234 913 128 9648). They can provide references and additional information about our work.",
+        "For references, you can contact Dr. Ndibuisi Odota at +234 803 341 6564 or Mrs. Beauty Igoni at +234 913 128 9648."
+      ]
+    },
+    {
+      "tag": "terms_of_service",
+      "patterns": [
+        "What are your terms of service?",
+        "Terms and conditions",
+        "Service agreement",
+        "Terms of use",
+        "What should I know about using your services?"
+      ],
+      "responses": [
+        "Welcome to OA Wisdom Digital Firm (OWD). By accessing or using our services, you agree to be bound by the following terms and conditions. Please read them carefully.",
+        "1. **Acceptance of Terms**: By using our services, you agree to these Terms of Service and our Privacy Policy. If you do not agree with any part of these terms, you should not use our services.",
+        "2. **Use of Services**: You agree to use our services only for lawful purposes and in accordance with these terms. You are responsible for any content you post or share, and for ensuring that it complies with applicable laws and regulations.",
+        "3. **User Accounts**: To access certain features of our services, you may be required to create an account. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.",
+        "4. **Intellectual Property**: All content and materials provided by us are protected by intellectual property laws. You may not use, reproduce, or distribute any content from our services without our prior written permission.",
+        "5. **Limitation of Liability**: Our liability to you is limited to the maximum extent permitted by law. We are not liable for any indirect, incidental, or consequential damages arising from your use of our services.",
+        "6. **Termination**: We reserve the right to terminate or suspend your access to our services at any time, with or without cause, and with or without notice.",
+        "7. **Changes to Terms**: We may update these Terms of Service from time to time. We will notify you of any changes by posting the new terms on our website. Your continued use of our services after such changes constitutes your acceptance of the new terms."
+      ]
+    },
+    {
+      "tag": "privacy_policy",
+      "patterns": [
+        "What is your privacy policy?",
+        "How do you protect my personal information?",
+        "What information do you collect?",
+        "How is my data used?",
+        "What are my rights regarding my data?",
+        "Privacy policy details",
+        "How can I contact you about privacy concerns?"
+      ],
+      "responses": [
+        "At OA Wisdom Digital Firm (OWD), we are committed to protecting your privacy and ensuring the security of your personal information. Our privacy policy outlines how we collect, use, and safeguard your information when you use our services.",
+        "1. **Information We Collect**: We collect information that you provide to us directly, such as your name, email address, phone number, and any other information you may choose to share with us. We may also collect information about your usage of our services, including your IP address, browser type, and operating system.",
+        "2. **How We Use Your Information**: Your information is used to provide and improve our services, communicate with you, and personalize your experience. We may use your information to send you updates, promotional materials, and other relevant content.",
+        "3. **How We Protect Your Information**: We implement a variety of security measures to ensure the safety of your personal information. This includes using encryption, secure servers, and access controls to prevent unauthorized access, alteration, or disclosure of your data.",
+        "4. **Sharing Your Information**: We do not sell or rent your personal information to third parties. We may share your information with trusted partners who assist us in operating our services, provided that they agree to keep your information confidential.",
+        "5. **Your Rights**: You have the right to access, correct, or delete your personal information. If you wish to exercise these rights or have any questions about our privacy practices, please contact us using the information provided below.",
+        "6. **Changes to This Policy**: We may update this privacy policy from time to time to reflect changes in our practices or legal requirements. We encourage you to review this policy periodically for any updates.",
+        "If you have any questions or concerns about our privacy policy, please contact us at: [Your Contact Information]"
+      ]
+    },
+    {
+      "tag": "payment_info",
+      "patterns": [
+        "What payment methods do you accept?",
+        "Which currencies can I use to pay?",
+        "How can I make a payment?",
+        "Payment options",
+        "Accepted currencies"
+      ],
+      "responses": [
+        "We accept payments in US Dollar, British Pounds, Euro, and Nigerian Naira. You can make payments through various means such as PayPal, Paystack, and Geegpay."
+      ]
+    },
+    {
+      "tag": "referral_program",
+      "patterns": [
+        "How can I earn coins?",
+        "How can I earn money",
+        "What is the referral program?",
+        "Invite friends and earn coins",
+        "How do I get coins for inviting friends?",
+        "Referral rewards"
+      ],
+      "responses": [
+        "Share your referal link with your friends to earn coins. Each invitation gets you 5 coins. These coins can be used to purchase verification, access premium features and resources. In the future, you may also be able to sell coins and earn money as the coin value increases over time."
+      ]
+    },
+    {
+      "tag": "services",
+      "patterns": [
+        "What services do you offer?",
+        "Digital solutions provided by OWD",
+        "Courses available",
+        "What can I learn with OWD?",
+        "Our services"
+      ],
+      "responses": [
+        "At OA Wisdom Digital Firm (OWD), we offer powerful digital solutions. Our services include:\n\n- **Digital Marketing + AI Course**\n- **Coding & Robotics Course**\n- **Graphic Design Course**\n- **Photo Editing Course**\n- **Video Editing Course**\n- **Data Analysis Course etc**\n\nYou can also create, edit, and delete posts on our platform."
+      ]
+    }
+  ]
+}

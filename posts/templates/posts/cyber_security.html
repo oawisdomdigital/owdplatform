@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Cyber Security/Ethical Hacking Course{% endblock %}
+
+{% block content %}
+
+<!-- ======= Beginners Section ======= -->
+<section id="beginners" class="features">
+    <div class="container" data-aos="fade-up">
+        <div class="row">
+            {% if first %}
+                <div class="container" data-aos="fade-up">
+                    <div class="row">
+                        <h2 class="text-center">{{ first.name }}</h2><br><br><br>
+                        <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-right">
+                            <img src="{{ first.image.url }}" alt="{{ first.name }}" class="img-fluid" style="object-fit: contain;">
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+                            <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+                                <h4>{{ first.header }}</h4>
+                            </div>
+                            <ul>
+                                <li>{{ first.description1 }}</li>
+                                <li>{{ first.description2 }}</li>
+                                <li>{{ first.description3 }}</li>
+                                <li>{{ first.description4 }}</li>
+                                <li>{{ first.description5 }}</li>
+                                <li>{{ first.description6 }}</li>
+                            </ul>
+                            <a class="btn btn-primary" href="{{ first.button }}">Book Consultation With The Instructor of This Course</a> <br><br>
+                            <a class="btn btn-primary" href="{% url 'cyber_security_b' %}">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+</section><!-- End beginners Section -->
+
+<!-- ======= Advance Section ======= -->
+<section id="advance" class="features">
+    <div class="container" data-aos="fade-up">
+        <div class="row">
+            {% if second %}
+                <div class="container" data-aos="fade-up">
+                    <div class="row">
+                        <h2 class="text-center">{{ second.name }}</h2><br><br><br>
+                        <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-right">
+                            <img src="{{ second.image.url }}" alt="{{ second.name }}" class="img-fluid" style="object-fit: contain;">
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+                            <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+                                <h4>{{ second.header }}</h4>
+                            </div>
+                            <ul>
+                                <li>{{ second.description1 }}</li>
+                                <li>{{ second.description2 }}</li>
+                                <li>{{ second.description3 }}</li>
+                                <li>{{ second.description4 }}</li>
+                                <li>{{ second.description5 }}</li>
+                                <li>{{ second.description6 }}</li>
+                            </ul>
+                            <a class="btn btn-primary" href="{{ second.button }}">Book Consultation With The Instructor of This Course</a> <br><br>
+                            <a class="btn btn-primary" href="{% url 'cyber_security_a' %}">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+</section><!-- End Advance Section -->
+
+<!-- ======= Pro Section ======= -->
+<section id="pro" class="features">
+    <div class="container" data-aos="fade-up">
+        <div class="row">
+            {% if third %}
+                <div class="container" data-aos="fade-up">
+                    <div class="row">
+                        <h2 class="text-center">{{ third.name }}</h2><br><br><br>
+                        <div class="col-lg-6 d-flex align-items-stretch" data-aos="fade-right">
+                            <img src="{{ third.image.url }}" alt="{{ third.name }}" class="img-fluid" style="object-fit: contain;">
+                        </div>
+                        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+                            <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+                                <h4>{{ third.header }}</h4>
+                            </div>
+                            <ul>
+                                <li>{{ third.description1 }}</li>
+                                <li>{{ third.description2 }}</li>
+                                <li>{{ third.description3 }}</li>
+                                <li>{{ third.description4 }}</li>
+                                <li>{{ third.description5 }}</li>
+                                <li>{{ third.description6 }}</li>
+                            </ul>
+                            <a class="btn btn-primary" href="{{ third.button }}">Book Consultation With The Instructor of This Course</a> <br><br>
+                            <a class="btn btn-primary" href="{% url 'cyber_security_p' %}">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+</section><!-- End Pro Section -->
+
+{% endblock %}

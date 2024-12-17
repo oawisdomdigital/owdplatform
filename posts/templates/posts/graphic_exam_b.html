@@ -1,0 +1,537 @@
+{% extends "base.html" %}
+{% block title %}Graphic Design CBT Exam{% endblock %}
+{% load static %}
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        padding: 20px;
+    }
+</style>
+
+<div class="container section-title" data-aos="fade-up">
+    <h1 class="mb-4">Intermediate Digital Marketing CBT Exam</h1>
+    <h2>Answer all questions in 30 minutes</h2>
+</div>
+<div id="timer">Time left: 00:00:00</div>
+
+
+<div class="question1">
+    <p>1. What is the primary color model used in digital design?</p>
+    <label><input type="radio" name="q1" value="a"> A) CMYK</label>
+    <label><input type="radio" name="q1" value="b"> B) RGB</label>
+    <label><input type="radio" name="q1" value="c"> C) PMS</label>
+    <label><input type="radio" name="q1" value="d"> D) HSL</label>
+</div>
+
+<div class="question2">
+    <p>2. What is the standard resolution for print design?</p>
+    <label><input type="radio" name="q2" value="a"> A) 72 DPI</label>
+    <label><input type="radio" name="q2" value="b"> B) 150 DPI</label>
+    <label><input type="radio" name="q2" value="c"> C) 300 DPI</label>
+    <label><input type="radio" name="q2" value="d"> D) 600 DPI</label>
+</div>
+
+<div class="question3">
+    <p>3. Which of the following is NOT a vector graphic format?</p>
+    <label><input type="radio" name="q3" value="a"> A) AI</label>
+    <label><input type="radio" name="q3" value="b"> B) EPS</label>
+    <label><input type="radio" name="q3" value="c"> C) PNG</label>
+    <label><input type="radio" name="q3" value="d"> D) SVG</label>
+</div>
+
+<div class="question4">
+    <p>4. What is the purpose of using grids in design?</p>
+    <label><input type="radio" name="q4" value="a"> A) To add color</label>
+    <label><input type="radio" name="q4" value="b"> B) To create alignment and consistency</label>
+    <label><input type="radio" name="q4" value="c"> C) To make the design more complex</label>
+    <label><input type="radio" name="q4" value="d"> D) To increase file size</label>
+</div>
+
+<div class="question5">
+    <p>5. Which tool is commonly used for creating vector graphics?</p>
+    <label><input type="radio" name="q5" value="a"> A) Adobe Photoshop</label>
+    <label><input type="radio" name="q5" value="b"> B) Adobe Illustrator</label>
+    <label><input type="radio" name="q5" value="c"> C) Corel Painter</label>
+    <label><input type="radio" name="q5" value="d"> D) Microsoft Paint</label>
+</div>
+
+<div class="question6">
+    <p>6. What is the term for adjusting the space between characters in typography?</p>
+    <label><input type="radio" name="q6" value="a"> A) Leading</label>
+    <label><input type="radio" name="q6" value="b"> B) Kerning</label>
+    <label><input type="radio" name="q6" value="c"> C) Tracking</label>
+    <label><input type="radio" name="q6" value="d"> D) Baseline</label>
+</div>
+
+<div class="question7">
+    <p>7. In design, what does the term 'white space' refer to?</p>
+    <label><input type="radio" name="q7" value="a"> A) Unused space in a design</label>
+    <label><input type="radio" name="q7" value="b"> B) The white background color</label>
+    <label><input type="radio" name="q7" value="c"> C) The space between images</label>
+    <label><input type="radio" name="q7" value="d"> D) Text on a white background</label>
+</div>
+
+<div class="question8">
+    <p>8. What does DPI stand for in printing?</p>
+    <label><input type="radio" name="q8" value="a"> A) Dots Per Inch</label>
+    <label><input type="radio" name="q8" value="b"> B) Digital Print Imaging</label>
+    <label><input type="radio" name="q8" value="c"> C) Data Point Index</label>
+    <label><input type="radio" name="q8" value="d"> D) Direct Print Inks</label>
+</div>
+
+<div class="question9">
+    <p>9. Which file format is best for high-quality print images?</p>
+    <label><input type="radio" name="q9" value="a"> A) JPEG</label>
+    <label><input type="radio" name="q9" value="b"> B) GIF</label>
+    <label><input type="radio" name="q9" value="c"> C) PNG</label>
+    <label><input type="radio" name="q9" value="d"> D) TIFF</label>
+</div>
+
+<div class="question10">
+    <p>10. What is the primary software used for photo editing?</p>
+    <label><input type="radio" name="q10" value="a"> A) Adobe Illustrator</label>
+    <label><input type="radio" name="q10" value="b"> B) Adobe Photoshop</label>
+    <label><input type="radio" name="q10" value="c"> C) CorelDRAW</label>
+    <label><input type="radio" name="q10" value="d"> D) GIMP</label>
+</div>
+
+<div class="question11">
+    <p>11. Which of these is a popular typeface used in print design?</p>
+    <label><input type="radio" name="q11" value="a"> A) Helvetica</label>
+    <label><input type="radio" name="q11" value="b"> B) Arial</label>
+    <label><input type="radio" name="q11" value="c"> C) Comic Sans</label>
+    <label><input type="radio" name="q11" value="d"> D) Times New Roman</label>
+</div>
+
+<div class="question12">
+    <p>12. What does the term 'bleed' refer to in print design?</p>
+    <label><input type="radio" name="q12" value="a"> A) The space between text and image</label>
+    <label><input type="radio" name="q12" value="b"> B) The area where images or elements extend beyond the trim
+        edge</label>
+    <label><input type="radio" name="q12" value="c"> C) The gap between pages in a spread</label>
+    <label><input type="radio" name="q12" value="d"> D) The white space around a design</label>
+</div>
+
+<div class="question13">
+    <p>13. Which file format is best for web graphics with transparency?</p>
+    <label><input type="radio" name="q13" value="a"> A) JPEG</label>
+    <label><input type="radio" name="q13" value="b"> B) GIF</label>
+    <label><input type="radio" name="q13" value="c"> C) PNG</label>
+    <label><input type="radio" name="q13" value="d"> D) BMP</label>
+</div>
+
+<div class="question14">
+    <p>14. What does 'typography' refer to?</p>
+    <label><input type="radio" name="q14" value="a"> A) The use of images in design</label>
+    <label><input type="radio" name="q14" value="b"> B) The arrangement and design of text</label>
+    <label><input type="radio" name="q14" value="c"> C) The selection of colors</label>
+    <label><input type="radio" name="q14" value="d"> D) The creation of illustrations</label>
+</div>
+
+<div class="question15">
+    <p>15. In graphic design, what is a 'mockup'?</p>
+    <label><input type="radio" name="q15" value="a"> A) A finished design</label>
+    <label><input type="radio" name="q15" value="b"> B) A high-fidelity static representation of the design</label>
+    <label><input type="radio" name="q15" value="c"> C) A wireframe</label>
+    <label><input type="radio" name="q15" value="d"> D) An animated prototype</label>
+</div>
+
+<div class="question16">
+    <p>16. What is 'leading' in typography?</p>
+    <label><input type="radio" name="q16" value="a"> A) The space between characters</label>
+    <label><input type="radio" name="q16" value="b"> B) The space between lines of text</label>
+    <label><input type="radio" name="q16" value="c"> C) The height of capital letters</label>
+    <label><input type="radio" name="q16" value="d"> D) The width of characters</label>
+</div>
+
+<div class="question17">
+    <p>17. What does 'PPI' stand for in digital imaging?</p>
+    <label><input type="radio" name="q17" value="a"> A) Pixels Per Inch</label>
+    <label><input type="radio" name="q17" value="b"> B) Points Per Inch</label>
+    <label><input type="radio" name="q17" value="c"> C) Print Per Inch</label>
+    <label><input type="radio" name="q17" value="d"> D) Photos Per Inch</label>
+</div>
+
+<div class="question18">
+    <p>18. What is the primary purpose of a logo?</p>
+    <label><input type="radio" name="q18" value="a"> A) To fill space in a design</label>
+    <label><input type="radio" name="q18" value="b"> B) To represent a brand or company visually</label>
+    <label><input type="radio" name="q18" value="c"> C) To decorate a website</label>
+    <label><input type="radio" name="q18" value="d"> D) To serve as a background image</label>
+</div>
+
+<div class="question19">
+    <p>19. Which color model is used for printing?</p>
+    <label><input type="radio" name="q19" value="a"> A) RGB</label>
+    <label><input type="radio" name="q19" value="b"> B) HEX</label>
+    <label><input type="radio" name="q19" value="c"> C) HSL</label>
+    <label><input type="radio" name="q19" value="d"> D) CMYK</label>
+</div>
+
+<div class="question20">
+    <p>20. What is the Golden Ratio used for in design?</p>
+    <label><input type="radio" name="q20" value="a"> A) Color selection</label>
+    <label><input type="radio" name="q20" value="b"> B) Creating balanced and aesthetically pleasing
+        compositions</label>
+    <label><input type="radio" name="q20" value="c"> C) Adjusting brightness</label>
+    <label><input type="radio" name="q20" value="d"> D) Selecting fonts</label>
+</div>
+
+<div class="question21">
+    <p>21. Which of the following tools is used for photo retouching?</p>
+    <label><input type="radio" name="q21" value="a"> A) Adobe Photoshop</label>
+    <label><input type="radio" name="q21" value="b"> B) Adobe Illustrator</label>
+    <label><input type="radio" name="q21" value="c"> C) Microsoft Word</label>
+    <label><input type="radio" name="q21" value="d"> D) Excel</label>
+</div>
+
+<div class="question22">
+    <p>22. What is the function of layers in graphic design software?</p>
+    <label><input type="radio" name="q22" value="a"> A) To add filters</label>
+    <label><input type="radio" name="q22" value="b"> B) To organize and manage different elements of a design
+        separately</label>
+    <label><input type="radio" name="q22" value="c"> C) To change colors</label>
+    <label><input type="radio" name="q22" value="d"> D) To save the file</label>
+</div>
+
+<div class="question23">
+    <p>23. What is a 'mood board'?</p>
+    <label><input type="radio" name="q23" value="a"> A) A collection of images, colors, and materials to convey a
+        desired style</label>
+    <label><input type="radio" name="q23" value="b"> B) A type of display screen</label>
+    <label><input type="radio" name="q23" value="c"> C) A graphic design tool</label>
+    <label><input type="radio" name="q23" value="d"> D) A type of color palette</label>
+</div>
+
+<div class="question24">
+    <p>24. What is the standard color mode for web design?</p>
+    <label><input type="radio" name="q24" value="a"> A) RGB</label>
+    <label><input type="radio" name="q24" value="b"> B) CMYK</label>
+    <label><input type="radio" name="q24" value="c"> C) PMS</label>
+    <label><input type="radio" name="q24" value="d"> D) HSL</label>
+</div>
+
+<div class="question25">
+    <p>25. What does 'aspect ratio' refer to?</p>
+    <label><input type="radio" name="q25" value="a"> A) The color depth of an image</label>
+    <label><input type="radio" name="q25" value="b"> B) The resolution of an image</label>
+    <label><input type="radio" name="q25" value="c"> C) The width-to-height ratio of an image</label>
+    <label><input type="radio" name="q25" value="d"> D) The brightness of an image</label>
+</div>
+
+<div class="question26">
+    <p>26. What is the main purpose of using a 'color wheel' in design?</p>
+    <label><input type="radio" name="q26" value="a"> A) To create illustrations</label>
+    <label><input type="radio" name="q26" value="b"> B) To understand color relationships and harmonies</label>
+    <label><input type="radio" name="q26" value="c"> C) To edit photos</label>
+    <label><input type="radio" name="q26" value="d"> D) To adjust contrast</label>
+</div>
+
+<div class="question27">
+    <p>27. What does the term 'vector graphic' mean?</p>
+    <label><input type="radio" name="q27" value="a"> A) An image made up of pixels</label>
+    <label><input type="radio" name="q27" value="b"> B) An image made up of paths and mathematical equations</label>
+    <label><input type="radio" name="q27" value="c"> C) A bitmap image</label>
+    <label><input type="radio" name="q27" value="d"> D) An animated image</label>
+</div>
+
+<div class="question28">
+    <p>28. Which design principle focuses on the visual weight of elements?</p>
+    <label><input type="radio" name="q28" value="a"> A) Balance</label>
+    <label><input type="radio" name="q28" value="b"> B) Contrast</label>
+    <label><input type="radio" name="q28" value="c"> C) Emphasis</label>
+    <label><input type="radio" name="q28" value="d"> D) Rhythm</label>
+</div>
+
+<div class="question29">
+    <p>29. Which of these is an example of a serif typeface?</p>
+    <label><input type="radio" name="q29" value="a"> A) Arial</label>
+    <label><input type="radio" name="q29" value="b"> B) Helvetica</label>
+    <label><input type="radio" name="q29" value="c"> C) Times New Roman</label>
+    <label><input type="radio" name="q29" value="d"> D) Verdana</label>
+</div>
+
+<div class="question30">
+    <p>30. What is a 'wireframe' used for in design?</p>
+    <label><input type="radio" name="q30" value="a"> A) Adding colors</label>
+    <label><input type="radio" name="q30" value="b"> B) Creating the basic layout and structure of a design</label>
+    <label><input type="radio" name="q30" value="c"> C) Adding textures</label>
+    <label><input type="radio" name="q30" value="d"> D) Finalizing a design</label>
+</div>
+
+<div class="question31">
+    <p>31. What does 'RGB' stand for?</p>
+    <label><input type="radio" name="q31" value="a"> A) Red Green Blue</label>
+    <label><input type="radio" name="q31" value="b"> B) Red Gray Black</label>
+    <label><input type="radio" name="q31" value="c"> C) Red Green Black</label>
+    <label><input type="radio" name="q31" value="d"> D) Red Green Brown</label>
+</div>
+
+<div class="question32">
+    <p>32. What is a 'grid system' used for in graphic design?</p>
+    <label><input type="radio" name="q32" value="a"> A) To create 3D effects</label>
+    <label><input type="radio" name="q32" value="b"> B) To help structure and align elements in a design</label>
+    <label><input type="radio" name="q32" value="c"> C) To add shadows</label>
+    <label><input type="radio" name="q32" value="d"> D) To create animations</label>
+</div>
+
+<div class="question33">
+    <p>33. Which term refers to the combination of visual and textual content to convey a message?</p>
+    <label><input type="radio" name="q33" value="a"> A) Typography</label>
+    <label><input type="radio" name="q33" value="b"> B) Graphic Design</label>
+    <label><input type="radio" name="q33" value="c"> C) Illustration</label>
+    <label><input type="radio" name="q33" value="d"> D) Photography</label>
+</div>
+
+<div class="question34">
+    <p>34. What is the purpose of a 'style guide' in design?</p>
+    <label><input type="radio" name="q34" value="a"> A) To provide guidelines for the consistent use of design
+        elements</label>
+    <label><input type="radio" name="q34" value="b"> B) To choose color schemes</label>
+    <label><input type="radio" name="q34" value="c"> C) To create wireframes</label>
+    <label><input type="radio" name="q34" value="d"> D) To develop prototypes</label>
+</div>
+
+<div class="question35">
+    <p>35. What does 'negative space' refer to in design?</p>
+    <label><input type="radio" name="q35" value="a"> A) Dark areas in an image</label>
+    <label><input type="radio" name="q35" value="b"> B) The empty space around and between objects in a design</label>
+    <label><input type="radio" name="q35" value="c"> C) The background color</label>
+    <label><input type="radio" name="q35" value="d"> D) The foreground elements</label>
+</div>
+
+<div class="question36">
+    <p>36. Which term describes a simplified, monochrome version of a logo?</p>
+    <label><input type="radio" name="q36" value="a"> A) Mockup</label>
+    <label><input type="radio" name="q36" value="b"> B) Icon</label>
+    <label><input type="radio" name="q36" value="c"> C) Watermark</label>
+    <label><input type="radio" name="q36" value="d"> D) Silhouette</label>
+</div>
+
+<div class="question37">
+    <p>37. Which of these is a commonly used color space for digital design?</p>
+    <label><input type="radio" name="q37" value="a"> A) Pantone</label>
+    <label><input type="radio" name="q37" value="b"> B) RGB</label>
+    <label><input type="radio" name="q37" value="c"> C) CMYK</label>
+    <label><input type="radio" name="q37" value="d"> D) PMS</label>
+</div>
+
+<div class="question38">
+    <p>38. What is a 'mood board' used for in the design process?</p>
+    <label><input type="radio" name="q38" value="a"> A) To create a final design</label>
+    <label><input type="radio" name="q38" value="b"> B) To explore and establish the visual direction of a
+        project</label>
+    <label><input type="radio" name="q38" value="c"> C) To draft a website layout</label>
+    <label><input type="radio" name="q38" value="d"> D) To adjust color balance</label>
+</div>
+
+<div class="question39">
+    <p>39. What is the purpose of 'user interface design'?</p>
+    <label><input type="radio" name="q39" value="a"> A) To develop backend code</label>
+    <label><input type="radio" name="q39" value="b"> B) To design the visual layout and interactive elements of a
+        digital product</label>
+    <label><input type="radio" name="q39" value="c"> C) To create marketing strategies</label>
+    <label><input type="radio" name="q39" value="d"> D) To manage databases</label>
+</div>
+
+<div class="question40">
+    <p>40. What does the pen tool do in most graphic design software?</p>
+    <label><input type="radio" name="q40" value="a"> A) It creates pixel-based images</label>
+    <label><input type="radio" name="q40" value="b"> B) It creates vector paths</label>
+    <label><input type="radio" name="q40" value="c"> C) It adjusts color balance</label>
+    <label><input type="radio" name="q40" value="d"> D) It applies filters</label>
+</div>
+
+<button class="btn-submit btn-primary">Submit Answers</button>
+
+<script>
+    const answers = {
+            q1: 'b',  // What does DPI stand for in graphic design? b. Dots Per Inch
+            q2: 'a',  // Which color model is used for print design? a. CMYK
+            q3: 'd',  // What is kerning? d. The space between characters in a word
+            q4: 'b',  // What is the main purpose of a thumbnail sketch? b. To quickly explore multiple ideas
+            q5: 'a',  // Which software is primarily used for vector graphics? a. Adobe Illustrator
+            q6: 'c',  // What is a mockup? c. A full-scale model of a design or device used for product presentations
+            q7: 'a',  // Which term describes the intensity of a color? a. Saturation
+            q8: 'd',  // What does RGB stand for? d. Red, Green, Blue
+            q9: 'b',  // Which principle of design refers to the size relationship between elements? b. Proportion
+            q10: 'c', // What is a grid system in design used for? c. To create a consistent structure
+            q11: 'd', // What is a common file format for web images? d. PNG
+            q12: 'a', // What is the purpose of a bleed in printing? a. To ensure the design extends to the edge of the paper after trimming
+            q13: 'b', // What is tracking in typography? b. The overall spacing between characters
+            q14: 'd', // Which software is best for photo editing? d. Adobe Photoshop
+            q15: 'c', // What is the rule of thirds? c. A guideline for composing visual images
+            q16: 'a', // What is a vector graphic? a. An image made up of paths or lines
+            q17: 'b', // What does SVG stand for? b. Scalable Vector Graphics
+            q18: 'd', // What is a mood board? d. A collage of images, text, and samples of objects to convey a style
+            q19: 'a', // What is white space in design? a. The empty space around design elements
+            q20: 'c', // What is the Pantone Matching System? c. A standardized color reproduction system
+            q21: 'd', // What is a raster image? d. An image made up of pixels
+            q22: 'b', // What does UX stand for? b. User Experience
+            q23: 'd', // What is the purpose of a wireframe? d. To plan the layout of a web page
+            q24: 'c', // What is the Golden Ratio? c. A mathematical ratio commonly found in nature used in design
+            q25: 'a', // What does PDF stand for? a. Portable Document Format
+            q26: 'd', // What is a key aspect of minimalist design? d. Simplicity and clarity
+            q27: 'c', // What is the function of a brand style guide? c. To maintain consistency in branding
+            q28: 'b', // Which tool is commonly used for digital painting? b. Adobe Photoshop
+            q29: 'a', // What does opacity refer to in design? a. The transparency level of an element
+            q30: 'd', // What is the use of a clipping mask in design software? d. To hide parts of an image without deleting them
+            q31: 'a', // What is the main focus of responsive design? a. To ensure a website looks good on all devices
+            q32: 'c', // What is leading in typography? c. The space between lines of text
+            q33: 'b', // Which file format is best for saving high-quality images? b. TIFF
+            q34: 'a', // What does CSS stand for? a. Cascading Style Sheets
+            q35: 'c', // What is the primary purpose of a logo? c. To visually represent a brand
+            q36: 'd', // What is the purpose of a mood board in design? d. To convey a visual style or concept
+            q37: 'b', // Which design principle is associated with creating a sense of movement? b. Rhythm
+            q38: 'a', // What is a common use for a gradient in design? a. To create a smooth transition between colors
+            q39: 'd', // What does HTML stand for? d. HyperText Markup Language
+            q40: 'c'  // What is the purpose of a brand identity? c. To establish a consistent visual representation of a brand
+        };
+
+        function createNotification(message, backgroundColor) {
+                const notification = document.createElement('div');
+                notification.style.position = 'fixed';
+                notification.style.top = '50%';
+                notification.style.left = '50%';
+                notification.style.transform = 'translate(-50%, -50%)';
+                notification.style.fontSize = '1.5em';
+                notification.style.backgroundColor = backgroundColor;
+                notification.style.color = '#fff';
+                notification.style.padding = '30px 20px';
+                notification.style.borderRadius = '10px';
+                notification.style.textAlign = 'center';
+                notification.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+                notification.style.zIndex = '1000';
+                notification.style.width = '80%';
+                notification.style.maxWidth = '400px';
+                notification.style.display = 'flex';
+                notification.style.flexDirection = 'column';
+                notification.style.alignItems = 'center';
+
+                const messageContainer = document.createElement('div');
+                messageContainer.textContent = message;
+                messageContainer.style.marginBottom = '20px';
+                messageContainer.style.width = '100%';
+
+                const okButton = document.createElement('button');
+                okButton.textContent = 'OK';
+                okButton.style.fontSize = '20px';
+                okButton.style.padding = '10px 20px';
+                okButton.style.backgroundColor = '#007bff';
+                okButton.style.color = '#fff';
+                okButton.style.border = 'none';
+                okButton.style.borderRadius = '5px';
+                okButton.style.cursor = 'pointer';
+                okButton.style.transition = 'background-color 0.3s';
+
+                okButton.addEventListener('mouseover', function () {
+                    okButton.style.backgroundColor = '#0056b3';
+                });
+
+                okButton.addEventListener('mouseout', function () {
+                    okButton.style.backgroundColor = '#007bff';
+                });
+
+                okButton.addEventListener('click', function () {
+                    document.body.removeChild(notification);
+                });
+
+                notification.appendChild(messageContainer);
+                notification.appendChild(okButton);
+                document.body.appendChild(notification);
+            }
+
+            function submitExam() {
+                clearInterval(timerInterval); // Stop the countdown timer
+                let score = 0;
+                let totalQuestions = Object.keys(answers).length;
+                let unansweredQuestions = [];
+
+                for (let i = 1; i <= totalQuestions; i++) {
+                    const questionName = `q${i}`;
+                    const userAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                    if (userAnswer) {
+                        if (userAnswer.value === answers[questionName]) {
+                            score++;
+                            document.querySelector(`input[name="${questionName}"]:checked`).parentNode.classList.add('correct');
+                        } else {
+                            document.querySelector(`input[name="${questionName}"]:checked`).parentNode.classList.add('incorrect');
+                        }
+                    } else {
+                        unansweredQuestions.push(i);
+                    }
+                }
+
+                if (unansweredQuestions.length > 0) {
+                    createNotification(`Please answer question(s): ${unansweredQuestions.join(', ')}`, '#ff0000');
+                    resetExam(); // Reset exam if there are unanswered questions
+                    return;
+                }
+
+                const percentageScore = (score / totalQuestions) * 100;
+
+                if (percentageScore < 50) {
+                    createNotification(`You scored ${score} out of ${totalQuestions}. You have a poor score. Please try again.`, '#ff0000');
+                } else if (percentageScore > 50 && percentageScore < 100) {
+                    createNotification(`You scored ${score} out of ${totalQuestions}. You are close to success. You can do better!`, '#007bff');
+                } else if (percentageScore === 100) {
+                    createNotification(`Congratulations! You scored ${score} out of ${totalQuestions}. Excellent performance!`, '#28a745');
+                }
+
+                resetExam(); // Reset exam after successful submission
+            }
+
+            function resetQuestions() {
+                const radioButtons = document.querySelectorAll('input[type="radio"]');
+                radioButtons.forEach(radio => {
+                    radio.checked = false;
+                    radio.parentNode.classList.remove('correct', 'incorrect');
+                });
+            }
+
+            function resetExam() {
+                resetQuestions(); // Reset questions to default state
+                timeLeft = 1800; // Reset timer to 30 minutes
+                timerElement.textContent = "Time left: 00:30:00"; // Reset timer display
+                clearInterval(timerInterval); // Clear the existing interval
+                timerInterval = setInterval(updateTimer, 1000); // Restart the countdown timer
+            }
+
+            document.querySelector('.btn-submit').addEventListener('click', function () {
+                submitExam();
+            });
+
+            // Countdown Timer
+            let timeLeft = 1800; // 3 hours countdown (in seconds)
+            const timerElement = document.getElementById('timer');
+
+            function updateTimer() {
+                if (timeLeft <= 0) {
+                    submitExam();
+                    clearInterval(timerInterval);
+                    timerElement.textContent = "Time left: 00:00:00"; // Reset timer display
+                } else {
+                    let displayTime = '';
+                    if (timeLeft >= 3600) {
+                        const hours = Math.floor(timeLeft / 3600);
+                        const minutes = Math.floor((timeLeft % 3600) / 60);
+                        const seconds = timeLeft % 60;
+                        displayTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    } else {
+                        const minutes = Math.floor(timeLeft / 60);
+                        const seconds = timeLeft % 60;
+                        displayTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    }
+
+                    timerElement.textContent = `Time left: ${displayTime}`;
+                    timeLeft--;
+                }
+            }
+
+            let timerInterval = setInterval(updateTimer, 1000);
+</script>
+{% endblock %}

@@ -1,0 +1,531 @@
+{% extends "base.html" %}
+{% block title %}Data Analysis CBT Exam{% endblock %}
+{% load static %}
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        padding: 20px;
+    }
+</style>
+
+<div class="container section-title" data-aos="fade-up">
+    <h1 class="mb-4">Intermediate Data Analysis CBT Exam</h1>
+    <h2>Answer all questions in 30 minutes</h2>
+</div>
+<div id="timer">Time left: 00:00:00</div>
+
+<div class="question1">
+    <p>1. Which tool is commonly used for adjusting the brightness and contrast of a data visualization?</p>
+    <label><input type="radio" name="q1" value="a"> A) Levels</label>
+    <label><input type="radio" name="q1" value="b"> B) Curves</label>
+    <label><input type="radio" name="q1" value="c"> C) Hue/Saturation</label>
+    <label><input type="radio" name="q1" value="d"> D) None of the above</label>
+</div>
+
+<div class="question2">
+    <p>2. What is the purpose of data cleaning in data analysis?</p>
+    <label><input type="radio" name="q2" value="a"> A) To remove errors and inconsistencies</label>
+    <label><input type="radio" name="q2" value="b"> B) To apply statistical models</label>
+    <label><input type="radio" name="q2" value="c"> C) To visualize data</label>
+    <label><input type="radio" name="q2" value="d"> D) To collect new data</label>
+</div>
+
+<div class="question3">
+    <p>3. What does the term "EDA" stand for in data analysis?</p>
+    <label><input type="radio" name="q3" value="a"> A) Exploratory Data Analysis</label>
+    <label><input type="radio" name="q3" value="b"> B) Enhanced Data Analysis</label>
+    <label><input type="radio" name="q3" value="c"> C) Efficient Data Analysis</label>
+    <label><input type="radio" name="q3" value="d"> D) Explorative Data Analysis</label>
+</div>
+
+<div class="question4">
+    <p>4. Which tool is used to handle missing data in a dataset?</p>
+    <label><input type="radio" name="q4" value="a"> A) Imputation</label>
+    <label><input type="radio" name="q4" value="b"> B) Random Sampling</label>
+    <label><input type="radio" name="q4" value="c"> C) Normalization</label>
+    <label><input type="radio" name="q4" value="d"> D) Clustering</label>
+</div>
+
+<div class="question5">
+    <p>5. What does the term "standard deviation" refer to in data analysis?</p>
+    <label><input type="radio" name="q5" value="a"> A) A measure of data dispersion</label>
+    <label><input type="radio" name="q5" value="b"> B) A measure of central tendency</label>
+    <label><input type="radio" name="q5" value="c"> C) A measure of correlation</label>
+    <label><input type="radio" name="q5" value="d"> D) A measure of data skewness</label>
+</div>
+
+<div class="question6">
+    <p>6. Which file format is known for retaining data quality with lossless compression?</p>
+    <label><input type="radio" name="q6" value="a"> A) CSV</label>
+    <label><input type="radio" name="q6" value="b"> B) JSON</label>
+    <label><input type="radio" name="q6" value="c"> C) XLSX</label>
+    <label><input type="radio" name="q6" value="d"> D) ZIP</label>
+</div>
+
+<div class="question7">
+    <p>7. What is the key benefit of using interactive data visualizations?</p>
+    <label><input type="radio" name="q7" value="a"> A) Enhanced user engagement</label>
+    <label><input type="radio" name="q7" value="b"> B) Faster data processing</label>
+    <label><input type="radio" name="q7" value="c"> C) Increased data accuracy</label>
+    <label><input type="radio" name="q7" value="d"> D) Better data storage</label>
+</div>
+
+<div class="question8">
+    <p>8. Which tool is commonly used for creating scatter plots in data analysis?</p>
+    <label><input type="radio" name="q8" value="a"> A) Excel</label>
+    <label><input type="radio" name="q8" value="b"> B) Tableau</label>
+    <label><input type="radio" name="q8" value="c"> C) Python (Matplotlib/Seaborn)</label>
+    <label><input type="radio" name="q8" value="d"> D) All of the above</label>
+</div>
+
+<div class="question9">
+    <p>9. What is the primary function of the "correlation" analysis in data analysis?</p>
+    <label><input type="radio" name="q9" value="a"> A) To identify relationships between variables</label>
+    <label><input type="radio" name="q9" value="b"> B) To categorize data</label>
+    <label><input type="radio" name="q9" value="c"> C) To normalize data</label>
+    <label><input type="radio" name="q9" value="d"> D) To reduce data dimensions</label>
+</div>
+
+<div class="question10">
+    <p>10. Which tool is used to visualize the distribution of a dataset?</p>
+    <label><input type="radio" name="q10" value="a"> A) Histogram</label>
+    <label><input type="radio" name="q10" value="b"> B) Line Chart</label>
+    <label><input type="radio" name="q10" value="c"> C) Bar Chart</label>
+    <label><input type="radio" name="q10" value="d"> D) Pie Chart</label>
+</div>
+
+<div class="question11">
+    <p>11. What is the primary purpose of a "regression analysis" in data analysis?</p>
+    <label><input type="radio" name="q11" value="a"> A) To predict the value of a dependent variable</label>
+    <label><input type="radio" name="q11" value="b"> B) To classify data into categories</label>
+    <label><input type="radio" name="q11" value="c"> C) To cluster data points</label>
+    <label><input type="radio" name="q11" value="d"> D) To visualize data</label>
+</div>
+
+<div class="question12">
+    <p>12. What does "ETL" stand for in data processing?</p>
+    <label><input type="radio" name="q12" value="a"> A) Extract, Transform, Load</label>
+    <label><input type="radio" name="q12" value="b"> B) Evaluate, Test, Launch</label>
+    <label><input type="radio" name="q12" value="c"> C) Extract, Transfer, Load</label>
+    <label><input type="radio" name="q12" value="d"> D) Examine, Transform, Load</label>
+</div>
+
+<div class="question13">
+    <p>13. Which tool is used to add special effects to data visualizations?</p>
+    <label><input type="radio" name="q13" value="a"> A) Animation</label>
+    <label><input type="radio" name="q13" value="b"> B) Effects Panel</label>
+    <label><input type="radio" name="q13" value="c"> C) Text Tool</label>
+    <label><input type="radio" name="q13" value="d"> D) Selection Tool</label>
+</div>
+
+<div class="question14">
+    <p>14. What is the role of the "timeline" in data analysis software?</p>
+    <label><input type="radio" name="q14" value="a"> A) To arrange data points in a sequence</label>
+    <label><input type="radio" name="q14" value="b"> B) To adjust data values</label>
+    <label><input type="radio" name="q14" value="c"> C) To apply data transformations</label>
+    <label><input type="radio" name="q14" value="d"> D) To clean the data</label>
+</div>
+
+<div class="question15">
+    <p>15. What does the term "data visualization" mean?</p>
+    <label><input type="radio" name="q15" value="a"> A) To display data graphically</label>
+    <label><input type="radio" name="q15" value="b"> B) To clean the data</label>
+    <label><input type="radio" name="q15" value="c"> C) To apply statistical models</label>
+    <label><input type="radio" name="q15" value="d"> D) To store the data</label>
+</div>
+
+<div class="question16">
+    <p>16. Which Python library is widely used for data manipulation and analysis?</p>
+    <label><input type="radio" name="q16" value="a"> A) NumPy</label>
+    <label><input type="radio" name="q16" value="b"> B) Pandas</label>
+    <label><input type="radio" name="q16" value="c"> C) Matplotlib</label>
+    <label><input type="radio" name="q16" value="d"> D) SciPy</label>
+</div>
+
+<div class="question17">
+    <p>17. In Excel, which function is used to find the average of a range of cells?</p>
+    <label><input type="radio" name="q17" value="a"> A) SUM</label>
+    <label><input type="radio" name="q17" value="b"> B) AVERAGE</label>
+    <label><input type="radio" name="q17" value="c"> C) MEDIAN</label>
+    <label><input type="radio" name="q17" value="d"> D) MODE</label>
+</div>
+
+<div class="question18">
+    <p>18. Which method in Pandas is used to handle missing data by filling it with a specific value?</p>
+    <label><input type="radio" name="q18" value="a"> A) dropna()</label>
+    <label><input type="radio" name="q18" value="b"> B) fillna()</label>
+    <label><input type="radio" name="q18" value="c"> C) replace()</label>
+    <label><input type="radio" name="q18" value="d"> D) interpolate()</label>
+</div>
+
+<div class="question19">
+    <p>19. In Excel, which feature allows you to quickly summarize large amounts of data?</p>
+    <label><input type="radio" name="q19" value="a"> A) Data Validation</label>
+    <label><input type="radio" name="q19" value="b"> B) Conditional Formatting</label>
+    <label><input type="radio" name="q19" value="c"> C) PivotTable</label>
+    <label><input type="radio" name="q19" value="d"> D) Text to Columns</label>
+</div>
+
+<div class="question20">
+    <p>20. Which Python library is commonly used for data visualization?</p>
+    <label><input type="radio" name="q20" value="a"> A) NumPy</label>
+    <label><input type="radio" name="q20" value="b"> B) Pandas</label>
+    <label><input type="radio" name="q20" value="c"> C) Matplotlib</label>
+    <label><input type="radio" name="q20" value="d"> D) SciPy</label>
+</div>
+
+<div class="question21">
+    <p>21. In Excel, which function is used to look up a value in a table by matching on the first column?</p>
+    <label><input type="radio" name="q21" value="a"> A) HLOOKUP</label>
+    <label><input type="radio" name="q21" value="b"> B) VLOOKUP</label>
+    <label><input type="radio" name="q21" value="c"> C) INDEX</label>
+    <label><input type="radio" name="q21" value="d"> D) MATCH</label>
+</div>
+
+<div class="question22">
+    <p>22. Which method in Pandas is used to remove duplicate rows in a DataFrame?</p>
+    <label><input type="radio" name="q22" value="a"> A) dropna()</label>
+    <label><input type="radio" name="q22" value="b"> B) drop_duplicates()</label>
+    <label><input type="radio" name="q22" value="c"> C) fillna()</label>
+    <label><input type="radio" name="q22" value="d"> D) replace()</label>
+</div>
+
+<div class="question23">
+    <p>23. In Excel, which function is used to count the number of cells that meet a criterion?</p>
+    <label><input type="radio" name="q23" value="a"> A) COUNT</label>
+    <label><input type="radio" name="q23" value="b"> B) COUNTA</label>
+    <label><input type="radio" name="q23" value="c"> C) COUNTIF</label>
+    <label><input type="radio" name="q23" value="d"> D) COUNTIFS</label>
+</div>
+
+<div class="question24">
+    <p>24. Which Python library is used for numerical computations?</p>
+    <label><input type="radio" name="q24" value="a"> A) NumPy</label>
+    <label><input type="radio" name="q24" value="b"> B) Pandas</label>
+    <label><input type="radio" name="q24" value="c"> C) Matplotlib</label>
+    <label><input type="radio" name="q24" value="d"> D) SciPy</label>
+</div>
+
+<div class="question25">
+    <p>25. In Excel, which tool is used to find patterns or trends in a set of data points?</p>
+    <label><input type="radio" name="q25" value="a"> A) Goal Seek</label>
+    <label><input type="radio" name="q25" value="b"> B) Scenario Manager</label>
+    <label><input type="radio" name="q25" value="c"> C) Data Table</label>
+    <label><input type="radio" name="q25" value="d"> D) Trendline</label>
+</div>
+
+<div class="question26">
+    <p>26. Which method in Pandas is used to concatenate two DataFrames?</p>
+    <label><input type="radio" name="q26" value="a"> A) append()</label>
+    <label><input type="radio" name="q26" value="b"> B) merge()</label>
+    <label><input type="radio" name="q26" value="c"> C) concat()</label>
+    <label><input type="radio" name="q26" value="d"> D) join()</label>
+</div>
+
+<div class="question27">
+    <p>27. In Excel, which function is used to find the smallest value in a range?</p>
+    <label><input type="radio" name="q27" value="a"> A) MAX</label>
+    <label><input type="radio" name="q27" value="b"> B) MIN</label>
+    <label><input type="radio" name="q27" value="c"> C) SMALL</label>
+    <label><input type="radio" name="q27" value="d"> D) LARGE</label>
+</div>
+
+<div class="question28">
+    <p>28. Which Python library provides functions for creating static, animated, and interactive visualizations?</p>
+    <label><input type="radio" name="q28" value="a"> A) NumPy</label>
+    <label><input type="radio" name="q28" value="b"> B) Pandas</label>
+    <label><input type="radio" name="q28" value="c"> C) Matplotlib</label>
+    <label><input type="radio" name="q28" value="d"> D) Plotly</label>
+</div>
+
+<div class="question29">
+    <p>29. In Excel, which feature allows you to remove duplicate rows?</p>
+    <label><input type="radio" name="q29" value="a"> A) Data Validation</label>
+    <label><input type="radio" name="q29" value="b"> B) Conditional Formatting</label>
+    <label><input type="radio" name="q29" value="c"> C) Remove Duplicates</label>
+    <label><input type="radio" name="q29" value="d"> D) Text to Columns</label>
+</div>
+
+<div class="question30">
+    <p>30. Which function in Python's NumPy library is used to find the mean of an array?</p>
+    <label><input type="radio" name="q30" value="a"> A) mean()</label>
+    <label><input type="radio" name="q30" value="b"> B) median()</label>
+    <label><input type="radio" name="q30" value="c"> C) average()</label>
+    <label><input type="radio" name="q30" value="d"> D) sum()</label>
+</div>
+
+<div class="question31">
+    <p>31. In Excel, which function is used to join multiple text strings into one string?</p>
+    <label><input type="radio" name="q31" value="a"> A) CONCATENATE</label>
+    <label><input type="radio" name="q31" value="b"> B) TEXTJOIN</label>
+    <label><input type="radio" name="q31" value="c"> C) CONCAT</label>
+    <label><input type="radio" name="q31" value="d"> D) JOIN</label>
+</div>
+
+<div class="question32">
+    <p>32. Which method in Pandas is used to sort a DataFrame by one or more columns?</p>
+    <label><input type="radio" name="q32" value="a"> A) sort()</label>
+    <label><input type="radio" name="q32" value="b"> B) sort_values()</label>
+    <label><input type="radio" name="q32" value="c"> C) order_by()</label>
+    <label><input type="radio" name="q32" value="d"> D) arrange()</label>
+</div>
+
+<div class="question33">
+    <p>33. In Excel, which feature allows you to create a drop-down list in a cell?</p>
+    <label><input type="radio" name="q33" value="a"> A) Conditional Formatting</label>
+    <label><input type="radio" name="q33" value="b"> B) Data Validation</label>
+    <label><input type="radio" name="q33" value="c"> C) Form Control</label>
+    <label><input type="radio" name="q33" value="d"> D) Data Filter</label>
+</div>
+
+<div class="question34">
+    <p>34. Which method in Pandas is used to group data and compute aggregate statistics?</p>
+    <label><input type="radio" name="q34" value="a"> A) group()</label>
+    <label><input type="radio" name="q34" value="b"> B) groupby()</label>
+    <label><input type="radio" name="q34" value="c"> C) aggregate()</label>
+    <label><input type="radio" name="q34" value="d"> D) aggregate_by()</label>
+</div>
+
+<div class="question35">
+    <p>35. In Excel, which function is used to calculate the standard deviation of a range of values?</p>
+    <label><input type="radio" name="q35" value="a"> A) STDEV</label>
+    <label><input type="radio" name="q35" value="b"> B) STDEVP</label>
+    <label><input type="radio" name="q35" value="c"> C) VAR</label>
+    <label><input type="radio" name="q35" value="d"> D) VARP</label>
+</div>
+
+<div class="question36">
+    <p>36. Which Python library is used for high-performance, easy-to-use data structures and data analysis tools?</p>
+    <label><input type="radio" name="q36" value="a"> A) NumPy</label>
+    <label><input type="radio" name="q36" value="b"> B) Pandas</label>
+    <label><input type="radio" name="q36" value="c"> C) Matplotlib</label>
+    <label><input type="radio" name="q36" value="d"> D) SciPy</label>
+</div>
+
+<div class="question37">
+    <p>37. In Excel, which function is used to find the largest value in a range?</p>
+    <label><input type="radio" name="q37" value="a"> A) MAX</label>
+    <label><input type="radio" name="q37" value="b"> B) MIN</label>
+    <label><input type="radio" name="q37" value="c"> C) LARGE</label>
+    <label><input type="radio" name="q37" value="d"> D) SMALL</label>
+</div>
+
+<div class="question38">
+    <p>38. Which method in Pandas is used to merge two DataFrames based on a common column?</p>
+    <label><input type="radio" name="q38" value="a"> A) append()</label>
+    <label><input type="radio" name="q38" value="b"> B) merge()</label>
+    <label><input type="radio" name="q38" value="c"> C) concat()</label>
+    <label><input type="radio" name="q38" value="d"> D) join()</label>
+</div>
+
+<div class="question39">
+    <p>39. In Excel, which function is used to calculate the variance of a range of values?</p>
+    <label><input type="radio" name="q39" value="a"> A) STDEV</label>
+    <label><input type="radio" name="q39" value="b"> B) STDEVP</label>
+    <label><input type="radio" name="q39" value="c"> C) VAR</label>
+    <label><input type="radio" name="q39" value="d"> D) VARP</label>
+</div>
+
+<div class="question40">
+    <p>40. Which method in Pandas is used to reshape data into a wide format?</p>
+    <label><input type="radio" name="q40" value="a"> A) melt()</label>
+    <label><input type="radio" name="q40" value="b"> B) pivot()</label>
+    <label><input type="radio" name="q40" value="c"> C) unstack()</label>
+    <label><input type="radio" name="q40" value="d"> D) stack()</label>
+</div>
+
+<button class="btn-submit btn-primary">Submit Answers</button>
+
+<script>
+    const answers = {
+        q1: "b",
+        q2: "a",
+        q3: "b",
+        q4: "c",
+        q5: "d",
+        q6: "a",
+        q7: "b",
+        q8: "d",
+        q9: "c",
+        q10: "a",
+        q11: "d",
+        q12: "c",
+        q13: "b",
+        q14: "a",
+        q15: "d",
+        q16: "b",
+        q17: "b",
+        q18: "b",
+        q19: "c",
+        q20: "c",
+        q21: "b",
+        q22: "b",
+        q23: "c",
+        q24: "a",
+        q25: "d",
+        q26: "c",
+        q27: "b",
+        q28: "d",
+        q29: "c",
+        q30: "a",
+        q31: "a",
+        q32: "b",
+        q33: "b",
+        q34: "b",
+        q35: "a",
+        q36: "b",
+        q37: "a",
+        q38: "b",
+        q39: "c",
+        q40: "b"
+    };
+
+    function createNotification(message, backgroundColor) {
+        const notification = document.createElement('div');
+        notification.style.position = 'fixed';
+        notification.style.top = '50%';
+        notification.style.left = '50%';
+        notification.style.transform = 'translate(-50%, -50%)';
+        notification.style.fontSize = '1.5em';
+        notification.style.backgroundColor = backgroundColor;
+        notification.style.color = '#fff';
+        notification.style.padding = '30px 20px';
+        notification.style.borderRadius = '10px';
+        notification.style.textAlign = 'center';
+        notification.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+        notification.style.zIndex = '1000';
+        notification.style.width = '80%';
+        notification.style.maxWidth = '400px';
+        notification.style.display = 'flex';
+        notification.style.flexDirection = 'column';
+        notification.style.alignItems = 'center';
+
+        const messageContainer = document.createElement('div');
+        messageContainer.textContent = message;
+        messageContainer.style.marginBottom = '20px';
+        messageContainer.style.width = '100%';
+
+        const okButton = document.createElement('button');
+        okButton.textContent = 'OK';
+        okButton.style.fontSize = '20px';
+        okButton.style.padding = '10px 20px';
+        okButton.style.backgroundColor = '#007bff';
+        okButton.style.color = '#fff';
+        okButton.style.border = 'none';
+        okButton.style.borderRadius = '5px';
+        okButton.style.cursor = 'pointer';
+        okButton.style.transition = 'background-color 0.3s';
+
+        okButton.addEventListener('mouseover', function () {
+            okButton.style.backgroundColor = '#0056b3';
+        });
+
+        okButton.addEventListener('mouseout', function () {
+            okButton.style.backgroundColor = '#007bff';
+        });
+
+        okButton.addEventListener('click', function () {
+            document.body.removeChild(notification);
+        });
+
+        notification.appendChild(messageContainer);
+        notification.appendChild(okButton);
+        document.body.appendChild(notification);
+    }
+
+    function submitExam() {
+        clearInterval(timerInterval); // Stop the countdown timer
+        let score = 0;
+        let totalQuestions = Object.keys(answers).length;
+        let unansweredQuestions = [];
+
+        for (let i = 1; i <= totalQuestions; i++) {
+            const questionName = `q${i}`;
+            const userAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+            if (userAnswer) {
+                if (userAnswer.value === answers[questionName]) {
+                    score++;
+                    document.querySelector(`input[name="${questionName}"]:checked`).parentNode.classList.add('correct');
+                } else {
+                    document.querySelector(`input[name="${questionName}"]:checked`).parentNode.classList.add('incorrect');
+                }
+            } else {
+                unansweredQuestions.push(i);
+            }
+        }
+
+        if (unansweredQuestions.length > 0) {
+            createNotification(`Please answer question(s): ${unansweredQuestions.join(', ')}`, '#ff0000');
+            resetExam(); // Reset exam if there are unanswered questions
+            return;
+        }
+
+        const percentageScore = (score / totalQuestions) * 100;
+
+        if (percentageScore < 50) {
+            createNotification(`You scored ${score} out of ${totalQuestions}. You have a poor score. Please try again.`, '#ff0000');
+        } else if (percentageScore > 50 && percentageScore < 100) {
+            createNotification(`You scored ${score} out of ${totalQuestions}. You are close to success. You can do better!`, '#007bff');
+        } else if (percentageScore === 100) {
+            createNotification(`Congratulations! You scored ${score} out of ${totalQuestions}. Excellent performance!`, '#28a745');
+        }
+
+        resetExam(); // Reset exam after successful submission
+    }
+
+    function resetQuestions() {
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach(radio => {
+            radio.checked = false;
+            radio.parentNode.classList.remove('correct', 'incorrect');
+        });
+    }
+
+    function resetExam() {
+        resetQuestions(); // Reset questions to default state
+        timeLeft = 1800; // Reset timer to 30 minutes
+        timerElement.textContent = "Time left: 00:30:00"; // Reset timer display
+        clearInterval(timerInterval); // Clear the existing interval
+        timerInterval = setInterval(updateTimer, 1000); // Restart the countdown timer
+    }
+
+    document.querySelector('.btn-submit').addEventListener('click', function () {
+        submitExam();
+    });
+
+    // Countdown Timer
+    let timeLeft = 1800; // 3 hours countdown (in seconds)
+    const timerElement = document.getElementById('timer');
+
+    function updateTimer() {
+        if (timeLeft <= 0) {
+            submitExam();
+            clearInterval(timerInterval);
+            timerElement.textContent = "Time left: 00:00:00"; // Reset timer display
+        } else {
+            let displayTime = '';
+            if (timeLeft >= 3600) {
+                const hours = Math.floor(timeLeft / 3600);
+                const minutes = Math.floor((timeLeft % 3600) / 60);
+                const seconds = timeLeft % 60;
+                displayTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            } else {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                displayTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            timerElement.textContent = `Time left: ${displayTime}`;
+            timeLeft--;
+        }
+    }
+
+    let timerInterval = setInterval(updateTimer, 1000);
+
+</script>
+
+{% endblock %}

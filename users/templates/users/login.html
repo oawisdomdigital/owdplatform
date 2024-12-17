@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - OWD{% endblock %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        background-color: #ffc451;
+    }
+
+    .center-form {
+        padding-top: 5px;
+        /* Increased padding from top */
+    }
+
+    .card {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+    }
+
+    .card h1 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+
+    .btn-secondary {
+        background-color: #d8d8d8;
+        border: none;
+        color: green;
+    }
+
+    .btn-secondary:hover {
+        background-color: #c0c0c0;
+    }
+
+    .card-body {
+        text-align: center;
+    }
+
+    .card-body .card-title {
+        margin-bottom: 15px;
+    }
+
+    h3 {
+        color: red;
+    }
+</style>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js"></script>
+
+<script>
+    // Initialize Firebase
+    import firebase from "firebase/app";
+    import "firebase/messaging";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyDApv6AJ5uG0IMyioE7bYJHRtUWHfvomTE",
+        authDomain: "socialnetwork-6b6b4.firebaseapp.com",
+        projectId: "socialnetwork-6b6b4",
+        storageBucket: "socialnetwork-6b6b4.appspot.com",
+        messagingSenderId: "1009355837533",
+        appId: "1:1009355837533:web:b8544c848e99315bfafdb4",
+        measurementId: "G-BZFPYS1RZF"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Retrieve Firebase Messaging object
+    const messaging = firebase.messaging();
+
+    // Register the service worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/static/js/firebase-messaging-sw.js')
+            .then((registration) => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch((err) => {
+                console.error('Service Worker registration failed:', err);
+            });
+    }
+
+    // Request permission and get token
+    messaging.requestPermission()
+        .then(() => messaging.getToken())
+        .then((token) => {
+            console.log('Device Token:', token);
+            // Send the token to your server
+            fetch('/api/store-device-token/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken'), // Django CSRF token
+                },
+                body: JSON.stringify({ token: token }),
+            });
+        })
+        .catch((err) => {
+            console.log('Error getting permission or token:', err);
+        });
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+</script>
+
+<div class="container-fluid center-form">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-4">
+            <div class="card shadow-lg p-4">
+                <h1 class="text-center mb-4">Login Now</h1>
+                {% if messages %}
+                <div class="alert alert-info" role="alert">
+                    {% for message in messages %}
+                    {{ message }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username_or_email" class="form-label">Username or Email:</label>
+                        <input type="text" id="username_or_email" name="username_or_email" class="form-control"
+                            required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="login_method" class="form-label">Login Method:</label>
+                        <select id="login_method" name="login_method" class="form-control"
+                            onchange="togglePasswordField()" required>
+                            <option value="otp">OTP</option>
+                            <option value="password">Password</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3" id="passwordField" style="display:none;">
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password" placeholder="Enter your password" id="password" name="password" class="form-control">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100" id="submitButton">Login</button>
+                </form>
+
+                <div class="card mt-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">If you have not signed up</h5>
+                        <a href="{% url 'register' %}" class="btn btn-secondary w-100">Signup</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript to toggle password field visibility based on login method
+    function togglePasswordField() {
+        const loginMethod = document.getElementById('login_method').value;
+        const passwordField = document.getElementById('passwordField');
+        const submitButton = document.getElementById('submitButton');
+
+        if (loginMethod === 'password') {
+            passwordField.style.display = 'block';
+            submitButton.textContent = 'Login with Password';
+        } else {
+            passwordField.style.display = 'none';
+            submitButton.textContent = 'Send OTP';
+        }
+    }
+
+    // Initialize the form based on the default selection
+    document.addEventListener('DOMContentLoaded', togglePasswordField);
+</script>
+
+
+{% endblock %}

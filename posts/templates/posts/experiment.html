@@ -1,0 +1,4381 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--Bing verification for sitmap-->
+  <meta name="msvalidate.01" content="DF08A2878A3EE7DF059421737E83DF19" />
+  <title>Home - OWD | Comprehensive Digital Solutions</title>
+
+  <!-- Meta Description -->
+  <meta name="description"
+    content="Welcome to OWD, your all-in-one place for digital services. Check out what we offer and see how we can help you reach your goals with smart, custom solutions.">
+
+  <!-- Meta Keywords -->
+  <meta name="keywords"
+    content="digital solutions, OWD Platform, web development, digital marketing, tech services, online solutions, IT support">
+
+  <!-- Author -->
+  <meta name="author" content="OWD">
+
+  <!-- Open Graph Meta Tags for Social Sharing -->
+  <meta property="og:title" content="Home - OWD | Comprehensive Digital Solutions">
+  <meta property="og:description"
+    content="Welcome to OWD Platform, your all-in-one place for digital services. Check out what we offer and see how we can help you reach your goals with smart, custom solutions.">
+  <meta property="og:image" content="https://oawisdomdigital.pythonanywhere.com/static/assets/img/logo.png">
+  <meta property="og:url" content="https://oawisdomdigital.pythonanywhere.com">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Meta Tags for Twitter Sharing -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Home - OWD | Comprehensive Digital Solutions">
+  <meta name="twitter:description"
+    content="Welcome to OWD, your one-stop destination for comprehensive digital solutions. Explore our services and discover how we can help you achieve your goals with innovative and tailored solutions.">
+  <meta name="twitter:image" content="https://oawisdomdigital.pythonanywhere.com/static/assets/img/logo.png">
+
+  <!-- Theme Color (Optional) -->
+  <meta name="theme-color" content="#317EFB">
+
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <!--Google Verification for sitmap-->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css" rel="stylesheet' %}">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <!-- Include Firebase libraries -->
+  <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"></script>
+
+  <link rel="manifest" href="{% static 'manifest.json' %}">
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+  <!-- Firebase JS SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js"></script>
+
+  <script>
+    // Initialize Firebase with your configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDApv6AJ5uG0IMyioE7bYJHRtUWHfvomTE",
+      authDomain: "socialnetwork-6b6b4.firebaseapp.com",
+      projectId: "socialnetwork-6b6b4",
+      storageBucket: "socialnetwork-6b6b4.appspot.com",
+      messagingSenderId: "1009355837533",
+      appId: "1:1009355837533:web:b8544c848e99315bfafdb4",
+      measurementId: "G-BZFPYS1RZF"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    // Initialize Firebase Messaging
+    const messaging = firebase.messaging();
+
+    // Request notification permission when the page loads
+    window.addEventListener('load', () => {
+      Notification.requestPermission().then((permission) => {
+        if (permission === 'granted') {
+          console.log('Notification permission granted.');
+
+          // Get the FCM token
+          messaging.getToken({ vapidKey: 'BK380gf85WLdvfbu48sFEUmhKfB7q4vaOjknt2aH7syEq3S-PTUKBqxYfPmpVf2sb-o3--Vi7DisbfBKeve3fyQ' }).then((currentToken) => {
+            if (currentToken) {
+              console.log('FCM Token:', currentToken);
+
+              // Send the token to your server to save it
+              fetch('/save-fcm-token/', {
+                method: 'POST',
+                body: JSON.stringify({ token: currentToken }),
+                headers: { 'Content-Type': 'application/json' }
+              });
+            } else {
+              console.log('No registration token available. Request permission to generate one.');
+            }
+          }).catch((err) => {
+            console.error('An error occurred while retrieving token. ', err);
+          });
+        } else {
+          console.log('Unable to get permission to notify.');
+        }
+      });
+    });
+  </script>
+
+  <style>
+    .custom-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ffc451;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .custom-button:hover {
+      background-color: #ffa726;
+    }
+
+    .loading {
+      display: none;
+      color: #ffc451;
+    }
+
+    .error-message {
+      display: none;
+      color: red;
+    }
+
+    /* Popup Modal Styles */
+    .popup-modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      z-index: 1000;
+      max-width: 80%;
+      text-align: center;
+    }
+
+    .popup-modal.show {
+      display: block;
+    }
+
+    .popup-modal .popup-content {
+      margin-bottom: 10px;
+    }
+
+    .popup-modal .ok-button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .popup-modal .ok-button:hover {
+      background-color: #45a049;
+    }
+
+    .logo {
+      width: 50px;
+    }
+
+    .modal-header {
+      background-color: #ffa726;
+      color: white;
+    }
+
+    .form-label {
+      font-weight: bold;
+    }
+
+    .form-control {
+      border-radius: 5px;
+    }
+
+    .form-select {
+      border-radius: 5px;
+    }
+
+    .btn-primary {
+      background-color: #ffa726;
+      color: black;
+      border: none;
+      width: 100%;
+      padding: 10px;
+      font-weight: bold;
+      margin: 5px;
+    }
+
+    .btn-close {
+      background: none;
+      border: none;
+    }
+
+    .btn-close:before {
+      content: '\00d7';
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    #preview img {
+      display: block;
+      margin: 10px 0;
+    }
+
+    .nav-item .nav-link:hover i {
+      color: #ffa726;
+      /* Facebook blue color on hover */
+    }
+
+    .nav-item .nav-link i.fa-2x {
+      font-size: 2em;
+      /* Adjust size if needed */
+    }
+
+    .profile-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .post-info h2 {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .post-content .see-less {
+      display: none;
+    }
+
+    .clickable-image {
+      cursor: pointer;
+    }
+
+    .profile-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ffc451;
+      /* Ensure the border style is solid */
+      margin-right: 10px;
+    }
+
+
+
+
+
+
+
+    *,
+    html {
+      --primaryGradient: linear-gradient(93.12deg, #ffc451 0.52%, #ffc451 100%);
+      --secondaryGradient: linear-gradient(268.91deg, #ffc451 -2.14%, #ffc451 99.69%);
+      --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+      --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
+      --primary: #ffc451;
+    }
+
+    /* CHATBOX
+=============== */
+    .chatbox {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      width: 50px;
+      /* Increased width for better visibility */
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    /* CONTENT IS CLOSE */
+    .chatbox__support {
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      /* White background for a clean look */
+      width: 350px;
+      height: 450px;
+      z-index: -1;
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+      position: fixed;
+      bottom: 80px;
+      /* Adjusted to be above the button */
+      right: 30px;
+      /* Align with the button */
+      visibility: hidden;
+      border-radius: 10px;
+      /* Rounded corners */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      /* Soft shadow */
+    }
+
+    /* CONTENT IS OPEN */
+    .chatbox--active {
+      transform: translateY(-40px);
+      z-index: 1;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* BUTTON */
+    .chatbox__button {
+      text-align: center;
+      /* Centered button */
+      position: fixed;
+      top: 50%;
+      right: 30px;
+      transform: translateY(-50%);
+      z-index: 999;
+    }
+
+    .send__button {
+      padding: 6px;
+      background: white;
+      /* Set background to white */
+      color: #007bff;
+      /* Text color to Meta-like blue */
+      border: none;
+      outline: none;
+      cursor: pointer;
+      border-radius: 50%;
+      /* Circular button */
+      transition: background 0.3s ease, color 0.3s ease;
+      /* Add transition for color */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      /* Soft shadow for better visibility */
+    }
+
+    .send__button:hover {
+      background: #f0f0f0;
+      /* Light grey on hover for contrast */
+      color: #0056b3;
+      /* Darker blue on hover for better visibility */
+    }
+
+    /* FOOTER */
+    .chatbox__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+      background: #f1f1f1;
+      /* Light background for footer */
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* HEADER */
+    .chatbox__header {
+      background: #007bff;
+      /* Primary color */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      /* Soft shadow */
+      color: white;
+    }
+
+    /* MESSAGES */
+    .chatbox__messages {
+      margin-top: auto;
+      display: flex;
+      overflow-y: scroll;
+      flex-direction: column-reverse;
+      padding: 0 15px;
+    }
+
+    .messages__item {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 15px;
+      /* Rounded messages */
+      max-width: 70%;
+    }
+
+    .messages__item--operator {
+      margin-left: auto;
+      background: #007bff;
+      /* Operator messages */
+      color: white;
+    }
+
+    .messages__item--visitor {
+      margin-right: auto;
+      background: #e0e0e0;
+      /* Visitor messages */
+    }
+
+    .chatbox__footer input {
+      width: 80%;
+      border: none;
+      padding: 10px;
+      border-radius: 30px;
+      background: #f9f9f9;
+      /* Input background */
+      outline: none;
+    }
+
+    .chatbox__send--footer {
+      color: #007bff;
+      /* Send button color */
+    }
+
+    .chatbox__button button {
+      padding: 10px;
+      background: white;
+      border: none;
+      outline: none;
+      border-radius: 50px;
+      /* Rounded button */
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .chatbox__button button:hover {
+      transform: scale(1.1);
+      /* Slightly enlarges on hover */
+    }
+
+
+    .post-image {
+      height: 300px;
+      /* Fixed height for the image section */
+      overflow: hidden;
+      background-color: #f7f7f7;
+    }
+
+    .post-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      /* Ensures image fits within the container */
+      display: block;
+    }
+
+    .post-content {
+      flex: 1;
+      /* Allows content to take available space */
+      padding: 15px;
+      overflow: hidden;
+    }
+
+    .post-content .post-text {
+      max-height: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      /* Adds "..." if text is too long */
+    }
+
+    .post-actions {
+      padding: 10px 15px;
+      border-top: 1px solid #e9ecef;
+      background-color: #fff;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .verification-badge2 {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      width: 25px;
+      /* Adjust size as needed */
+      height: 25px;
+      /* Adjust size as needed */
+      transform: translate(50%, -50%);
+      /* Center the badge at the top-right corner */
+      z-index: 10;
+      /* Ensure the badge is on top of the profile image */
+    }
+
+    .verification-badge2 img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .profile-image-container {
+      position: relative;
+      display: inline-block;
+      /* Ensure the container fits the profile image */
+    }
+
+    .profile-container1 {
+      position: relative;
+      display: inline-block;
+      /* Ensure the container fits the profile image */
+    }
+
+    .profile-image1 {
+      width: 50px;
+      /* Adjust size as needed */
+      height: 50px;
+      /* Adjust size as needed */
+      border-radius: 50%;
+      border: 2px solid #ccc;
+    }
+
+    .verification-badge1 {
+      position: absolute;
+      top: 13px;
+      right: 13px;
+      width: 30px;
+      /* Adjust size as needed */
+      height: 30px;
+      /* Adjust size as needed */
+      transform: translate(50%, -50%);
+      /* Center the badge at the top-right corner */
+      z-index: 10;
+      /* Ensure the badge is on top of the profile image */
+    }
+
+    .verification-badge1 .img1 {
+      width: 100%;
+      height: 100%;
+    }
+
+
+
+
+
+
+
+    .swiper-container {
+      width: 100%;
+      height: 300px;
+      /* Set the height to avoid overflow issues */
+      overflow: hidden;
+      /* Prevent swiper from overflowing the container */
+      position: relative;
+      /* Ensure arrows stay inside */
+    }
+
+    .swiper-slide img {
+      object-fit: cover;
+      /* Ensure images cover the swiper slide neatly */
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      /* Optional: Add some rounding to the images */
+      cursor: pointer;
+      /* Indicate that the image is clickable */
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #007bff;
+      /* Customize arrow color to match the theme */
+    }
+
+    .swiper-pagination-bullet {
+      background-color: #007bff !important;
+      /* Customize pagination bullet color */
+    }
+
+    .author-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .author-info img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+      object-fit: cover;
+      /* Ensure profile image is neatly cropped */
+    }
+
+    .card {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      /* Subtle shadow for the card */
+      border-radius: 15px;
+      /* Optional: Rounded corners for the card */
+      overflow: hidden;
+      /* Ensure content doesn't overflow the card */
+    }
+
+    .card-header h3 {
+      font-size: 1.25rem;
+      /* Adjust title size */
+      font-weight: bold;
+    }
+
+    .total-images-count {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      z-index: 1;
+      /* Ensure it's above other content */
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      width: 30px;
+      height: 30px;
+      background-color: black;
+      border-radius: 50%;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      font-size: 14px;
+    }
+
+    .swiper-pagination {
+      position: absolute;
+      bottom: 5px;
+      /* Adjust pagination position */
+      text-align: center;
+      width: 100%;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .swiper-container {
+        height: 200px;
+        /* Adjust height for smaller screens */
+      }
+    }
+
+    .verification-badge3 {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      width: 25px;
+      /* Adjust size as needed */
+      height: 25px;
+      /* Adjust size as needed */
+      transform: translate(50%, -50%);
+      /* Center the badge at the top-right corner */
+      z-index: 10;
+      /* Ensure the badge is on top of the profile image */
+    }
+
+    .verification-badge3 img {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Hero Section Styles */
+    .hero {
+      position: relative;
+      background-color: #1e1e2f;
+      /* Dark background for a professional look */
+      padding: 100px 0;
+      text-align: center;
+      color: #fff;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero img {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      opacity: 0.15;
+      /* Low opacity for a subtle background image */
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Welcome Text */
+    .hero h3 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #007bff;
+      /* Green color, often used in trading platforms */
+      margin-bottom: 20px;
+      margin-top: 50px;
+    }
+
+    .hero h2 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #dfe6e9;
+      /* Light grey for subtle contrast */
+      margin-bottom: 40px;
+    }
+
+
+
+    .icon-box i {
+      font-size: 40px;
+      color: #007bff;
+      /* Consistent with the theme */
+      margin-bottom: 15px;
+    }
+
+    .icon-box h3 {
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .icon-box h3 a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+    }
+
+    .icon-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    .icon-box h3 a:hover {
+      color: #00b894;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 60px 20px;
+      }
+
+      .hero h3 {
+        font-size: 24px;
+      }
+
+      .hero h2 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .icon-box {
+        margin-bottom: 20px;
+      }
+
+      .icon-box i {
+        font-size: 36px;
+      }
+
+      .icon-box h3 {
+        font-size: 16px;
+      }
+    }
+
+
+
+
+    .container-video {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .youtube-videos {
+      padding: 20px 0;
+      background-color: #f4f4f4;
+    }
+
+    .video-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+
+    .video-item {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .video-item:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .video-item h3 {
+      font-size: 1.25rem;
+      margin: 15px;
+    }
+
+    .video-item p {
+      font-size: 0.875rem;
+      color: #666;
+      margin: 0 15px 15px;
+    }
+
+    .video-item iframe {
+      width: 100%;
+      height: 200px;
+      /* Adjust based on your preference */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .video-item h3 {
+        font-size: 1rem;
+      }
+
+      .video-item p {
+        font-size: 0.75rem;
+      }
+
+      .video-item iframe {
+        height: 150px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .video-item {
+        border-radius: 4px;
+      }
+
+      .video-item h3 {
+        font-size: 0.875rem;
+      }
+
+      .video-item p {
+        font-size: 0.65rem;
+      }
+
+      .video-item iframe {
+        height: 120px;
+      }
+    }
+
+    .published-date {
+      font-size: 0.875rem;
+      color: #999;
+      margin: 0 15px 15px;
+    }
+
+    .post-title-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .post-title-link:hover {
+      color: #1877f2;
+      /* Facebook blue or any color you prefer */
+    }
+
+    .notifications-link {
+      position: relative;
+      /* Required to position the notification count */
+      font-size: 24px;
+    }
+
+    #notification-count {
+      position: absolute;
+      /* Position the count relative to the link */
+      top: -5px;
+      /* Adjust the vertical position */
+      right: -10px;
+      /* Adjust the horizontal position */
+      font-weight: bold;
+      color: white;
+      /* Default color when no notifications */
+      font-size: 0.8em;
+    }
+
+    #notification-count.has-notifications {
+      color: red;
+      /* Color when there are notifications */
+    }
+  </style>
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href=""><img class="logo" src="{% static 'assets/img/logo.png' %}" alt="OWDplatform Logo"></a>
+
+      <div class="profile-image-container">
+        {% if profile.is_verified %}
+        <div class="verification-badge2">
+          <img src="{% static 'assets/img/verification_badge.png' %}" alt="OWD Platform Verified Badge" class="img2">
+        </div>
+        {% endif %}
+        {% if profile.profile_image %}
+        <img src="{{ profile.profile_image.url }}" class="profile-image" alt="OWDplatform Profile Image" />
+        {% else %}
+        <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png" class="profile-image"
+          alt="IMG" />
+        {% endif %}
+      </div>
+
+      <a class="notifications-link" href="/chat/notifications/">
+        <i class="fas fa-bell"></i> <!-- Font Awesome bell icon for notifications -->
+        <span id="notification-count" class="{% if notifications_count > 0 %}has-notifications{% endif %}">{{
+          notifications_count }}</span>
+      </a>
+
+
+
+      <a href="#marketplace" class="nav-link icon-link marketplace-link">
+        <i class="bi bi-search"></i> <!-- Search Icon -->
+      </a>
+
+
+      <style>
+        /* Styling for icon links */
+        .icon-link i {
+          color: white;
+          /* White color for the icons */
+          font-size: 1.5rem;
+          /* Adjust this value to make the icons larger */
+          transition: color 0.3s ease;
+          /* Smooth transition effect */
+        }
+
+        /* Hover effect */
+        .icon-link:hover i {
+          color: #ccc;
+          /* Slightly change color on hover */
+        }
+
+        /* For smaller screens, adjust size if needed */
+        @media (max-width: 767px) {
+          .icon-link i {
+            font-size: 1.75rem;
+            /* Larger size on small screens */
+          }
+        }
+      </style>
+
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          {% if not profile.is_verified %}
+          <a href="#" data-bs-toggle="modal" data-bs-target="#verificationModal">Get Verified<br></a>
+          {% endif %}
+          <li><a href="{% url 'about' %}">About Us</a></li>
+          <li><a href="#services" class="service-link">OWD Services</a></li>
+          <li><a href="{% url 'homechat' %}">Community</a></li>
+          <li><a href="{% url 'ebooks' %}">E-Books</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'profile' user.username %}">My Profile</a></li>
+          {% else %}
+          <li><a href="{% url 'register' %}">My Profile</a></li>
+          {% endif %}
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}" class="btn-getstarted">Logout</a>
+      {% else %}
+      <a href="{% url 'register' %}" class="btn-getstarted">Signup</a>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Verification Modal -->
+  <div class="modal fade" id="verificationModal" tabindex="-1" aria-labelledby="verificationModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="verificationModalLabel">Get Verified</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex flex-column align-items-center justify-content-start">
+          <div class="container">
+            <h5>Be a verified user to gain access to all premium features and services. Select a payment option and
+              click the get started button below:</h5>
+            <div class="row g-3">
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h6 class="card-title">Monthly Plan</h6>
+                    <p class="card-text">Price: ₦5,000 / $3.20</p>
+                    <p class="card-text">Coins: 100 coins</p>
+                    <p class="card-text">Duration: 1 Month</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h6 class="card-title">Quarterly Plan</h6>
+                    <p class="card-text">Price: ₦14,000 / $8.80</p>
+                    <p class="card-text">Coins: 280 coins</p>
+                    <p class="card-text">Duration: 3 Months</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-lg-4">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h6 class="card-title">Semi-Annual Plan</h6>
+                    <p class="card-text">Price: ₦27,000 / $17.00</p>
+                    <p class="card-text">Coins: 540 coins</p>
+                    <p class="card-text">Duration: 6 Months</p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h6 class="card-title">Annual Plan</h6>
+                    <p class="card-text">Price: ₦50,000 / $31.50</p>
+                    <p class="card-text">Coins: 1,000 coins</p>
+                    <p class="card-text">Duration: 12 Months</p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h6 class="card-title">Biennial Plan</h6>
+                    <p class="card-text">Price: ₦95,000 / $60.00</p>
+                    <p class="card-text">Coins: 1,900 coins</p>
+                    <p class="card-text">Duration: 24 Months</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="info-item d-flex align-items-center my-3">
+            <i class="fas fa-coins fs-3 me-2"></i>
+            <p class="mb-0">Coins: {{ profile.coins }}</p>
+          </div>
+          <form method="post" action="{% url 'get_verified' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="paymentOption" class="form-label">Select Payment Option</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="paystack" name="payment_option" value="paystack"
+                  required>
+                <label class="form-check-label" for="paystack">Paystack</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="PayPal" name="payment_option" value="PayPal" required>
+                <label class="form-check-label" for="PayPal">PayPal</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="USD_bank_transfer" name="payment_option"
+                  value="USD_bank_transfer" required>
+                <label class="form-check-label" for="USD_bank_transfer">USD Bank Transfer</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="coins" name="payment_option" value="coins" required>
+                <label class="form-check-label" for="coins">Use Coins</label>
+              </div>
+              {% if form.payment_option.errors %}
+              <div class="text-danger mt-2">
+                {{ form.payment_option.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Get Started</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section class="dark-background" style="height: 80px; padding: 0; margin: 0; overflow: hidden;">
+    </section>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background" style="padding: 20px; margin: 0; overflow: hidden;">
+
+      <img src="{% static 'assets/img/logo.png' %}" alt="OWD Logo" data-aos="fade-in">
+
+      <div class="container">
+        <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
+          {% if user.is_authenticated %}
+          <h3>Welcome, {{ user.username }}</h3>
+          {% else %}
+          <h3>Welcome, Guest</h3>
+          {% endif %}
+
+          <div class="col-xl-6 col-lg-8">
+            <h1>
+              <h2>Explore Powerful Digital Solutions With OWD Platform<span>.</span></h2>
+            </h1>
+            <p>The Multipurpose Progressive Web App of Now And The Future Generation</p>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            {% if messages %}
+            <div class="alert-container text-center">
+              {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="row gy-4 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+          <div class="col-xl-2 col-md-4">
+            <div class="icon-box">
+              <i class="bi bi-shop"></i>
+              <h3><a href="{% url 'digital_marketing' %}">DIGITAL MARKETING COURSE</a></h3>
+            </div>
+          </div>
+          <div class="col-xl-2 col-md-4">
+            <div class="icon-box">
+              <i class="ri-code-s-slash-line"></i>
+              <h3><a href="{% url 'coding' %}">CODING & PROGRAMMING COURSE</a></h3>
+            </div>
+          </div>
+          <div class="col-xl-2 col-md-4">
+            <div class="icon-box">
+              <i class="ri-palette-line"></i>
+              <h3><a href="{% url 'graphics' %}">GRAPHIC DESIGN & PHOTO EDITING COURSE</a></h3>
+            </div>
+          </div>
+          <div class="col-xl-2 col-md-4">
+            <div class="icon-box">
+              <i class="ri-shield-keyhole-line"></i>
+              <h3><a href="{% url 'cyber_security' %}">CYBER SECURITY & ETHICAL HACKING COURSE</a></h3>
+            </div>
+          </div>
+          <div class="col-xl-2 col-md-4">
+            <div class="icon-box">
+              <i class="ri-video-add-line"></i>
+              <h3><a href="{% url 'video_editing' %}">VIDEO EDITING COURSE</a></h3>
+            </div>
+          </div>
+          <div class="col-xl-2 col-md-4">
+            <div class="icon-box">
+              <i class="bi bi-database-fill-gear"></i>
+              <h3><a href="{% url 'data_analysis' %}">DATA ANALYSIS & AI COURSE</a></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Hero Section -->
+
+    <!-- Button to show Hero Section -->
+    
+    <div class="swiper-container" id="show-hero-btn" style="display: none; font-size: 2rem; cursor: pointer;"
+      onclick="showHero()">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <h6>
+            <i class="fas fa-chart-line"></i> DATA ANALYSIS & AI COURSE
+          </h6>
+        </div>
+        <div class="swiper-slide">
+          <h6>
+            <i class="fas fa-video"></i> VIDEO EDITING COURSE
+          </h6>
+        </div>
+        <div class="swiper-slide">
+          <h6>
+            <i class="fas fa-shield-alt"></i> CYBER SECURITY & ETHICAL HACKING COURSE
+          </h6>
+        </div>
+        <div class="swiper-slide">
+          <h6>
+            <i class="fas fa-paint-brush"></i> GRAPHIC DESIGN & PHOTO EDITING COURSE
+          </h6>
+        </div>
+        <div class="swiper-slide">
+          <h6>
+            <i class="fas fa-code"></i> CODING & PROGRAMMING COURSE
+          </h6>
+        </div>
+        <div class="swiper-slide">
+          <h6>
+            <i class="fas fa-bullhorn"></i> DIGITAL MARKETING COURSE
+          </h6>
+        </div>
+      </div>
+    </div>
+
+
+    <style>
+      /* Swiper container styling */
+.swiper-container {
+  width: 100%;
+  height: 50px; /* Fixed height */
+  overflow: hidden;
+  position: relative;
+  background-color: #f5f5f5; /* Optional: light background */
+  border: 1px solid #ddd; /* Optional: border for visibility */
+  display: flex;
+  align-items: center;
+}
+
+/* Swiper wrapper */
+.swiper-wrapper {
+  display: flex;
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+  will-change: transform;
+}
+
+/* Swiper slide */
+.swiper-slide {
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #333; /* Text color */
+}
+
+.swiper-slide h5 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between icon and text */
+}
+.swiper-slide i {
+  font-size: 1.5rem;
+  color: #007bff; /* Adjust color as needed */
+}
+
+    </style>
+
+
+<script>
+  const swiperContainer = document.querySelector('.swiper-container');
+    const swiperWrapper = document.querySelector('.swiper-wrapper');
+    const slides = document.querySelectorAll('.swiper-slide');
+    let currentIndex = 0;
+
+    // Auto-slide function
+    function slideNext() {
+      currentIndex = (currentIndex + 1) % slides.length; // Loop back to first slide
+      swiperWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // Set interval for auto-sliding (3 seconds)
+    setInterval(slideNext, 3000);
+
+</script>
+    <!-- JavaScript -->
+    <script>
+      // Ensure the DOM is fully loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Hide the hero section after 10 seconds
+        setTimeout(function () {
+          const heroSection = document.getElementById('hero');
+          const showHeroButton = document.getElementById('show-hero-btn');
+
+          // Check if elements exist
+          if (heroSection && showHeroButton) {
+            heroSection.style.display = 'none';
+            showHeroButton.style.display = 'inline-block';
+          } else {
+            console.error('Hero section or button not found in the DOM.');
+          }
+        }, 1000);
+      });
+
+      // Function to show the hero section
+      function showHero() {
+        const heroSection = document.getElementById('hero');
+        const showHeroButton = document.getElementById('show-hero-btn');
+
+        if (heroSection && showHeroButton) {
+          heroSection.style.display = 'block';
+          showHeroButton.style.display = 'none';
+        }
+      }
+    </script>
+    <!-- /Hero Section -->
+
+    <div class="container mt-3">
+      <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="news-tab" data-toggle="tab" href="#news" role="tab" aria-controls="news"
+            aria-selected="true">
+            <i class="fas fa-newspaper fa-2x"></i> News
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts"
+            aria-selected="false">
+            <i class="fas fa-blog fa-2x"></i> Posts
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="videos-tab" data-toggle="tab" href="#videos" role="tab" aria-controls="videos"
+            aria-selected="false">
+            <i class="fas fa-video fa-2x"></i> Go Live
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="services-tab" data-toggle="tab" href="#services" role="tab" aria-controls="services"
+            aria-selected="false">
+            <i class="fas fa-cogs fa-2x"></i> Services
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="marketplace-tab" data-toggle="tab" href="#marketplace" role="tab"
+            aria-controls="marketplace" aria-selected="false">
+            <i class="fas fa-store fa-2x"></i> Marketplace
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'homechat' %}" aria-selected="false">
+            <i class="fas fa-users fa-2x"></i> Community
+          </a>
+        </li>
+      </ul>
+    </div>
+
+
+    <div class="tab-content mt-3" id="myTabContent">
+      <div class="tab-pane fade show active" id="news" role="tabpanel" aria-labelledby="news-tab">
+        <section class="youtube-videos">
+          <div class="container-video">
+            <div id="youtube-posts" class="video-list">
+              <!-- Videos will be inserted here by JavaScript -->
+            </div>
+          </div>
+        </section>
+
+
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            fetch('/api/youtube-posts/')
+              .then(response => response.json())
+              .then(data => {
+                const youtubePostsContainer = document.getElementById('youtube-posts');
+                youtubePostsContainer.innerHTML = ''; // Clear existing content
+
+                if (data.length === 0) {
+                  youtubePostsContainer.innerHTML = '<p>No videos available at the moment.</p>';
+                } else {
+                  data.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.className = 'video-item mb-4';
+
+                    // Format the published date
+                    const publishedDate = new Date(post.published_at);
+                    const formattedDate = publishedDate.toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    });
+
+                    postElement.innerHTML = `
+          <h3>
+            <a style="color: black; text-decoration: none;" href="/youtube/post/${post.video_id}/" class="post-link"
+              onmouseover="this.style.color='#1877f2'"
+              onmouseout="this.style.color='black'">
+              ${post.title}
+            </a>
+          </h3>
+          <p>${post.description}</p>
+          <p class="published-date">Published on: ${formattedDate}</p>
+          <img src="${post.thumbnail_url}" alt="${post.title} thumbnail" class="img-fluid" style="max-width: 100%; height: auto;">
+          <div class="post-actions mt-3">
+          <a href="/youtube/post/${post.video_id}/" class="btn btn-primary">
+              Video
+            </a>
+              <button class="like-button btn btn-primary btn-sm" data-post-id="${post.video_id}">
+                  ${post.liked ? 'Unlike' : 'Like'} <span class="total-likes">${post.total_likes}</span>
+              </button>
+              <button class="share-button btn btn-primary btn-sm" data-video-id="${post.video_id}">
+                  Share
+              </button>
+          </div>
+          <div class="comments-section mt-3">
+              <button class="toggle-comments btn btn-secondary btn-sm" data-video-id="${post.video_id}">
+                  View Comments (${post.comments.length})
+              </button>
+              <div id="comments-container-${post.video_id}" class="comments-container" style="display:none;">
+                  <h5>Comments:</h5>
+                  <div id="comments-${post.video_id}">
+                    ${post.comments.map(comment => `
+                      <div class="comment mb-2">
+                        <strong>${comment.user}</strong>: ${comment.text} <small>(${new Date(comment.created_at).toLocaleString()})</small>
+                      </div>
+                    `).join('')}
+                  </div>
+                  <form method="POST" action="#" class="comment-form" data-video-id="${post.video_id}">
+                      <textarea class="form-control" rows="2" name="text" placeholder="Add a comment..." required></textarea>
+                      <button type="submit" class="btn btn-secondary btn-sm mt-2">Comment</button>
+                  </form>
+              </div>
+          </div>
+        `;
+                    youtubePostsContainer.appendChild(postElement);
+                  });
+
+                  // Toggle comments visibility
+                  document.querySelectorAll('.toggle-comments').forEach(button => {
+                    button.addEventListener('click', function () {
+                      const videoId = this.getAttribute('data-video-id');
+                      const commentsContainer = document.getElementById(`comments-container-${videoId}`);
+                      commentsContainer.style.display = commentsContainer.style.display === 'none' ? 'block' : 'none';
+                    });
+                  });
+
+                  // Like button event listener
+                  document.querySelectorAll('.like-button').forEach(button => {
+                    button.addEventListener('click', function () {
+                      const videoId = this.getAttribute('data-post-id');
+                      fetch(`/youtube/like/${videoId}/`, {
+                        method: 'POST',
+                        headers: {
+                          'X-CSRFToken': getCookie('csrftoken')
+                        }
+                      }).then(response => response.json()).then(data => {
+                        if (data.redirect) {
+                          window.location.href = data.redirect;  // Redirect to register.html
+                        } else if (data.error) {
+                          alert('Error liking the post.');
+                        } else {
+                          this.innerHTML = `
+                                    ${data.liked ? 'Unlike' : 'Like'} <span class="total-likes">${data.total_likes}</span>
+                                `;
+                        }
+                      }).catch(error => {
+                        console.error('Error liking YouTube post:', error);
+                      });
+                    });
+                  });
+
+                  // Share button event listener
+                  document.querySelectorAll('.share-button').forEach(button => {
+                    button.addEventListener('click', function () {
+                      const videoId = this.getAttribute('data-video-id');
+                      fetch(`/youtube/share/${videoId}/`, {
+                        method: 'POST',
+                        headers: {
+                          'X-CSRFToken': getCookie('csrftoken')
+                        }
+                      }).then(response => response.json()).then(data => {
+                        if (navigator.share) {
+                          navigator.share({
+                            title: data.title,
+                            url: data.shared_link
+                          }).catch(error => console.error('Error sharing:', error));
+                        } else {
+                          alert(`Share this link: ${data.shared_link}`);
+                        }
+                      }).catch(error => {
+                        console.error('Error sharing YouTube post:', error);
+                      });
+                    });
+                  });
+
+                  // Handle Comment form submissions
+                  document.querySelectorAll('.comment-form').forEach(form => {
+                    form.addEventListener('submit', function (event) {
+                      event.preventDefault();
+                      const videoId = this.getAttribute('data-video-id');
+                      const text = this.querySelector('textarea[name="text"]').value;
+
+                      fetch(`/youtube/comment/${videoId}/`, {
+                        method: 'POST',
+                        headers: {
+                          'X-CSRFToken': getCookie('csrftoken'),
+                          'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ text: text })
+                      }).then(response => response.json()).then(data => {
+                        if (data.redirect) {
+                          window.location.href = data.redirect;  // Redirect to register.html
+                        } else if (!data.error) {
+                          const commentsContainer = document.getElementById(`comments-${videoId}`);
+                          const newComment = document.createElement('div');
+                          newComment.className = 'comment mb-2';
+                          newComment.innerHTML = `<strong>${data.user}</strong>: ${data.text} <small>(${new Date(data.created_at).toLocaleString()})</small>`;
+                          commentsContainer.appendChild(newComment);
+                          this.reset(); // Clear the comment form
+                        } else {
+                          console.error(data.error);
+                        }
+                      }).catch(error => console.error('Error posting comment:', error));
+                    });
+                  });
+
+                  // Function to get CSRF token
+                  function getCookie(name) {
+                    let cookieValue = null;
+                    if (document.cookie && document.cookie !== '') {
+                      const cookies = document.cookie.split(';');
+                      for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                          break;
+                        }
+                      }
+                    }
+                    return cookieValue;
+                  }
+                }
+              })
+              .catch(error => {
+                console.error('Error fetching YouTube posts:', error);
+              });
+          });
+        </script>
+
+
+      </div>
+
+      <div class="tab-pane fade" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+        <!-- Add Post Modal -->
+        <div class="modal fade" id="post-modal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="postModalLabel">Add Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="post-form" method="post" enctype="multipart/form-data" action="{% url 'add_post' %}">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" placeholder="Enter a title for your post" id="title"
+                      name="title" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" class="form-control-file" id="image" name="image" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea class="form-control" placeholder="What is your post about?" id="content" name="content"
+                      rows="3" required></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="tags">Tags (comma-separated)</label>
+                    <input type="text" placeholder="Use a hashtag for your post to standout" class="form-control"
+                      id="tags" name="tags">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Add Post</button>
+                  <div class="spinner-border text-primary d-none" role="status" id="loading-spinner">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const postForm = document.getElementById("post-form");
+            const spinner = document.getElementById("loading-spinner");
+
+            postForm.addEventListener("submit", function (event) {
+              event.preventDefault();
+
+              const formData = new FormData(postForm);
+              spinner.classList.remove("d-none");
+
+              fetch(postForm.action, {
+                method: "POST",
+                body: formData,
+                headers: {
+                  "X-Requested-With": "XMLHttpRequest", // This header identifies the request as an AJAX request
+                  "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                },
+              })
+                .then(response => response.json())
+                .then(data => {
+                  spinner.classList.add("d-none");
+
+                  if (data.success) {
+                    console.log('Post added successfully:', data.post);
+
+                    // Close the modal
+                    $('#post-modal').modal('hide');
+
+                    // Optionally, add the new post to the page
+                    const newPost = `
+                                            <div class="post">
+                                                <h3>${data.post.title}</h3>
+                                                <p>${data.post.content}</p>
+                                                <img src="${data.post.image_url}" alt="Post Image">
+                                                <small>Posted by ${data.post.author} on ${data.post.created_at}</small>
+                                            </div>
+                                        `;
+                    document.getElementById("posts-container").insertAdjacentHTML("afterbegin", newPost);
+
+                    // Optionally, show a success message
+                    alert(data.message);
+                  } else {
+                    console.error('Error adding post:', data.errors);
+                    alert("An error occurred: " + JSON.stringify(data.errors));
+                  }
+                })
+                .catch(error => {
+                  spinner.classList.add("d-none");
+                  console.error('Error:', error);
+                  alert("Post added successfully, you may need to refresh the page.");
+                });
+            });
+          });
+        </script>
+
+        <section id="clients" class="clients">
+          <div class="container">
+            <div class="row">
+              {% if user.is_authenticated %}
+              <button type="button" class="btn btn-primary floating-button" data-toggle="modal"
+                data-target="#post-modal">
+                Create Post
+              </button>
+              {% else %}
+              <button class="btn btn-primary btn-sm" id="createpostloginModal">
+                Create Post
+              </button>
+              <script>
+                document.getElementById('createpostloginModal').addEventListener('click', function (e) {
+                  e.preventDefault(); // Prevent the default link action
+                  var loginAlertModal = new bootstrap.Modal(document.getElementById('loginAlertModal'));
+                  loginAlertModal.show(); // Show the modal
+                });
+              </script>
+              {% endif %}
+              <div class="col-lg-12">
+                {% for post in posts %}
+                <div class="post card mb-4">
+                  <div class="post-header card-header d-flex align-items-center">
+                    <a href="{% url 'profile' post.author.username %}" class="profile-container1">
+                      {% if post.author.user_profile.is_verified %}
+                      <div class="verification-badge1">
+                        <img src="{% static 'assets/img/verification_badge.png' %}" alt="OWD Verified Badge"
+                          class="img1">
+                      </div>
+                      {% endif %}
+                      {% if post.author.user_profile and post.author.user_profile.profile_image %}
+                      <img src="{{ post.author.user_profile.profile_image.url }}" class="profile-image"
+                        alt="{{ post.author.username }}" />
+                      {% else %}
+                      <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png"
+                        class="profile-image" alt="{{ post.author.username }}" />
+                      {% endif %}
+                    </a>
+                    <div class="post-info" style="margin-top: 20px; margin-left: 20px;">
+                      <h4 class="card-title">
+                        <a href="{% url 'post_detail' post.id %}" class="post-title-link">
+                          {{ post.title }}
+                        </a>
+                      </h4>
+                      <p>Author: <a href="{% url 'profile' post.author.username %}">{{ post.author.username }}</a></p>
+                      <p>Published: {{ post.created_at }}</p>
+                    </div>
+                  </div>
+                  <div class="post-image text-center mt-3">
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid clickable-image"
+                      style="object-fit: contain;">
+                  </div>
+                  <div class="post-content card-body">
+                    <p class="post-text" style="max-height: 150px; overflow: hidden;">{{ post.content }}</p>
+                    <a href="javascript:void(0);" class="see-more-link">See More</a>
+                    <a href="javascript:void(0);" class="see-less-link d-none">See Less</a>
+                  </div>
+                  <div class="post-actions card-footer">
+                    {% if user.is_authenticated %}
+                    <button class="like-button btn btn-primary btn-sm" data-post-id="{{ post.id }}">
+                      {% if user in post.likes.all %}
+                      Liked
+                      {% else %}
+                      Like
+                      {% endif %}
+                      <span class="total-likes">{{ post.total_likes }}</span>
+                    </button>
+                    {% else %}
+                    <button class="btn btn-primary btn-sm" id="likeloginModal">
+                      {% if user in post.likes.all %}
+                      Liked
+                      {% else %}
+                      Like
+                      {% endif %}
+                      <span class="total-likes">{{ post.total_likes }}</span>
+                    </button>
+                    <script>
+                      document.getElementById('likeloginModal').addEventListener('click', function (e) {
+                        e.preventDefault(); // Prevent the default link action
+                        var loginAlertModal = new bootstrap.Modal(document.getElementById('loginAlertModal'));
+                        loginAlertModal.show(); // Show the modal
+                      });
+                    </script>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    {% if user != post.author %}
+                    <button class="btn btn-primary subscribe-button" data-author-id="{{ post.author.id }}">
+                      {% if post.author.id in subscriptions %}
+                      Subscribed
+                      {% else %}
+                      Subscribe
+                      {% endif %}
+                    </button>
+                    {% endif %}
+                    {% else %}
+                    <a href="{% url 'register' %}" class="btn btn-primary">Subscribe</a>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <button class="view-comments-button btn btn-primary btn-sm" data-post-id="{{ post.id }}"
+                      data-toggle="modal" data-target="#commentModal-{{ post.id }}">
+                      Comments
+                    </button>
+                    {% else %}
+                    <button class="btn btn-primary btn-sm" id="CommentsLoginModal">
+                      Comments
+                    </button>
+                    <script>
+                      document.getElementById('CommentsLoginModal').addEventListener('click', function (e) {
+                        e.preventDefault(); // Prevent the default link action
+                        var loginAlertModal = new bootstrap.Modal(document.getElementById('loginAlertModal'));
+                        loginAlertModal.show(); // Show the modal
+                      });
+                    </script>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <button class="share-button1 btn btn-primary btn-sm" data-post-id="{{ post.id }}">
+                      Share
+                    </button>
+                    {% else %}
+                    <button class="btn btn-primary btn-sm" id="shareLoginModal">
+                      Share
+                    </button>
+                    <script>
+                      document.getElementById('shareLoginModal').addEventListener('click', function (e) {
+                        e.preventDefault(); // Prevent the default link action
+                        var loginAlertModal = new bootstrap.Modal(document.getElementById('loginAlertModal'));
+                        loginAlertModal.show(); // Show the modal
+                      });
+                    </script>
+                    {% endif %}
+                  </div>
+                </div>
+
+
+
+
+                <!-- Comment Modal for each post -->
+                <div class="modal fade" id="commentModal-{{ post.id }}" tabindex="-1" role="dialog"
+                  aria-labelledby="commentModalLabel-{{ post.id }}" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="commentModalLabel-{{ post.id }}">Comments
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Display existing comments -->
+                        <div id="commentList-{{ post.id }}">
+                          {% for comment in post.comments.all %}
+                          <div class="comment" id="comment-{{ comment.id }}">
+                            <p><strong>{{ comment.author.username }}</strong> {{ comment.content }}</p>
+                            {% if comment.author == user or comment.post.author == user %}
+                            <button class="delete-comment-button btn btn-danger btn-sm"
+                              data-comment-id="{{ comment.id }}">Delete</button>
+                            {% endif %}
+                          </div>
+                          {% endfor %}
+                        </div>
+                        <!-- Add new comment form -->
+                        <form id="commentForm-{{ post.id }}" method="POST" action="{% url 'add_comment' post.id %}">
+                          {% csrf_token %}
+                          <textarea name="content" class="form-control" placeholder="Add a comment..."
+                            required></textarea>
+                          {% if user.is_authenticated %}
+                          <button type="submit" class="btn btn-primary mt-2">Post
+                            Comment</button>
+                          {% else %}
+                          <a href="{% url 'register' %}" class="btn btn-primary">Post
+                            Comment</a>
+                          {% endif %}
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
+              <div class="modal fade" id="loginAlertModal" tabindex="-1" aria-labelledby="featureAlertModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3 class="modal-title" id="featureAlertModalLabel">You need to login to
+                        carry out this action!
+                      </h3>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body text-center">
+                      <a href="{% url 'login' %}" class="btn btn-secondary">Login Now</a>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                  // Like button functionality
+                  document.querySelectorAll('.like-button').forEach(button => {
+                    button.addEventListener('click', function () {
+                      const postId = this.getAttribute('data-post-id');
+                      fetch(`/posts/like/${postId}/`, {  // Correct URL
+                        method: 'POST',
+                        headers: {
+                          'X-CSRFToken': getCookie('csrftoken')
+                        }
+                      }).then(response => response.json()).then(data => {
+                        if (data.liked) {
+                          this.innerText = 'Unlike';
+                        } else {
+                          this.innerText = 'Like';
+                        }
+                      });
+                    });
+                  });
+
+                  // Event listener for subscribe buttons
+                  document.querySelectorAll('.subscribe-button').forEach(button => {
+                    button.addEventListener('click', function () {
+                      const authorId = this.getAttribute('data-author-id');
+                      if (!authorId) {
+                        console.error('Author ID is missing.');
+                        return;
+                      }
+                      fetch(`/posts/subscribe-author/${authorId}/`, {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json',
+                          'X-CSRFToken': '{{ csrf_token }}',
+                        },
+                        body: JSON.stringify({}),
+                      })
+                        .then(response => response.json())
+                        .then(data => {
+                          if (data.error) {
+                            alert(data.error); // Display error message
+                          } else {
+                            this.textContent = data.subscribed ? 'Unsubscribe' : 'Subscribe';
+                            alert(`Subscription ${data.subscribed ? 'successful' : 'removed'}`); // Display success message
+                          }
+                        })
+                        .catch(error => {
+                          console.error('Error:', error);
+                          alert('An error occurred while processing your request.');
+                        });
+                    });
+                  });
+
+
+
+                  // Share button functionality
+                  document.querySelectorAll('.share-button1').forEach(button => {
+                    button.addEventListener('click', function () {
+                      const postId = this.getAttribute('data-post-id');
+                      fetch(`/posts/share/${postId}/`, {  // Correct URL
+                        method: 'POST',
+                        headers: {
+                          'X-CSRFToken': getCookie('csrftoken')
+                        }
+                      }).then(response => response.json()).then(data => {
+                        if (navigator.share) {
+                          navigator.share({
+                            title: data.title,
+                            text: data.content,
+                            url: data.shared_link
+                          }).catch(error => console.error('Error sharing:', error));
+                        } else {
+                          alert('Share API not supported in this browser.');
+                        }
+                      });
+                    });
+                  });
+
+                  // Delete comment functionality
+                  document.querySelectorAll('.delete-comment-button').forEach(button => {
+                    button.addEventListener('click', function () {
+                      const commentId = this.getAttribute('data-comment-id');
+                      fetch(`/posts/delete_comment/${commentId}/`, {  // Correct URL
+                        method: 'POST',
+                        headers: {
+                          'X-CSRFToken': getCookie('csrftoken')
+                        }
+                      }).then(response => response.json()).then(data => {
+                        if (data.success) {
+                          document.getElementById(`comment-${commentId}`).remove();
+                        }
+                      });
+                    });
+                  });
+
+                  // View comments form submission
+                  document.querySelectorAll('.view-comments-button').forEach(button => {
+                    button.addEventListener('click', function () {
+                      const postId = this.getAttribute('data-post-id');
+                      const modal = document.getElementById(`commentModal-${postId}`);
+                      const commentList = modal.querySelector(`#commentList-${postId}`);
+                      const commentForm = modal.querySelector(`#commentForm-${postId}`);
+
+                      commentForm.addEventListener('submit', function (e) {
+                        e.preventDefault();
+                        const content = this.querySelector('textarea[name="content"]').value;
+                        fetch(`/posts/comment/${postId}/`, {  // Correct URL
+                          method: 'POST',
+                          headers: {
+                            'X-CSRFToken': getCookie('csrftoken'),
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                          },
+                          body: new URLSearchParams({ 'content': content })
+                        }).then(response => response.json()).then(data => {
+                          if (data.success) {
+                            const newComment = document.createElement('div');
+                            newComment.classList.add('comment');
+                            newComment.innerHTML = `<p><strong>${data.username}</strong> ${content}</p>`;
+                            commentList.appendChild(newComment);
+                            commentForm.querySelector('textarea[name="content"]').value = '';
+                          }
+                        });
+                      });
+                    });
+                  });
+
+                  function getCookie(name) {
+                    let cookieValue = null;
+                    if (document.cookie && document.cookie !== '') {
+                      const cookies = document.cookie.split(';');
+                      for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                          break;
+                        }
+                      }
+                    }
+                    return cookieValue;
+                  }
+                });
+              </script>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- Image Modal -->
+        <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-body p-0 position-relative" style="padding: 0; margin: 0;">
+                <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"
+                  aria-label="Close"
+                  style="background-color: #0056b3; color: #ffffff; border-radius: 50%; width: 30px; height: 30px; border: none; font-size: 20px;">
+                </button>
+                <img id="fullImage" src="" class="img-fluid"
+                  style="width: 100%; height: 100%; object-fit: cover; border: 2px solid #333333;"
+                  alt="Full Size Image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="videos" role="tabpanel" aria-labelledby="videos-tab">
+        <br>
+        <a href="#" id="upload-video-link" class="btn btn-primary">Go Live</a>
+        <br><br>
+
+        <!-- Modal -->
+        <div class="modal fade" id="featureAlertModal" tabindex="-1" aria-labelledby="featureAlertModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="featureAlertModalLabel">Feature Will Be Available Soon</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h5>This feature is not yet available.</h5>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          document.getElementById('upload-video-link').addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent the default link action
+            var featureAlertModal = new bootstrap.Modal(document.getElementById('featureAlertModal'));
+            featureAlertModal.show(); // Show the modal
+          });
+        </script>
+      </div>
+
+      <div class="tab-pane fade" id="services" role="tabpanel" aria-labelledby="services-tab">
+        <section id="services" class="services section">
+          <!-- Section Title -->
+          <div class="container section-title" data-aos="fade-up">
+            <h2>Explore</h2>
+            <p>Services from OWD</p>
+          </div><!-- End Section Title -->
+
+          <div class="container">
+
+            <div class="row gy-4">
+              {% for adspost in adsposts %}
+              <div class="container" data-aos="fade-up">
+                <div class="row align-items-center border rounded shadow-sm p-4">
+                  <!-- Image Section -->
+                  <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                    <img src="{{ adspost.image.url }}" alt="{{ adspost.description }}" class="img-fluid rounded">
+                  </div>
+
+                  <!-- Content Section -->
+                  <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right"
+                    data-aos-delay="100">
+                    <h1 class="display-5">{{ adspost.name }}</h1>
+                    <h3 class="text-secondary">{{ adspost.header }}</h3>
+                    <p class="fst-italic lead">{{ adspost.subheader }}</p>
+                    <ul class="list-unstyled">
+                      <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description1 }}</li>
+                      <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description2 }}</li>
+                      <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description3 }}</li>
+                      <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description4 }}</li>
+                      <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description5 }}</li>
+                      <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description6 }}</li>
+                      <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description7 }}</li>
+                      <li><i class="ri-check-double-line text-danger"></i> {{ adspost.description8 }}</li>
+                    </ul>
+                    <p>{{ adspost.conclusion }}</p>
+                    <p>
+                      <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        data-adspost-id="{{ adspost.id }}">Get
+                        started</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-5">
+              {% endfor %}
+            </div>
+
+
+
+            <!-- Service Items -->
+            <div class="row gy-4">
+              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                  <div class="icon">
+                    <i class="ri-pencil-line"></i>
+                  </div>
+                  <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <h3>Copywriting, Books & Project Typing</h3>
+                  </a>
+                  <p>Let our team handle your project. Create any type of book, copywriting material
+                    etc, with just one
+                    click. Each project costs #10,000 - $6.29</p>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                  <div class="icon">
+                    <i class="bx bx-world"></i>
+                  </div>
+                  <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#selectWebsiteTypeModal">
+                    <h3>Web Development</h3>
+                  </a>
+                  <p>Enhance your business's online presence by creating, designing, or optimizing a
+                    unique website
+                    with OWD.</p>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                  <div class="icon">
+                    <i class="ri-book-line"></i>
+                  </div>
+                  <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <h3>Thousands Of Digital Materials For Sale</h3>
+                  </a>
+                  <p>With just one click, access eBooks, e-learning materials, and more at highly
+                    affordable prices.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                  <div class="icon">
+                    <i class="ri-bill-line"></i>
+                  </div>
+                  <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#adsModal">
+                    <h3>Sponsored Ads Campaign</h3>
+                  </a>
+                  <p>Expand your business locally and globally, reaching customers around the world
+                    through our
+                    sponsored ads campaign.</p>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                  <div class="icon">
+                    <i class="ri-robot-line"></i>
+                  </div>
+                  <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#aiIntegrationModal">
+                    <h3>Integrate AI Chat Support System In Your Website or App</h3>
+                  </a>
+                  <p>Integrate AI chatbot into your website or app to efficiently handle sales and
+                    answer customer inquiries based on your content and customization.</p>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-item position-relative">
+                  <div class="icon">
+                    <img src="{% static 'assets/img/All networks logo.jpeg' %}" alt="MTN, Airtel, Glo, 9Mobile"
+                      width="70px">
+                  </div>
+                  <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#serviceModal">
+                    <h3>VTU Data Offer</h3>
+                  </a>
+                  <p>Buy & Top Up Your Data at a Cheaper Rate: Airtel, MTN, Glo, and 9Mobile.</p>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-item position-relative">
+                  <div class="icon">
+                    <img src="{% static 'assets/img/cac logo.jpeg' %}" alt="CAC (Coporate Affairs Commission) Logo"
+                      width="100px">
+                  </div>
+                  <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#businessModal">
+                    <h3>Register Your Company/Organization with CAC</h3>
+                  </a>
+                  <p>Do your Company, Business/Organization registration with ease in just two steps</p>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-item position-relative">
+                  <div class="icon">
+                    <i class="ri-server-line"></i>
+                  </div>
+                  <a href="#" class="stretched-link" data-bs-toggle="modal" data-bs-target="#domainModal">
+                    <h3>Domain Name Registration & Hosting</h3>
+                  </a>
+                  <p>Secure your business website or personal domain with easy and affordable hosting
+                    solutions.</p>
+                </div>
+              </div>
+            </div>
+            <!-- End Service Items -->
+          </div>
+        </section>
+
+        <!--Resource Section-->
+        <section class="container-fluid mt-5">
+          <div class="row text-center">
+            <div class="col-12">
+              <h2 class="mb-4 gold-bg p-3">DIGITAL RESOURCES, APPS & GAMES</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-6">
+              <div class="card app-card">
+                <img src="{% static 'assets/img/resources.png' %}" class="card-img-top" alt="Digital resources">
+                <div class="card-body">
+                  <h5 class="card-title">Digital Resources</h5>
+                  <p class="card-text">Discover a wealth of essential digital assets designed to
+                    enrich your journey
+                    through the digital landscape.</p>
+                  <a href="{% url 'useful_resources' %}" class="btn btn-primary">Get all</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="card app-card">
+                <img src="{% static 'assets/img/desktop.jpg' %}" class="card-img-top" alt="Powerful desktop apps">
+                <div class="card-body">
+                  <h5 class="card-title">Desktop Apps</h5>
+                  <p class="card-text">Transform your desktop experience with versatile and powerful
+                    applications for
+                    Windows, macOS, and Linux.</p>
+                  <a href="{% url 'desktop_apps' %}" class="btn btn-primary">Get all</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="card app-card">
+                <img src="{% static 'assets/img/andriod.jpg' %}" class="card-img-top" alt="Premium andriod apps">
+                <div class="card-body">
+                  <h5 class="card-title">Premium Android Apps</h5>
+                  <p class="card-text">Unlock premium features for a lifetime with our top-notch
+                    Android apps & games.
+                    Elevate your mobile experience instantly.</p>
+                  <a href="{% url 'andriod_apps' %}" class="btn btn-primary">Get all</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--End Resource Section-->
+
+        <!-- Call To Action Section -->
+        <section id="call-to-action" class="call-to-action section dark-background">
+
+          <img src="{% static 'assets/img/owd.jpeg' %}" alt="owd">
+
+          <div class="container">
+            <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+              <div class="col-xl-10">
+                <div class="text-center">
+                  <h3>Partner With Us</h3>
+                  <p>Partner with OA Wisdom Digital Firm to conduct training sessions tailored for
+                    your company,
+                    organization, or school. Our expertise extends across various sectors, including
+                    schools,
+                    churches,
+                    the
+                    oil industry, non-profit organizations, healthcare institutions, government
+                    agencies, financial
+                    institutions, technology firms, manufacturing companies, retail businesses,
+                    consulting firms,
+                    legal
+                    firms, media, and entertainment companies. Elevate your team's digital skills
+                    with our specialized
+                    training programs.</p>
+                  <a class="btn btn-primary" href="https://wa.link/aj20qm">Get Started</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- /Call To Action Section -->
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section">
+          <!-- Section Title -->
+          <div class="container section-title" data-aos="fade-up">
+            <h2>Contact</h2>
+            <p>Contact Us</p>
+          </div><!-- End Section Title -->
+
+          <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row gy-4">
+              <div class="col-lg-4">
+                <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                  <i class="bi bi-geo-alt flex-shrink-0"></i>
+                  <div>
+                    <h3>Address</h3>
+                    <p>Mini-Orlu Road Off Adageorge Road, Port Harcourt, Rivers State, Nigeria.</p>
+                  </div>
+                </div><!-- End Info Item -->
+
+                <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                  <i class="bi bi-telephone flex-shrink-0"></i>
+                  <div>
+                    <h3>Call Us</h3>
+                    <p>+2347081668601, +2349031314945</p>
+                  </div>
+                </div><!-- End Info Item -->
+
+                <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+                  <i class="bi bi-envelope flex-shrink-0"></i>
+                  <div>
+                    <h3>Email Us</h3>
+                    <p>oawisdomdigitalfirm@gmail.com</p>
+                  </div>
+                </div><!-- End Info Item -->
+              </div>
+
+              <div class="col-lg-8 mt-5 mt-lg-0">
+                <form id="contactForm" method="post" action="{% url 'contact' %}" class="php-email-form">
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                      <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                        required>
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                  </div>
+                  <div class="form-group mt-3">
+                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                  </div>
+                  <div class="my-3">
+                    <div class="loading" style="display: none;">Sending...</div>
+                    <div class="error-message"></div>
+                  </div>
+                  <div class="text-center"><button type="submit" class="custom-button">Send
+                      Message</button></div>
+                </form>
+                <div id="successMessage" class="alert alert-success" style="display: none;">
+                  Your message has been sent. We will get back to you via your email. Thank you!
+                </div>
+              </div>
+
+              <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                  const form = document.getElementById('contactForm');
+                  const loading = document.querySelector('.loading');
+                  const errorMessage = document.querySelector('.error-message');
+                  const successMessage = document.getElementById('successMessage');
+
+                  form.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    const formData = new FormData(form);
+
+                    // Show loading indicator
+                    loading.style.display = 'block';
+                    errorMessage.style.display = 'none';
+
+                    fetch(form.action, {
+                      method: 'POST',
+                      body: formData,
+                      headers: {
+                        'X-CSRFToken': form.querySelector('[name=csrfmiddlewaretoken]').value,
+                      },
+                    })
+                      .then(response => response.json())
+                      .then(data => {
+                        loading.style.display = 'none';
+                        if (data.success) {
+                          // Hide form and show success message
+                          form.style.display = 'none';
+                          successMessage.style.display = 'block';
+                        } else {
+                          // Show error messages
+                          let errors = data.errors;
+                          let errorHtml = '';
+                          for (let field in errors) {
+                            errorHtml += `${errors[field]}<br>`;
+                          }
+                          errorMessage.innerHTML = errorHtml;
+                          errorMessage.style.display = 'block';
+                        }
+                      })
+                      .catch(error => {
+                        loading.style.display = 'none';
+                        errorMessage.innerHTML = 'An error occurred. Please try again later.';
+                        errorMessage.style.display = 'block';
+                      });
+                  });
+                });
+              </script>
+
+            </div>
+          </div>
+        </section>
+        <!-- End of Contact Section -->
+      </div>
+
+      <div class="tab-pane fade" id="marketplace" role="tabpanel" aria-labelledby="marketplace-tab">
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Products & Services</h2>
+          <p>Marketplace</p>
+        </div><!-- End Section Title -->
+
+        <!-- Search Bar -->
+        <div class="container mt-5">
+          <form method="GET" action="{% url 'search_marketplace' %}"
+            class="d-flex flex-column flex-md-row align-items-center">
+            <input type="text" name="query" class="form-control form-control-lg me-md-2"
+              placeholder="Search for services, products, location, people..." aria-label="Search">
+            <button type="submit" class="btn btn-primary btn-lg mt-2 mt-md-0">Search</button>
+          </form>
+          <br><br>
+          {% if marketplace_entry_exists %}
+          <a href="{% url 'join_marketplace' %}" class="btn btn-primary">Edit your marketplace info</a>
+          {% else %}
+          <a href="{% url 'join_marketplace' %}" class="btn btn-primary">Join Marketplace</a>
+          {% endif %}
+          {% if marketplace_entry_exists %}
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#addMarketplaceItemModal">
+            Sell Something
+          </button>
+          {% endif %}
+        </div>
+        <br>
+
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+
+
+        <!-- Modal for Adding Marketplace Item -->
+        <div class="modal fade" id="addMarketplaceItemModal" tabindex="-1" aria-labelledby="addMarketplaceItemLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addMarketplaceItemLabel">Add Marketplace Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="addMarketplaceItemForm" method="post" action="{% url 'add_marketplace_item' %}"
+                  enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <!-- Item Name -->
+                  <div class="mb-3">
+                    <label for="itemName" class="form-label">Item Name</label>
+                    <input type="text" class="form-control" id="itemName" name="name" placeholder="Enter item name"
+                      required>
+                  </div>
+
+                  <!-- Description -->
+                  <div class="mb-3">
+                    <label for="itemDescription" class="form-label">Description</label>
+                    <textarea class="form-control" id="itemDescription" name="description"
+                      placeholder="Enter item description" required></textarea>
+                  </div>
+
+                  <!-- Price -->
+                  <div class="mb-3">
+                    <label for="itemPrice" class="form-label">Price (in Naira)</label>
+                    <input type="number" class="form-control" id="itemPrice" name="price" placeholder="Enter item price"
+                      required>
+                  </div>
+
+                  <!-- Images Upload -->
+                  <div class="mb-3">
+                    <label for="itemImages" class="form-label">Upload Images</label>
+                    <input type="file" class="form-control" id="itemImages" name="images" accept="image/*" multiple
+                      required>
+                    <div class="mt-3" id="imagePreview"></div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">Add Item</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container mt-5">
+          <div class="row">
+            {% for item in marketplace_items %}
+            <div class="col-md-4">
+              <div class="card mb-4">
+                <div class="card-header">
+                  <h3>{{ item.name }}</h3>
+                </div>
+                <div class="card-body">
+
+                  <!-- Author Info -->
+                  <div class="author-info">
+                    <div class="profile-image-container">
+                      {% if item.user.user_profile.is_verified %}
+                      <div class="verification-badge3">
+                        <img src="{% static 'assets/img/verification_badge.png' %}" alt="Verified Badge" class="img3">
+                      </div>
+                      {% endif %}
+                      {% if item.user.user_profile.profile_image %}
+                      <img src="{{ item.user.user_profile.profile_image.url }}" class="profile-image"
+                        alt="Profile Image" />
+                      {% else %}
+                      <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png"
+                        class="profile-image" alt="Default Profile Image" />
+                      {% endif %}
+                    </div>
+                    <a href="{% url 'profile' item.user.username %}">{{ item.user.username }}</a>
+                  </div>
+
+                  <!-- Swiper Container -->
+                  <div class="swiper-container" id="swiper{{ item.id }}">
+                    <div class="swiper-wrapper">
+                      {% for image in item.images.all %}
+                      <div class="swiper-slide">
+                        <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ item.name }}"
+                          data-bs-toggle="modal" data-bs-target="#imageModal{{ item.id }}-{{ forloop.counter0 }}">
+                      </div>
+                      {% endfor %}
+                    </div>
+                    <!-- Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Navigation buttons -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- Total Images Count -->
+                    <div class="total-images-count">
+                      <span>{{ item.images.count }} Images</span>
+                    </div>
+                  </div>
+
+                  <p>{{ item.description }}</p>
+                  <p><strong>Price:</strong> &#8358;{{ item.price }}</p>
+                  <p><strong>Date Listed:</strong> {{ item.created_at }}</p>
+
+                  <!-- View Count -->
+                  <p><strong>Views:</strong> {{ item.view_count }}</p>
+                  {% if request.user != item.user %}
+                  <a href="{% url 'create_private_chat' user_id=item.user.id %}" class="btn btn-primary">Chat With This
+                    Seller</a>
+                  <a href="{% url 'add_to_cart' item.pk %}" class="btn btn-primary">Add to Cart</a>
+                  {% if user.is_authenticated %}
+                  <button class="btn btn-primary" onclick="addToWishlist({{ item.pk }})">Add to Wishlist</button>
+                  {% else %}
+                  <a href="{% url 'login' %}" class="btn btn-primary">Add to Wishlist</a>
+                  {% endif %}
+                  {% endif %}
+                  {% if user.is_authenticated %}
+                  <button class="btn btn-primary share-button" data-item-id="{{ item.id }}">Share</button>
+                  {% else %}
+                  <a href="{% url 'login' %}" class="btn btn-primary">Share</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+
+        <script>
+          // Function to add item to wishlist
+          window.addToWishlist = function (itemId) {
+            fetch(`/wishlist/add/${itemId}/`, {
+              method: 'POST',
+              headers: {
+                'X-CSRFToken': getCookie('csrftoken'),
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ itemId: itemId }),
+            })
+              .then(response => response.json())
+              .then(data => {
+                if (data.success) {
+                  alert('Item added to wishlist!');
+                } else if (data.redirect) {
+                  window.location.href = data.redirect;  // Redirect to login if needed
+                } else {
+                  alert('Failed to add item to wishlist.');
+                }
+              })
+              .catch(error => console.error('Error:', error));
+          }
+        </script>
+
+        <!-- Modals for each item -->
+        {% for item in marketplace_items %}
+        {% for image in item.images.all %}
+        <div class="modal fade" id="imageModal{{ item.id }}-{{ forloop.counter0 }}" tabindex="-1"
+          aria-labelledby="imageModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                style="background-color: #0056b3; color: #ffffff; border-radius: 50%; width: 30px; height: 30px; border: none; font-size: 20px;"></button>
+              <div class="modal-body">
+                <img src="{{ image.image.url }}" class="img-fluid" alt="{{ item.name }}"
+                  style="width: 100%; height: 100%; object-fit: cover; border: 2px solid #333333;"
+                  alt="Full Size Image">
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Swiper JS -->
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+        <!-- Initialize Swiper -->
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            const swipers = document.querySelectorAll('.swiper-container');
+            swipers.forEach(swiperContainer => {
+              new Swiper(swiperContainer, {
+                loop: true,
+                pagination: {
+                  el: swiperContainer.querySelector('.swiper-pagination'),
+                  clickable: true,
+                },
+                navigation: {
+                  nextEl: swiperContainer.querySelector('.swiper-button-next'),
+                  prevEl: swiperContainer.querySelector('.swiper-button-prev'),
+                },
+                autoplay: {
+                  delay: 3000,
+                  disableOnInteraction: false,
+                },
+                allowTouchMove: true,
+              });
+            });
+
+            // Share Button Functionality
+            document.querySelectorAll('.share-button').forEach(button => {
+              button.addEventListener('click', function () {
+                const itemId = this.getAttribute('data-item-id');
+                fetch(`/marketplace/share/${itemId}/`, {
+                  method: 'POST',
+                  headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                  }
+                })
+                  .then(response => {
+                    if (!response.ok) {
+                      throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                  })
+                  .then(data => {
+                    if (navigator.share) {
+                      navigator.share({
+                        title: data.title,
+                        text: data.description,
+                        url: data.shared_link
+                      }).catch(error => console.error('Error sharing:', error));
+                    } else {
+                      alert('Share API not supported in this browser.');
+                    }
+                  })
+                  .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                    alert('Failed to share the item. Please try again later.');
+                  });
+              });
+            });
+
+            // Function to get CSRF token
+            function getCookie(name) {
+              let cookieValue = null;
+              if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                  const cookie = cookies[i].trim();
+                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                  }
+                }
+              }
+              return cookieValue;
+            }
+          });
+        </script>
+      </div>
+    </div>
+
+  </main>
+
+
+  <!--All Modals-->
+  <!-- Modal for Ads Campaign -->
+  <div class="modal fade" id="adsModal" tabindex="-1" aria-labelledby="adsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="adsModalLabel">Sponsored Ads Campaign</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="adsForm" method="post" action="{% url 'facebook_ads_requirement' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" name="title" placeholder="Enter a title for your ad"
+                required>
+            </div>
+            <div class="mb-3">
+              <label for="mediaFile" class="form-label">Upload Media</label>
+              <input type="file" class="form-control" id="mediaFile" name="media_file" accept="image/*,video/*"
+                required>
+              <div class="mt-3" id="preview"></div>
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" name="description"
+                placeholder="Enter a description for your ad" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="adType" class="form-label">Select Ad Type</label>
+              <select class="form-select" id="adType" name="ad_objective" required>
+                <option value="" selected disabled>Select ad type</option>
+                <option value="more_messages_whatsapp">Get More Messages on WhatsApp</option>
+                <option value="more_website_visitors">Get More Website Visitors</option>
+                <option value="more_calls">Get More Calls</option>
+                <option value="more_followers">Get More Followers</option>
+                <option value="grow_customer_base">Grow Customer Base</option>
+              </select>
+            </div>
+
+            <!-- WhatsApp Options -->
+            <div id="whatsappOptions" class="ad-options" style="display: none;">
+              <div class="mb-3">
+                <label for="whatsappNumber" class="form-label">WhatsApp Number</label>
+                <input type="text" class="form-control" id="whatsappNumber" name="whatsapp_number"
+                  placeholder="Enter your WhatsApp number">
+              </div>
+              <div class="mb-3">
+                <label for="messageTemplate" class="form-label">Message Template</label>
+                <textarea class="form-control" id="messageTemplate" name="message_template"
+                  placeholder="Enter the message you want your customer to see in your direct message (DM)."></textarea>
+              </div>
+            </div>
+
+            <!-- Website Visitors Options -->
+            <div id="websiteVisitorsOptions" class="ad-options" style="display: none;">
+              <div class="mb-3">
+                <label for="websiteUrl" class="form-label">Website URL</label>
+                <input type="url" class="form-control" id="websiteUrl" name="website_url">
+              </div>
+              <div class="mb-3">
+                <label for="callToAction" class="form-label">Call to Action</label>
+                <select class="form-select" id="callToAction" name="call_to_action">
+                  <option value="shopNow">Shop Now</option>
+                  <option value="learnMore">Learn More</option>
+                  <option value="signUp">Sign Up</option>
+                  <option value="contactUs">Contact Us</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Calls Options -->
+            <div id="callsOptions" class="ad-options" style="display: none;">
+              <div class="mb-3">
+                <label for="phoneNumber" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" id="phoneNumber" name="phone_number">
+              </div>
+              <div class="mb-3">
+                <label for="callSchedule" class="form-label">Call Schedule</label>
+                <input type="text" class="form-control" id="callSchedule" name="call_schedule">
+              </div>
+            </div>
+
+            <!-- Followers Options -->
+            <div id="followersOptions" class="ad-options" style="display: none;">
+              <div class="mb-3">
+                <label for="socialMediaPlatform" class="form-label">Social Media Platform</label>
+                <select class="form-select" id="socialMediaPlatform" name="social_media_platform">
+                  <option value="facebook">Facebook</option>
+                  <option value="instagram">Instagram</option>
+                  <option value="twitter">Twitter</option>
+                  <option value="linkedin">LinkedIn</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Customer Base Options -->
+            <div id="customerBaseOptions" class="ad-options" style="display: none;">
+              <div class="mb-3">
+                <label for="customerBaseGoal" class="form-label">Customer Base Goal</label>
+                <input type="text" class="form-control" id="customerBaseGoal" name="customer_base_goal"
+                  placeholder="Describe the outcomes you aim to achieve from this ad campaign.">
+              </div>
+              <div class="mb-3">
+                <label for="growthStrategy" class="form-label">Growth Strategy</label>
+                <textarea class="form-control" id="growthStrategy" name="growth_strategy"
+                  placeholder="Please enter the strategies you wish to implement, such as collecting contact details etc."></textarea>
+              </div>
+            </div>
+
+            <!-- Common Fields -->
+            <div class="mb-3">
+              <label for="targetAgeRange" class="form-label">Target Age Range</label>
+              <input type="text" class="form-control" id="targetAgeRange" name="target_age_range">
+            </div>
+            <div class="mb-3">
+              <label for="location" class="form-label">Your Business Location</label>
+              <input type="text" class="form-control" id="location" name="location">
+            </div>
+            <div class="mb-3">
+              <label for="adsDisplayLocation" class="form-label">Ads Display Location</label>
+              <input type="text" class="form-control" id="adsDisplayLocation" name="ads_display_location">
+            </div>
+            <div class="mb-3">
+              <label for="daysDuration" class="form-label">Days Duration</label>
+              <input type="number" class="form-control" id="daysDuration" name="days_duration"
+                placeholder="Enter the duration in days" required>
+            </div>
+            <div class="mb-3">
+              <label for="budgetNaira" class="form-label">Budget (Naira)</label>
+              <input type="number" class="form-control" id="budgetNaira" name="budget_naira"
+                placeholder="Enter your budget in Naira">
+            </div>
+            <div class="mb-3">
+              <label for="budgetDollar" class="form-label">Budget (Dollar)</label>
+              <input type="number" class="form-control" id="budgetDollar" name="budget_dollar"
+                placeholder="Equivalent budget in Dollar" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="estimatedReach" class="form-label">Estimated Reach</label>
+              <input type="text" class="form-control" id="estimatedReach" name="estimated_reach"
+                placeholder="Estimated number of people reached" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="paymentOption" class="form-label">Select Payment Option</label>
+              <div>
+                <input type="radio" id="paystack" name="payment_option" value="paystack" required>
+                <label for="paystack">Paystack</label>
+              </div>
+              <div>
+                <input type="radio" id="PayPal" name="payment_option" value="PayPal" required>
+                <label for="PayPal">PayPal</label>
+              </div>
+              <div>
+                <input type="radio" id="USD bank_transfer" name="payment_option" value="USD bank_transfer" required>
+                <label for="USD bank_transfer">Bank Transfer</label>
+              </div>
+              {% if form.payment_option.errors %}
+              <div class="text-danger">
+                {{ form.payment_option.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const exchangeRate = 1500; // Example exchange rate, replace with the actual rate
+    const reachPerDollar = {
+      more_messages_whatsapp: 100, // Example reach, replace with actual data
+      more_website_visitors: 80,
+      more_calls: 70,
+      more_followers: 60,
+      grow_customer_base: 50
+    };
+
+    document.getElementById('adType').addEventListener('change', function () {
+      const selectedAdType = this.value;
+      updateEstimatedReach();
+      // Show/Hide relevant options
+      document.querySelectorAll('.ad-options').forEach(option => option.style.display = 'none');
+      if (selectedAdType) {
+        document.getElementById(selectedAdType + 'Options').style.display = 'block';
+      }
+    });
+
+    document.getElementById('budgetNaira').addEventListener('input', function () {
+      const budgetNaira = parseFloat(this.value);
+      const budgetDollar = budgetNaira / exchangeRate;
+      document.getElementById('budgetDollar').value = budgetDollar.toFixed(2);
+      updateEstimatedReach();
+    });
+
+    function updateEstimatedReach() {
+      const budgetDollar = parseFloat(document.getElementById('budgetDollar').value);
+      const selectedAdType = document.getElementById('adType').value;
+      const reach = reachPerDollar[selectedAdType] ? reachPerDollar[selectedAdType] * budgetDollar : 0;
+      document.getElementById('estimatedReach').value = reach.toFixed(0);
+    }
+
+    document.getElementById('mediaFile').addEventListener('change', function () {
+      const file = this.files[0];
+      const preview = document.getElementById('preview');
+      preview.innerHTML = '';
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          const img = document.createElement('img');
+          img.src = event.target.result;
+          img.style.maxWidth = '100%';
+          img.style.maxHeight = '200px';
+          preview.appendChild(img);
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+
+
+  <!-- Modal for Upload Request -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">SEND US YOUR REQUEST NOW!</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="messageForm" method="post" enctype="multipart/form-data" action="{% url 'upload_message' %}">
+            {% csrf_token %}
+            <input type="hidden" id="adspost_id" name="adspost_id" value="">
+
+            <div class="mb-3">
+              <label for="name" class="form-label">What is the title of the project?</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Enter title" required>
+            </div>
+
+            <!-- File Upload Section -->
+            <div class="mb-3" id="fileInputsContainer">
+              <label class="form-label">Upload sample/prototype file:</label>
+              <input type="file" class="form-control" name="files" accept="*" required>
+            </div>
+            <div class="mb-3">
+              <button type="button" class="btn btn-secondary" id="addFileButton">Add More Files</button>
+            </div>
+            <!-- End File Upload Section -->
+
+            <div class="mb-3">
+              <label for="text" class="form-label">Tell us exactly what you want in detail:</label>
+              <textarea class="form-control" id="text" name="text" rows="3" placeholder="Enter your message"
+                required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="paymentOption" class="form-label">Select Payment Option</label>
+              <div>
+                <input type="radio" id="paystack" name="payment_option" value="paystack" required>
+                <label for="paystack">Paystack</label>
+              </div>
+              <div>
+                <input type="radio" id="PayPal" name="payment_option" value="PayPal" required>
+                <label for="PayPal">PayPal</label>
+              </div>
+              <div>
+                <input type="radio" id="USD bank_transfer" name="payment_option" value="USD bank_transfer" required>
+                <label for="USD bank_transfer">Bank Transfer</label>
+              </div>
+              {% if form.payment_option.errors %}
+              <div class="text-danger">
+                {{ form.payment_option.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Handle modal open and set adspost_id
+      var buttons = document.querySelectorAll('a[data-bs-toggle="modal"]');
+      buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          var adspostId = this.getAttribute('data-adspost-id');
+          document.getElementById('adspost_id').value = adspostId;
+        });
+      });
+
+      // Handle adding more file inputs
+      var addFileButton = document.getElementById('addFileButton');
+      var fileInputsContainer = document.getElementById('fileInputsContainer');
+
+      addFileButton.addEventListener('click', function () {
+        // Create a new file input element
+        var newFileInput = document.createElement('input');
+        newFileInput.type = 'file';
+        newFileInput.name = 'files'; // Ensure it matches the form field name
+        newFileInput.classList.add('form-control', 'mt-2');
+        newFileInput.accept = '*'; // Accept any file type
+        fileInputsContainer.appendChild(newFileInput);
+      });
+    });
+  </script>
+
+
+
+  <!-- Modal for Search Materials -->
+  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="searchModalLabel">Search for E-books/Materials</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="searchForm">
+            <div class="mb-3">
+              <label for="searchInput" class="form-label">Search</label>
+              <input type="text" class="form-control" id="searchInput"
+                placeholder="Enter title or description of the material" required>
+            </div>
+            <button type="button" class="btn btn-primary" id="searchButton">Search</button>
+            <div class="mt-3" id="searchResult" style="display: none;">
+              <p><strong>Looking for:</strong> <span id="resultText"></span>? Please click below to select
+                from the available materials. If you cannot find what you are looking for, you can click the
+                submit button to place your order.</p>
+            </div>
+            <div id="materialSelectContainer" class="mt-3" style="display: none;">
+              <div class="row">
+                <div class="col-md-4" id="materialImageContainer" style="display: none;">
+                  <img id="materialImage" src="" alt="Material Image" class="img-fluid" />
+                </div>
+                <div class="col-md-8">
+                  <select id="materialSelect" class="form-select">
+                    <!-- Options will be dynamically populated -->
+                  </select>
+                  <div class="mt-3 mb-3">
+                    <label for="paymentOption" class="form-label">Select Payment Option</label>
+                    <div>
+                      <input type="radio" id="paystack" name="payment_option" value="paystack" required>
+                      <label for="paystack">Paystack</label>
+                    </div>
+                    <div>
+                      <input type="radio" id="PayPal" name="payment_option" value="PayPal" required>
+                      <label for="PayPal">PayPal</label>
+                    </div>
+                    <div>
+                      <input type="radio" id="USD_bank_transfer" name="payment_option" value="USD_bank_transfer"
+                        required>
+                      <label for="USD_bank_transfer">Bank Transfer</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="display: none;" id="submitButton">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    /* General Modal Styles */
+    .modal-content {
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header Styles */
+    .modal-header {
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    /* Input Styles */
+    .form-control {
+      border: 1px solid #dcdcdc;
+      border-radius: 5px;
+      transition: border-color 0.3s;
+    }
+
+    .form-control:focus {
+      border-color: #4285f4;
+      box-shadow: 0 0 5px rgba(66, 133, 244, 0.5);
+    }
+
+    /* Result Container Styles */
+    #searchResult {
+      background-color: #f9f9f9;
+      border: 1px solid #eaeaea;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    #materialSelectContainer {
+      border: 1px solid #eaeaea;
+      border-radius: 5px;
+      padding: 15px;
+      background-color: #ffffff;
+    }
+
+    /* Image Styles */
+    #materialImage {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    /* Payment Options */
+    label {
+      margin-left: 10px;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      #materialSelectContainer {
+        padding: 10px;
+      }
+    }
+  </style>
+
+  <script>
+    document.getElementById('searchButton').addEventListener('click', function () {
+      const searchInput = document.getElementById('searchInput').value.trim();
+      const resultText = document.getElementById('resultText');
+      const searchResult = document.getElementById('searchResult');
+      const materialSelect = document.getElementById('materialSelect');
+      const materialSelectContainer = document.getElementById('materialSelectContainer');
+      const materialImage = document.getElementById('materialImage');
+      const submitButton = document.getElementById('submitButton');
+      const paymentOptions = document.querySelectorAll('input[name="payment_option"]');
+
+      if (searchInput !== '') {
+        this.innerHTML = 'Searching...'; // Show loading text
+        fetch("{% url 'search_motivational_books' %}?search_query=" + encodeURIComponent(searchInput), {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => {
+            this.innerHTML = 'Search'; // Revert button text
+            if (data.books && data.books.length > 0) {
+              let optionsHtml = '<option value="">Select a material</option>';
+              data.books.forEach(book => {
+                optionsHtml += `<option value="${book.id}" data-image="${book.image_url}">${book.title} by ${book.author} - ₦${book.price_naira} ($${book.price_dollars})</option>`;
+              });
+              materialSelect.innerHTML = optionsHtml;
+              materialSelectContainer.style.display = 'block';
+              submitButton.style.display = 'inline-block';
+              resultText.textContent = searchInput;
+              searchResult.style.display = 'block';
+
+              // Show payment options if materials are found
+              paymentOptions.forEach(option => option.required = true);
+            } else {
+              materialSelectContainer.style.display = 'none';
+              materialImage.style.display = 'none';
+              submitButton.style.display = 'inline-block';
+              resultText.textContent = searchInput;
+              searchResult.style.display = 'block';
+
+              // Disable payment options when no materials are found
+              paymentOptions.forEach(option => option.required = false);
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching search results:', error);
+            alert('An error occurred. Please try again.');
+            this.innerHTML = 'Search'; // Revert button text
+          });
+      }
+    });
+
+    document.getElementById('materialSelect').addEventListener('change', function () {
+      const selectedOption = this.options[this.selectedIndex];
+      const materialImage = document.getElementById('materialImage');
+      const materialImageContainer = document.getElementById('materialImageContainer');
+
+      if (selectedOption.value) {
+        const imageUrl = selectedOption.getAttribute('data-image');
+        materialImage.src = imageUrl;
+        materialImage.alt = `Image for ${selectedOption.text}`;
+        materialImageContainer.style.display = 'block'; // Show the image container
+      } else {
+        materialImageContainer.style.display = 'none'; // Hide if no selection
+      }
+    });
+
+    document.getElementById('searchForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const searchInput = document.getElementById('searchInput').value.trim();
+
+      if (searchInput !== '') {
+        fetch("{% url 'submit_material_request' %}", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': getCookie('csrftoken')
+          },
+          body: JSON.stringify({
+            search_query: searchInput
+          }),
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => {
+            alert('Your request has been submitted. We will get back to you through your provided contact information.');
+            window.location.reload();
+          })
+          .catch(error => {
+            console.error('Error submitting material request:', error);
+            alert('An error occurred while processing your request. Please try again.');
+          });
+      }
+    });
+
+    document.getElementById('submitButton').addEventListener('click', function () {
+      const selectedMaterial = document.getElementById('materialSelect').value;
+      const selectedPaymentOption = document.querySelector('input[name="payment_option"]:checked').value;
+
+      if (selectedMaterial !== '') {
+        fetch("{% url 'purchase_material' %}", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': getCookie('csrftoken')
+          },
+          body: JSON.stringify({
+            material_id: selectedMaterial,
+            payment_option: selectedPaymentOption // Include payment option in the request
+          }),
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Server response:', data);
+
+            if (data.redirect_url) {
+              window.location.href = data.redirect_url; // Redirect to the appropriate payment page
+            } else {
+              alert('An error occurred while processing your purchase: ' + (data.error || 'Unknown error.'));
+            }
+          })
+          .catch(error => {
+            console.error('Error purchasing material:', error);
+          });
+      } else {
+        alert('You will be notified as soon as we get what you are looking for.');
+      }
+    });
+
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+  </script>
+
+  <!-- AI Integration Modal -->
+  <div class="modal fade" id="aiIntegrationModal" tabindex="-1" aria-labelledby="aiIntegrationModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aiIntegrationModalLabel">Request AI Integration (50,000 NGN - $30.46)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="post" enctype="multipart/form-data" action="{% url 'post_list' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+              <label for="website_or_app" class="form-label">Website or App</label>
+              <input type="text" class="form-control" id="website_or_app" name="website_or_app" required>
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Information/Data of your business or link to your site</label>
+              <textarea class="form-control" id="description" name="description"
+                placeholder="provide the information you want to use to train the chatbot or provide a link to it"
+                rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="media_file" class="form-label">Upload Website Files (Optional)</label>
+              <input type="file" class="form-control" id="media_file" name="media_file" required>
+            </div>
+            <div class="mb-3">
+              <label for="paymentOption" class="form-label">Select Payment Option</label>
+              <div>
+                <input type="radio" id="paystack" name="payment_option" value="paystack" required>
+                <label for="paystack">Paystack</label>
+              </div>
+              <div>
+                <input type="radio" id="PayPal" name="payment_option" value="PayPal" required>
+                <label for="PayPal">PayPal</label>
+              </div>
+              <div>
+                <input type="radio" id="USD bank_transfer" name="payment_option" value="USD bank_transfer" required>
+                <label for="USD bank_transfer">Bank Transfer</label>
+              </div>
+              {% if form.payment_option.errors %}
+              <div class="text-danger">
+                {{ form.payment_option.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+          </form>
+          <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Buy Data Modal -->
+  <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="serviceModalLabel">Select Your Service</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="serviceForm" method="post" action="{% url 'purchase_data' %}">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="phone_number">Phone Number</label>
+              <input type="text" class="form-control" id="phone_number" name="phone_number"
+                placeholder="Enter phone number">
+            </div>
+            <div class="form-group">
+              <label for="network">Select Network</label>
+              <select class="form-control" id="network" name="network">
+                <option value="">Choose...</option>
+                <option value="MTN">MTN</option>
+                <option value="GLO">GLO</option>
+                <option value="AIRTEL">AIRTEL</option>
+                <option value="9MOBILE">9MOBILE</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="dataPlan">Select Data Plan</label>
+              <select class="form-control" id="dataPlan" name="dataPlan">
+                <option value="">Choose...</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="submitBtn">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Company Modal -->
+  <div class="modal fade" id="businessModal" tabindex="-1" aria-labelledby="businessModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="businessModalLabel">First Step: Business Name Reservation Process</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="businessRegistrationForm" method="post" action="{% url 'register_business' %}">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="businessType">Business Type</label>
+              <select class="form-control" id="businessType" name="business_type">
+                <option value="" selected disabled>Select a business type</option>
+                <option value="soleProprietorship">Sole Proprietorship</option>
+                <option value="partnership">Partnership</option>
+                <option value="llc">Limited Liability Company (LLC)</option>
+                <option value="plc">Public Limited Company (PLC)</option>
+                <option value="ngo">Non-Governmental Organization (NGO)</option>
+                <option value="incorporatedTrustee">Incorporated Trustee</option>
+                <option value="cooperativeSociety">Cooperative Society</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="businessName">Business Name</label>
+              <input type="text" class="form-control" id="businessName" name="business_name" required>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Contact Email</label>
+              <input type="email" class="form-control" id="contactEmail" name="contact_email" required>
+            </div>
+            <div class="form-group">
+              <label for="contactPhone">Contact Phone</label>
+              <input type="text" class="form-control" id="contactPhone" name="contact_phone" required>
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" id="description" name="description" rows="3"
+                placeholder="Enter description for your business"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+          </form>
+          <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Domain Hosting Modal -->
+  <div class="modal fade" id="domainModal" tabindex="-1" aria-labelledby="domainModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="domainModalLabel">Domain Name Registration & Hosting</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        {% if form.non_field_errors %}
+        <div class="text-danger">
+          {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+        <div class="modal-body">
+          <form id="domainForm" method="post" action="{% url 'domain_hosting_request' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="domainName">Domain Name</label>
+              <input type="text" class="form-control" id="domainName" name="domainName"
+                placeholder="Enter your desired domain name" required>
+            </div>
+            <div class="form-group">
+              <label for="domainType">Domain Type</label>
+              <select class="form-control" id="domainType" name="domainType" onchange="updatePricing()">
+                <option value="">Choose...</option>
+                <option value="com">.com</option>
+                <option value="net">.net</option>
+                <option value="org">.org</option>
+                <option value="ng">.ng</option>
+                <option value="info">.info</option>
+                <option value="io">.io</option>
+                <option value="tech">.tech</option>
+                <!-- Add more options as needed -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="hostingPlan">Hosting Plan</label>
+              <select class="form-control" id="hostingPlan" name="hostingPlan" onchange="updatePricing()">
+                <option value="">Choose...</option>
+                <option value="basic">Static, frontend without SEO - 20,000 NGN ($12.58). Yearly</option>
+                <option value="pro">Static, frontend Including SEO - 40,000 NGN ($25.16). Yearly</option>
+                <option value="business">Full Stack, frontend & backend Including SEO - 80,000 NGN ($50.32). Yearly
+                </option>
+                <option value="premium">Premium Package - 100,000 NGN ($62.90). Yearly</option>
+                <option value="enterprise">Enterprise Package - 150,000 NGN ($94.34). Yearly</option>
+                <!-- Add more options as needed -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="additionalServices">Additional Services</label>
+              <textarea class="form-control" id="additionalServices" name="additionalServices" rows="3"
+                placeholder="Enter additional services (optional)"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="websiteFiles">Upload Website Files</label>
+              <input type="file" class="form-control-file" id="websiteFiles" name="websiteFiles">
+            </div>
+            <div class="mb-3">
+              <label for="paymentOption" class="form-label">Select Payment Option</label>
+              <div>
+                <input type="radio" id="paystack" name="payment_option" value="paystack" required>
+                <label for="paystack">Paystack</label>
+              </div>
+              <div>
+                <input type="radio" id="PayPal" name="payment_option" value="PayPal" required>
+                <label for="PayPal">PayPal</label>
+              </div>
+              <div>
+                <input type="radio" id="USD bank_transfer" name="payment_option" value="USD bank_transfer" required>
+                <label for="USD bank_transfer">Bank Transfer</label>
+              </div>
+              {% if form.payment_option.errors %}
+              <div class="text-danger">
+                {{ form.payment_option.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div id="pricingInfo" class="alert alert-info">
+              <!-- Pricing info will be updated here -->
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+          </form>
+          <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updatePricing() {
+      const domainType = document.getElementById('domainType').value;
+      const hostingPlan = document.getElementById('hostingPlan').value;
+
+      // Define conversion rate
+      const conversionRate = 1589.95; // 1 USD = 1,589.95 NGN
+
+      let domainPriceNGN = 0;
+      let domainPriceUSD = 0;
+      let hostingPriceNGN = 0;
+      let hostingPriceUSD = 0;
+
+      // Define pricing (in NGN)
+      const domainPrices = {
+        'com': 5000,
+        'net': 5000,
+        'org': 5000,
+        'ng': 3000,
+        'info': 7000,
+        'io': 10000,
+        'tech': 12000,
+      };
+
+      const hostingPrices = {
+        'basic': { ngn: 20000, usd: 12.58 },
+        'pro': { ngn: 40000, usd: 25.16 },
+        'business': { ngn: 80000, usd: 50.32 },
+        'premium': { ngn: 100000, usd: 62.90 },
+        'enterprise': { ngn: 150000, usd: 94.34 },
+      };
+
+      // Calculate domain and hosting prices
+      domainPriceNGN = domainPrices[domainType] || 0;
+      domainPriceUSD = domainPriceNGN / conversionRate;
+      if (hostingPlan) {
+        hostingPriceNGN = hostingPrices[hostingPlan].ngn || 0;
+        hostingPriceUSD = hostingPrices[hostingPlan].usd || 0;
+      }
+
+      const totalNGN = domainPriceNGN + hostingPriceNGN;
+      const totalUSD = domainPriceUSD + hostingPriceUSD;
+
+      document.getElementById('pricingInfo').innerHTML = `
+      <strong>Total Price:</strong><br>
+      Domain Type: ${domainType ? '.' + domainType : 'N/A'}<br>
+      Hosting Plan: ${hostingPlan ? hostingPlan.charAt(0).toUpperCase() + hostingPlan.slice(1) : 'N/A'}<br>
+      Domain Price: ${domainPriceNGN.toLocaleString()} NGN ($${domainPriceUSD.toFixed(2)})<br>
+      Hosting Price: ${hostingPriceNGN.toLocaleString()} NGN ($${hostingPriceUSD.toFixed(2)})<br>
+      <strong>Total Price: ${totalNGN.toLocaleString()} NGN ($${totalUSD.toFixed(2)})</strong>
+    `;
+    }
+  </script>
+
+
+
+
+
+
+
+  <!-- Main Modal for Selecting Website Type -->
+  <div class="modal fade" id="selectWebsiteTypeModal" tabindex="-1" aria-labelledby="selectWebsiteTypeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="selectWebsiteTypeModalLabel">Select Website Type</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="list-group">
+            <!-- Buttons to trigger website form modal -->
+            <button data-bs-toggle="modal" data-bs-target="#requestBasicWebsiteModal" type="button"
+              class="list-group-item list-group-item-action" data-type="Basic Website" data-price="20000">Basic Static,
+              Frontend Website - 40,000 NGN ($24.69)</button>
+            <button data-bs-toggle="modal" data-bs-target="#requestAdvanceWebsiteModal" type="button"
+              class="list-group-item list-group-item-action" data-type="Advance Website" data-price="40000">Advanced
+              Static, Frontend Website - 80,000 NGN ($49.28)</button>
+            <button data-bs-toggle="modal" data-bs-target="#requestComplexWebsiteModal" type="button"
+              class="list-group-item list-group-item-action" data-type="Complex Website" data-price="80000">Full Stack,
+              Frontend & Backend Website or App - 150,000 NGN ($96.00)</button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Template for Requesting Basic Website -->
+  <div class="modal fade" id="requestBasicWebsiteModal" tabindex="-1" aria-labelledby="requestBasicWebsiteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="requestBasicWebsiteModalLabel">Request Basic Website</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+          <form id="requestBasicWebsiteForm" method="post" action="{% url 'website_requirement' %}"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="basicWebsiteImage" class="form-label">Website Logo</label>
+              <input type="file" class="form-control" id="basicWebsiteImage" name="website_image" accept="image/*"
+                onchange="previewImage(event, 'basicWebsiteImagePreview')">
+              <div id="basicWebsiteImagePreview" class="mt-2"></div>
+              {% if form.website_image.errors %}
+              <div class="text-danger">
+                {{ form.website_image.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <input type="hidden" id="basicWebsiteType" name="website_type" value="Basic Website">
+            <div class="mb-3">
+              <label for="basicWebsiteName" class="form-label">Website Name</label>
+              <input type="text" class="form-control" id="basicWebsiteName" name="website_name"
+                placeholder="Enter website name" required>
+              {% if form.website_name.errors %}
+              <div class="text-danger">
+                {{ form.website_name.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="basicWebsiteDescription" class="form-label">Description</label>
+              <textarea class="form-control" id="basicWebsiteDescription" name="website_description" rows="3"
+                placeholder="Enter website description"></textarea>
+              {% if form.website_description.errors %}
+              <div class="text-danger">
+                {{ form.website_description.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="basicBusinessType" class="form-label">Business Type</label>
+              <input type="text" class="form-control" id="basicBusinessType" name="business_type"
+                placeholder="Enter business type" required>
+              {% if form.business_type.errors %}
+              <div class="text-danger">
+                {{ form.business_type.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="basicFeatures" class="form-label">Features Needed</label>
+              <textarea class="form-control" id="basicFeatures" name="features" rows="3"
+                placeholder="Enter features and functionalities"></textarea>
+              {% if form.features.errors %}
+              <div class="text-danger">
+                {{ form.features.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="basicContactEmail" class="form-label">Contact Email</label>
+              <input type="email" class="form-control" id="basicContactEmail" name="contact_email"
+                placeholder="Enter contact email" required>
+              {% if form.contact_email.errors %}
+              <div class="text-danger">
+                {{ form.contact_email.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="basicContactPhone" class="form-label">Contact Phone</label>
+              <input type="text" class="form-control" id="basicContactPhone" name="contact_phone"
+                placeholder="Enter contact phone number" required>
+              {% if form.contact_phone.errors %}
+              <div class="text-danger">
+                {{ form.contact_phone.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="basicBudgetNaira" class="form-label">Budget (Naira)</label>
+              <input type="number" class="form-control" id="basicBudgetNaira" name="budget_naira"
+                placeholder="Budget should not be lower than 40000" required>
+              {% if form.budget_naira.errors %}
+              <div class="text-danger">
+                {{ form.budget_naira.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="basicBudgetUSD" class="form-label">Budget (USD)</label>
+              <input type="text" class="form-control" id="basicBudgetUSD" name="budget_usd" placeholder="Budget in USD"
+                readonly>
+              {% if form.budget_usd.errors %}
+              <div class="text-danger">
+                {{ form.budget_usd.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="paymentOption" class="form-label">Select Payment Option</label>
+              <div>
+                <input type="radio" id="paystack" name="payment_option" value="paystack" required>
+                <label for="paystack">Paystack</label>
+              </div>
+              <div>
+                <input type="radio" id="PayPal" name="payment_option" value="PayPal" required>
+                <label for="PayPal">PayPal</label>
+              </div>
+              <div>
+                <input type="radio" id="USD bank_transfer" name="payment_option" value="USD bank_transfer" required>
+                <label for="USD bank_transfer">Bank Transfer</label>
+              </div>
+              {% if form.payment_option.errors %}
+              <div class="text-danger">
+                {{ form.payment_option.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Template for Requesting Advance Website -->
+  <div class="modal fade" id="requestAdvanceWebsiteModal" tabindex="-1"
+    aria-labelledby="requestAdvanceWebsiteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="requestAdvanceWebsiteModalLabel">Request Advance Website</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+          <form id="requestAdvanceWebsiteForm" method="post" action="{% url 'website_requirement' %}"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="advanceWebsiteImage" class="form-label">Website Logo</label>
+              <input type="file" class="form-control {% if form.website_image.errors %}is-invalid{% endif %}"
+                id="advanceWebsiteImage" name="website_image" accept="image/*"
+                onchange="previewImage(event, 'advanceWebsiteImagePreview')">
+              <div id="advanceWebsiteImagePreview" class="mt-2"></div>
+              {% if form.website_image.errors %}
+              <div class="invalid-feedback">
+                {{ form.website_image.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <input type="hidden" id="advanceWebsiteType" name="website_type" value="Advance Website">
+            <div class="mb-3">
+              <label for="advanceWebsiteName" class="form-label">Website Name</label>
+              <input type="text" class="form-control {% if form.website_name.errors %}is-invalid{% endif %}"
+                id="advanceWebsiteName" name="website_name" placeholder="Enter website name" required>
+              {% if form.website_name.errors %}
+              <div class="invalid-feedback">
+                {{ form.website_name.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="advanceWebsiteDescription" class="form-label">Description</label>
+              <textarea class="form-control {% if form.website_description.errors %}is-invalid{% endif %}"
+                id="advanceWebsiteDescription" name="website_description" rows="3"
+                placeholder="Enter website description"></textarea>
+              {% if form.website_description.errors %}
+              <div class="invalid-feedback">
+                {{ form.website_description.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="advanceBusinessType" class="form-label">Business Type</label>
+              <input type="text" class="form-control {% if form.business_type.errors %}is-invalid{% endif %}"
+                id="advanceBusinessType" name="business_type" placeholder="Enter business type" required>
+              {% if form.business_type.errors %}
+              <div class="invalid-feedback">
+                {{ form.business_type.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="advanceFeatures" class="form-label">Features Needed</label>
+              <textarea class="form-control {% if form.features.errors %}is-invalid{% endif %}" id="advanceFeatures"
+                name="features" rows="3" placeholder="Enter features and functionalities"></textarea>
+              {% if form.features.errors %}
+              <div class="invalid-feedback">
+                {{ form.features.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="advanceContactEmail" class="form-label">Contact Email</label>
+              <input type="email" class="form-control {% if form.contact_email.errors %}is-invalid{% endif %}"
+                id="advanceContactEmail" name="contact_email" placeholder="Enter contact email" required>
+              {% if form.contact_email.errors %}
+              <div class="invalid-feedback">
+                {{ form.contact_email.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="advanceContactPhone" class="form-label">Contact Phone</label>
+              <input type="text" class="form-control {% if form.contact_phone.errors %}is-invalid{% endif %}"
+                id="advanceContactPhone" name="contact_phone" placeholder="Enter contact phone number" required>
+              {% if form.contact_phone.errors %}
+              <div class="invalid-feedback">
+                {{ form.contact_phone.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="advanceBudgetNaira" class="form-label">Budget (Naira)</label>
+              <input type="number" class="form-control {% if form.budget_naira.errors %}is-invalid{% endif %}"
+                id="advanceBudgetNaira" name="budget_naira" placeholder="Budget should not be lower than 80000"
+                required>
+              {% if form.budget_naira.errors %}
+              <div class="invalid-feedback">
+                {{ form.budget_naira.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="advanceBudgetUSD" class="form-label">Budget (USD)</label>
+              <input type="text" class="form-control {% if form.budget_usd.errors %}is-invalid{% endif %}"
+                id="advanceBudgetUSD" name="budget_usd" placeholder="Budget in USD" readonly>
+              {% if form.budget_usd.errors %}
+              <div class="invalid-feedback">
+                {{ form.budget_usd.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="paymentOption" class="form-label">Select Payment Option</label>
+              <div>
+                <input type="radio" id="paystack" name="payment_option" value="paystack" required
+                  class="{% if form.payment_option.errors %}is-invalid{% endif %}">
+                <label for="paystack">Paystack</label>
+              </div>
+              <div>
+                <input type="radio" id="PayPal" name="payment_option" value="PayPal" required
+                  class="{% if form.payment_option.errors %}is-invalid{% endif %}">
+                <label for="PayPal">PayPal</label>
+              </div>
+              <div>
+                <input type="radio" id="USD_bank_transfer" name="payment_option" value="USD bank_transfer" required
+                  class="{% if form.payment_option.errors %}is-invalid{% endif %}">
+                <label for="USD_bank_transfer">Bank Transfer</label>
+              </div>
+              {% if form.payment_option.errors %}
+              <div class="invalid-feedback">
+                {{ form.payment_option.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Template for Requesting Complex Website -->
+  <div class="modal fade" id="requestComplexWebsiteModal" tabindex="-1"
+    aria-labelledby="requestComplexWebsiteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="requestComplexWebsiteModalLabel">Request Complex Website</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+          <form id="requestComplexWebsiteForm" method="post" action="{% url 'website_requirement' %}"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="complexWebsiteImage" class="form-label">Website Logo</label>
+              <input type="file" class="form-control {% if form.website_image.errors %}is-invalid{% endif %}"
+                id="complexWebsiteImage" name="website_image" accept="image/*"
+                onchange="previewImage(event, 'complexWebsiteImagePreview')">
+              <div id="complexWebsiteImagePreview" class="mt-2"></div>
+              {% if form.website_image.errors %}
+              <div class="invalid-feedback">
+                {{ form.website_image.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <input type="hidden" id="complexWebsiteType" name="website_type" value="Complex Website">
+            <div class="mb-3">
+              <label for="complexWebsiteName" class="form-label">Website Name</label>
+              <input type="text" class="form-control {% if form.website_name.errors %}is-invalid{% endif %}"
+                id="complexWebsiteName" name="website_name" placeholder="Enter website name" required>
+              {% if form.website_name.errors %}
+              <div class="invalid-feedback">
+                {{ form.website_name.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="complexWebsiteDescription" class="form-label">Description</label>
+              <textarea class="form-control {% if form.website_description.errors %}is-invalid{% endif %}"
+                id="complexWebsiteDescription" name="website_description" rows="3"
+                placeholder="Enter website description"></textarea>
+              {% if form.website_description.errors %}
+              <div class="invalid-feedback">
+                {{ form.website_description.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="complexBusinessType" class="form-label">Business Type</label>
+              <input type="text" class="form-control {% if form.business_type.errors %}is-invalid{% endif %}"
+                id="complexBusinessType" name="business_type" placeholder="Enter business type" required>
+              {% if form.business_type.errors %}
+              <div class="invalid-feedback">
+                {{ form.business_type.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="complexFeatures" class="form-label">Features Needed</label>
+              <textarea class="form-control {% if form.features.errors %}is-invalid{% endif %}" id="complexFeatures"
+                name="features" rows="3" placeholder="Enter features and functionalities"></textarea>
+              {% if form.features.errors %}
+              <div class="invalid-feedback">
+                {{ form.features.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="complexContactEmail" class="form-label">Contact Email</label>
+              <input type="email" class="form-control {% if form.contact_email.errors %}is-invalid{% endif %}"
+                id="complexContactEmail" name="contact_email" placeholder="Enter contact email" required>
+              {% if form.contact_email.errors %}
+              <div class="invalid-feedback">
+                {{ form.contact_email.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="complexContactPhone" class="form-label">Contact Phone</label>
+              <input type="text" class="form-control {% if form.contact_phone.errors %}is-invalid{% endif %}"
+                id="complexContactPhone" name="contact_phone" placeholder="Enter contact phone number" required>
+              {% if form.contact_phone.errors %}
+              <div class="invalid-feedback">
+                {{ form.contact_phone.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="complexBudgetNaira" class="form-label">Budget (Naira)</label>
+              <input type="number" class="form-control {% if form.budget_naira.errors %}is-invalid{% endif %}"
+                id="complexBudgetNaira" name="budget_naira" placeholder="
+                budget should be higher than 150000" required>
+              {% if form.budget_naira.errors %}
+              <div class="invalid-feedback">
+                {{ form.budget_naira.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="complexBudgetUSD" class="form-label">Budget (USD)</label>
+              <input type="text" class="form-control {% if form.budget_usd.errors %}is-invalid{% endif %}"
+                id="complexBudgetUSD" name="budget_usd" placeholder="Budget in USD" readonly>
+              {% if form.budget_usd.errors %}
+              <div class="invalid-feedback">
+                {{ form.budget_usd.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <div class="mb-3">
+              <label for="paymentOption" class="form-label">Select Payment Option</label>
+              <div>
+                <input type="radio" id="paystack" name="payment_option" value="paystack" required
+                  class="{% if form.payment_option.errors %}is-invalid{% endif %}">
+                <label for="paystack">Paystack</label>
+              </div>
+              <div>
+                <input type="radio" id="PayPal" name="payment_option" value="PayPal" required
+                  class="{% if form.payment_option.errors %}is-invalid{% endif %}">
+                <label for="PayPal">PayPal</label>
+              </div>
+              <div>
+                <input type="radio" id="USD_bank_transfer" name="payment_option" value="USD bank_transfer" required
+                  class="{% if form.payment_option.errors %}is-invalid{% endif %}">
+                <label for="USD_bank_transfer">Bank Transfer</label>
+              </div>
+              {% if form.payment_option.errors %}
+              <div class="invalid-feedback">
+                {{ form.payment_option.errors }}
+              </div>
+              {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <a class="btn btn-primary" href="https://wa.link/aj20qm">Chat With US</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- JavaScript for Calculating USD Equivalent -->
+  <script>
+    // Function to preview selected image
+    function previewImage(event, previewId) {
+      const preview = document.getElementById(previewId);
+      preview.innerHTML = '';
+
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          const img = document.createElement('img');
+          img.src = event.target.result;
+          img.style.maxWidth = '100%';
+          img.style.maxHeight = '200px';
+          preview.appendChild(img);
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function calculateUSDValue(inputId, outputId, exchangeRate) {
+      let amountNaira = document.getElementById(inputId).value;
+      let amountUSD = (amountNaira / exchangeRate).toFixed(2);
+      document.getElementById(outputId).value = amountUSD;
+    }
+
+    // Example usage for basic, advance, and complex modals
+    document.getElementById('basicBudgetNaira').addEventListener('input', function () {
+      calculateUSDValue('basicBudgetNaira', 'basicBudgetUSD', 1500); // Replace 414 with your actual exchange rate
+    });
+
+    document.getElementById('advanceBudgetNaira').addEventListener('input', function () {
+      calculateUSDValue('advanceBudgetNaira', 'advanceBudgetUSD', 1500); // Replace 414 with your actual exchange rate
+    });
+
+    document.getElementById('complexBudgetNaira').addEventListener('input', function () {
+      calculateUSDValue('complexBudgetNaira', 'complexBudgetUSD', 1500); // Replace 414 with your actual exchange rate
+    });
+  </script>
+
+
+  <!--End of all modals-->
+
+
+  <footer id="footer" class="footer dark-background">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6 footer-about">
+            <a href="#services" class="service-link"><img class="logo" src="{% static 'assets/img/logo.png' %}"
+                alt="OWD LOGO"></a>
+            <div class="footer-contact pt-3">
+              <p>No. 10 Farm Road Behind Mgbuoba Market, Mgbuoba,</p>
+              <p>Port Harcourt, Rivers State, Nigeria.</p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+2347081668601, +2349031314945</span></p>
+              <p><strong>Email:</strong> <span>oawisdomdigitalfirm@gmail.com</span></p>
+            </div>
+            <div class="social-links d-flex mt-4">
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'about' %}"> About us</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'owdservices' %}"> Services</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'terms' %}"> Terms of service</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="privacy_policy"> Privacy policy</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{% url 'community-guidelines' %}"> Community
+                  Guidelines</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#services" class="service-link">Marketing</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#services" class="service-link">Web Development</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#services" class="service-link">Product Management</a>
+              </li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#services" class="service-link">Mobile App
+                  Development</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#services" class="service-link">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+          <script>
+            document.querySelectorAll('.service-link').forEach(function (link) {
+              link.addEventListener('click', function (event) {
+                event.preventDefault();
+                var tabLink = document.getElementById('services-tab');
+                var tab = new bootstrap.Tab(tabLink);
+                tab.show();
+
+                // Scroll to the section after a slight delay to ensure tab content is visible
+                setTimeout(function () {
+                  var section = document.getElementById('services');
+                  section.scrollIntoView({ behavior: 'smooth' });
+                }, 300); // Adjust the delay if necessary
+              });
+            });
+          </script>
+          <script>
+            document.querySelectorAll('.marketplace-link').forEach(function (link) {
+              link.addEventListener('click', function (event) {
+                event.preventDefault();
+                var tabLink = document.getElementById('marketplace-tab');
+                var tab = new bootstrap.Tab(tabLink);
+                tab.show();
+
+                // Scroll to the section after a slight delay to ensure tab content is visible
+                setTimeout(function () {
+                  var section = document.getElementById('marketplace');
+                  section.scrollIntoView({ behavior: 'smooth' });
+                }, 300); // Adjust the delay if necessary
+              });
+            });
+          </script>
+
+          <div class="col-lg-4 col-md-12 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
+
+            <form id="newsletter-form" action="{% url 'subscribe_news' %}" method="post">
+              {% csrf_token %}
+              <div class="newsletter-form"><input type="email" name="email" placeholder="Enter your email"
+                  required><input type="submit" value="Subscribe"></div>
+            </form>
+          </div>
+
+          <!-- Include necessary JavaScript libraries (e.g., jQuery, Bootstrap JS) -->
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+          <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              const form = document.getElementById('newsletter-form');
+
+              form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+                const formData = new FormData(form);
+
+                fetch("{% url 'subscribe_news' %}", {
+                  method: 'POST',
+                  headers: {
+                    'X-CSRFToken': formData.get('csrfmiddlewaretoken'),
+                  },
+                  body: formData,
+                })
+                  .then(response => response.json())
+                  .then(data => {
+                    if (data.success) {
+                      alert('Thank you for subscribing to our newsletter!');
+                      form.reset();
+                    } else {
+                      alert('There was an error subscribing. Please try again.');
+                    }
+                  })
+                  .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was an error subscribing. Please try again.');
+                  });
+              });
+            });
+          </script>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <div class="container text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename"><a
+              href="https://oawisdomdigital.pythonanywhere.com/"></a>OA Wisdom Digital Firm</a></strong> <span>All
+            Rights
+            Reserved</span></p>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Wait until the page is fully loaded
+      window.onload = function () {
+        var preloader = document.getElementById("preloader");
+        var mainContent = document.getElementById("main-content");
+
+        // Hide the preloader and show the main content
+        preloader.style.display = "none";
+        mainContent.style.display = "block";
+      };
+    });
+
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.see-more-link').click(function () {
+        var postContent = $(this).closest('.post-content');
+        postContent.find('.post-text').css('max-height', 'none');
+        $(this).addClass('d-none');
+        postContent.find('.see-less-link').removeClass('d-none');
+      });
+
+      $('.see-less-link').click(function () {
+        var postContent = $(this).closest('.post-content');
+        postContent.find('.post-text').css('max-height', '150px');
+        $(this).addClass('d-none');
+        postContent.find('.see-more-link').removeClass('d-none');
+      });
+
+      $('.clickable-image').click(function () {
+        var imageUrl = $(this).attr('src');
+        $('#fullImage').attr('src', imageUrl);
+        $('#imageModal').modal('show');
+      });
+    });
+  </script>
+
+  <!--Mark Notification as read-->
+  <script>
+    function fetchNotificationsCount() {
+      fetch('{% url "get_notifications_count" %}', {
+        method: 'GET',
+        headers: {
+          'X-CSRFToken': '{{ csrf_token }}'
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('notification-count').innerText = data.count;
+        })
+        .catch(error => console.error('Error fetching notifications count:', error));
+    }
+
+    function markNotificationsAsRead() {
+      fetch('{% url "mark_notifications_as_read" %}', {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': '{{ csrf_token }}',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            document.getElementById('notification-count').innerText = '0';
+          }
+        })
+        .catch(error => console.error('Error marking notifications as read:', error));
+    }
+
+    // Fetch notification count on page load
+    document.addEventListener('DOMContentLoaded', fetchNotificationsCount);
+
+    // Optionally, mark notifications as read when opening the notification page
+    document.querySelector('.notifications-link').addEventListener('click', markNotificationsAsRead);
+  </script>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  <script src="{% static 'assets/js/custom.js' %}"></script>
+
+</body>
+
+</html>

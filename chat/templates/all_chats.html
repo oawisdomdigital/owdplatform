@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}My Chats{% endblock %}
+{% load static %}
+{% block content %}
+<style>
+    /* Flexbox to center the content */
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button i {
+        margin-right: 10px;
+    }
+</style>
+
+<div class="center-container">
+    <button class="btn btn-link" onclick="shareChat()">
+        <i class="fas fa-comments" style="font-size: 50px;"></i> Chat with someone
+    </button>
+</div>
+
+<a id="share-chat-link" href="{% url 'create_private_chat' user.id %}"></a>
+<script>
+    function shareChat() {
+        if (navigator.share) {
+            navigator.share({
+                title: 'Let Us Chat',
+                text: 'Click this link to chat with me!',
+                url: document.getElementById('share-chat-link').href,
+            }).then(() => {
+                console.log('Successfully shared');
+            }).catch((error) => {
+                console.error('Error sharing:', error);
+            });
+        } else {
+            // Fallback for browsers that don't support navigator.share
+            const link = document.getElementById('share-chat-link').href;
+            navigator.clipboard.writeText(link).then(function () {
+                alert('Link copied to clipboard!');
+            }, function (err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+    }
+</script>
+
+<h1>My Chats</h1>
+<ul>
+    {% for chat_data in chats_with_profiles %}
+    <li>
+        <a href="{% url 'private_chat' chat_id=chat_data.chat.id %}">
+            <img src="{{ chat_data.profile_image_url }}" alt="Profile Image"
+                style="width: 50px; height: 50px; border-radius: 50%;">
+            Chat with {{ chat_data.other_user.username }}
+        </a>
+        <button class="delete-chat-button btn-danger " data-chat-id="{{ chat_data.chat.id }}">Delete</button>
+    </li>
+    {% empty %}
+    <li>You have not chat with anyone.</li>
+    {% endfor %}
+</ul>
+
+<script>
+    document.querySelectorAll('.delete-chat-button').forEach(button => {
+        button.addEventListener('click', function () {
+            const chatId = this.getAttribute('data-chat-id');
+            fetch(`/delete_chat/${chatId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        this.parentElement.remove();
+                    }
+                });
+        });
+    });
+</script>
+{% endblock %}

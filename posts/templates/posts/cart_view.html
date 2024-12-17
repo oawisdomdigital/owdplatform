@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Shopping Cart{% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5">
+    <h1>Your Cart</h1>
+    {% if cart.cart_items.count %}
+    <ul class="list-group">
+        {% for item in cart.cart_items.all %}
+        <li class="list-group-item">
+            <h5>{{ item.item.name }}</h5>
+            <p>Price: &#8358;{{ item.item.price }}</p>
+            <p>Quantity: {{ item.quantity }}</p>
+            <p>Total: &#8358;{{ item.total_price }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% for cart_item in cart_items %}
+    <a href="{% url 'create_private_chat' user_id=cart_item.item.user.id %}" class="btn btn-primary">
+        Proceed to Negotiation
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

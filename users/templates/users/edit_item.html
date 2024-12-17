@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+{% block title %}Edit Marketplace item{% endblock %}
+{% load static %}
+{% block content %}
+
+<style>
+    .swiper-container {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        /* Adjust height as needed */
+        overflow: hidden;
+        /* Prevents content from overflowing */
+    }
+
+    .swiper-wrapper {
+        display: flex;
+    }
+
+    .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        /* Adjust width for larger images */
+        height: 100%;
+    }
+
+    .image-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        width: 100%;
+        /* Ensures the container does not exceed the bounds of its parent */
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Ensures images cover the container */
+    }
+
+    .delete-image-button {
+        display: none;
+        background-color: #f02849;
+        border-color: #f02849;
+    }
+
+    .image-container:hover .delete-image-button {
+        display: block;
+    }
+
+    /* Swiper Navigation Buttons */
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #1877f2;
+        /* Match the color with the primary button */
+        position: absolute;
+        bottom: 10px;
+        /* Adjust to align with the bottom of the container */
+        width: 27px;
+        /* Adjust size as needed */
+        height: 44px;
+        /* Adjust size as needed */
+        background-color: rgba(255, 255, 255, 0.8);
+        /* Semi-transparent background for better visibility */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        /* Ensure buttons are above other elements */
+    }
+
+    .swiper-button-next {
+        right: 10px;
+        /* Adjust position from the right */
+    }
+
+    .swiper-button-prev {
+        left: 10px;
+        /* Adjust position from the left */
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 18px;
+        /* Adjust icon size as needed */
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow border-light rounded">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Edit Item</h2>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ item_form.as_p }}
+                        </div>
+                        <div class="mb-3">
+                            {{ image_form.as_p }}
+                        </div>
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <a href="{% url 'profile' item.user.username %}" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+
+                    <h3 class="mt-5">Existing Images</h3>
+                    <!-- Swiper -->
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            {% for image in images %}
+                            <div class="swiper-slide">
+                                <div class="image-container">
+                                    <img src="{{ image.image.url }}" class="img-fluid rounded" alt="{{ item.name }}">
+                                    <button
+                                        class="btn btn-danger btn-sm position-absolute top-0 end-0 delete-image-button"
+                                        data-image-id="{{ image.id }}">Delete</button>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- Add Navigation -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var swiper = new Swiper('.swiper-container', {
+            direction: 'horizontal',
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            slidesPerView: 'auto', // Allows slides to fit within the container
+            spaceBetween: 10, // Adjust space between slides as needed
+        });
+    });
+</script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.delete-image-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const imageId = this.getAttribute('data-image-id');
+                fetch(`/users/delete_image/${imageId}/`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken')
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            location.reload();
+                        } else {
+                            alert('Failed to delete the image. Please try again later.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
+                        alert('Failed to delete the image. Please try again later.');
+                    });
+            });
+        });
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    });
+</script>
+
+{% endblock %}

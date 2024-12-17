@@ -1,0 +1,5 @@
+<!-- templates/widgets/custom_file_input.html -->
+{% if widget.href %}
+    <a href="{{ widget.href }}" target="_blank">{{ widget.initial_text }}</a>
+{% endif %}
+<input type="{{ widget.type }}" name="{{ widget.name }}" {% include "django/forms/widgets/attrs.html" %}>

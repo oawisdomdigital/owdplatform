@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}Join Marketplace{% endblock %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        background-color: #ffc451;
+    }
+
+    .center-form {
+        padding-top: 5px;
+    }
+
+    .card {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+    }
+
+    .card h1,
+    .card h2 {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .form-label {
+        font-weight: 600;
+    }
+
+    .btn-secondary {
+        background-color: #d8d8d8;
+        border: none;
+        color: green;
+    }
+
+    .btn-secondary:hover {
+        background-color: #c0c0c0;
+    }
+
+    .card-body {
+        text-align: center;
+    }
+
+    .card-body .card-title {
+        margin-bottom: 15px;
+    }
+
+    h3 {
+        color: red;
+    }
+</style>
+
+<div class="container-fluid center-form">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+            <div class="card p-4">
+                <h2 class="text-center mb-4">Join Marketplace</h2>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_occupation" class="form-label">Occupation:</label>
+                        {{ form.occupation }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_sell_or_service" class="form-label">Do you want to sell or offer a
+                            service?</label>
+                        {{ form.sell_or_service }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_product_or_service" class="form-label">Type of product or service:</label>
+                        {{ form.product_or_service }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_office_address" class="form-label">Office address:</label>
+                        {{ form.office_address }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_years_experience" class="form-label">Years of experience:</label>
+                        {{ form.years_experience }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_specialty" class="form-label">Specialty:</label>
+                        {{ form.specialty }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_certification" class="form-label">Certification:</label>
+                        {{ form.certification }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_phone_number1" class="form-label">Phone Number 1:</label>
+                        {{ form.phone_number1 }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_phone_number2" class="form-label">Phone Number 2:</label>
+                        {{ form.phone_number2 }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_portfolio_link" class="form-label">Portfolio Link:</label>
+                        {{ form.portfolio_link }}
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

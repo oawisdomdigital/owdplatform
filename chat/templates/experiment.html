@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ room }} - Group</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Bundle with Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ece5dd;
+    }
+
+    .room-header {
+      background-color: #075e54;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .room-header img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .room-header h2 {
+      margin: 10px 0 5px 0;
+      font-size: 24px;
+    }
+
+    .room-header p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .container {
+      background-color: white;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+      position: relative;
+      max-width: 80%;
+      clear: both;
+    }
+
+    .container img {
+      max-width: 60px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .container.right {
+      margin-left: 30px;
+      background-color: #dcf8c6;
+    }
+
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+
+
+    .container-form {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background-color: #f0f0f0;
+      /* Background similar to WhatsApp chat */
+      border-top: 1px solid #ddd;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      /* Adds a subtle shadow */
+      z-index: 1000;
+      /* Ensures it stays above other content */
+    }
+
+    .container-form form {
+      display: flex;
+      width: 100%;
+      align-items: center;
+    }
+
+    .container-form input[type=text] {
+      flex: 1;
+      height: 40px;
+      padding: 10px 15px;
+      border-radius: 20px;
+      border: 1px solid #ddd;
+      outline: none;
+      font-size: 16px;
+      background-color: white;
+      box-sizing: border-box;
+    }
+
+    .container-form input[type=submit] {
+      width: 50px;
+      height: 50px;
+      margin-left: 10px;
+      background-color: #075e54;
+      /* WhatsApp green */
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container-form input[type=submit]::before {
+      content: '>';
+      /* Placeholder for an icon; you can replace this with an actual send icon */
+      font-size: 20px;
+      color: white;
+    }
+
+
+    @media (max-width: 768px) {
+
+      .container-form,
+      .room-list {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      .room-header,
+      .member-avatars {
+        text-align: center;
+      }
+    }
+
+
+    .room-members {
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .room-members h2 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .room-members ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .room-members li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .room-members .member-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+
+    .room-members .badge-admin {
+      background-color: #007bff;
+      color: white;
+      padding: 3px 6px;
+      border-radius: 12px;
+      font-size: 0.875em;
+      margin-left: 10px;
+    }
+
+    .room-members p {
+      font-size: 1em;
+      color: #666;
+    }
+
+
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+      padding-top: 60px;
+      /* Location of the box */
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      /* Could be more or less, depending on screen size */
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Member List Button */
+    #show-members-btn {
+      margin-top: 10px;
+    }
+
+
+
+
+    .edit-button:hover {
+      background-color: #064d41;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      /* Center horizontally */
+    }
+
+    .edit-button {
+      background-color: #075e54;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 10px;
+      cursor: pointer;
+      max-width: 200px;
+      margin: 10px;
+    }
+
+
+
+
+
+
+
+    /* Container for messages */
+    .messages {
+      display: flex;
+      flex-direction: column;
+      padding: 50px;
+      overflow-y: auto;
+      height: calc(100vh - 150px);
+      /* Adjust based on your layout */
+      background-color: #f5f5f5;
+      /* Light gray background */
+    }
+
+    /* Individual message container */
+    .message {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      max-width: 80%;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Message from the current user */
+    .message.right {
+      align-self: flex-end;
+      background-color: #dcf8c6;
+      /* Light green background for user messages */
+    }
+
+    /* Message from other users */
+    .message.left {
+      align-self: flex-start;
+      background-color: #fff;
+    }
+
+    /* Profile image */
+    .profile-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    /* Content of the message */
+    .message-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Username link */
+    .username {
+      font-weight: bold;
+      color: #007bff;
+      /* Blue color for usernames */
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+
+    /* Message text */
+    .message-content p {
+      margin: 0;
+    }
+
+    /* Timestamp */
+    .timestamp {
+      font-size: 0.75rem;
+      color: #aaa;
+      /* Light gray for timestamps */
+      margin-top: 5px;
+    }
+
+    /* Media Queries for responsiveness */
+    @media (max-width: 768px) {
+      .messages {
+        height: calc(100vh - 100px);
+        /* Adjust height on smaller screens */
+      }
+
+      .message {
+        max-width: 90%;
+      }
+    }
+
+
+
+
+
+
+    .modal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 10000;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px 30px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .modal-content h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .modal-content label {
+      display: block;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .modal-content input[type="text"],
+    .modal-content input[type="file"],
+    .modal-content textarea,
+    .modal-content select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+
+    .modal-content input[type="file"] {
+      padding: 5px;
+    }
+
+    .modal-content textarea {
+      height: 100px;
+      resize: none;
+    }
+
+    .modal-content input[type="submit"] {
+      width: 100%;
+      background-color: #02a95c;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .modal-content input[type="submit"]:hover {
+      background-color: #029d53;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      color: #999;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #666;
+    }
+
+
+
+
+
+    .file-label {
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      flex: 1 1 auto;
+      /* Allow flex to grow and shrink */
+      min-width: 100px;
+      /* Minimum width for the label */
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .send-button:hover {
+      background-color: #0056b3;
+    }
+
+    .file-label:hover {
+      background-color: #218838;
+    }
+
+    .file-previews {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      background-color: #f1f1f1;
+      border-top: 1px solid #ddd;
+      overflow: auto;
+      max-height: 100%;
+      transition: padding 0.3s ease;
+      /* Smooth transition for padding change */
+    }
+
+    .file-previews img,
+    .file-previews video {
+      max-width: 400px;
+      border-radius: 8px;
+      object-fit: cover;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .file-previews img:hover,
+    .file-previews video:hover {
+      transform: scale(1.05);
+      /* Slight zoom effect on hover */
+    }
+
+    .file-previews .file-preview {
+      position: relative;
+      display: inline-block;
+      width: 200px;
+      /* Matches the size of the preview */
+      height: 200px;
+      /* Matches the size of the preview */
+    }
+
+    .file-previews .remove-preview {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .file-previews a.file-download {
+      display: inline-block;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .file-previews a.file-download:hover {
+      background-color: #0056b3;
+    }
+
+    .file-previews .file-name {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+      word-wrap: break-word;
+      max-width: 200px;
+      /* Prevent overflow */
+    }
+
+    @media (max-width: 600px) {
+      .file-previews .file-preview {
+        width: calc(100% - 10px);
+        /* Full width for small screens */
+      }
+    }
+
+
+    .delete-message {
+      position: absolute;
+      /* Position it absolutely */
+      left: -20px;
+      /* Move it outside the left side of the message div */
+      top: 50%;
+      /* Center it vertically */
+      transform: translateY(-50%);
+      /* Adjust for vertical centering */
+      cursor: pointer;
+      /* Change cursor to pointer for better UX */
+    }
+
+    /* Optional: Style for the delete icon */
+    .delete-message i {
+      color: #d9534f;
+      /* Change color to match your design */
+      font-size: 1.2em;
+      /* Adjust size as needed */
+    }
+
+
+    .fullscreen-modal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+    }
+
+    .fullscreen-content {
+      max-width: 90%;
+      max-height: 90%;
+      position: relative;
+      /* Allow positioning of the close button */
+    }
+
+    .close-fullscreen {
+      position: absolute;
+      top: 10px;
+      /* Position it at the top */
+      right: 10px;
+      /* Position it at the right */
+      background-color: rgba(255, 255, 255, 0.8);
+      /* Slight transparency for better visibility */
+      border: none;
+      padding: 8px;
+      cursor: pointer;
+      border-radius: 5px;
+      /* Optional: rounded corners */
+      z-index: 1001;
+      /* Ensure it appears above the fullscreen content */
+    }
+
+
+
+
+
+
+    /* Style for the chat container */
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      /* or desired height */
+      position: relative;
+      /* To position child elements absolutely */
+    }
+
+    /* Messages container */
+    .messages {
+      flex: 1;
+      /* This makes the messages container take up the available space */
+      overflow-y: auto;
+      /* Allows scrolling if there are too many messages */
+    }
+
+    /* File previews and reply container */
+    #file-previews,
+    .reply-container {
+      margin-top: 10px;
+      /* Space between messages and the bottom elements */
+    }
+
+    .reply-container {
+      margin-bottom: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Room Header -->
+  <div class="room-header">
+    {% if room_details.group_image %}
+    <img src="{{ room_details.group_image.url }}" alt="Room Cover Image">
+    {% else %}
+    <h1>No Image Representing This Group Yet</h1>
+    {% endif %}
+    <div id="show-members-btn" class="icon-container" title="Show Members">
+      <i class="fas fa-users"></i>
+      <span class="member-count">{{ total_member_count }}</span>
+    </div>
+    <h2>{{ room_details.group_name }}</h2>
+    <p>{{ room_details.group_description }}</p><br>
+    <a href="#" id="toggle-guidelines" class="edit-button">Group Guideline</a>
+    <div id="guidelines">
+      <p>{{ room_details.group_guidelines }}</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('toggle-guidelines').addEventListener('click', function (event) {
+      event.preventDefault();
+      var guidelines = document.getElementById('guidelines');
+      if (guidelines.style.display === 'none') {
+        guidelines.style.display = 'block';
+      } else {
+        guidelines.style.display = 'none';
+      }
+    });
+  </script>
+  <style>
+    #guidelines {
+      display: none;
+      margin-top: 10px;
+    }
+
+    #toggle-guidelines {
+      text-decoration: none;
+      background-color: #029d53;
+      cursor: pointer;
+    }
+
+    #toggle-guidelines:hover {
+      color: #1877f2;
+      background-color: white;
+    }
+
+    .attachment-icon {
+      cursor: pointer;
+      /* Change cursor to pointer on hover */
+      margin-right: 10px;
+      /* Space between the icon and input field */
+      margin-left: 20px;
+    }
+
+    .attachment-icon i {
+      font-size: 20px;
+      /* Adjust the size of the icon */
+      color: #007bff;
+      /* Change color to match your theme */
+    }
+  </style>
+
+  <!-- Edit Room Button -->
+  <div class="button-container">
+    {% if user_is_admin %}
+    <!-- Edit Room Button -->
+    <button class="edit-button" id="editButton">Edit Group</button>
+    <!-- Delete Room Button -->
+    <button class="edit-button" onclick="confirmDeleteRoom()">Delete Group</button>
+    {% endif %}
+    <!-- Share Button -->
+    <button class="edit-button" id="shareButton">Share Group Invite</button>
+    <a href="{% url 'home' %}" class="edit-button" style="text-decoration: none;">Home</a>
+  </div>
+
+  <!-- Modal for displaying invite link -->
+  <div id="shareModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" id="closeShareModal">&times;</span>
+      <h2>Invite Link</h2>
+      <input type="text" id="inviteLink" readonly>
+      <button onclick="copyInviteLink()">Copy Link</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('shareButton').onclick = function () {
+      fetch('{% url "generate_invite_link" room_id=room_details.id %}')
+        .then(response => response.json())
+        .then(data => {
+          if (data.invite_link) {
+            document.getElementById('inviteLink').value = data.invite_link;
+            document.getElementById('shareModal').style.display = "block";
+          } else {
+            console.error('Invite link not found in the response');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred while generating the invite link.');
+        });
+    };
+
+    document.getElementById('closeShareModal').onclick = function () {
+      document.getElementById('shareModal').style.display = "none";
+    };
+
+    function copyInviteLink() {
+      var copyText = document.getElementById("inviteLink");
+      copyText.select();
+      document.execCommand("copy");
+      alert("Invite link copied to clipboard");
+    }
+  </script>
+
+
+  <!-- Edit Room Modal -->
+  <div id="editRoomModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Edit Group Details</h2>
+      <form method="POST" action="{% url 'edit_room' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="room_id" value="{{ room_details.id }}">
+
+        <label for="group_name">Group Name:</label>
+        <input type="text" name="group_name" id="group_name" value="{{ room_details.group_name }}">
+
+        <label for="group_description">Description:</label>
+        <textarea name="group_description" id="group_description">{{ room_details.group_description }}</textarea>
+
+        <label for="group_image">Cover Image:</label>
+        <input type="file" name="group_image" id="group_image">
+
+        <label for="privacy_settings">Privacy Settings:</label>
+        <select name="privacy_settings" id="privacy_settings">
+          <option value="everyone" {% if privacy_everyone %}selected{% endif %}>Everyone can join</option>
+          <option value="admin_approval" {% if privacy_admin_approval %}selected{% endif %}>Admin approval
+            required
+          </option>
+        </select>
+
+        <label for="group_guidelines">Group Guidelines:</label>
+        <textarea name="group_guidelines" id="group_guidelines">{{ room_details.group_guidelines }}</textarea>
+
+        <input type="submit" value="Save Changes">
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal for Member List -->
+  <div class="room-members">
+    <div id="membersModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Members</h2>
+        {% if members %}
+        <ul>
+          {% for membership in members %}
+          <li>
+            {% if membership.user.user_profile.profile_image %}
+            <img src="{{ membership.user.user_profile.profile_image.url }}"
+              alt="{{ membership.user.username }}'s profile image" class="member-avatar">
+            {% else %}
+            <img src="https://img.icons8.com/ios/50/000000/user.png" alt="Default profile image" class="member-avatar">
+            {% endif %}
+            <span>{{ membership.user.username }}</span>
+            {% if membership.is_admin %}
+            <span class="badge badge-admin">Admin</span>
+            {% if user_is_admin %}
+            <button class="revoke-admin-button" data-member-id="{{ membership.id }}">Revoke Admin</button>
+            {% endif %}
+            {% else %}
+            {% if user_is_admin %}
+            <button class="assign-admin-button" data-member-id="{{ membership.id }}">Make Admin</button>
+            {% endif %}
+            {% endif %}
+            {% if user_is_admin %}
+            <button class="kick-member-button" data-member-id="{{ membership.id }}">Kick</button>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>No members yet.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript for Modal Functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Modal functionality for showing members
+      var membersModal = document.getElementById("membersModal");
+      var showMembersBtn = document.getElementById("show-members-btn");
+      var closeMembersModal = membersModal.querySelector(".close");
+
+      // When the user clicks the button, open the modal
+      showMembersBtn.onclick = function () {
+        membersModal.style.display = "block";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      closeMembersModal.onclick = function () {
+        membersModal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == membersModal) {
+          membersModal.style.display = "none";
+        }
+      }
+
+      // Modal functionality for Edit Room
+      var editModal = document.getElementById("editRoomModal");
+      var editBtn = document.getElementById("editButton");
+      var editCloseSpan = document.getElementById("closeModal");
+
+      editBtn.onclick = function () {
+        editModal.style.display = "block";
+      }
+
+      editCloseSpan.onclick = function () {
+        editModal.style.display = "none";
+      }
+
+      window.onclick = function (event) {
+        if (event.target == editModal) {
+          editModal.style.display = "none";
+        }
+      }
+    });
+  </script>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Handle Assign Admin Button Click
+      document.querySelectorAll('.assign-admin-button').forEach(button => {
+        button.addEventListener('click', function () {
+          const memberId = this.getAttribute('data-member-id');
+          fetch('{% url "assign-admin" %}', {
+            method: 'POST',
+            headers: {
+              'X-CSRFToken': '{{ csrf_token }}',
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({ 'member_id': memberId })
+          })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                alert(data.message);
+                location.reload(); // Reload the page to reflect changes
+              } else {
+                alert(data.error);
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('An unexpected error occurred.');
+            });
+        });
+      });
+
+      // Handle Revoke Admin Button Click
+      document.querySelectorAll('.revoke-admin-button').forEach(button => {
+        button.addEventListener('click', function () {
+          const memberId = this.getAttribute('data-member-id');
+          fetch('{% url "revoke-admin" %}', {
+            method: 'POST',
+            headers: {
+              'X-CSRFToken': '{{ csrf_token }}',
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({ 'member_id': memberId })
+          })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                alert(data.message);
+                location.reload(); // Reload the page to reflect changes
+              } else {
+                alert(data.error);
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('An unexpected error occurred.');
+            });
+        });
+      });
+
+      // Handle Kick Member Button Click
+      document.querySelectorAll('.kick-member-button').forEach(button => {
+        button.addEventListener('click', function () {
+          const memberId = this.getAttribute('data-member-id');
+          fetch('{% url "kick-member" %}', {
+            method: 'POST',
+            headers: {
+              'X-CSRFToken': '{{ csrf_token }}',
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({ 'member_id': memberId })
+          })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                alert(data.message);
+                location.reload(); // Reload the page to reflect changes
+              } else {
+                alert(data.error);
+              }
+            })
+        });
+      });
+    });
+  </script>
+
+
+
+  <!-- Post Message Form -->
+  <div class="container-form">
+    <form id="post-form" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="hidden" name="username" id="username" value="{{ username }}">
+      <input type="hidden" name="room_id" id="room_id" value="{{ room_details.id }}">
+      <input type="hidden" name="reply_to" id="reply_to" value=""> <!-- Hidden input for reply_to -->
+      <input type="hidden" name="forwarded_from" id="forwarded_from" value="">
+      <!-- Hidden input for forwarded message -->
+
+      <!-- Attachment Icon -->
+      <label for="files" class="attachment-icon">
+        <i class="fas fa-paperclip"></i> <!-- Using Font Awesome for the attachment icon -->
+      </label>
+
+      <input type="file" id="files" name="files" multiple style="display: none;"> <!-- Hide the file input -->
+
+      <input type="text" placeholder="Enter your message here" name="message" id="message">
+      <input type="submit" class="btn btn-primary" value="Send"
+        style="display: block; width: 15%; text-align: center; padding: 10px;">
+    </form>
+  </div>
+
+
+  <!-- Message Container for Chat -->
+  <div class="messages">
+    <!-- Messages will be dynamically inserted here -->
+  </div>
+
+  <div id="file-previews" class="file-previews"></div>
+
+  <div class="reply-container" style="display: none;">
+    <div class="reply-message" style="margin-left: 10px;">Replying to: <span id="reply-message-text"></span></div>
+    <button id="cancel-reply-button" type="button"
+      style="background-color: #0056b3; color: white; border: none; padding: 10px 15px; margin-left: 10px; border-radius: 5px; cursor: pointer;">Cancel
+      Reply</button>
+  </div>
+
+  <script>
+    // CSRF token handling
+    function getCSRFToken() {
+      let cookieValue = null;
+      const name = 'csrftoken';
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+          cookie = cookie.trim();
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const roomId = document.getElementById('room_id').value;
+      const username = document.getElementById('username').value;
+
+      // Handle form submission
+      const form = document.getElementById('post-form');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent traditional form submission
+
+        const message = document.getElementById('message').value.trim();
+        const replyTo = document.getElementById('reply_to').value; // Get reply_to if set
+        const forwardedFrom = document.getElementById('forwarded_from').value; // Get forwarded_from if set
+        const files = document.getElementById('files').files;
+
+        if (message || files.length > 0) {
+          let formData = new FormData();
+          formData.append('message', message);
+          formData.append('room_id', roomId);
+          formData.append('username', username);
+          if (replyTo) {
+            formData.append('reply_to', replyTo);
+          }
+          if (forwardedFrom) {
+            formData.append('forwarded_from', forwardedFrom);
+          }
+
+          // Append files
+          Array.from(files).forEach(file => formData.append('files', file));
+
+          fetch("{% url 'send' %}", {
+            method: 'POST',
+            headers: {
+              'X-CSRFToken': getCSRFToken(),
+            },
+            body: formData
+          })
+            .then(response => {
+              if (response.ok) {
+                // Clear inputs and previews
+                document.getElementById('message').value = '';
+                document.getElementById('files').value = '';
+                document.getElementById('file-previews').innerHTML = '';
+                document.getElementById('reply_to').value = '';
+                document.getElementById('forwarded_from').value = '';
+              } else {
+                console.error('Error sending message');
+              }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+      });
+
+      // File previews
+      document.getElementById('files').addEventListener('change', function () {
+        const filePreviews = document.getElementById('file-previews');
+        filePreviews.innerHTML = ''; // Clear previous previews
+        Array.from(this.files).forEach(file => {
+          if (file.size > 3 * 1024 * 1024) {
+            alert(`${file.name} exceeds the 3MB file size limit.`);
+            return;
+          }
+
+          const filePreview = document.createElement('div');
+          filePreview.classList.add('file-preview');
+
+          if (file.type.startsWith('image/')) {
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(file);
+            img.style.maxWidth = '200px'; // Limit image size for preview
+            filePreview.appendChild(img);
+          } else if (file.type.startsWith('video/')) {
+            const video = document.createElement('video');
+            video.controls = true;
+            video.src = URL.createObjectURL(file);
+            video.style.maxWidth = '200px'; // Limit video size for preview
+            filePreview.appendChild(video);
+          } else {
+            const fileLink = document.createElement('a');
+            fileLink.href = URL.createObjectURL(file);
+            fileLink.download = file.name;
+            fileLink.textContent = `Download ${file.name}`;
+            filePreview.appendChild(fileLink);
+          }
+
+          const removeButton = document.createElement('button');
+          removeButton.classList.add('remove-preview');
+          removeButton.innerHTML = '<i class="fas fa-times"></i>';
+          removeButton.addEventListener('click', () => filePreview.remove());
+          filePreview.appendChild(removeButton);
+
+          filePreviews.appendChild(filePreview);
+        });
+      });
+
+      // Reply functionality
+      document.querySelector('.messages').addEventListener('click', function (e) {
+        if (e.target.classList.contains('reply')) {
+          const messageElement = e.target.closest('.message');
+          const messageId = messageElement.getAttribute('data-message-id');
+          const messageText = messageElement.querySelector('.message-content p').textContent;
+          document.getElementById('reply-message-text').textContent = messageText;
+          document.getElementById('reply_to').value = messageId;
+          document.querySelector('.reply-container').style.display = 'block';
+          document.getElementById('message').focus();
+        }
+      });
+
+      // Forward functionality
+      document.querySelector('.messages').addEventListener('click', function (e) {
+        if (e.target.classList.contains('forward')) {
+          const messageElement = e.target.closest('.message');
+          const messageId = messageElement.getAttribute('data-message-id');
+          document.getElementById('forwarded_from').value = messageId;
+          alert('Message will be forwarded to the next sent message.');
+        }
+      });
+
+      // Pin/Unpin functionality
+      document.querySelector('.messages').addEventListener('click', function (e) {
+        if (e.target.classList.contains('pin')) {
+          const messageElement = e.target.closest('.message');
+          const messageId = messageElement.getAttribute('data-message-id');
+          const isPinned = e.target.textContent.trim() === 'Unpin';
+
+          fetch(`/chat/pinMessage/${messageId}/`, {
+            method: 'POST',
+            headers: {
+              'X-CSRFToken': getCSRFToken(),
+            }
+          })
+            .then(response => {
+              if (response.ok) {
+                e.target.textContent = isPinned ? 'Pin' : 'Unpin'; // Toggle the text
+              } else {
+                alert('Error pinning/unpinning message');
+              }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+      });
+
+      // Delete functionality (only visible to the message sender)
+      document.querySelector('.messages').addEventListener('click', function (e) {
+        if (e.target.classList.contains('delete')) {
+          const messageElement = e.target.closest('.message');
+          const messageId = messageElement.getAttribute('data-message-id');
+
+          fetch(`/chat/deleteChatMessage/${messageId}/`, {
+            method: 'POST',
+            headers: {
+              'X-CSRFToken': getCSRFToken(),
+            }
+          })
+            .then(response => {
+              if (response.ok) {
+                messageElement.remove(); // Remove the message from the UI
+                alert('Message deleted successfully');
+              } else {
+                alert('Error deleting message');
+              }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+      });
+
+      // Seen by functionality
+      setInterval(function () {
+        fetch(`/chat/getMessages/${roomId}/`)
+          .then(response => response.json())
+          .then(data => {
+            const messagesContainer = document.querySelector('.messages');
+            messagesContainer.innerHTML = ''; // Clear previous messages
+
+            // Sort messages by pinned status (pinned messages first)
+            data.messages.sort((a, b) => (a.is_pinned === b.is_pinned) ? 0 : (a.is_pinned ? -1 : 1));
+
+            data.messages.forEach(msg => {
+              const messageClass = msg.user === username ? 'right' : 'left';
+              const deleteButton = msg.user === username ? '<button class="delete">Delete</button>' : ''; // Show for sender
+              const adminDeleteButton = `{% if user_is_admin %}<button class="delete">Delete</button>{% endif %}`; // Show for admin
+
+              const messageHtml = `
+              <div class="message ${messageClass}" data-message-id="${msg.id}">
+                  <img src="${msg.profile_image}" alt="${msg.user}'s profile picture" class="profile-image">
+                  <div class="message-content">
+                      <a href="${msg.profile_url}" class="username">${msg.user}</a>
+                      <p>${msg.value}</p>
+                      ${msg.reply_to ? `<p class="reply-to">Replying to: ${msg.reply_to}</p>` : ''}
+                      ${msg.forwarded_from ? `<p class="forwarded-from">Forwarded from: ${msg.forwarded_from} - "${msg.forwarded_message_content}"</p>` : ''}
+                      ${msg.files.length > 0 ? msg.files.map(file => `
+                          <div class="file-display">
+                              <a href="${file}" target="_blank">File</a>
+                              <img src="${file}" alt="file preview" class="file-preview" style="max-width: 200px; display: block;"/>
+                          </div>`).join(' ') : ''}
+                      <span class="timestamp">${msg.date}</span>
+                      <div class="actions">
+                          <button class="reply">Reply</button>
+                          <button class="forward">Forward</button>
+                          {% if user_is_admin %}
+                          ${msg.is_pinned ? `<button class="pin">Unpin</button>` : `<button class="pin">Pin</button>`}
+                          {% endif %}
+                          ${deleteButton} <!-- Show for sender -->
+                          ${adminDeleteButton} <!-- Show for admin -->
+
+                          <button type="button" style="border-radius: 50%;" class="btn btn-primary seen-by-button" data-message-id="${msg.id}" data-bs-toggle="modal" data-bs-target="#seenByModal">
+                              <i class="fas fa-eye"></i> ${msg.seen_by_count}
+                          </button>
+
+                      </div>
+                  </div>
+              </div>`;
+
+              messagesContainer.insertAdjacentHTML('beforeend', messageHtml);
+            });
+          })
+          .catch(error => console.error('Error fetching messages:', error));
+      }, 1000);
+
+      // Cancel reply
+      document.getElementById('cancel-reply-button').addEventListener('click', function () {
+        document.getElementById('reply_to').value = '';
+        document.querySelector('.reply-container').style.display = 'none';
+        document.getElementById('reply-message-text').textContent = '';
+      });
+
+    });
+
+  </script>
+
+  <!-- Seen By Modal -->
+  <div class="modal fade" id="seenByModal" tabindex="-1" aria-labelledby="seenByModalLabel" aria-hidden="true"
+    style="display: none;">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="seenByModalLabel">Seen By</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Content will be loaded dynamically -->
+          <div id="seen-by-modal-content">
+            <p>Loading seen by users...</p> <!-- Placeholder -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const seenByModal = document.getElementById('seenByModal');
+      seenByModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        const messageId = button.getAttribute('data-message-id');
+
+        fetch(`/chat/seenBy/${messageId}/`)
+          .then(response => response.json())
+          .then(data => {
+            const modalContent = data.seen_by.map(user => `
+                    <div class="seen-user">
+                        <img src="${user.profile_image}" alt="${user.username}'s profile picture" class="profile-image" width="40" height="40">
+                        <span>${user.username}</span>
+                    </div>`).join('');
+
+            document.getElementById('seen-by-modal-content').innerHTML = modalContent;
+          })
+          .catch(error => {
+            console.error('Error fetching seen by users:', error);
+            document.getElementById('seen-by-modal-content').innerHTML = '<p>Error loading data.</p>';
+          });
+      });
+    });
+
+  </script>
+
+
+
+
+  <!-- JavaScript -->
+  <script>
+    // Confirm Delete Room
+    function confirmDeleteRoom() {
+      if (confirm('Are you sure you want to delete this room?')) {
+        fetch(`/chat/delete_room/${document.getElementById('room_id').value}/`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('input[name=csrfmiddlewaretoken]').value
+          },
+          body: JSON.stringify({ room_id: document.getElementById('room_id').value })
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              window.location.href = '/chat/homechat/'; // Redirect to room list after deletion
+            } else {
+              alert(data.error);
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      }
+    }
+  </script>
+
+</body>
+
+
+
+</html>

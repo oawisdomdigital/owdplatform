@@ -1,0 +1,10 @@
+APScheduler==3.10.4
+channels==4.1.0
+Django==4.2.13
+Django==4.2
+django_apscheduler==0.6.2
+django_cron==0.6.0
+nltk==3.9.1
+numpy==2.1.1
+pyfcm==2.0.7
+torch==2.4.1

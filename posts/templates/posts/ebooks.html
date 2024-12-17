@@ -1,0 +1,648 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore our extensive collection of e-books and digital materials. Discover resources tailored to help you grow and achieve your goals.">
+    <meta name="keywords"
+        content="e-books, digital materials, resources, online books, educational materials, learning">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="OA_Wisdom">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="E-books and Digital Materials">
+    <meta property="og:description"
+        content="Browse and download e-books and digital materials designed to help you grow and succeed.">
+    <meta property="og:image" content="https://yourwebsite.com/path-to-your-image.jpg">
+    <meta property="og:url" content="https://yourwebsite.com/e-books-digital-materials">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="E-books and Digital Materials">
+    <meta name="twitter:description"
+        content="Find e-books and digital materials to help you achieve your personal and professional goals.">
+    <meta name="twitter:image" content="https://yourwebsite.com/path-to-your-image.jpg">
+    <meta name="twitter:site" content="@yourTwitterHandle">
+
+
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/aos/aos.css" rel="stylesheet' %}">
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <!-- Main CSS File -->
+    <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+    <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "E-books and Digital Materials",
+      "url": "https://yourwebsite.com/e-books-digital-materials",
+      "description": "Explore a vast collection of e-books and digital materials to help you learn, grow, and succeed.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "screenshot": "https://yourwebsite.com/path-to-your-image.jpg"
+    }
+    </script>
+
+
+    <title>Digital Materials/E-Books</title>
+
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            font-size: 2em;
+            color: #333;
+        }
+
+        /* Container for the book cards */
+        .book-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        /* Each book card */
+        .book-card {
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Book image styling */
+        .book-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Book content (text) */
+        .book-content {
+            padding: 15px;
+        }
+
+        .book-title {
+            font-size: 1.4em;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .book-author {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .book-price {
+            font-size: 1.2em;
+            color: #28a745;
+            margin-top: 10px;
+        }
+
+        .book-description {
+            font-size: 0.95em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .book-card {
+                width: 100%;
+            }
+        }
+
+        .logo {
+            width: 70px;
+        }
+
+        a {
+            color: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header id="header" class="header d-flex align-items-center position-relative">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+            <a href="{% url 'home' %}"><img class="logo" src="{% static 'assets/img/logo.png' %}" alt="OWD"></a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'home' %}#posts-tab">Posts</a></li>
+                    <li><a href=" {% url 'owdservices' %}">Our Services</a></li>
+                    <li><a href="{% url 'homechat' %}">Community</a></li>
+                    <li><a href="{% url 'ebooks' %}">E-Books/Materials</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'buy_coins' %}">Get coins</a></li>
+                    {% endif %}
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+            <a class="btn-getstarted" href="https://wa.link/aj20qm">Agency</a>
+        </div>
+    </header>
+
+    {% if user.is_authenticated %}
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+        <nav class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="{% url 'profile' user.username %}">My Profile</a></li>
+                    <li class="current">Hello, {{ user.username }}!</li>
+                </ol>
+            </div>
+        </nav>
+    </div><!-- End Page Title -->
+    {% else %}
+    <div class="page-title" data-aos="fade">
+        <nav class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="{% url 'register' %}">Signup</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                </ol>
+            </div>
+        </nav>
+    </div><!-- End Page Title -->
+    {% endif %}
+
+    <h1>Get e-books, digital materials and resources</h1>
+
+
+    <form id="searchForm" class="p-4 bg-white border rounded shadow-sm">
+        <div class="mb-3">
+            <label for="searchInput" class="form-label fw-bold">Search</label>
+            <input type="text" class="form-control" id="searchInput"
+                placeholder="Enter title or description of the material" required>
+        </div>
+        <button type="button" class="btn btn-primary btn-block mb-3" id="searchButton">Search</button>
+
+        <div class="mt-3" id="searchResult" style="display: none;">
+            <p><strong>Looking for:</strong> <span id="resultText" class="fw-bold"></span>? Please click below to select
+                from the available materials. If you cannot find what you are looking for, you can click the submit
+                button
+                to place your order.</p>
+        </div>
+
+        <div id="materialSelectContainer" class="mt-3" style="display: none;">
+            <div class="row">
+                <div class="col-md-4" id="materialImageContainer" style="display: none;">
+                    <img id="materialImage" src="" alt="Material Image" class="img-fluid rounded border" />
+                </div>
+                <div class="col-md-8">
+                    <select id="materialSelect" class="form-select mb-3">
+                        <!-- Options will be dynamically populated -->
+                    </select>
+
+                    <div class="mb-3">
+                        <label for="paymentOption" class="form-label fw-bold">Select Payment Option</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="paystack" name="payment_option"
+                                value="paystack" required>
+                            <label class="form-check-label" for="paystack">Paystack</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="PayPal" name="payment_option"
+                                value="PayPal" required>
+                            <label class="form-check-label" for="PayPal">PayPal</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="USD_bank_transfer" name="payment_option"
+                                value="USD_bank_transfer" required>
+                            <label class="form-check-label" for="USD_bank_transfer">Bank Transfer</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-block mt-3" style="display: none;"
+            id="submitButton">Submit</button>
+    </form>
+
+
+    <style>
+        /* General Modal Styles */
+        .modal-content {
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Styles */
+        .modal-header {
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        /* Input Styles */
+        .form-control {
+            border: 1px solid #dcdcdc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #4285f4;
+            box-shadow: 0 0 5px rgba(66, 133, 244, 0.5);
+        }
+
+        /* Result Container Styles */
+        #searchResult {
+            background-color: #f9f9f9;
+            border: 1px solid #eaeaea;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        #materialSelectContainer {
+            border: 1px solid #eaeaea;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: #ffffff;
+        }
+
+        /* Image Styles */
+        #materialImage {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        /* Payment Options */
+        label {
+            margin-left: 10px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            #materialSelectContainer {
+                padding: 10px;
+            }
+        }
+    </style>
+
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function () {
+            const searchInput = document.getElementById('searchInput').value.trim();
+            const resultText = document.getElementById('resultText');
+            const searchResult = document.getElementById('searchResult');
+            const materialSelect = document.getElementById('materialSelect');
+            const materialSelectContainer = document.getElementById('materialSelectContainer');
+            const materialImage = document.getElementById('materialImage');
+            const submitButton = document.getElementById('submitButton');
+            const paymentOptions = document.querySelectorAll('input[name="payment_option"]');
+
+            if (searchInput !== '') {
+                this.innerHTML = 'Searching...'; // Show loading text
+                fetch("{% url 'search_motivational_books' %}?search_query=" + encodeURIComponent(searchInput), {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        this.innerHTML = 'Search'; // Revert button text
+                        if (data.books && data.books.length > 0) {
+                            let optionsHtml = '<option value="">Select a material</option>';
+                            data.books.forEach(book => {
+                                optionsHtml += `<option value="${book.id}" data-image="${book.image_url}">${book.title} by ${book.author} - ₦${book.price_naira} ($${book.price_dollars})</option>`;
+                            });
+                            materialSelect.innerHTML = optionsHtml;
+                            materialSelectContainer.style.display = 'block';
+                            submitButton.style.display = 'inline-block';
+                            resultText.textContent = searchInput;
+                            searchResult.style.display = 'block';
+
+                            // Show payment options if materials are found
+                            paymentOptions.forEach(option => option.required = true);
+                        } else {
+                            materialSelectContainer.style.display = 'none';
+                            materialImage.style.display = 'none';
+                            submitButton.style.display = 'inline-block';
+                            resultText.textContent = searchInput;
+                            searchResult.style.display = 'block';
+
+                            // Disable payment options when no materials are found
+                            paymentOptions.forEach(option => option.required = false);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching search results:', error);
+                        alert('An error occurred. Please try again.');
+                        this.innerHTML = 'Search'; // Revert button text
+                    });
+            }
+        });
+
+        document.getElementById('materialSelect').addEventListener('change', function () {
+            const selectedOption = this.options[this.selectedIndex];
+            const materialImage = document.getElementById('materialImage');
+            const materialImageContainer = document.getElementById('materialImageContainer');
+
+            if (selectedOption.value) {
+                const imageUrl = selectedOption.getAttribute('data-image');
+                materialImage.src = imageUrl;
+                materialImage.alt = `Image for ${selectedOption.text}`;
+                materialImageContainer.style.display = 'block'; // Show the image container
+            } else {
+                materialImageContainer.style.display = 'none'; // Hide if no selection
+            }
+        });
+
+        document.getElementById('searchForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const searchInput = document.getElementById('searchInput').value.trim();
+
+            if (searchInput !== '') {
+                fetch("{% url 'submit_material_request' %}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({
+                        search_query: searchInput
+                    }),
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        alert('Your request has been submitted. We will get back to you through your provided contact information.');
+                        window.location.reload();
+                    })
+                    .catch(error => {
+                        console.error('Error submitting material request:', error);
+                        alert('An error occurred while processing your request. Please try again.');
+                    });
+            }
+        });
+
+        document.getElementById('submitButton').addEventListener('click', function () {
+            const selectedMaterial = document.getElementById('materialSelect').value;
+            const selectedPaymentOption = document.querySelector('input[name="payment_option"]:checked').value;
+
+            if (selectedMaterial !== '') {
+                fetch("{% url 'purchase_material' %}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({
+                        material_id: selectedMaterial,
+                        payment_option: selectedPaymentOption // Include payment option in the request
+                    }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Server response:', data);
+
+                        if (data.redirect_url) {
+                            window.location.href = data.redirect_url; // Redirect to the appropriate payment page
+                        } else {
+                            alert('An error occurred while processing your purchase: ' + (data.error || 'Unknown error.'));
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error purchasing material:', error);
+                    });
+            } else {
+                alert('You will be notified as soon as we get what you are looking for.');
+            }
+        });
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+
+
+    <div class="book-container">
+        {% if books %}
+        {% for book in books %}
+        <a href="#" class="book-link" data-book-id="{{ book.id }}" data-title="{{ book.title }}">
+            <div class="book-card">
+                <div class="book-image">
+                    {% if book.image_url %}
+                    <img src="{{ book.image_url }}" alt="{{ book.title }}">
+                    {% else %}
+                    <img src="default-placeholder.png" alt="No image available">
+                    {% endif %}
+                </div>
+                <div class="book-content">
+                    <h2 class="book-title">{{ book.title }}</h2>
+                    <p class="book-author">Author: {{ book.author }}</p>
+                    <p class="book-price">
+                        ₦{{ book.price }} <br>
+                        {{ book.price_in_dollars|floatformat:2 }} USD
+                    </p>
+                    <p class="book-description">{{ book.description|truncatewords:20 }}</p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+        {% else %}
+        <p>No books available at the moment.</p>
+        {% endif %}
+    </div>
+
+    <!-- Modal for Payment Method Selection -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel">Purchase This Material</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="paymentForm">
+                        <div class="form-group">
+                            <label for="paymentOption" class="form-label">Select Payment Option</label>
+                            <div>
+                                <input type="radio" id="paystack" name="payment_option" value="paystack" required>
+                                <label for="paystack">Paystack</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="PayPal" name="payment_option" value="PayPal" required>
+                                <label for="PayPal">PayPal</label>
+                            </div>
+                        </div>
+                        <input type="hidden" id="materialId" name="material_id">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="confirmPurchaseButton">Confirm Purchase</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const bookLinks = document.querySelectorAll(".book-link");
+            const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
+            const materialIdInput = document.getElementById('materialId');
+            const confirmPurchaseButton = document.getElementById('confirmPurchaseButton');
+
+            let selectedMaterialId = null;
+
+            // When a book is clicked
+            bookLinks.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    // Get the material ID and title
+                    selectedMaterialId = this.dataset.bookId;
+                    const title = this.dataset.title;
+
+                    // Set the material ID in the hidden input of the modal form
+                    materialIdInput.value = selectedMaterialId;
+
+                    // Show the modal to select payment option
+                    paymentModal.show();
+                });
+            });
+
+            // Handle the confirm purchase button click
+            confirmPurchaseButton.addEventListener("click", function () {
+                const paymentOption = document.querySelector('input[name="payment_option"]:checked').value;
+                const materialId = materialIdInput.value;
+
+                if (!paymentOption) {
+                    alert("Please select a payment option.");
+                    return;
+                }
+
+                // Submit the material request
+                fetch("{% url 'submit_material_request' %}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": "{{ csrf_token }}",
+                        "X-Requested-With": "XMLHttpRequest"
+                    },
+                    body: JSON.stringify({ search_query: materialId })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.material_id) {
+                            // Handle the purchase process after selecting payment option
+                            fetch("{% url 'purchase_material' %}", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                    "X-CSRFToken": "{{ csrf_token }}",
+                                    "X-Requested-With": "XMLHttpRequest"
+                                },
+                                body: JSON.stringify({
+                                    material_id: data.material_id,
+                                    payment_option: paymentOption
+                                })
+                            })
+                                .then(response => response.json())
+                                .then(purchaseData => {
+                                    if (purchaseData.redirect_url) {
+                                        // Redirect the user to the payment URL
+                                        window.location.href = purchaseData.redirect_url;
+                                    } else {
+                                        alert("Purchase error: " + (purchaseData.error || "Unknown error"));
+                                    }
+                                })
+                                .catch(error => console.error("Purchase Error:", error));
+                        } else {
+                            alert("Error submitting material request.");
+                        }
+                    })
+                    .catch(error => console.error("Error:", error));
+            });
+        });
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <!-- Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

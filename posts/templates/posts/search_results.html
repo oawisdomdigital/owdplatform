@@ -1,0 +1,260 @@
+{% extends "base.html" %}
+{% block title %}Search Results{% endblock %}
+{% load static %}
+{% block content %}
+
+<style>
+  /* General styling for search results */
+  .search-result-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  h3 {
+    color: #1a0dab;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .result-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .result-list li {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .result-list li img {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .profile-image-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ffc451;
+    margin-right: 10px;
+  }
+
+  .verification-badge2 {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 25px;
+    height: 25px;
+    transform: translate(50%, -50%);
+    z-index: 10;
+  }
+
+  .verification-badge2 img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .search-result-title a {
+    font-size: 18px;
+    color: #1a0dab;
+    text-decoration: none;
+  }
+
+  .search-result-description {
+    color: #4d5156;
+    font-size: 14px;
+  }
+
+  .search-result-description truncatewords {
+    display: block;
+    margin-top: 5px;
+  }
+
+  .search-result-meta {
+    font-size: 12px;
+    color: #6a737d;
+  }
+
+  .no-results {
+    color: #ff0000;
+    font-size: 18px;
+  }
+
+  .blog-image {
+    max-width: 100px;
+    border-radius: 5px;
+  }
+</style>
+
+<div class="search-result-container">
+  <h2>Search Results for "{{ query }}"</h2>
+
+  <!-- Display Marketplace Profiles -->
+  {% if profiles %}
+  <h3>Marketplace Profiles</h3>
+  <ul class="result-list">
+    {% for entry, profile in profiles %}
+    <li>
+      <div class="profile-image-container">
+        {% if profile.is_verified %}
+        <div class="verification-badge2">
+          <img src="{% static 'assets/img/verification_badge.png' %}" alt="Verified Badge">
+        </div>
+        {% endif %}
+        {% if profile.profile_image %}
+        <img src="{{ profile.profile_image.url }}" class="profile-image" alt="Profile Image" />
+        {% else %}
+        <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png" class="profile-image"
+          alt="Default Image" />
+        {% endif %}
+      </div>
+      <div>
+        <div class="search-result-title">
+          <a href="{% url 'profile' profile.user.username %}">{{ profile.user.username }}</a>
+        </div>
+        <div class="search-result-description">
+          <strong>Occupation:</strong> {{ entry.occupation }}<br>
+          <strong>Type:</strong> {{ entry.sell_or_service }}<br>
+          <strong>Product/Service:</strong> {{ entry.product_or_service }}<br>
+          <strong>Office Address:</strong> {{ entry.office_address }}<br>
+          <strong>Years of Experience:</strong> {{ entry.years_experience }}<br>
+          <strong>Specialty:</strong> {{ entry.get_specialty_display }}<br>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="no-results">No marketplace profiles found</p>
+  {% endif %}
+
+  <!-- Display User Profiles (Separate from Marketplace) -->
+  {% if user_profiles_list %}
+  <h3>User Profiles</h3>
+  <ul class="result-list">
+    {% for profile, subscriber_count in user_profiles_list %}
+    <li>
+      <div class="profile-image-container">
+        {% if profile.is_verified %}
+        <div class="verification-badge2">
+          <img src="{% static 'assets/img/verification_badge.png' %}" alt="Verified Badge">
+        </div>
+        {% endif %}
+        {% if profile.profile_image %}
+        <img src="{{ profile.profile_image.url }}" class="profile-image" alt="Profile Image" />
+        {% else %}
+        <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png" class="profile-image"
+          alt="Default Image" />
+        {% endif %}
+      </div>
+      <div>
+        <div class="search-result-title">
+          <a href="{% url 'profile' profile.user.username %}">{{ profile.user.username }}</a>
+        </div>
+        <div class="search-result-description">
+          <strong>Bio:</strong> {{ profile.bio }}<br>
+          <strong>Subscribers:</strong> {{ subscriber_count }}<br>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="no-results">No user profiles found</p>
+  {% endif %}
+
+  <!-- Display Blog Posts -->
+  {% if blog_posts %}
+  <h3>Blog Posts</h3>
+  <ul class="result-list">
+    {% for post in blog_posts %}
+    <li>
+      <div>
+        <div class="search-result-title">
+          <a href="{{ post.get_absolute_url }}">{{ post.title }}
+        </div>
+        <div class="search-result-meta">
+          <strong>Author:</strong> {{ post.author.username }}
+        </div>
+        <div class="post-image text-center mt-3">
+          <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid clickable-image" style="object-fit: contain;">
+        </div>
+        <div class="search-result-description">
+          {{ post.content|truncatewords:20 }}
+        </div></a>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <!-- Display YouTube Posts -->
+  {% if youtube_posts %}
+  <h3>YouTube Videos</h3>
+  <ul class="result-list">
+    {% for video in youtube_posts %}
+    <li>
+      <div>
+        <div class="search-result-title">
+          <!-- Pass the video_id from the current video object to the 'youtube_post_detail' URL -->
+          <a href="{% url 'youtube_post_detail' video.video_id %}">{{ video.title }}</a>
+        </div>
+        <div class="search-result-description">
+          <strong>Description:</strong> {{ video.description|truncatewords:20 }}<br>
+          <p>{{ video.published_at }} </p>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+
+  <!-- Display Marketplace Items -->
+  {% if marketplace_items %}
+  <h3>Marketplace Items</h3>
+  <ul class="result-list">
+    {% for item in marketplace_items %}
+    <li>
+      <div>
+        {% if item.images.first %}
+        <img src="{{ item.images.first.image.url }}" class="blog-image" alt="Item Image" />
+        {% endif %}
+        <div>
+          <div class="search-result-title">
+            <a href="{% url 'marketplace_item_detail' item_id=item.pk %}">{{ item.name }}</a>
+          </div>
+          <div class="search-result-description">
+            {{ item.description|truncatewords:20 }}
+          </div>
+          <div class="search-result-meta">
+            <strong>Price:</strong> ₦{{ item.price }}
+          </div>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if not profiles and not user_profiles_list and not blog_posts and not youtube_posts and not marketplace_items %}
+  <p class="no-results">No results found</p>
+  {% endif %}
+</div>
+
+{% endblock %}

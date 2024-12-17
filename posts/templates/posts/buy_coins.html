@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block title %}Get Coins{% endblock %}
+{% block content %}
+
+<!-- Page Header -->
+<div class="container mt-4">
+    <div class="text-center mb-4">
+        <h1 class="display-4">Get Coins</h1>
+    </div>
+
+    <!-- Display coins balance -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3 class="card-title">Your Coins Balance</h3>
+            <div class="info-item">
+                <i class="fas fa-coins"></i>
+                <div>
+                    <p>Coins: {{ profile.coins }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invite Friends and Earn Coins Section -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="card-title">Invite Friends and Earn Coins</h2>
+            <p class="card-text">Share this link with your friends to earn coins, one invite gets you 5 coins, the coins can be used to purchase verification and access premium features and resources. And in the future you can trade your coins and earn money as the coin value increases over time:</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#referralLinkModal">
+                Get Your Referral Link
+            </button>
+        </div>
+    </div>
+
+    <!-- Referral Link Modal -->
+    <div class="modal fade" id="referralLinkModal" tabindex="-1" aria-labelledby="referralLinkModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="referralLinkModalLabel">Your Referral Link</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Share this link to earn coins:</p>
+                    <input type="text" class="form-control mb-3" id="referralLink" readonly>
+                    <button class="btn btn-primary mb-3" id="copyLinkBtn">Copy Link</button>
+                    <button class="btn btn-primary" id="shareLinkBtn">Share Link</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buy Coins Section -->
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Buy Coins</h2>
+            <form method="post" action="{% url 'get_coins' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="coinsAmount" class="form-label">Enter amount of coins</label>
+                    <input type="number" id="coinsAmount" name="coins_amount" class="form-control"
+                        placeholder="Enter amount of coins" required>
+                </div>
+
+                <div class="mb-3">
+                    <p>Equivalent in Naira: <span id="nairaAmount">0</span> NGN</p>
+                    <p>Equivalent in Dollars: <span id="dollarAmount">0</span> USD</p>
+                </div>
+
+                <div class="mb-3">
+                    <label for="paymentOption" class="form-label">Select Payment Option Below</label>
+                    <select id="paymentOption" name="payment_option" class="form-select" required>
+                        <option value="paystack">Paystack</option>
+                        <option value="PayPal">PayPal</option>
+                        <option value="USD_bank_transfer">USD Bank Transfer</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Buy Coins</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var referralLinkModal = document.getElementById('referralLinkModal');
+        var referralLinkInput = document.getElementById('referralLink');
+        var copyLinkBtn = document.getElementById('copyLinkBtn');
+        var shareLinkBtn = document.getElementById('shareLinkBtn');
+
+        // Event listener for when the referral link modal is shown
+        referralLinkModal.addEventListener('show.bs.modal', function () {
+            fetch('/get-referral-link/')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.referral_link) {
+                        referralLinkInput.value = data.referral_link;
+                    } else {
+                        console.error('Referral link not found in response.');
+                        referralLinkInput.value = 'Error generating referral link';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching referral link:', error);
+                    referralLinkInput.value = 'Error fetching referral link';
+                });
+        });
+
+        // Event listener for the copy link button
+        copyLinkBtn.addEventListener('click', function () {
+            referralLinkInput.select();
+            try {
+                var successful = document.execCommand('copy');
+                if (successful) {
+                    alert('Referral link copied to clipboard!');
+                } else {
+                    alert('Failed to copy referral link.');
+                }
+            } catch (err) {
+                console.error('Error copying referral link:', err);
+                alert('Error copying referral link.');
+            }
+        });
+
+        // Event listener for the share link button
+        shareLinkBtn.addEventListener('click', function () {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Join Me and Earn Coins!',
+                    text: 'Check out this amazing platform where you can earn coins by inviting friends!',
+                    url: referralLinkInput.value
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                }).catch((error) => {
+                    console.error('Error sharing:', error);
+                });
+            } else {
+                alert('Sharing is not supported on this device.');
+            }
+        });
+
+        // Coin conversion rates (these should ideally come from your backend or a reliable source)
+        var nairaPerCoin = 50;
+        var dollarPerCoin = 0.032;
+
+        var coinsAmountInput = document.getElementById('coinsAmount');
+        var nairaAmountDisplay = document.getElementById('nairaAmount');
+        var dollarAmountDisplay = document.getElementById('dollarAmount');
+
+        // Event listener for coin amount input change
+        coinsAmountInput.addEventListener('input', function () {
+            var coinsAmount = parseInt(coinsAmountInput.value) || 0;
+            var nairaAmount = coinsAmount * nairaPerCoin;
+            var dollarAmount = coinsAmount * dollarPerCoin;
+            nairaAmountDisplay.textContent = nairaAmount.toFixed(2);
+            dollarAmountDisplay.textContent = dollarAmount.toFixed(2);
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,505 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Join our community chat platform, where you can engage with people in real-time, share messages, and participate in group discussions.">
+  <meta name="keywords" content="chat, messaging, community, real-time, group chat, instant messaging">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="OA_Wisdom">
+
+  <!-- Open Graph Meta Tags for Social Sharing -->
+  <meta property="og:title" content="Community Chat">
+  <meta property="og:description"
+    content="Engage with our community chat platform and connect with people in real-time.">
+  <meta property="og:image" content="https://yourwebsite.com/path-to-your-image.jpg">
+  <meta property="og:url" content="https://yourwebsite.com/community-chat">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Community Chat">
+  <meta name="twitter:description" content="Join our real-time community chat and participate in group discussions.">
+  <meta name="twitter:image" content="https://yourwebsite.com/path-to-your-image.jpg">
+  <meta name="twitter:site" content="@yourTwitterHandle">
+
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css" rel="stylesheet' %}">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="manifest" href="{% static 'manifest.json' %}">
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Community Chat",
+      "url": "https://yourwebsite.com/community-chat",
+      "description": "Join our real-time community chat platform to connect with others.",
+      "applicationCategory": "CommunicationApplication",
+      "operatingSystem": "Web",
+      "screenshot": "https://yourwebsite.com/path-to-your-image.jpg"
+    }
+    </script>
+
+  <title>Community Chat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e5ddd5;
+    }
+
+    .header {
+      background-color: #075e54;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .search-bar {
+      padding: 10px;
+      background-color: #f6f6f6;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .search-bar input[type="text"] {
+      width: 80%;
+      padding: 8px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .search-bar input[type="submit"] {
+      background-color: #25d366;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .room-list {
+      margin: 20px 10px;
+      border-radius: 10px;
+      background-color: white;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .room-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+    }
+
+    .room-item:last-child {
+      border-bottom: none;
+    }
+
+    .room-item:hover {
+      background-color: #f0f0f0;
+    }
+
+    .room-item img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .delete-room-button {
+      background-color: #f44336;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      border: none;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .create-room-button {
+      background-color: #25d366;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      margin: 20px 0;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input[type="text"],
+    .form-group textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .form-group input[type="file"] {
+      padding: 8px;
+    }
+
+    .form-group input[type="submit"] {
+      background-color: #075e54;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .form-group input[type="submit"]:hover {
+      background-color: #064b48;
+    }
+
+    .logo {
+      width: 70px;
+    }
+
+    a {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+
+
+  <header id="header" class="header d-flex align-items-center position-relative">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="{% url 'home' %}"><img class="logo" src="{% static 'assets/img/logo.png' %}" alt="OWD"></a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'home' %}#posts-tab">Posts</a></li>
+          <li><a href=" {% url 'owdservices' %}">Our Services</a></li>
+          <li><a href="{% url 'homechat' %}">Community</a></li>
+          <li><a href="{% url 'ebooks' %}">E-Books/Materials</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'buy_coins' %}">Get coins</a></li>
+          {% endif %}
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <a class="btn-getstarted" href="https://wa.link/aj20qm">Agency</a>
+    </div>
+  </header>
+
+  {% if user.is_authenticated %}
+  <!-- Page Title -->
+  <div class="page-title" data-aos="fade">
+    <nav class="breadcrumbs">
+      <div class="container">
+        <ol>
+          <li><a href="{% url 'profile' user.username %}">My Profile</a></li>
+          <li class="current">Hello, {{ user.username }}!</li>
+        </ol>
+      </div>
+    </nav>
+  </div><!-- End Page Title -->
+  {% else %}
+  <div class="page-title" data-aos="fade">
+    <nav class="breadcrumbs">
+      <div class="container">
+        <ol>
+          <li><a href="{% url 'register' %}">Signup</a></li>
+          <li><a href="{% url 'login' %}">Login</a></li>
+        </ol>
+      </div>
+    </nav>
+  </div><!-- End Page Title -->
+  {% endif %}
+
+  <div class="header">
+    <h1>COMMUNITY CHAT PLATFORM</h1>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <form method="GET" action="{% url 'homechat' %}">
+      <input type="text" name="search" placeholder="Search for Community..."
+        value="{{ request.GET.search|default:'' }}" />
+      <input type="submit" class="btn btn-primary" value="Search" />
+    </form>
+  </div>
+
+  <!-- Button to open the modal -->
+  <div class="text-center">
+    <button class="create-room-button" id="openModal">Create New Community</button>
+  </div>
+
+  <!-- The Modal -->
+  <div id="roomModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>New Community</h2>
+      <form id="post-form" method="POST" action="{% url 'create_group' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="group_name">Community Name</label>
+          <input type="text" name="group_name" id="group_name" required />
+        </div>
+        <div class="form-group">
+          <label for="group_description">Description</label>
+          <textarea name="group_description" id="group_description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="group_image">Community Image</label>
+          <input type="file" name="group_image" id="group_image" />
+        </div>
+        <div class="form-group">
+          <label for="privacy_settings">Who Can Join</label>
+          <select name="privacy_settings" id="privacy_settings" required>
+            <option value="everyone">Everyone</option>
+            <option value="admin_approval">Admins Approval Required</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="group_guidelines">Community Guidelines</label>
+          <textarea name="group_guidelines" id="group_guidelines"></textarea>
+        </div>
+        <input type="submit" value="Create Community" class="btn btn-primary">
+      </form>
+    </div>
+  </div>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('create-group-form');
+      const formMessages = document.getElementById('form-messages');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const formData = new FormData(form); // Create a FormData object from the form
+
+        fetch("{% url 'create_group' %}", {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value // Add CSRF token
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              formMessages.innerHTML = `<p class="success">Room created successfully! <a href="/room/${data.room_id}/">Go to Room</a></p>`;
+              form.reset(); // Reset the form fields
+            } else {
+              formMessages.innerHTML = `<p class="error">${data.error}</p>`;
+            }
+          })
+          .catch(error => {
+            formMessages.innerHTML = `<p class="error">An error occurred: ${error}</p>`;
+          });
+      });
+    });
+  </script>
+
+
+  <!-- Displaying the list of user-created groups -->
+  <div class="room-list">
+    <h4>Your Community</h4>
+    {% for room in user_rooms %}
+    <div class="room-item">
+      <a href="{% url 'room' room_id=room.id %}">
+        <div>
+          {% if room.group_image %}
+          <img src="{{ room.group_image.url }}" alt="Group Cover Image">
+          {% endif %}
+          <b>{{ room.group_name }}</b>
+          <p>{{ room.group_description }}</p>
+        </div>
+      </a>
+    </div>
+    {% empty %}
+    <p>You haven't created any Community.</p>
+    {% endfor %}
+  </div>
+
+  <!-- Displaying all available groups -->
+  <div class="room-list">
+    <h4>Available Communities</h4>
+    {% for room in rooms %}
+    <div class="room-item">
+      <div onclick="window.location.href='{% url 'room' room_id=room.id %}'">
+        {% if room.group_image %}
+        <img src="{{ room.group_image.url }}" alt="Group Cover Image">
+        {% else %}
+        <img src="https://img.icons8.com/?size=100&id=57475&format=png&color=000000" alt="Group Cover Image">
+        {% endif %}
+        <b>{{ room.group_name }} Community</b>
+        <p>{{ room.group_description }}</p>
+      </div>
+      {% if room.can_join and not room.is_member and not room.is_admin %}
+      <button class="btn btn-secondary request-join-button" data-room-id="{{ room.id }}">Request to Join</button>
+      {% elif room.is_member or room.is_admin %}
+      <button class="btn btn-secondary view-group-button"
+        onclick="window.location.href='{% url 'room' room_id=room.id %}'">View Community</button>
+      {% endif %}
+    </div>
+    {% empty %}
+    <p>No Community found.</p>
+    {% endfor %}
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.request-join-button').forEach(button => {
+        button.addEventListener('click', function () {
+          const roomId = this.getAttribute('data-room-id');
+
+          fetch('/chat/request-to-join/', {
+            method: 'POST',
+            headers: {
+              'X-CSRFToken': '{{ csrf_token }}',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 'room_id': roomId })
+          })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                alert('Request sent to join the group!');
+                this.style.display = 'none'; // Optionally hide the button after request
+              } else {
+                alert('Error sending request: ' + data.error);
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('An unexpected error occurred.');
+            });
+        });
+      });
+    });
+  </script>
+
+
+
+
+
+
+  <script>
+    // Modal functionality
+    var modal = document.getElementById("roomModal");
+    var btn = document.getElementById("openModal");
+    var span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% block title %}Advanced Data Analysis Course{% endblock %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+        background-color: #1a1a1a;
+        /* Dark background typical of trading platforms */
+        color: #f0f0f0;
+        /* Light text color for readability */
+    }
+
+    #uploads {
+        padding: 50px 0;
+    }
+
+    #uploads h1 {
+        text-align: center;
+        color: #00b3b3;
+        /* Cool, professional color */
+        font-weight: bold;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .section-title h3 {
+        color: #fff;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+
+    .cbt {
+        display: inline-block;
+        font-size: 1.2rem;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #009999;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .cbt:hover {
+        background-color: #007777;
+        color: #fff;
+    }
+
+    .card {
+        background-color: #2b2b2b;
+        /* Dark card background */
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        /* Slightly stronger shadow */
+        margin-bottom: 30px;
+    }
+
+    .card-title {
+        color: #00b3b3;
+        /* Matching card title color */
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
+
+    .card-text {
+        color: #ccc;
+        /* Softer text color for descriptions */
+        font-size: 1rem;
+    }
+
+    .file i {
+        color: #00b3b3;
+        /* Icon color matching the theme */
+    }
+
+    .btn-success {
+        background-color: #00b3b3;
+        border-color: #00b3b3;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-success:hover {
+        background-color: #007777;
+        /* Darker shade on hover */
+        border-color: #007777;
+    }
+
+    .container {
+        max-width: 1200px;
+    }
+</style>
+<div class="container section-title" data-aos="fade-up">
+    <h3 class="mb-4">Advanced Data Analysis Course</h3>
+    <a href="">
+        <p class="cbt">CBT EXAM</p>
+    </a>
+</div>
+
+<section id="uploads" class="features container my-5">
+    {% if courses %}
+    {% for course in courses %}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4 class="card-title">{{ course.name }}</h4>
+            <p class="card-text">{{ course.description }}</p>
+            <div class="file mb-2">
+                {% if course.file %}
+                <a href="{{ course.file.url }}" target="_blank">
+                    <i class="{{ course.icon_class }} fa-3x"></i>
+                </a>
+                <a href="{{ course.file.url }}" target="_blank">{{ course.file.name }}</a>
+                {% if course.file.size %}
+                <span class="text-muted">({{ course.file.size }} bytes)</span>
+                {% endif %}
+                {% else %}
+                <p class="text-danger">File not available</p>
+                {% endif %}
+            </div>
+            <a href="{{ course.button }}" class="btn btn-success">Watch video</a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h1>This course is coming soon.</h1>
+    {% endif %}
+</section>
+
+
+{% endblock %}

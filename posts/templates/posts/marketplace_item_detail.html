@@ -1,0 +1,406 @@
+{% extends "base.html" %}
+{% block title %}Item{% endblock %}
+{% load static %}
+{% block content %}
+    <style>
+        /* Custom styles for the marketplace item detail page */
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f5f6f7;
+            /* Light background color for the container */
+            border-radius: 8px;
+        }
+    
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+    
+        .item-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0;
+            font-weight: bold;
+            color: #333;
+        }
+    
+        .author-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    
+        .profile-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            /* Light border around the profile image */
+            margin-right: 15px;
+        }
+    
+        .author-info a {
+            color: #1877f2;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    
+        .author-info a:hover {
+            text-decoration: underline;
+        }
+    
+        .price {
+            font-size: 1.75rem;
+            color: #ff5733;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+    
+        .view-count {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+    
+        .swiper-container {
+            width: 100%;
+            height: 400px;
+            margin-bottom: 30px;
+            position: relative;
+            /* For absolute positioning of pagination and navigation */
+        }
+    
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .swiper-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            /* Ensure the image fits within the container */
+            border-radius: 8px;
+        }
+    
+        /* Swiper Pagination */
+        .swiper-pagination {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+    
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+    
+        .swiper-pagination-bullet-active {
+            background-color: #1877f2;
+        }
+    
+        /* Swiper Navigation */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #1877f2;
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+    
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 20px;
+        }
+    
+        .swiper-button-next {
+            right: 10px;
+        }
+    
+        .swiper-button-prev {
+            left: 10px;
+        }
+    
+        .btn {
+            border-radius: 20px;
+            font-weight: bold;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+    
+        .btn-success {
+            background-color: #42b72a;
+            border-color: #42b72a;
+        }
+    
+        .btn-success:hover {
+            background-color: #36a420;
+            border-color: #36a420;
+        }
+    
+        .btn-info {
+            background-color: #00a400;
+            border-color: #00a400;
+        }
+    
+        .btn-info:hover {
+            background-color: #008a00;
+            border-color: #008a00;
+        }
+    
+        .btn-secondary {
+            background-color: #e4e6eb;
+            border-color: #e4e6eb;
+            color: #050505;
+        }
+    
+        .btn-secondary:hover {
+            background-color: #d8dadf;
+            border-color: #d8dadf;
+        }
+    
+        .card {
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+    
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+    
+        .card-body {
+            padding: 15px;
+            background-color: #fff;
+        }
+    
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+    
+        .card-text {
+            font-size: 1rem;
+            color: #666;
+        }
+    
+        .related-items h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .verification-badge {
+            position: relative;
+            top: -1px;
+            right: 8px;
+            width: 30px;
+            /* Adjust size as needed */
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+    </style>
+
+
+    <div class="container mt-5">
+        <div class="item-header">
+            <h1>{{ item.name }}</h1>
+            <!-- Share Button -->
+            <button class="btn btn-primary share-button" data-item-id="{{ item.id }}"><i class="bi bi-share"></i> Share</button>
+    
+        </div>
+        <div class="author-info">
+            <!-- Seller Information -->
+            {% if item.user.user_profile.profile_image %}
+            <img src="{{ item.user.user_profile.profile_image.url }}" alt="Seller Profile Image" class="profile-image">
+            {% else %}
+            <img src="{% static 'assets/img/default-profile.png' %}" alt="Default Profile Image" class="profile-image">
+            {% endif %}
+            <a href="{% url 'profile' item.user.username %}">{{ item.user.username }}</a>
+            {% if item.user.user_profile.is_verified %}
+            <div class="verification-badge">
+            <img src="{% static 'assets/img/verification_badge.png' %}" alt="Verified Badge"
+                style="width: 20px; margin-left: 5px;">
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Swiper Image Gallery -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {% for image in item.images.all %}
+                <div class="swiper-slide">
+                    <img src="{{ image.image.url }}" class="img-fluid" alt="{{ item.name }}">
+                </div>
+                {% endfor %}
+            </div>
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Navigation buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <div class="mt-3">
+            <p>{{ item.description }}</p>
+            <p class="price"><strong>Price:</strong> &#8358;{{ item.price }}</p>
+            <p><strong>Date Listed:</strong> {{ item.created_at }}</p>
+            <p class="view-count"><strong>Views:</strong> {{ item.view_count }}</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="mt-3">
+            <a href="{% url 'add_to_cart' item.pk %}" class="btn btn-success">Add to Cart</a>
+            <a href="{% url 'create_private_chat' user_id=item.user.id %}" class="btn btn-info">Contact Seller</a>
+            <button class="btn btn-secondary" onclick="addToWishlist({{ item.pk }})">Add to Wishlist</button>
+        </div>
+
+        <!-- Related Items Section -->
+        <div class="related-items mt-5">
+            <h2>Related Items</h2>
+            <div class="row">
+                {% for related_item in related_items %}
+                <div class="col-md-4">
+                    <div class="card related-item-card">
+                        <img src="{{ related_item.images.first.image.url }}" class="card-img-top"
+                            alt="{{ related_item.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ related_item.name }}</h5>
+                            <p class="card-text">&#8358;{{ related_item.price }}</p>
+                            <a href="{% url 'profile' item.user.username %}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Swiper
+            const swiper = new Swiper('.swiper-container', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                allowTouchMove: true,
+            });
+
+            // Share Button Functionality
+            document.querySelectorAll('.share-button').forEach(button => {
+                button.addEventListener('click', function () {
+                    const itemId = this.getAttribute('data-item-id');
+                    fetch(`/marketplace/share/${itemId}/`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': getCookie('csrftoken')
+                        }
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (navigator.share) {
+                                navigator.share({
+                                    title: data.title,
+                                    text: data.description,
+                                    url: data.shared_link
+                                }).catch(error => console.error('Error sharing:', error));
+                            } else {
+                                alert('Share API not supported in this browser.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('There was a problem with the fetch operation:', error);
+                            alert('Failed to share the item. Please try again later.');
+                        });
+                });
+            });
+
+            // Function to add item to wishlist
+            window.addToWishlist = function (itemId) {
+                fetch(`/wishlist/add/${itemId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken'),
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ itemId: itemId }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert('Item added to wishlist!');
+                        } else if (data.redirect) {
+                            window.location.href = data.redirect;  // Redirect to login if needed
+                        } else {
+                            alert('Failed to add item to wishlist.');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
+
+            // Function to get the CSRF token
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+        });
+    </script>
+{% endblock %}

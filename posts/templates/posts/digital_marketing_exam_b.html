@@ -1,0 +1,535 @@
+{% extends "base.html" %}
+{% block title %}Digital Marketing CBT Exam{% endblock %}
+{% load static %}
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        padding: 20px;
+    }
+</style>
+
+<div class="container section-title" data-aos="fade-up">
+    <h1 class="mb-4">Intermediate Digital Marketing CBT Exam</h1>
+    <h2>Answer all questions in 30 minutes</h2>
+</div>
+<div id="timer">Time left: 00:00:00</div>
+
+<div class="question1">
+    <p>1. The term SEO stands for:</p>
+    <label><input type="radio" name="q1" value="a"> A) Search Engine Optimization</label>
+    <label><input type="radio" name="q1" value="b"> B) Social Engagement Optimization</label>
+    <label><input type="radio" name="q1" value="c"> C) Search Engine Operation</label>
+    <label><input type="radio" name="q1" value="d"> D) None of the above</label>
+</div>
+
+<div class="question2">
+    <p>2. Which metric indicates how many visitors leave a website after viewing only one page?</p>
+    <label><input type="radio" name="q2" value="a"> A) Bounce Rate</label>
+    <label><input type="radio" name="q2" value="b"> B) Click-Through Rate</label>
+    <label><input type="radio" name="q2" value="c"> C) Conversion Rate</label>
+    <label><input type="radio" name="q2" value="d"> D) Exit Rate</label>
+</div>
+
+<div class="question3">
+    <p>3. What does PPC stand for in online advertising?</p>
+    <label><input type="radio" name="q3" value="a"> A) Pay Per Click</label>
+    <label><input type="radio" name="q3" value="b"> B) Pay Per Conversion</label>
+    <label><input type="radio" name="q3" value="c"> C) Pay Per Campaign</label>
+    <label><input type="radio" name="q3" value="d"> D) Pay Per Content</label>
+</div>
+
+<div class="question4">
+    <p>4. Which platform is known for professional networking and B2B marketing?</p>
+    <label><input type="radio" name="q4" value="a"> A) Facebook</label>
+    <label><input type="radio" name="q4" value="b"> B) Instagram</label>
+    <label><input type="radio" name="q4" value="c"> C) LinkedIn</label>
+    <label><input type="radio" name="q4" value="d"> D) Twitter</label>
+</div>
+
+<div class="question5">
+    <p>5. What does the acronym CTR stand for?</p>
+    <label><input type="radio" name="q5" value="a"> A) Click Through Rate</label>
+    <label><input type="radio" name="q5" value="b"> B) Conversion Tracking Rate</label>
+    <label><input type="radio" name="q5" value="c"> C) Customer Turnover Rate</label>
+    <label><input type="radio" name="q5" value="d"> D) Cost to Revenue</label>
+</div>
+
+<div class="question6">
+    <p>6. Which social media platform is known for short, viral videos and has a significant Gen Z user base?</p>
+    <label><input type="radio" name="q6" value="a"> A) TikTok</label>
+    <label><input type="radio" name="q6" value="b"> B) Snapchat</label>
+    <label><input type="radio" name="q6" value="c"> C) Twitter</label>
+    <label><input type="radio" name="q6" value="d"> D) LinkedIn</label>
+</div>
+
+<div class="question7">
+    <p>7. What is a key benefit of email marketing?</p>
+    <label><input type="radio" name="q7" value="a"> A) High engagement rates</label>
+    <label><input type="radio" name="q7" value="b"> B) Personalization capabilities</label>
+    <label><input type="radio" name="q7" value="c"> C) Cost-effective communication</label>
+    <label><input type="radio" name="q7" value="d"> D) All of the above</label>
+</div>
+
+<div class="question8">
+    <p>8. Which term describes the process of improving a website to increase its visibility on search engines?</p>
+    <label><input type="radio" name="q8" value="a"> A) SEM</label>
+    <label><input type="radio" name="q8" value="b"> B) SMM</label>
+    <label><input type="radio" name="q8" value="c"> C) SEO</label>
+    <label><input type="radio" name="q8" value="d"> D) SMO</label>
+</div>
+
+<div class="question9">
+    <p>9. What is the primary goal of content marketing?</p>
+    <label><input type="radio" name="q9" value="a"> A) To generate sales</label>
+    <label><input type="radio" name="q9" value="b"> B) To create viral content</label>
+    <label><input type="radio" name="q9" value="c"> C) To provide valuable information</label>
+    <label><input type="radio" name="q9" value="d"> D) To improve website design</label>
+</div>
+
+<div class="question10">
+    <p>10. Which metric measures the percentage of visitors who complete a desired action on a website?</p>
+    <label><input type="radio" name="q10" value="a"> A) Bounce Rate</label>
+    <label><input type="radio" name="q10" value="b"> B) Click-Through Rate</label>
+    <label><input type="radio" name="q10" value="c"> C) Conversion Rate</label>
+    <label><input type="radio" name="q10" value="d"> D) Engagement Rate</label>
+</div>
+
+<div class="question11">
+    <p>11. What is a common use of Google Analytics?</p>
+    <label><input type="radio" name="q11" value="a"> A) Tracking website traffic</label>
+    <label><input type="radio" name="q11" value="b"> B) Creating email campaigns</label>
+    <label><input type="radio" name="q11" value="c"> C) Designing website layouts</label>
+    <label><input type="radio" name="q11" value="d"> D) Managing social media posts</label>
+</div>
+
+<div class="question12">
+    <p>12. What is a key characteristic of influencer marketing?</p>
+    <label><input type="radio" name="q12" value="a"> A) High cost</label>
+    <label><input type="radio" name="q12" value="b"> B) Leveraging trusted figures</label>
+    <label><input type="radio" name="q12" value="c"> C) Use of traditional media</label>
+    <label><input type="radio" name="q12" value="d"> D) Focus on direct sales</label>
+</div>
+
+<div class="question13">
+    <p>13. Which platform allows businesses to create and manage ads that appear in search engine results?</p>
+    <label><input type="radio" name="q13" value="a"> A) Facebook Ads</label>
+    <label><input type="radio" name="q13" value="b"> B) Instagram Ads</label>
+    <label><input type="radio" name="q13" value="c"> C) Google Ads</label>
+    <label><input type="radio" name="q13" value="d"> D) LinkedIn Ads</label>
+</div>
+
+<div class="question14">
+    <p>14. Which type of marketing involves creating and sharing online materials to stimulate interest in a product or
+        service?</p>
+    <label><input type="radio" name="q14" value="a"> A) Affiliate Marketing</label>
+    <label><input type="radio" name="q14" value="b"> B) Content Marketing</label>
+    <label><input type="radio" name="q14" value="c"> C) Influencer Marketing</label>
+    <label><input type="radio" name="q14" value="d"> D) Email Marketing</label>
+</div>
+
+<div class="question15">
+    <p>15. Which metric is crucial for assessing the success of a PPC campaign?</p>
+    <label><input type="radio" name="q15" value="a"> A) Impressions</label>
+    <label><input type="radio" name="q15" value="b"> B) Reach</label>
+    <label><input type="radio" name="q15" value="c"> C) Click-Through Rate</label>
+    <label><input type="radio" name="q15" value="d"> D) Bounce Rate</label>
+</div>
+
+<div class="question16">
+    <p>16. What is a common objective of social media marketing?</p>
+    <label><input type="radio" name="q16" value="a"> A) Increasing brand awareness</label>
+    <label><input type="radio" name="q16" value="b"> B) Driving website traffic</label>
+    <label><input type="radio" name="q16" value="c"> C) Generating leads</label>
+    <label><input type="radio" name="q16" value="d"> D) All of the above</label>
+</div>
+
+<div class="question17">
+    <p>17. What does the term "organic reach" refer to in social media marketing?</p>
+    <label><input type="radio" name="q17" value="a"> A) Paid advertisements</label>
+    <label><input type="radio" name="q17" value="b"> B) Reach through unpaid content</label>
+    <label><input type="radio" name="q17" value="c"> C) Reach through email campaigns</label>
+    <label><input type="radio" name="q17" value="d"> D) Reach through influencers</label>
+</div>
+
+<div class="question18">
+    <p>18. Which digital marketing strategy focuses on improving the user experience on a website to increase
+        engagement?</p>
+    <label><input type="radio" name="q18" value="a"> A) SEO</label>
+    <label><input type="radio" name="q18" value="b"> B) UX Design</label>
+    <label><input type="radio" name="q18" value="c"> C) Content Marketing</label>
+    <label><input type="radio" name="q18" value="d"> D) SEM</label>
+</div>
+
+<div class="question19">
+    <p>19. What is a significant advantage of using video content in digital marketing?</p>
+    <label><input type="radio" name="q19" value="a"> A) High engagement rates</label>
+    <label><input type="radio" name="q19" value="b"> B) Ease of production</label>
+    <label><input type="radio" name="q19" value="c"> C) Low cost</label>
+    <label><input type="radio" name="q19" value="d"> D) Static presentation</label>
+</div>
+
+<div class="question20">
+    <p>20. What is a common goal of A/B testing in digital marketing?</p>
+    <label><input type="radio" name="q20" value="a"> A) To compare two versions of a web page or ad</label>
+    <label><input type="radio" name="q20" value="b"> B) To increase website traffic</label>
+    <label><input type="radio" name="q20" value="c"> C) To improve SEO rankings</label>
+    <label><input type="radio" name="q20" value="d"> D) To manage social media accounts</label>
+</div>
+
+<div class="question21">
+    <p>21. Which tool is commonly used for keyword research in SEO?</p>
+    <label><input type="radio" name="q21" value="a"> A) Google Keyword Planner</label>
+    <label><input type="radio" name="q21" value="b"> B) Hootsuite</label>
+    <label><input type="radio" name="q21" value="c"> C) Canva</label>
+    <label><input type="radio" name="q21" value="d"> D) Mailchimp</label>
+</div>
+
+<div class="question22">
+    <p>22. What is the main purpose of using hashtags on social media?</p>
+    <label><input type="radio" name="q22" value="a"> A) To increase post reach and engagement</label>
+    <label><input type="radio" name="q22" value="b"> B) To improve SEO rankings</label>
+    <label><input type="radio" name="q22" value="c"> C) To create clickable links</label>
+    <label><input type="radio" name="q22" value="d"> D) To generate email subscribers</label>
+</div>
+
+<div class="question23">
+    <p>23. Which marketing strategy involves partnering with other businesses to promote each other's products?</p>
+    <label><input type="radio" name="q23" value="a"> A) Affiliate Marketing</label>
+    <label><input type="radio" name="q23" value="b"> B) Co-Branding</label>
+    <label><input type="radio" name="q23" value="c"> C) Influencer Marketing</label>
+    <label><input type="radio" name="q23" value="d"> D) Content Marketing</label>
+</div>
+
+<div class="question24">
+    <p>24. What is a landing page primarily designed to do?</p>
+    <label><input type="radio" name="q24" value="a"> A) Provide information about a business</label>
+    <label><input type="radio" name="q24" value="b"> B) Capture leads through a form</label>
+    <label><input type="radio" name="q24" value="c"> C) Display blog content</label>
+    <label><input type="radio" name="q24" value="d"> D) Show social media feeds</label>
+</div>
+
+<div class="question25">
+    <p>25. What does the term "remarketing" refer to?</p>
+    <label><input type="radio" name="q25" value="a"> A) Marketing to new customers</label>
+    <label><input type="radio" name="q25" value="b"> B) Marketing to users who have previously interacted with your
+        website</label>
+    <label><input type="radio" name="q25" value="c"> C) Marketing to social media influencers</label>
+    <label><input type="radio" name="q25" value="d"> D) Marketing through email newsletters</label>
+</div>
+
+<div class="question26">
+    <p>26. Which of the following is a benefit of using influencer marketing?</p>
+    <label><input type="radio" name="q26" value="a"> A) Access to a targeted audience</label>
+    <label><input type="radio" name="q26" value="b"> B) Increased credibility</label>
+    <label><input type="radio" name="q26" value="c"> C) Higher engagement rates</label>
+    <label><input type="radio" name="q26" value="d"> D) All of the above</label>
+</div>
+
+<div class="question27">
+    <p>27. What is the main purpose of using Google My Business?</p>
+    <label><input type="radio" name="q27" value="a"> A) To manage online reviews</label>
+    <label><input type="radio" name="q27" value="b"> B) To improve local SEO</label>
+    <label><input type="radio" name="q27" value="c"> C) To provide business information on Google Search and
+        Maps</label>
+    <label><input type="radio" name="q27" value="d"> D) All of the above</label>
+</div>
+
+<div class="question28">
+    <p>28. Which type of content is often used in email marketing to improve open rates?</p>
+    <label><input type="radio" name="q28" value="a"> A) Video</label>
+    <label><input type="radio" name="q28" value="b"> B) Personalization</label>
+    <label><input type="radio" name="q28" value="c"> C) Infographics</label>
+    <label><input type="radio" name="q28" value="d"> D) All of the above</label>
+</div>
+
+<div class="question29">
+    <p>29. What is the main advantage of using A/B testing in email marketing?</p>
+    <label><input type="radio" name="q29" value="a"> A) To increase email list size</label>
+    <label><input type="radio" name="q29" value="b"> B) To optimize email content for better performance</label>
+    <label><input type="radio" name="q29" value="c"> C) To reduce email bounce rates</label>
+    <label><input type="radio" name="q29" value="d"> D) To track email open rates</label>
+</div>
+
+<div class="question30">
+    <p>30. Which metric is important for measuring the effectiveness of social media campaigns?</p>
+    <label><input type="radio" name="q30" value="a"> A) Engagement Rate</label>
+    <label><input type="radio" name="q30" value="b"> B) Conversion Rate</label>
+    <label><input type="radio" name="q30" value="c"> C) Click-Through Rate</label>
+    <label><input type="radio" name="q30" value="d"> D) All of the above</label>
+</div>
+
+<div class="question31">
+    <p>31. What is the primary goal of using Google Ads?</p>
+    <label><input type="radio" name="q31" value="a"> A) To generate leads</label>
+    <label><input type="radio" name="q31" value="b"> B) To increase brand awareness</label>
+    <label><input type="radio" name="q31" value="c"> C) To drive website traffic</label>
+    <label><input type="radio" name="q31" value="d"> D) All of the above</label>
+</div>
+
+<div class="question32">
+    <p>32. What is a key factor in determining the success of an email marketing campaign?</p>
+    <label><input type="radio" name="q32" value="a"> A) Open Rate</label>
+    <label><input type="radio" name="q32" value="b"> B) Click-Through Rate</label>
+    <label><input type="radio" name="q32" value="c"> C) Conversion Rate</label>
+    <label><input type="radio" name="q32" value="d"> D) All of the above</label>
+</div>
+
+<div class="question33">
+    <p>33. Which marketing strategy focuses on creating valuable, relevant, and consistent content to attract and retain
+        a clearly defined audience?</p>
+    <label><input type="radio" name="q33" value="a"> A) Content Marketing</label>
+    <label><input type="radio" name="q33" value="b"> B) SEO</label>
+    <label><input type="radio" name="q33" value="c"> C) PPC</label>
+    <label><input type="radio" name="q33" value="d"> D) Affiliate Marketing</label>
+</div>
+
+<div class="question34">
+    <p>34. Which of the following is a popular tool for scheduling social media posts?</p>
+    <label><input type="radio" name="q34" value="a"> A) Hootsuite</label>
+    <label><input type="radio" name="q34" value="b"> B) SEMrush</label>
+    <label><input type="radio" name="q34" value="c"> C) Google Analytics</label>
+    <label><input type="radio" name="q34" value="d"> D) Mailchimp</label>
+</div>
+
+<div class="question35">
+    <p>35. What is the primary goal of a lead generation campaign?</p>
+    <label><input type="radio" name="q35" value="a"> A) To increase brand awareness</label>
+    <label><input type="radio" name="q35" value="b"> B) To drive website traffic</label>
+    <label><input type="radio" name="q35" value="c"> C) To collect contact information from potential customers</label>
+    <label><input type="radio" name="q35" value="d"> D) To increase social media followers</label>
+</div>
+
+<div class="question36">
+    <p>36. What is the purpose of a call-to-action (CTA) in digital marketing?</p>
+    <label><input type="radio" name="q36" value="a"> A) To provide contact information</label>
+    <label><input type="radio" name="q36" value="b"> B) To encourage a specific action from the audience</label>
+    <label><input type="radio" name="q36" value="c"> C) To display advertisements</label>
+    <label><input type="radio" name="q36" value="d"> D) To provide social media updates</label>
+</div>
+
+<div class="question37">
+    <p>37. Which social media platform is known for its character limit per post?</p>
+    <label><input type="radio" name="q37" value="a"> A) Facebook</label>
+    <label><input type="radio" name="q37" value="b"> B) Instagram</label>
+    <label><input type="radio" name="q37" value="c"> C) Twitter</label>
+    <label><input type="radio" name="q37" value="d"> D) LinkedIn</label>
+</div>
+
+<div class="question38">
+    <p>38. What is the purpose of using Google Analytics in digital marketing?</p>
+    <label><input type="radio" name="q38" value="a"> A) To track website traffic and user behavior</label>
+    <label><input type="radio" name="q38" value="b"> B) To create social media content</label>
+    <label><input type="radio" name="q38" value="c"> C) To design email campaigns</label>
+    <label><input type="radio" name="q38" value="d"> D) To manage online advertisements</label>
+</div>
+
+<div class="question39">
+    <p>39. Which of the following is NOT a type of digital advertising?</p>
+    <label><input type="radio" name="q39" value="a"> A) Pay-Per-Click (PPC)</label>
+    <label><input type="radio" name="q39" value="b"> B) Search Engine Optimization (SEO)</label>
+    <label><input type="radio" name="q39" value="c"> C) Display Advertising</label>
+    <label><input type="radio" name="q39" value="d"> D) Social Media Advertising</label>
+</div>
+
+<div class="question40">
+    <p>40. What is the term for the practice of optimizing your website to rank higher in search engine results?</p>
+    <label><input type="radio" name="q40" value="a"> A) Search Engine Marketing (SEM)</label>
+    <label><input type="radio" name="q40" value="b"> B) Search Engine Optimization (SEO)</label>
+    <label><input type="radio" name="q40" value="c"> C) Pay-Per-Click (PPC)</label>
+    <label><input type="radio" name="q40" value="d"> D) Cost-Per-Click (CPC)</label>
+</div>
+
+<button class="btn-submit btn-primary">Submit Answers</button>
+
+<script>
+    const answers = {
+        q1: 'a',
+        q2: 'c',
+        q3: 'b',
+        q4: 'c',
+        q5: 'b',
+        q6: 'b',
+        q7: 'a',
+        q8: 'c',
+        q9: 'a',
+        q10: 'a',
+        q11: 'c',
+        q12: 'b',
+        q13: 'a',
+        q14: 'a',
+        q15: 'a',
+        q16: 'a',
+        q17: 'a',
+        q18: 'b',
+        q19: 'b',
+        q20: 'a',
+        q21: 'a',
+        q22: 'd',
+        q23: 'b',
+        q24: 'a',
+        q25: 'c',
+        q26: 'b',
+        q27: 'c',
+        q28: 'a',
+        q29: 'd',
+        q30: 'b',
+        q31: 'a',
+        q32: 'b',
+        q33: 'c',
+        q34: 'd',
+        q35: 'a',
+        q36: 'b',
+        q37: 'd',
+        q38: 'a',
+        q39: 'c',
+        q40: 'b'
+    };
+
+    function createNotification(message, backgroundColor) {
+            const notification = document.createElement('div');
+            notification.style.position = 'fixed';
+            notification.style.top = '50%';
+            notification.style.left = '50%';
+            notification.style.transform = 'translate(-50%, -50%)';
+            notification.style.fontSize = '1.5em';
+            notification.style.backgroundColor = backgroundColor;
+            notification.style.color = '#fff';
+            notification.style.padding = '30px 20px';
+            notification.style.borderRadius = '10px';
+            notification.style.textAlign = 'center';
+            notification.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+            notification.style.zIndex = '1000';
+            notification.style.width = '80%';
+            notification.style.maxWidth = '400px';
+            notification.style.display = 'flex';
+            notification.style.flexDirection = 'column';
+            notification.style.alignItems = 'center';
+
+            const messageContainer = document.createElement('div');
+            messageContainer.textContent = message;
+            messageContainer.style.marginBottom = '20px';
+            messageContainer.style.width = '100%';
+
+            const okButton = document.createElement('button');
+            okButton.textContent = 'OK';
+            okButton.style.fontSize = '20px';
+            okButton.style.padding = '10px 20px';
+            okButton.style.backgroundColor = '#007bff';
+            okButton.style.color = '#fff';
+            okButton.style.border = 'none';
+            okButton.style.borderRadius = '5px';
+            okButton.style.cursor = 'pointer';
+            okButton.style.transition = 'background-color 0.3s';
+
+            okButton.addEventListener('mouseover', function () {
+                okButton.style.backgroundColor = '#0056b3';
+            });
+
+            okButton.addEventListener('mouseout', function () {
+                okButton.style.backgroundColor = '#007bff';
+            });
+
+            okButton.addEventListener('click', function () {
+                document.body.removeChild(notification);
+            });
+
+            notification.appendChild(messageContainer);
+            notification.appendChild(okButton);
+            document.body.appendChild(notification);
+        }
+
+        function submitExam() {
+            clearInterval(timerInterval); // Stop the countdown timer
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+            let unansweredQuestions = [];
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const userAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                if (userAnswer) {
+                    if (userAnswer.value === answers[questionName]) {
+                        score++;
+                        document.querySelector(`input[name="${questionName}"]:checked`).parentNode.classList.add('correct');
+                    } else {
+                        document.querySelector(`input[name="${questionName}"]:checked`).parentNode.classList.add('incorrect');
+                    }
+                } else {
+                    unansweredQuestions.push(i);
+                }
+            }
+
+            if (unansweredQuestions.length > 0) {
+                createNotification(`Please answer question(s): ${unansweredQuestions.join(', ')}`, '#ff0000');
+                resetExam(); // Reset exam if there are unanswered questions
+                return;
+            }
+
+            const percentageScore = (score / totalQuestions) * 100;
+
+            if (percentageScore < 50) {
+                createNotification(`You scored ${score} out of ${totalQuestions}. You have a poor score. Please try again.`, '#ff0000');
+            } else if (percentageScore > 50 && percentageScore < 100) {
+                createNotification(`You scored ${score} out of ${totalQuestions}. You are close to success. You can do better!`, '#007bff');
+            } else if (percentageScore === 100) {
+                createNotification(`Congratulations! You scored ${score} out of ${totalQuestions}. Excellent performance!`, '#28a745');
+            }
+
+            resetExam(); // Reset exam after successful submission
+        }
+
+        function resetQuestions() {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(radio => {
+                radio.checked = false;
+                radio.parentNode.classList.remove('correct', 'incorrect');
+            });
+        }
+
+        function resetExam() {
+            resetQuestions(); // Reset questions to default state
+            timeLeft = 1800; // Reset timer to 30 minutes
+            timerElement.textContent = "Time left: 00:30:00"; // Reset timer display
+            clearInterval(timerInterval); // Clear the existing interval
+            timerInterval = setInterval(updateTimer, 1000); // Restart the countdown timer
+        }
+
+        document.querySelector('.btn-submit').addEventListener('click', function () {
+            submitExam();
+        });
+
+        // Countdown Timer
+        let timeLeft = 1800; // 3 hours countdown (in seconds)
+        const timerElement = document.getElementById('timer');
+
+        function updateTimer() {
+            if (timeLeft <= 0) {
+                submitExam();
+                clearInterval(timerInterval);
+                timerElement.textContent = "Time left: 00:00:00"; // Reset timer display
+            } else {
+                let displayTime = '';
+                if (timeLeft >= 3600) {
+                    const hours = Math.floor(timeLeft / 3600);
+                    const minutes = Math.floor((timeLeft % 3600) / 60);
+                    const seconds = timeLeft % 60;
+                    displayTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                } else {
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
+                    displayTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
+
+                timerElement.textContent = `Time left: ${displayTime}`;
+                timeLeft--;
+            }
+        }
+
+        let timerInterval = setInterval(updateTimer, 1000);
+
+</script>
+{% endblock %}

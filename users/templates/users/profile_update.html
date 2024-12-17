@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %}Update Your Info{% endblock %}
+{% load static %}
+{% block content %}
+    <style>
+        body {
+            background-color: #ffc451;
+        }
+
+        .card {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+        }
+
+        .card h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+        
+        .card-body {
+            text-align: center;
+        }
+
+        h3 {
+            color: #ffc451;
+        }
+    </style>
+</head>
+
+    <div class="container-fluid center-form">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+                <div class="card p-4">
+                    <h1 class="text-center mb-4">Update Profile</h1>
+                    {% for message in messages %}
+                    <h3>{{ message }}</h3>
+                    {% endfor %}
+                    <form method="post" enctype="multipart/form-data" action="{% url 'profile_update' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_first_name" class="form-label">First Name:</label>
+                            <input type="text" class="form-control" id="id_first_name" name="first_name"
+                                value="{{ name_form.initial.first_name }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_last_name" class="form-label">Last Name:</label>
+                            <input type="text" class="form-control" id="id_last_name" name="last_name"
+                                value="{{ name_form.initial.last_name }}" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Update Name</button>
+                    </form>
+                    <br>
+                    <div class="form-header">Update Username</div>
+                    <form method="post" enctype="multipart/form-data" action="{% url 'profile_update' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_username" class="form-label">Username:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="id_username" name="username"
+                                    value="{{ username_form.initial.username }}" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Update Username</button>
+                    </form>
+                    <br>
+                    <div class="form-header">Update Email</div>
+                    <form method="post" enctype="multipart/form-data" action="{% url 'profile_update' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_email" class="form-label">Email:</label>
+                            <div class="input-group">
+                                <input type="email" class="form-control" id="id_email" name="email"
+                                    value="{{ email_form.initial.email }}" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Update Email</button>
+                    </form>
+                    <br>
+                    <div class="form-header">Update Birthday</div>
+                    <form method="post" enctype="multipart/form-data" action="{% url 'profile_update' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_birthday" class="form-label">Birthday:</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control" id="id_birthday" name="birthday"
+                                    value="{{ birthday_form.initial.birthday }}" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Update Birthday</button>
+                    </form>
+                    <br>
+                    <div class="form-header">Update Password</div>
+                    <form method="post" enctype="multipart/form-data" action="{% url 'profile_update' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_current_password" class="form-label">Current Password:</label>
+                            <input type="password" class="form-control" id="id_current_password" name="current_password"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_new_password" class="form-label">New Password:</label>
+                            <input type="password" class="form-control" id="id_new_password" name="new_password"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_new_password_confirm" class="form-label">Confirm New Password:</label>
+                            <input type="password" class="form-control" id="id_new_password_confirm"
+                                name="new_password_confirm" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Update Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

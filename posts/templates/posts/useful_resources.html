@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% block title %}Digital Resources{% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="container section-title" data-aos="fade-up">
+    <h2>Digital Resources for You!</h2>
+    <p class="cbt">Discover New Resources</p>
+</div>
+
+<div class="container">
+    <h1 class="mb-4">Manage Digital Resources</h1>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal">
+        Upload New Resource
+    </button>
+
+    <!-- Modal for Uploading -->
+    <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadModalLabel">Upload Useful Resource</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-success">{{ message }}</div>
+                    {% endfor %}
+                    {% endif %}
+                    <form method="post" enctype="multipart/form-data" action="{% url 'upload_useful_resource' %}">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label for="id_name">Name or Category:</label>
+                            <input type="text" id="id_name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="id_description">Description:</label>
+                            <textarea id="id_description" name="description" class="form-control" rows="4"
+                                required placeholder="Describe what you are posting"></textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="id_file">File:</label>
+                            <input type="file" id="id_file" name="file" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="id_button">Button:</label>
+                            <textarea id="id_button" name="button" class="form-control" rows="2" placeholder="Paste a link here"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Upload Resource</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="uploads" class="container my-5">
+    <h2 class="mb-4">Available Resources</h2>
+    <div class="row">
+        {% for course in courses %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-light">
+                <div class="card-body">
+                    <h5 class="card-title">{{ course.name }}</h5>
+                    <p class="card-text">{{ course.description }}</p>
+                    <div class="file mb-3">
+                        <a href="{{ course.file.url }}" target="_blank">
+                            <i class="{{ course.icon_class }} fa-2x"></i>
+                        </a>
+                        <a href="{{ course.file.url }}" target="_blank">{{ course.file.name }}</a>
+                        {% if course.file.size %}
+                        <span class="text-muted">({{ course.file.size }} bytes)</span>
+                        {% endif %}
+                    </div>
+                    <a href="{{ course.button }}" class="btn btn-success">Download Now</a>
+
+                    <!-- Edit Button -->
+                    {% if course.author == current_user %}
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                        data-bs-target="#editModal{{ course.id }}">
+                        Edit
+                    </button>
+
+                    <!-- Edit Modal -->
+                    <div class="modal fade" id="editModal{{ course.id }}" tabindex="-1"
+                        aria-labelledby="editModalLabel{{ course.id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editModalLabel{{ course.id }}">Edit Resource</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" enctype="multipart/form-data"
+                                        action="{% url 'edit_resource' course.id %}">
+                                        {% csrf_token %}
+                                        <div class="form-group mb-3">
+                                            <label for="id_name">Name:</label>
+                                            <input type="text" id="id_name" name="name" class="form-control"
+                                                value="{{ course.name }}" required>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="id_description">Description:</label>
+                                            <textarea id="id_description" name="description" class="form-control"
+                                                rows="4" required>{{ course.description }}</textarea>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="id_file">File:</label>
+                                            <input type="file" id="id_file" name="file" class="form-control">
+                                            <p>Current file: <a href="{{ course.file.url }}" target="_blank">{{
+                                                    course.file.name }}</a></p>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label for="id_button">Button:</label>
+                                            <textarea id="id_button" name="button" class="form-control" rows="2"
+                                                required>{{ course.button }}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Update Resource</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delete Button -->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal{{ course.id }}">
+                        Delete
+                    </button>
+
+                    <!-- Delete Confirmation Modal -->
+                    <div class="modal fade" id="deleteModal{{ course.id }}" tabindex="-1"
+                        aria-labelledby="deleteModalLabel{{ course.id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel{{ course.id }}">Confirm Deletion</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete the resource "{{ course.name }}"?
+                                </div>
+                                <div class="modal-footer">
+                                    <form method="post" action="{% url 'delete_resource' course.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

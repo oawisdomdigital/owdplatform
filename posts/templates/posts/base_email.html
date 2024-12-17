@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .email-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .email-header {
+            background-color: #4CAF50;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .email-body {
+            padding: 20px;
+            line-height: 1.6;
+            color: #333333;
+        }
+
+        .email-footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            color: #666666;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <a href="https://oawisdomdigital.pythonanywhere.com/" style="text-decoration: none; display: inline-block;">
+            <img src="https://oawisdomdigital.pythonanywhere.com/static/assets/img/logo.png" alt="OWD"
+                style="display: block; width: 150px; height: auto; border: none;">
+        </a>
+    </div>
+    <div class="email-container">
+        <!-- Header Section -->
+        <div class="email-header">
+            <h2>{{ email_subject }}</h2>
+        </div>
+
+        <!-- Email Body Section -->
+        <div class="email-body">
+            {{ email_content|safe }}
+        </div>
+
+        <!-- Footer Section -->
+        <div class="email-footer">
+            &copy; {{ current_year }} <a href="oawisdomdigitalfirm.pythonanywhere.com">O.A. Wisdom Digital Firm.</a> All rights reserved.
+        </div>
+    </div>
+</body>
+
+</html>

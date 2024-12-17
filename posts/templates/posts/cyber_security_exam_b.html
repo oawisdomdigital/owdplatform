@@ -1,0 +1,546 @@
+{% extends "base.html" %}
+{% block title %} Beginers Cyber Security/Ethical Hacking Course CBT Exam{% endblock %}
+{% load static %}
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        padding: 20px;
+    }
+</style>
+
+<div class="container section-title" data-aos="fade-up">
+    <h1 class="mb-4">Cyber Security CBT Exam</h1>
+    <h2>Answer all questions in 30 minutes</h2>
+</div>
+<div id="timer">Time left: 00:00:00</div>
+
+<div class="question1">
+    <p>1. What is the primary purpose of a firewall in a network?</p>
+    <label><input type="radio" name="q1" value="a"> A) To protect against malware</label>
+    <label><input type="radio" name="q1" value="b"> B) To filter incoming and outgoing traffic</label>
+    <label><input type="radio" name="q1" value="c"> C) To increase internet speed</label>
+    <label><input type="radio" name="q1" value="d"> D) To backup data</label>
+</div>
+
+<div class="question2">
+    <p>2. Which of the following is a strong password?</p>
+    <label><input type="radio" name="q2" value="a"> A) password123</label>
+    <label><input type="radio" name="q2" value="b"> B) 123456</label>
+    <label><input type="radio" name="q2" value="c"> C) Pa$$w0rd!</label>
+    <label><input type="radio" name="q2" value="d"> D) abcdefg</label>
+</div>
+
+<div class="question3">
+    <p>3. What is the term for malicious software that encrypts your files and demands payment for their release?</p>
+    <label><input type="radio" name="q3" value="a"> A) Virus</label>
+    <label><input type="radio" name="q3" value="b"> B) Trojan</label>
+    <label><input type="radio" name="q3" value="c"> C) Ransomware</label>
+    <label><input type="radio" name="q3" value="d"> D) Spyware</label>
+</div>
+
+<div class="question4">
+    <p>4. What does "phishing" refer to in cybersecurity?</p>
+    <label><input type="radio" name="q4" value="a"> A) A type of network attack</label>
+    <label><input type="radio" name="q4" value="b"> B) A fraudulent attempt to obtain sensitive information</label>
+    <label><input type="radio" name="q4" value="c"> C) A method of encrypting data</label>
+    <label><input type="radio" name="q4" value="d"> D) A way to bypass a firewall</label>
+</div>
+
+<div class="question5">
+    <p>5. What is the role of antivirus software?</p>
+    <label><input type="radio" name="q5" value="a"> A) To backup files</label>
+    <label><input type="radio" name="q5" value="b"> B) To protect against malware</label>
+    <label><input type="radio" name="q5" value="c"> C) To speed up the computer</label>
+    <label><input type="radio" name="q5" value="d"> D) To monitor network traffic</label>
+</div>
+
+<div class="question6">
+    <p>6. What is the main function of encryption in cybersecurity?</p>
+    <label><input type="radio" name="q6" value="a"> A) To compress files</label>
+    <label><input type="radio" name="q6" value="b"> B) To protect data by making it unreadable without a key</label>
+    <label><input type="radio" name="q6" value="c"> C) To detect viruses</label>
+    <label><input type="radio" name="q6" value="d"> D) To increase storage space</label>
+</div>
+
+<div class="question7">
+    <p>7. What does the term "VPN" stand for?</p>
+    <label><input type="radio" name="q7" value="a"> A) Virtual Private Network</label>
+    <label><input type="radio" name="q7" value="b"> B) Virtual Public Network</label>
+    <label><input type="radio" name="q7" value="c"> C) Visible Private Network</label>
+    <label><input type="radio" name="q7" value="d"> D) Virtual Proxy Network</label>
+</div>
+
+<div class="question8">
+    <p>8. Which of the following is considered a social engineering attack?</p>
+    <label><input type="radio" name="q8" value="a"> A) SQL Injection</label>
+    <label><input type="radio" name="q8" value="b"> B) Man-in-the-Middle attack</label>
+    <label><input type="radio" name="q8" value="c"> C) Phishing</label>
+    <label><input type="radio" name="q8" value="d"> D) DDoS attack</label>
+</div>
+
+<div class="question9">
+    <p>9. What does "DoS" stand for in cybersecurity?</p>
+    <label><input type="radio" name="q9" value="a"> A) Denial of Security</label>
+    <label><input type="radio" name="q9" value="b"> B) Denial of Service</label>
+    <label><input type="radio" name="q9" value="c"> C) Data Overload System</label>
+    <label><input type="radio" name="q9" value="d"> D) Data Optimization Service</label>
+</div>
+
+<div class="question10">
+    <p>10. What is two-factor authentication (2FA)?</p>
+    <label><input type="radio" name="q10" value="a"> A) A method of encryption</label>
+    <label><input type="radio" name="q10" value="b"> B) A way to back up data</label>
+    <label><input type="radio" name="q10" value="c"> C) A security process that requires two forms of
+        identification</label>
+    <label><input type="radio" name="q10" value="d"> D) A type of malware</label>
+</div>
+
+<div class="question11">
+    <p>11. What is the purpose of a password manager?</p>
+    <label><input type="radio" name="q11" value="a"> A) To store and manage passwords securely</label>
+    <label><input type="radio" name="q11" value="b"> B) To create weak passwords</label>
+    <label><input type="radio" name="q11" value="c"> C) To monitor network traffic</label>
+    <label><input type="radio" name="q11" value="d"> D) To protect against phishing attacks</label>
+</div>
+
+<div class="question12">
+    <p>12. What is a common method used to secure wireless networks?</p>
+    <label><input type="radio" name="q12" value="a"> A) WPA2 encryption</label>
+    <label><input type="radio" name="q12" value="b"> B) Using default passwords</label>
+    <label><input type="radio" name="q12" value="c"> C) Disabling firewalls</label>
+    <label><input type="radio" name="q12" value="d"> D) Connecting through open Wi-Fi networks</label>
+</div>
+
+<div class="question13">
+    <p>13. What does the term "malware" refer to?</p>
+    <label><input type="radio" name="q13" value="a"> A) Software designed to harm or exploit a computer system</label>
+    <label><input type="radio" name="q13" value="b"> B) Hardware used to monitor network traffic</label>
+    <label><input type="radio" name="q13" value="c"> C) A type of firewall</label>
+    <label><input type="radio" name="q13" value="d"> D) A programming language</label>
+</div>
+
+<div class="question14">
+    <p>14. What is a "Trojan horse" in cybersecurity?</p>
+    <label><input type="radio" name="q14" value="a"> A) A harmless software</label>
+    <label><input type="radio" name="q14" value="b"> B) A malicious program disguised as legitimate software</label>
+    <label><input type="radio" name="q14" value="c"> C) A type of encryption</label>
+    <label><input type="radio" name="q14" value="d"> D) A network protocol</label>
+</div>
+
+<div class="question15">
+    <p>15. What is the main goal of a phishing attack?</p>
+    <label><input type="radio" name="q15" value="a"> A) To steal sensitive information</label>
+    <label><input type="radio" name="q15" value="b"> B) To slow down internet speed</label>
+    <label><input type="radio" name="q15" value="c"> C) To protect against malware</label>
+    <label><input type="radio" name="q15" value="d"> D) To encrypt data</label>
+</div>
+
+<div class="question16">
+    <p>16. What is a "brute force attack"?</p>
+    <label><input type="radio" name="q16" value="a"> A) A type of network protocol</label>
+    <label><input type="radio" name="q16" value="b"> B) An attempt to guess a password by trying all possible
+        combinations</label>
+    <label><input type="radio" name="q16" value="c"> C) A method of encrypting data</label>
+    <label><input type="radio" name="q16" value="d"> D) A way to speed up a computer</label>
+</div>
+
+<div class="question17">
+    <p>17. What does the term "zero-day vulnerability" refer to?</p>
+    <label><input type="radio" name="q17" value="a"> A) A newly discovered software vulnerability not yet
+        patched</label>
+    <label><input type="radio" name="q17" value="b"> B) An outdated software feature</label>
+    <label><input type="radio" name="q17" value="c"> C) A type of firewall</label>
+    <label><input type="radio" name="q17" value="d"> D) A backup solution</label>
+</div>
+
+<div class="question18">
+    <p>18. What is the primary function of a honeypot in cybersecurity?</p>
+    <label><input type="radio" name="q18" value="a"> A) To detect and lure attackers</label>
+    <label><input type="radio" name="q18" value="b"> B) To protect against viruses</label>
+    <label><input type="radio" name="q18" value="c"> C) To increase internet speed</label>
+    <label><input type="radio" name="q18" value="d"> D) To store backup data</label>
+</div>
+
+<div class="question19">
+    <p>19. What is "social engineering" in the context of cybersecurity?</p>
+    <label><input type="radio" name="q19" value="a"> A) A technique that exploits human psychology to gain access to
+        systems or information</label>
+    <label><input type="radio" name="q19" value="b"> B) A type of virus</label>
+    <label><input type="radio" name="q19" value="c"> C) A method of encrypting data</label>
+    <label><input type="radio" name="q19" value="d"> D) A hardware vulnerability</label>
+</div>
+
+<div class="question20">
+    <p>20. What is the best way to protect your data in case of a ransomware attack?</p>
+    <label><input type="radio" name="q20" value="a"> A) Regularly backup your data</label>
+    <label><input type="radio" name="q20" value="b"> B) Use a strong password</label>
+    <label><input type="radio" name="q20" value="c"> C) Use a VPN</label>
+    <label><input type="radio" name="q20" value="d"> D) Update your software regularly</label>
+</div>
+
+<div class="question21">
+    <p>21. What is "SQL Injection"?</p>
+    <label><input type="radio" name="q21" value="a"> A) A method used to secure data</label>
+    <label><input type="radio" name="q21" value="b"> B) A technique used to exploit vulnerabilities in a
+        database</label>
+    <label><input type="radio" name="q21" value="c"> C) A type of encryption</label>
+    <label><input type="radio" name="q21" value="d"> D) A backup solution</label>
+</div>
+
+<div class="question22">
+    <p>22. What is the purpose of a digital certificate?</p>
+    <label><input type="radio" name="q22" value="a"> A) To authenticate the identity of a website or user</label>
+    <label><input type="radio" name="q22" value="b"> B) To encrypt data</label>
+    <label><input type="radio" name="q22" value="c"> C) To protect against malware</label>
+    <label><input type="radio" name="q22" value="d"> D) To backup data</label>
+</div>
+
+<div class="question23">
+    <p>23. What does "TLS" stand for?</p>
+    <label><input type="radio" name="q23" value="a"> A) Transport Layer Security</label>
+    <label><input type="radio" name="q23" value="b"> B) Transmission Level Security</label>
+    <label><input type="radio" name="q23" value="c"> C) Transport Level Security</label>
+    <label><input type="radio" name="q23" value="d"> D) Transmission Layer Security</label>
+</div>
+
+<div class="question24">
+    <p>24. What is a "rootkit"?</p>
+    <label><input type="radio" name="q24" value="a"> A) A software tool used to hide the presence of malware</label>
+    <label><input type="radio" name="q24" value="b"> B) A type of antivirus software</label>
+    <label><input type="radio" name="q24" value="c"> C) A network protocol</label>
+    <label><input type="radio" name="q24" value="d"> D) A method of data encryption</label>
+</div>
+
+<div class="question25">
+    <p>25. What is the best practice for creating secure passwords?</p>
+    <label><input type="radio" name="q25" value="a"> A) Using personal information like birthdays</label>
+    <label><input type="radio" name="q25" value="b"> B) Using a mix of letters, numbers, and special characters</label>
+    <label><input type="radio" name="q25" value="c"> C) Using simple and short words</label>
+    <label><input type="radio" name="q25" value="d"> D) Using the same password for multiple accounts</label>
+</div>
+
+<div class="question26">
+    <p>26. What does "IoT" stand for?</p>
+    <label><input type="radio" name="q26" value="a"> A) Internet of Things</label>
+    <label><input type="radio" name="q26" value="b"> B) Information of Technology</label>
+    <label><input type="radio" name="q26" value="c"> C) Internal Office Terminal</label>
+    <label><input type="radio" name="q26" value="d"> D) Integrated Operations Tool</label>
+</div>
+
+<div class="question27">
+    <p>27. What is a "backdoor" in the context of cybersecurity?</p>
+    <label><input type="radio" name="q27" value="a"> A) A type of firewall</label>
+    <label><input type="radio" name="q27" value="b"> B) An undisclosed method of accessing a system or data</label>
+    <label><input type="radio" name="q27" value="c"> C) A secure login method</label>
+    <label><input type="radio" name="q27" value="d"> D) A method of data encryption</label>
+</div>
+
+<div class="question28">
+    <p>28. What is a "DDoS attack"?</p>
+    <label><input type="radio" name="q28" value="a"> A) Distributed Denial of Service attack</label>
+    <label><input type="radio" name="q28" value="b"> B) Data Decryption of System</label>
+    <label><input type="radio" name="q28" value="c"> C) Data Delivery on System</label>
+    <label><input type="radio" name="q28" value="d"> D) Distributed Data Optimization Service</label>
+</div>
+
+<div class="question29">
+    <p>29. What is the main goal of a "man-in-the-middle" attack?</p>
+    <label><input type="radio" name="q29" value="a"> A) To intercept and potentially alter communication between two
+        parties</label>
+    <label><input type="radio" name="q29" value="b"> B) To encrypt data between two devices</label>
+    <label><input type="radio" name="q29" value="c"> C) To speed up internet connection</label>
+    <label><input type="radio" name="q29" value="d"> D) To block network traffic</label>
+</div>
+
+<div class="question30">
+    <p>30. What is the role of a "firewall" in network security?</p>
+    <label><input type="radio" name="q30" value="a"> A) To monitor and control incoming and outgoing network
+        traffic</label>
+    <label><input type="radio" name="q30" value="b"> B) To store backup data</label>
+    <label><input type="radio" name="q30" value="c"> C) To enhance internet speed</label>
+    <label><input type="radio" name="q30" value="d"> D) To encrypt data</label>
+</div>
+
+<div class="question31">
+    <p>31. What is "multi-factor authentication" (MFA)?</p>
+    <label><input type="radio" name="q31" value="a"> A) A method that requires multiple methods of authentication from
+        independent categories of credentials</label>
+    <label><input type="radio" name="q31" value="b"> B) A system that only uses passwords for authentication</label>
+    <label><input type="radio" name="q31" value="c"> C) A technique to increase internet speed</label>
+    <label><input type="radio" name="q31" value="d"> D) A type of encryption algorithm</label>
+</div>
+
+<div class="question32">
+    <p>32. What does "SSL" stand for?</p>
+    <label><input type="radio" name="q32" value="a"> A) Secure Socket Layer</label>
+    <label><input type="radio" name="q32" value="b"> B) Secure System Lock</label>
+    <label><input type="radio" name="q32" value="c"> C) System Security Layer</label>
+    <label><input type="radio" name="q32" value="d"> D) Security Socket Lock</label>
+</div>
+
+<div class="question33">
+    <p>33. What is a "worm" in cybersecurity?</p>
+    <label><input type="radio" name="q33" value="a"> A) A type of malware that replicates itself to spread to other
+        computers</label>
+    <label><input type="radio" name="q33" value="b"> B) A harmless software update</label>
+    <label><input type="radio" name="q33" value="c"> C) A physical security threat</label>
+    <label><input type="radio" name="q33" value="d"> D) A method to secure data</label>
+</div>
+
+<div class="question34">
+    <p>34. What is the purpose of a security patch?</p>
+    <label><input type="radio" name="q34" value="a"> A) To fix vulnerabilities and improve security in software</label>
+    <label><input type="radio" name="q34" value="b"> B) To increase internet speed</label>
+    <label><input type="radio" name="q34" value="c"> C) To backup data</label>
+    <label><input type="radio" name="q34" value="d"> D) To encrypt files</label>
+</div>
+
+<div class="question35">
+    <p>35. What is "biometric authentication"?</p>
+    <label><input type="radio" name="q35" value="a"> A) A method of identifying individuals based on physical
+        characteristics like fingerprints or facial recognition</label>
+    <label><input type="radio" name="q35" value="b"> B) A technique to hack into systems</label>
+    <label><input type="radio" name="q35" value="c"> C) A type of malware</label>
+    <label><input type="radio" name="q35" value="d"> D) A system to encrypt data</label>
+</div>
+
+<div class="question36">
+    <p>36. What does "APT" stand for in cybersecurity?</p>
+    <label><input type="radio" name="q36" value="a"> A) Advanced Persistent Threat</label>
+    <label><input type="radio" name="q36" value="b"> B) Automatic Password Transmission</label>
+    <label><input type="radio" name="q36" value="c"> C) Advanced Privacy Technique</label>
+    <label><input type="radio" name="q36" value="d"> D) Active Protection Tool</label>
+</div>
+
+<div class="question37">
+    <p>37. What is the function of a "sandbox" in cybersecurity?</p>
+    <label><input type="radio" name="q37" value="a"> A) To isolate suspicious files or code in a controlled environment
+        for testing</label>
+    <label><input type="radio" name="q37" value="b"> B) To delete viruses from a system</label>
+    <label><input type="radio" name="q37" value="c"> C) To increase the speed of a network</label>
+    <label><input type="radio" name="q37" value="d"> D) To encrypt data in a secure environment</label>
+</div>
+
+<div class="question38">
+    <p>38. What is the main purpose of "network segmentation"?</p>
+    <label><input type="radio" name="q38" value="a"> A) To divide a network into smaller, isolated sections to improve
+        security</label>
+    <label><input type="radio" name="q38" value="b"> B) To slow down network speed</label>
+    <label><input type="radio" name="q38" value="c"> C) To merge different networks together</label>
+    <label><input type="radio" name="q38" value="d"> D) To back up data to the cloud</label>
+</div>
+
+<div class="question39">
+    <p>39. What does the term "spear phishing" refer to?</p>
+    <label><input type="radio" name="q39" value="a"> A) A targeted phishing attack aimed at a specific individual or
+        organization</label>
+    <label><input type="radio" name="q39" value="b"> B) A mass email scam</label>
+    <label><input type="radio" name="q39" value="c"> C) A type of virus</label>
+    <label><input type="radio" name="q39" value="d"> D) A method to secure passwords</label>
+</div>
+
+<div class="question40">
+    <p>40. What is a "botnet" in the context of cybersecurity?</p>
+    <label><input type="radio" name="q40" value="a"> A) A network of infected computers controlled by a malicious
+        actor</label>
+    <label><input type="radio" name="q40" value="b"> B) A tool to speed up internet connections</label>
+    <label><input type="radio" name="q40" value="c"> C) A method to protect against malware</label>
+    <label><input type="radio" name="q40" value="d"> D) A system to encrypt data</label>
+</div>
+
+
+<button class="btn-submit btn-primary">Submit Answers</button>
+
+<script>
+    const answers = {
+        q1: 'b',
+        q2: 'a',
+        q3: 'c',
+        q4: 'd',
+        q5: 'b',
+        q6: 'c',
+        q7: 'a',
+        q8: 'b',
+        q9: 'd',
+        q10: 'c',
+        q11: 'a',
+        q12: 'a',
+        q13: 'a',
+        q14: 'c',
+        q15: 'b',
+        q16: 'a',
+        q17: 'd',
+        q18: 'a',
+        q19: 'b',
+        q20: 'c',
+        q21: 'b',
+        q22: 'a',
+        q23: 'c',
+        q24: 'a',
+        q25: 'c',
+        q26: 'b',
+        q27: 'd',
+        q28: 'c',
+        q29: 'd',
+        q30: 'c',
+        q31: 'b',
+        q32: 'c',
+        q33: 'b',
+        q34: 'a',
+        q35: 'b',
+        q36: 'c',
+        q37: 'c',
+        q38: 'c',
+        q39: 'b',
+        q40: 'a',
+    };
+
+    function createNotification(message, backgroundColor) {
+        const notification = document.createElement('div');
+        notification.style.position = 'fixed';
+        notification.style.top = '50%';
+        notification.style.left = '50%';
+        notification.style.transform = 'translate(-50%, -50%)';
+        notification.style.fontSize = '1.5em';
+        notification.style.backgroundColor = backgroundColor;
+        notification.style.color = '#fff';
+        notification.style.padding = '30px 20px';
+        notification.style.borderRadius = '10px';
+        notification.style.textAlign = 'center';
+        notification.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+        notification.style.zIndex = '1000';
+        notification.style.width = '80%';
+        notification.style.maxWidth = '400px';
+        notification.style.display = 'flex';
+        notification.style.flexDirection = 'column';
+        notification.style.alignItems = 'center';
+
+        const messageContainer = document.createElement('div');
+        messageContainer.textContent = message;
+        messageContainer.style.marginBottom = '20px';
+        messageContainer.style.width = '100%';
+
+        const okButton = document.createElement('button');
+        okButton.textContent = 'OK';
+        okButton.style.fontSize = '20px';
+        okButton.style.padding = '10px 20px';
+        okButton.style.backgroundColor = '#007bff';
+        okButton.style.color = '#fff';
+        okButton.style.border = 'none';
+        okButton.style.borderRadius = '5px';
+        okButton.style.cursor = 'pointer';
+        okButton.style.transition = 'background-color 0.3s';
+
+        okButton.addEventListener('mouseover', function () {
+            okButton.style.backgroundColor = '#0056b3';
+        });
+
+        okButton.addEventListener('mouseout', function () {
+            okButton.style.backgroundColor = '#007bff';
+        });
+
+        okButton.addEventListener('click', function () {
+            document.body.removeChild(notification);
+        });
+
+        notification.appendChild(messageContainer);
+        notification.appendChild(okButton);
+        document.body.appendChild(notification);
+    }
+
+    function submitExam() {
+        clearInterval(timerInterval); // Stop the countdown timer
+        let score = 0;
+        let totalQuestions = Object.keys(answers).length;
+        let unansweredQuestions = [];
+
+        for (let i = 1; i <= totalQuestions; i++) {
+            const questionName = `q${i}`;
+            const userAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+            if (userAnswer) {
+                if (userAnswer.value === answers[questionName]) {
+                    score++;
+                    document.querySelector(`input[name="${questionName}"]:checked`).parentNode.classList.add('correct');
+                } else {
+                    document.querySelector(`input[name="${questionName}"]:checked`).parentNode.classList.add('incorrect');
+                }
+            } else {
+                unansweredQuestions.push(i);
+            }
+        }
+
+        if (unansweredQuestions.length > 0) {
+            createNotification(`Please answer question(s): ${unansweredQuestions.join(', ')}`, '#ff0000');
+            resetExam(); // Reset exam if there are unanswered questions
+            return;
+        }
+
+        const percentageScore = (score / totalQuestions) * 100;
+
+        if (percentageScore < 50) {
+            createNotification(`You scored ${score} out of ${totalQuestions}. You have a poor score. Please try again.`, '#ff0000');
+        } else if (percentageScore > 50 && percentageScore < 100) {
+            createNotification(`You scored ${score} out of ${totalQuestions}. You are close to success. You can do better!`, '#007bff');
+        } else if (percentageScore === 100) {
+            createNotification(`Congratulations! You scored ${score} out of ${totalQuestions}. Excellent performance!`, '#28a745');
+        }
+
+        resetExam(); // Reset exam after successful submission
+    }
+
+    function resetQuestions() {
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach(radio => {
+            radio.checked = false;
+            radio.parentNode.classList.remove('correct', 'incorrect');
+        });
+    }
+
+    function resetExam() {
+        resetQuestions(); // Reset questions to default state
+        timeLeft = 1800; // Reset timer to 30 minutes
+        timerElement.textContent = "Time left: 00:30:00"; // Reset timer display
+        clearInterval(timerInterval); // Clear the existing interval
+        timerInterval = setInterval(updateTimer, 1000); // Restart the countdown timer
+    }
+
+    document.querySelector('.btn-submit').addEventListener('click', function () {
+        submitExam();
+    });
+
+    // Countdown Timer
+    let timeLeft = 1800; // 3 hours countdown (in seconds)
+    const timerElement = document.getElementById('timer');
+
+    function updateTimer() {
+        if (timeLeft <= 0) {
+            submitExam();
+            clearInterval(timerInterval);
+            timerElement.textContent = "Time left: 00:00:00"; // Reset timer display
+        } else {
+            let displayTime = '';
+            if (timeLeft >= 3600) {
+                const hours = Math.floor(timeLeft / 3600);
+                const minutes = Math.floor((timeLeft % 3600) / 60);
+                const seconds = timeLeft % 60;
+                displayTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            } else {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                displayTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            timerElement.textContent = `Time left: ${displayTime}`;
+            timeLeft--;
+        }
+    }
+
+    let timerInterval = setInterval(updateTimer, 1000);
+
+</script>
+
+{% endblock %}

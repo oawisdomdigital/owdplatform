@@ -1,0 +1,64 @@
+The exam questions are in the regenerate text request & Html and css test expansion & Digital marketing acronyms
+
+All the views are in redirect to login
+
+Profile functionalities and Html is in display subscribers tab & update profile tab & frontend html improvements
+
+The search materials is in frontend html improvements
+
+Everything about the sponsored ads is in frontend html improvements
+
+Everything about the AIintegration is in frontend html improvements
+
+Purchase data javascript is in redirect users to paystack
+
+The chatbot integration including intent.json is in real-time interactive chat & DNS issue adding SSL & Install Torch with CUDA & Integrate flask and Django
+
+The contact is in real-time interactivity chat & Django Form Backend creation
+
+Patner with us is in real-time interactivity chat
+
+Everything about the blogpost is in delete button functionality
+
+The newsletter subscriber is in delete button functionality
+
+The scheduled message is in delete button functionality
+
+The login and profile update is in update profile form design & Form update messages centered & Form update needed & update profile image preview
+
+The Usful resources section is in App types for different OS
+
+The services are in App types for different OS
+
+Logout is in logout views function
+
+The upload message is in Django form creation
+
+Bussiness registration is in Modal seleksi
+
+The course is in colorful html styling
+
+The course lists are in Model view conflict resolved & digital marketing modelview
+
+python manage.py create_profiles
+
+This is how to use HttpResponse:
+def post(request, pk):
+    # Here you can implement logic for handling a post request
+    return HttpResponse("This is a post view") 
+
+The Ai course should be directly under the digital marketing making four posts and its not free
+
+
+This is how to test youtube API on browser
+https://www.googleapis.com/youtube/v3/search?key=AIzaSyDY4f0w9lY_qx7zndiXtd6lcAKs_ZmfU84&channelId=UC4BGKgQ20BMl7COGE9IVKWg&part=snippet,id&order=date&maxResults=5
+
+python manage.py runcrons
+
+This is how to create a site object in python shell: site = Site.objects.create(domain='oawisdomdigital.pythonanywhere.com', name='OA Wisdom Digital')
+This is to know which id the site is using: print(site.id) so that you can set it in settings.py e.g. SITE-ID = 6
+This is to activate a virtual environment: source /home/oawisdomdigital/.virtualenvs/mysite-virtualenv/bin/activate
+
+/home/oawisdomdigital/.virtualenvs/mysite-virtualenv/bin/python /home/oawisdomdigital/owdplatform/socialnetwork/manage.py qcluster
+
+/home/oawisdomdigital/.virtualenvs/mysite-virtualenv/bin/python /home/oawisdomdigital/owdplatform/socialnetwork/manage.py schedule_youtube_task

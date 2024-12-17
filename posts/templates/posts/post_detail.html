@@ -1,0 +1,559 @@
+{% extends "base.html" %}
+{% block title %}Post - OWD{% endblock %}
+{% load static %}
+{% block content %}
+<style>
+    .post-image {
+        height: 300px;
+        overflow: hidden;
+        background-color: #f7f7f7;
+    }
+
+    .post-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .post-content {
+        flex: 1;
+        padding: 15px;
+        overflow: hidden;
+    }
+
+    .post-content .post-text {
+        max-height: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .post-actions {
+        padding: 10px 15px;
+        border-top: 1px solid #e9ecef;
+        background-color: #fff;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .verification-badge1 {
+        position: relative;
+        top: 40px;
+        right: -17px;
+        width: 25px;
+        height: 25px;
+        transform: translate(50%, -50%);
+        z-index: 10;
+    }
+
+    .verification-badge1 img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .profile-image-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .post-info {
+        margin-left: 15px;
+    }
+
+    .post-header {
+        display: flex;
+        align-items: center;
+    }
+
+    .profile-image {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }
+
+    .post-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+
+    .post-metadata {
+        font-size: 0.875rem;
+        color: #6c757d;
+    }
+
+    .post-actions .btn {
+        margin-right: 5px;
+    }
+
+    .card-footer {
+        background-color: #f7f7f7;
+    }
+
+    .related-posts {
+        margin-top: 30px;
+    }
+
+    .related-posts .post-card {
+        margin-bottom: 15px;
+    }
+
+    .related-posts .post-card .post-image img {
+        height: 150px;
+        object-fit: cover;
+    }
+</style>
+
+<div class="container mt-5">
+    <!-- Main Post Section -->
+    <div class="post card mb-4">
+        <div class="post-header card-header d-flex align-items-center">
+            <a href="{% url 'profile' post.author.username %}" class="profile-container1">
+                {% if post.author.user_profile.is_verified %}
+                <div class="verification-badge1">
+                    <img src="{% static 'assets/img/verification_badge.png' %}" alt="Verified Badge" class="img1">
+                </div>
+                {% endif %}
+                {% if post.author.user_profile and post.author.user_profile.profile_image %}
+                <img src="{{ post.author.user_profile.profile_image.url }}" class="profile-image" alt="Profile Image" />
+                {% else %}
+                <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png"
+                    class="profile-image" alt="Default Profile Image" />
+                {% endif %}
+            </a>
+            <div class="post-info" style="margin: 20px;">
+                <h4 class="card-title">{{ post.title }}</h4>
+                <h6>Author: <a style="color: #1877f2;" href="{% url 'profile' post.author.username %}">{{ post.author.username }}</a></h6>
+                <p>Published: {{ post.created_at }}</p>
+            </div>
+        </div>
+
+        <div class="post-image text-center mt-3">
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid clickable-image"
+                style="object-fit: contain;" data-bs-toggle="modal" data-bs-target="#imageModal">
+        </div>
+
+        <div class="post-content card-body" style="margin-left: 20px; margin-right: 20px;">
+            <p class="post-text">{{ post.content }}</p>
+        </div>
+
+        <div class="post-actions card-footer">
+            {% if user.is_authenticated %}
+            <button class="like-button btn btn-primary btn-sm" data-post-id="{{ post.id }}">
+                {% if user in post.likes.all %} Liked {% else %} Like {% endif %}
+                <span class="total-likes">{{ post.total_likes }}</span>
+            </button>
+            {% else %}
+            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#loginAlertModal">
+                {% if user in post.likes.all %} Liked {% else %} Like {% endif %}
+                <span class="total-likes">{{ post.total_likes }}</span>
+            </button>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+            {% if user != post.author %}
+            <button class="btn btn-primary subscribe-button" data-author-id="{{ post.author.id }}">
+                {% if post.author.id in subscriptions %} Subscribed {% else %} Subscribe {% endif %}
+            </button>
+            {% endif %}
+            {% else %}
+            <a href="{% url 'register' %}" class="btn btn-primary">Subscribe</a>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+            <button class="view-comments-button btn btn-primary btn-sm" data-post-id="{{ post.id }}" data-toggle="modal"
+                data-target="#commentModal-{{ post.id }}">
+                Comments
+            </button>
+            {% else %}
+            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#loginAlertModal">
+                Comments
+            </button>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+            <button class="share-button btn btn-primary btn-sm" data-post-id="{{ post.id }}">
+                Share
+            </button>
+            {% else %}
+            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#loginAlertModal">
+                Share
+            </button>
+            {% endif %}
+
+            {% if user.is_staff %}
+            <button class="btn btn-success btn-sm" onclick="location.href='{% url 'approve_post' post.id %}'">
+                Approve
+            </button>
+            <button class="btn btn-danger btn-sm" onclick="location.href='{% url 'reject_post' post.id %}'">
+                Reject
+            </button>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0 position-relative" style="padding: 0; margin: 0;">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"
+                        aria-label="Close"
+                        style="background-color: #0056b3; color: #ffffff; border-radius: 50%; width: 30px; height: 30px; border: none; font-size: 20px;">
+                    </button>
+                    <img id="fullImage" src="" class="img-fluid"
+                        style="width: 100%; height: 100%; object-fit: cover; border: 2px solid #333333;"
+                        alt="Full Size Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Alert Modal -->
+    <div class="modal fade" id="loginAlertModal" tabindex="-1" aria-labelledby="loginAlertModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="loginAlertModalLabel">You need to login to carry out this action!</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <a href="{% url 'login' %}" class="btn btn-secondary">Login Now</a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Posts Section -->
+    <div class="related-posts">
+        <h3>Related Posts</h3>
+        {% if related_posts %}
+        <div class="post-container">
+            <div class="row">
+                {% for related_post in related_posts %}
+                <div class="col-md-6 post-card-wrapper">
+                    <div class="post-card card">
+                        <div class="post-header card-header d-flex align-items-center">
+                            <a href="{% url 'profile' related_post.author.username %}" class="profile-container1">
+                                {% if related_post.author.user_profile.is_verified %}
+                                <div class="verification-badge1">
+                                    <img src="{% static 'assets/img/verification_badge.png' %}" alt="Verified Badge"
+                                        class="img1">
+                                </div>
+                                {% endif %}
+                                {% if related_post.author.user_profile and related_post.author.user_profile.profile_image %}
+                                <img src="{{ related_post.author.user_profile.profile_image.url }}" class="profile-image"
+                                    alt="Profile Image" />
+                                {% else %}
+                                <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-5--v1.png"
+                                    class="profile-image" alt="Default Profile Image" />
+                                {% endif %}
+                            </a>
+                            <div class="post-info" style="margin: 20px;">
+                                <h4 class="post-title">{{ related_post.title }}</h4>
+                                <p class="post-metadata">Author: <a
+                                        href="{% url 'profile' related_post.author.username %}">{{ related_post.author.username }}</a>
+                                </p>
+                                <p class="post-metadata">Published: {{ related_post.created_at }}</p>
+                            </div>
+                        </div>
+                        <div class="post-image text-center mt-3" style="width: 100%; height: auto;">
+                            <img src="{{ related_post.image.url }}" alt="{{ related_post.title }}"
+                                class="img-fluid clickable-image" style="object-fit: contain;" data-bs-toggle="modal"
+                                data-bs-target="#imageModal">
+                        </div>
+                        <div class="post-content card-body">
+                            <p class="post-text">{{ related_post.content|slice:":150" }}</p>
+                        </div>
+                        <div class="post-actions card-footer">
+                            {% if user.is_authenticated %}
+                            <button class="like-button btn btn-primary btn-sm" data-post-id="{{ related_post.id }}">
+                                {% if user in related_post.likes.all %} Liked {% else %} Like {% endif %}
+                                <span class="total-likes">{{ related_post.total_likes }}</span>
+                            </button>
+                            {% if user != related_post.author %}
+                            <button class="btn btn-primary subscribe-button" data-author-id="{{ related_post.author.id }}">
+                                {% if related_post.author.id in subscriptions %} Subscribed {% else %} Subscribe {% endif %}
+                            </button>
+                            {% endif %}
+                            <button class="view-comments-button btn btn-primary btn-sm" data-post-id="{{ related_post.id }}"
+                                data-toggle="modal" data-target="#commentModal-{{ related_post.id }}">
+                                Comments
+                            </button>
+                            {% else %}
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#loginAlertModal">
+                                {% if user in related_post.likes.all %} Liked {% else %} Like {% endif %}
+                                <span class="total-likes">{{ related_post.total_likes }}</span>
+                            </button>
+                            <a href="{% url 'register' %}" class="btn btn-primary">Subscribe</a>
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#loginAlertModal">
+                                Comments
+                            </button>
+                            {% endif %}
+                            <!-- Share Button -->
+                            {% if user.is_authenticated %}
+                            <button class="share-button btn btn-primary btn-sm" data-post-id="{{ related_post.id }}">
+                                Share
+                            </button>
+                            {% else %}
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#loginAlertModal">
+                                Share
+                            </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <p>No related posts found.</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Comment Modal for the main post -->
+<div class="modal fade" id="commentModal-{{ post.id }}" tabindex="-1" role="dialog"
+    aria-labelledby="commentModalLabel-{{ post.id }}" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="commentModalLabel-{{ post.id }}">Comments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Display existing comments -->
+                <div id="commentList-{{ post.id }}">
+                    {% for comment in post.comments.all %}
+                    <div class="comment" id="comment-{{ comment.id }}">
+                        <p><strong>{{ comment.author.username }}</strong> {{ comment.content }}</p>
+                        {% if comment.author == user %}
+                        <button class="delete-comment-button btn btn-danger btn-sm"
+                            data-comment-id="{{ comment.id }}">Delete</button>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Add new comment form -->
+                <form id="commentForm-{{ post.id }}" method="POST" action="{% url 'add_comment' post.id %}">
+                    {% csrf_token %}
+                    <textarea name="content" class="form-control" placeholder="Add a comment..." required></textarea>
+                    {% if user.is_authenticated %}
+                    <button type="submit" class="btn btn-primary mt-2">Post Comment</button>
+                    {% else %}
+                    <a href="{% url 'register' %}" class="btn btn-primary">Post Comment</a>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Comment Modal for related posts -->
+{% for related_post in related_posts %}
+<div class="modal fade" id="commentModal-{{ related_post.id }}" tabindex="-1" role="dialog"
+    aria-labelledby="commentModalLabel-{{ related_post.id }}" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="commentModalLabel-{{ related_post.id }}">Comments</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Display existing comments -->
+                <div id="commentList-{{ related_post.id }}">
+                    {% for comment in related_post.comments.all %}
+                    <div class="comment" id="comment-{{ comment.id }}">
+                        <p><strong>{{ comment.author.username }}</strong> {{ comment.content }}</p>
+                        {% if comment.author == user %}
+                        <button class="delete-comment-button btn btn-danger btn-sm"
+                            data-comment-id="{{ comment.id }}">Delete</button>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Add new comment form -->
+                <form id="commentForm-{{ related_post.id }}" method="POST"
+                    action="{% url 'add_comment' related_post.id %}">
+                    {% csrf_token %}
+                    <textarea name="content" class="form-control" placeholder="Add a comment..." required></textarea>
+                    {% if user.is_authenticated %}
+                    <button type="submit" class="btn btn-primary mt-2">Post Comment</button>
+                    {% else %}
+                    <a href="{% url 'register' %}" class="btn btn-primary">Post Comment</a>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<script>
+    document.querySelectorAll('.clickable-image').forEach(function (image) {
+        image.addEventListener('click', function () {
+            var fullImageSrc = this.getAttribute('src');
+            document.getElementById('fullImage').setAttribute('src', fullImageSrc);
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Attach event listeners to the login modal buttons
+        document.querySelectorAll('[data-bs-toggle="modal"][data-bs-target="#loginAlertModal"]').forEach(button => {
+            button.addEventListener('click', function () {
+                var loginAlertModal = new bootstrap.Modal(document.getElementById('loginAlertModal'));
+                loginAlertModal.show();
+            });
+        });
+
+        // Like button functionality
+        document.querySelectorAll('.like-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const postId = this.getAttribute('data-post-id');
+                fetch(`/posts/like/${postId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken')
+                    }
+                }).then(response => response.json()).then(data => {
+                    if (data.liked) {
+                        this.innerText = 'Unlike';
+                    } else {
+                        this.innerText = 'Like';
+                    }
+                });
+            });
+        });
+
+        // Event listener for subscribe buttons                 
+        document.querySelectorAll('.subscribe-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const authorId = this.getAttribute('data-author-id');
+                if (!authorId) {
+                    console.error('Author ID is missing.');
+                    return;
+                }
+                fetch(`/posts/subscribe-author/${authorId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify({}),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            alert(data.error); // Display error message
+                        } else {
+                            this.textContent = data.subscribed ? 'Unsubscribe' : 'Subscribe';
+                            alert(`Subscription ${data.subscribed ? 'successful' : 'removed'}`); // Display success message
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while processing your request.');
+                    });
+            });
+        });
+
+        // Share button functionality
+        document.querySelectorAll('.share-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const postId = this.getAttribute('data-post-id');
+                fetch(`/posts/share/${postId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken')
+                    }
+                }).then(response => response.json()).then(data => {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: data.title,
+                            text: data.content,
+                            url: data.shared_link
+                        }).catch(error => console.error('Error sharing:', error));
+                    } else {
+                        alert('Share API not supported in this browser.');
+                    }
+                });
+            });
+        });
+
+        // Delete comment functionality
+        document.querySelectorAll('.delete-comment-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const commentId = this.getAttribute('data-comment-id');
+                fetch(`/posts/delete_comment/${commentId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': getCookie('csrftoken')
+                    }
+                }).then(response => response.json()).then(data => {
+                    if (data.success) {
+                        document.getElementById(`comment-${commentId}`).remove();
+                    }
+                });
+            });
+        });
+
+        // View comments form submission
+        document.querySelectorAll('.view-comments-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const postId = this.getAttribute('data-post-id');
+                const modal = document.getElementById(`commentModal-${postId}`);
+                const commentList = modal.querySelector(`#commentList-${postId}`);
+                const commentForm = modal.querySelector(`#commentForm-${postId}`);
+
+                commentForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const content = this.querySelector('textarea[name="content"]').value;
+                    fetch(`/posts/comment/${postId}/`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': getCookie('csrftoken'),
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: new URLSearchParams({ 'content': content })
+                    }).then(response => response.json()).then(data => {
+                        if (data.success) {
+                            const newComment = document.createElement('div');
+                            newComment.classList.add('comment');
+                            newComment.innerHTML = `<p><strong>${data.username}</strong> ${content}</p>`;
+                            commentList.appendChild(newComment);
+                            commentForm.querySelector('textarea[name="content"]').value = '';
+                        }
+                    });
+                });
+            });
+        });
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    });
+</script>
+{% endblock %}

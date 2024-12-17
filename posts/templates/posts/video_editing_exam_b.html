@@ -1,0 +1,527 @@
+{% extends "base.html" %}
+{% block title %}Video Editing CBT Exam{% endblock %}
+{% load static %}
+{% block content %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        padding: 20px;
+    }
+</style>
+
+<div class="container section-title" data-aos="fade-up">
+    <h1 class="mb-4">Intermediate Video Editing CBT Exam</h1>
+    <h2>Answer all questions in 30 minutes</h2>
+</div>
+<div id="timer">Time left: 00:00:00</div>
+
+<div class="question1">
+    <p>1. Which tool is used to adjust the brightness and contrast of a video clip?</p>
+    <label><input type="radio" name="q1" value="a"> A) Levels</label>
+    <label><input type="radio" name="q1" value="b"> B) Curves</label>
+    <label><input type="radio" name="q1" value="c"> C) Hue/Saturation</label>
+    <label><input type="radio" name="q1" value="d"> D) None of the above</label>
+</div>
+
+<div class="question2">
+    <p>2. What is the purpose of the ripple edit tool in video editing?</p>
+    <label><input type="radio" name="q2" value="a"> A) To move clips on the timeline without leaving a gap</label>
+    <label><input type="radio" name="q2" value="b"> B) To apply color correction</label>
+    <label><input type="radio" name="q2" value="c"> C) To create a new layer</label>
+    <label><input type="radio" name="q2" value="d"> D) To add text to a clip</label>
+</div>
+
+<div class="question3">
+    <p>3. What does the term "FPS" stand for in video production?</p>
+    <label><input type="radio" name="q3" value="a"> A) Frames Per Second</label>
+    <label><input type="radio" name="q3" value="b"> B) File Playback Speed</label>
+    <label><input type="radio" name="q3" value="c"> C) Frame Processing Speed</label>
+    <label><input type="radio" name="q3" value="d"> D) Fast Playback Setting</label>
+</div>
+
+<div class="question4">
+    <p>4. Which tool is used to stabilize shaky footage?</p>
+    <label><input type="radio" name="q4" value="a"> A) Warp Stabilizer</label>
+    <label><input type="radio" name="q4" value="b"> B) Healing Brush</label>
+    <label><input type="radio" name="q4" value="c"> C) Red Eye Tool</label>
+    <label><input type="radio" name="q4" value="d"> D) Eraser</label>
+</div>
+
+<div class="question5">
+    <p>5. What does the term "bitrate" refer to in video encoding?</p>
+    <label><input type="radio" name="q5" value="a"> A) The amount of data processed per second</label>
+    <label><input type="radio" name="q5" value="b"> B) Digital Photo Index</label>
+    <label><input type="radio" name="q5" value="c"> C) Data Pixels In</label>
+    <label><input type="radio" name="q5" value="d"> D) Display Pixel Information</label>
+</div>
+
+<div class="question6">
+    <p>6. Which file format is known for retaining video quality with lossless compression?</p>
+    <label><input type="radio" name="q6" value="a"> A) AVI</label>
+    <label><input type="radio" name="q6" value="b"> B) MP4</label>
+    <label><input type="radio" name="q6" value="c"> C) MKV</label>
+    <label><input type="radio" name="q6" value="d"> D) MOV</label>
+</div>
+
+<div class="question7">
+    <p>7. What is the key benefit of using non-linear editing software?</p>
+    <label><input type="radio" name="q7" value="a"> A) Non-destructive editing</label>
+    <label><input type="radio" name="q7" value="b"> B) Faster rendering</label>
+    <label><input type="radio" name="q7" value="c"> C) Increased file size</label>
+    <label><input type="radio" name="q7" value="d"> D) Better color management</label>
+</div>
+
+<div class="question8">
+    <p>8. Which tool is commonly used for creating a transition between two video clips?</p>
+    <label><input type="radio" name="q8" value="a"> A) Lasso Tool</label>
+    <label><input type="radio" name="q8" value="b"> B) Cross Dissolve</label>
+    <label><input type="radio" name="q8" value="c"> C) Pen Tool</label>
+    <label><input type="radio" name="q8" value="d"> D) Crop Tool</label>
+</div>
+
+<div class="question9">
+    <p>9. What is the primary function of the "Sharpen" effect in video editing?</p>
+    <label><input type="radio" name="q9" value="a"> A) To soften image edges</label>
+    <label><input type="radio" name="q9" value="b"> B) To enhance image contrast</label>
+    <label><input type="radio" name="q9" value="c"> C) To increase image clarity</label>
+    <label><input type="radio" name="q9" value="d"> D) To reduce image noise</label>
+</div>
+
+<div class="question10">
+    <p>10. Which tool is used to add text to a video?</p>
+    <label><input type="radio" name="q10" value="a"> A) Text Tool</label>
+    <label><input type="radio" name="q10" value="b"> B) Gradient Tool</label>
+    <label><input type="radio" name="q10" value="c"> C) Brush Tool</label>
+    <label><input type="radio" name="q10" value="d"> D) Eraser</label>
+</div>
+
+<div class="question11">
+    <p>11. What is the primary purpose of a "color grade" in video editing?</p>
+    <label><input type="radio" name="q11" value="a"> A) To add text overlays</label>
+    <label><input type="radio" name="q11" value="b"> B) To adjust brightness</label>
+    <label><input type="radio" name="q11" value="c"> C) To match color tone</label>
+    <label><input type="radio" name="q11" value="d"> D) To trim the video</label>
+</div>
+
+<div class="question12">
+    <p>12. What does "HD" stand for in video resolution?</p>
+    <label><input type="radio" name="q12" value="a"> A) High Density</label>
+    <label><input type="radio" name="q12" value="b"> B) Huge Definition</label>
+    <label><input type="radio" name="q12" value="c"> C) High Definition</label>
+    <label><input type="radio" name="q12" value="d"> D) Heavy Data</label>
+</div>
+
+<div class="question13">
+    <p>13. Which tool is used to add special effects to a video clip?</p>
+    <label><input type="radio" name="q13" value="a"> A) Crop Tool</label>
+    <label><input type="radio" name="q13" value="b"> B) Effects Panel</label>
+    <label><input type="radio" name="q13" value="c"> C) Text Tool</label>
+    <label><input type="radio" name="q13" value="d"> D) Selection Tool</label>
+</div>
+
+<div class="question14">
+    <p>14. What is the role of the "timeline" in video editing software?</p>
+    <label><input type="radio" name="q14" value="a"> A) To arrange clips in a sequence</label>
+    <label><input type="radio" name="q14" value="b"> B) To adjust audio levels</label>
+    <label><input type="radio" name="q14" value="c"> C) To apply transitions</label>
+    <label><input type="radio" name="q14" value="d"> D) To color correct</label>
+</div>
+
+<div class="question15">
+    <p>15. What does the term "render" mean in video editing?</p>
+    <label><input type="radio" name="q15" value="a"> A) To play the video in slow motion</label>
+    <label><input type="radio" name="q15" value="b"> B) To export the final video</label>
+    <label><input type="radio" name="q15" value="c"> C) To apply a color grade</label>
+    <label><input type="radio" name="q15" value="d"> D) To add background music</label>
+</div>
+
+<div class="question16">
+    <p>16. What is the purpose of the "audio mixer" in video editing software?</p>
+    <label><input type="radio" name="q16" value="a"> A) To adjust audio levels</label>
+    <label><input type="radio" name="q16" value="b"> B) To color correct audio</label>
+    <label><input type="radio" name="q16" value="c"> C) To add text overlays</label>
+    <label><input type="radio" name="q16" value="d"> D) To stabilize footage</label>
+</div>
+
+<div class="question17">
+    <p>17. What does the term "aspect ratio" refer to?</p>
+    <label><input type="radio" name="q17" value="a"> A) The width to height ratio of a video</label>
+    <label><input type="radio" name="q17" value="b"> B) The color balance of a video</label>
+    <label><input type="radio" name="q17" value="c"> C) The audio quality of a video</label>
+    <label><input type="radio" name="q17" value="d"> D) The frame rate of a video</label>
+</div>
+
+<div class="question18">
+    <p>18. Which tool is used to remove a green screen background from a video?</p>
+    <label><input type="radio" name="q18" value="a"> A) Chroma Key</label>
+    <label><input type="radio" name="q18" value="b"> B) Lasso Tool</label>
+    <label><input type="radio" name="q18" value="c"> C) Pen Tool</label>
+    <label><input type="radio" name="q18" value="d"> D) Crop Tool</label>
+</div>
+
+<div class="question19">
+    <p>19. What does the term "codec" stand for?</p>
+    <label><input type="radio" name="q19" value="a"> A) Color Depth</label>
+    <label><input type="radio" name="q19" value="b"> B) Compressor-Decompressor</label>
+    <label><input type="radio" name="q19" value="c"> C) Content Decoder</label>
+    <label><input type="radio" name="q19" value="d"> D) Clip Editor</label>
+</div>
+
+<div class="question20">
+    <p>20. What is the function of a "proxy" in video editing?</p>
+    <label><input type="radio" name="q20" value="a"> A) To add transitions</label>
+    <label><input type="radio" name="q20" value="b"> B) To allow smoother editing of high-resolution files</label>
+    <label><input type="radio" name="q20" value="c"> C) To color correct</label>
+    <label><input type="radio" name="q20" value="d"> D) To stabilize footage</label>
+</div>
+
+<div class="question21">
+    <p>21. What is a "jump cut" in video editing?</p>
+    <label><input type="radio" name="q21" value="a"> A) A smooth transition between two scenes</label>
+    <label><input type="radio" name="q21" value="b"> B) An abrupt transition between two scenes</label>
+    <label><input type="radio" name="q21" value="c"> C) A type of visual effect</label>
+    <label><input type="radio" name="q21" value="d"> D) An audio transition</label>
+</div>
+
+<div class="question22">
+    <p>22. What is the primary use of the "lumetri color" panel in video editing software?</p>
+    <label><input type="radio" name="q22" value="a"> A) Audio mixing</label>
+    <label><input type="radio" name="q22" value="b"> B) Adding transitions</label>
+    <label><input type="radio" name="q22" value="c"> C) Color grading</label>
+    <label><input type="radio" name="q22" value="d"> D) Trimming clips</label>
+</div>
+
+<div class="question23">
+    <p>23. What is the function of the "magnetic timeline" in video editing software?</p>
+    <label><input type="radio" name="q23" value="a"> A) To automatically align clips</label>
+    <label><input type="radio" name="q23" value="b"> B) To add visual effects</label>
+    <label><input type="radio" name="q23" value="c"> C) To stabilize video</label>
+    <label><input type="radio" name="q23" value="d"> D) To export the video</label>
+</div>
+
+<div class="question24">
+    <p>24. What does the term "rendering" mean in the context of video editing?</p>
+    <label><input type="radio" name="q24" value="a"> A) Adding transitions</label>
+    <label><input type="radio" name="q24" value="b"> B) Generating the final output</label>
+    <label><input type="radio" name="q24" value="c"> C) Adjusting color</label>
+    <label><input type="radio" name="q24" value="d"> D) Editing audio</label>
+</div>
+
+<div class="question25">
+    <p>25. Which tool is used to apply a zoom effect to a video clip?</p>
+    <label><input type="radio" name="q25" value="a"> A) Scale</label>
+    <label><input type="radio" name="q25" value="b"> B) Crop</label>
+    <label><input type="radio" name="q25" value="c"> C) Rotate</label>
+    <label><input type="radio" name="q25" value="d"> D) Warp Stabilizer</label>
+</div>
+
+<div class="question26">
+    <p>26. What does "4K" refer to in video resolution?</p>
+    <label><input type="radio" name="q26" value="a"> A) 4000 pixels width</label>
+    <label><input type="radio" name="q26" value="b"> B) 4000 pixels height</label>
+    <label><input type="radio" name="q26" value="c"> C) 4000 pixels per inch</label>
+    <label><input type="radio" name="q26" value="d"> D) 4000 colors</label>
+</div>
+
+<div class="question27">
+    <p>27. What is the function of the "keying" effect in video editing?</p>
+    <label><input type="radio" name="q27" value="a"> A) To remove a specific color</label>
+    <label><input type="radio" name="q27" value="b"> B) To adjust audio levels</label>
+    <label><input type="radio" name="q27" value="c"> C) To crop the video</label>
+    <label><input type="radio" name="q27" value="d"> D) To stabilize footage</label>
+</div>
+
+<div class="question28">
+    <p>28. What does the term "frame rate" refer to?</p>
+    <label><input type="radio" name="q28" value="a"> A) The number of frames displayed per second</label>
+    <label><input type="radio" name="q28" value="b"> B) The resolution of the video</label>
+    <label><input type="radio" name="q28" value="c"> C) The bit rate of the video</label>
+    <label><input type="radio" name="q28" value="d"> D) The length of the video</label>
+</div>
+
+<div class="question29">
+    <p>29. What is the main advantage of using a "proxy workflow" in video editing?</p>
+    <label><input type="radio" name="q29" value="a"> A) Faster export times</label>
+    <label><input type="radio" name="q29" value="b"> B) Smoother editing performance</label>
+    <label><input type="radio" name="q29" value="c"> C) Better color correction</label>
+    <label><input type="radio" name="q29" value="d"> D) Higher quality output</label>
+</div>
+
+<div class="question30">
+    <p>30. What does the term "clip" refer to in video editing?</p>
+    <label><input type="radio" name="q30" value="a"> A) A segment of video or audio</label>
+    <label><input type="radio" name="q30" value="b"> B) A transition effect</label>
+    <label><input type="radio" name="q30" value="c"> C) A type of color correction</label>
+    <label><input type="radio" name="q30" value="d"> D) A title sequence</label>
+</div>
+
+<div class="question31">
+    <p>31. What is the primary use of the "masking" tool in video editing?</p>
+    <label><input type="radio" name="q31" value="a"> A) To hide or reveal parts of a clip</label>
+    <label><input type="radio" name="q31" value="b"> B) To adjust audio levels</label>
+    <label><input type="radio" name="q31" value="c"> C) To add text overlays</label>
+    <label><input type="radio" name="q31" value="d"> D) To stabilize footage</label>
+</div>
+
+<div class="question32">
+    <p>32. What does "NTSC" stand for in video standards?</p>
+    <label><input type="radio" name="q32" value="a"> A) National Television System Committee</label>
+    <label><input type="radio" name="q32" value="b"> B) Network Transmission Signal Control</label>
+    <label><input type="radio" name="q32" value="c"> C) New Television Standard Code</label>
+    <label><input type="radio" name="q32" value="d"> D) National Transmission Signal Code</label>
+</div>
+
+<div class="question33">
+    <p>33. What is the primary function of a "transition" in video editing?</p>
+    <label><input type="radio" name="q33" value="a"> A) To join two clips together smoothly</label>
+    <label><input type="radio" name="q33" value="b"> B) To adjust audio levels</label>
+    <label><input type="radio" name="q33" value="c"> C) To color correct</label>
+    <label><input type="radio" name="q33" value="d"> D) To crop the video</label>
+</div>
+
+<div class="question34">
+    <p>34. What does the term "render farm" refer to in video production?</p>
+    <label><input type="radio" name="q34" value="a"> A) A network of computers used to render video</label>
+    <label><input type="radio" name="q34" value="b"> B) A type of video format</label>
+    <label><input type="radio" name="q34" value="c"> C) A set of transitions</label>
+    <label><input type="radio" name="q34" value="d"> D) A video editing software</label>
+</div>
+
+<div class="question35">
+    <p>35. What is the purpose of the "deinterlace" filter in video editing?</p>
+    <label><input type="radio" name="q35" value="a"> A) To reduce video noise</label>
+    <label><input type="radio" name="q35" value="b"> B) To smooth out motion</label>
+    <label><input type="radio" name="q35" value="c"> C) To convert interlaced video to progressive scan</label>
+    <label><input type="radio" name="q35" value="d"> D) To stabilize shaky footage</label>
+</div>
+
+<div class="question36">
+    <p>36. Which tool is used to adjust the speed of a video clip?</p>
+    <label><input type="radio" name="q36" value="a"> A) Speed/Duration</label>
+    <label><input type="radio" name="q36" value="b"> B) Ripple Edit</label>
+    <label><input type="radio" name="q36" value="c"> C) Crop</label>
+    <label><input type="radio" name="q36" value="d"> D) Chroma Key</label>
+</div>
+
+<div class="question37">
+    <p>37. What does the term "export" mean in video editing?</p>
+    <label><input type="radio" name="q37" value="a"> A) To add transitions</label>
+    <label><input type="radio" name="q37" value="b"> B) To save the final video to a file</label>
+    <label><input type="radio" name="q37" value="c"> C) To adjust audio levels</label>
+    <label><input type="radio" name="q37" value="d"> D) To import media files</label>
+</div>
+
+<div class="question38">
+    <p>38. What is the purpose of "color correction" in video editing?</p>
+    <label><input type="radio" name="q38" value="a"> A) To remove green screen background</label>
+    <label><input type="radio" name="q38" value="b"> B) To match the colors between different clips</label>
+    <label><input type="radio" name="q38" value="c"> C) To apply a sepia tone</label>
+    <label><input type="radio" name="q38" value="d"> D) To add special effects</label>
+</div>
+
+<div class="question39">
+    <p>39. Which tool is used to adjust the length of a clip without changing its content?</p>
+    <label><input type="radio" name="q39" value="a"> A) Slip Tool</label>
+    <label><input type="radio" name="q39" value="b"> B) Roll Edit</label>
+    <label><input type="radio" name="q39" value="c"> C) Ripple Edit</label>
+    <label><input type="radio" name="q39" value="d"> D) Slide Tool</label>
+</div>
+
+<div class="question40">
+    <p>40. What does the term "timeline" refer to in video editing software?</p>
+    <label><input type="radio" name="q40" value="a"> A) The sequence of clips and edits in a project</label>
+    <label><input type="radio" name="q40" value="b"> B) The audio levels</label>
+    <label><input type="radio" name="q40" value="c"> C) The list of transitions</label>
+    <label><input type="radio" name="q40" value="d"> D) The color correction settings</label>
+</div>
+<button class="btn-submit btn-primary">Submit Answers</button>
+<script>
+    const answers = {
+            q1: 'a',
+            q2: 'a',
+            q3: 'a',
+            q4: 'a',
+            q5: 'a',
+            q6: 'd',
+            q7: 'a',
+            q8: 'b',
+            q9: 'c',
+            q10: 'a',
+            q11: 'c',
+            q12: 'd',
+            q13: 'a',
+            q14: 'b',
+            q15: 'c',
+            q16: 'd',
+            q17: 'a',
+            q18: 'b',
+            q19: 'c',
+            q20: 'a',
+            q21: 'a',
+            q22: 'b',
+            q23: 'a',
+            q24: 'c',
+            q25: 'd',
+            q26: 'a',
+            q27: 'a',
+            q28: 'a',
+            q29: 'b',
+            q30: 'a',
+            q31: 'a',
+            q32: 'a',
+            q33: 'a',
+            q34: 'a',
+            q35: 'c',
+            q36: 'a',
+            q37: 'b',
+            q38: 'b',
+            q39: 'a',
+            q40: 'a'
+        };
+    function createNotification(message, backgroundColor) {
+            const notification = document.createElement('div');
+            notification.style.position = 'fixed';
+            notification.style.top = '50%';
+            notification.style.left = '50%';
+            notification.style.transform = 'translate(-50%, -50%)';
+            notification.style.fontSize = '1.5em';
+            notification.style.backgroundColor = backgroundColor;
+            notification.style.color = '#fff';
+            notification.style.padding = '30px 20px';
+            notification.style.borderRadius = '10px';
+            notification.style.textAlign = 'center';
+            notification.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+            notification.style.zIndex = '1000';
+            notification.style.width = '80%';
+            notification.style.maxWidth = '400px';
+            notification.style.display = 'flex';
+            notification.style.flexDirection = 'column';
+            notification.style.alignItems = 'center';
+
+            const messageContainer = document.createElement('div');
+            messageContainer.textContent = message;
+            messageContainer.style.marginBottom = '20px';
+            messageContainer.style.width = '100%';
+
+            const okButton = document.createElement('button');
+            okButton.textContent = 'OK';
+            okButton.style.fontSize = '20px';
+            okButton.style.padding = '10px 20px';
+            okButton.style.backgroundColor = '#007bff';
+            okButton.style.color = '#fff';
+            okButton.style.border = 'none';
+            okButton.style.borderRadius = '5px';
+            okButton.style.cursor = 'pointer';
+            okButton.style.transition = 'background-color 0.3s';
+
+            okButton.addEventListener('mouseover', function () {
+                okButton.style.backgroundColor = '#0056b3';
+            });
+
+            okButton.addEventListener('mouseout', function () {
+                okButton.style.backgroundColor = '#007bff';
+            });
+
+            okButton.addEventListener('click', function () {
+                document.body.removeChild(notification);
+            });
+
+            notification.appendChild(messageContainer);
+            notification.appendChild(okButton);
+            document.body.appendChild(notification);
+        }
+
+        function submitExam() {
+            clearInterval(timerInterval); // Stop the countdown timer
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+            let unansweredQuestions = [];
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const userAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                if (userAnswer) {
+                    if (userAnswer.value === answers[questionName]) {
+                        score++;
+                        document.querySelector(`input[name="${questionName}"]:checked`).parentNode.classList.add('correct');
+                    } else {
+                        document.querySelector(`input[name="${questionName}"]:checked`).parentNode.classList.add('incorrect');
+                    }
+                } else {
+                    unansweredQuestions.push(i);
+                }
+            }
+
+            if (unansweredQuestions.length > 0) {
+                createNotification(`Please answer question(s): ${unansweredQuestions.join(', ')}`, '#ff0000');
+                resetExam(); // Reset exam if there are unanswered questions
+                return;
+            }
+
+            const percentageScore = (score / totalQuestions) * 100;
+
+            if (percentageScore < 50) {
+                createNotification(`You scored ${score} out of ${totalQuestions}. You have a poor score. Please try again.`, '#ff0000');
+            } else if (percentageScore > 50 && percentageScore < 100) {
+                createNotification(`You scored ${score} out of ${totalQuestions}. You are close to success. You can do better!`, '#007bff');
+            } else if (percentageScore === 100) {
+                createNotification(`Congratulations! You scored ${score} out of ${totalQuestions}. Excellent performance!`, '#28a745');
+            }
+
+            resetExam(); // Reset exam after successful submission
+        }
+
+        function resetQuestions() {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(radio => {
+                radio.checked = false;
+                radio.parentNode.classList.remove('correct', 'incorrect');
+            });
+        }
+
+        function resetExam() {
+            resetQuestions(); // Reset questions to default state
+            timeLeft = 1800; // Reset timer to 30 minutes
+            timerElement.textContent = "Time left: 00:30:00"; // Reset timer display
+            clearInterval(timerInterval); // Clear the existing interval
+            timerInterval = setInterval(updateTimer, 1000); // Restart the countdown timer
+        }
+
+        document.querySelector('.btn-submit').addEventListener('click', function () {
+            submitExam();
+        });
+
+        // Countdown Timer
+        let timeLeft = 1800; // 3 hours countdown (in seconds)
+        const timerElement = document.getElementById('timer');
+
+        function updateTimer() {
+            if (timeLeft <= 0) {
+                submitExam();
+                clearInterval(timerInterval);
+                timerElement.textContent = "Time left: 00:00:00"; // Reset timer display
+            } else {
+                let displayTime = '';
+                if (timeLeft >= 3600) {
+                    const hours = Math.floor(timeLeft / 3600);
+                    const minutes = Math.floor((timeLeft % 3600) / 60);
+                    const seconds = timeLeft % 60;
+                    displayTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                } else {
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
+                    displayTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
+
+                timerElement.textContent = `Time left: ${displayTime}`;
+                timeLeft--;
+            }
+        }
+
+        let timerInterval = setInterval(updateTimer, 1000);
+
+</script>
+{% endblock %}
