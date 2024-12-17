@@ -227,7 +227,8 @@ SITE_ID = 1
 import firebase_admin
 from firebase_admin import credentials, messaging
 
-# Initialize Firebase app using service account key
-cred = credentials.Certificate("socialnetwork-6b6b4-firebase-adminsdk-bz5pk-dc145b6556.json")
+# Firebase Admin SDK
+FIREBASE_CERT_PATH = env('FIREBASE_CERT_PATH')
+cred = credentials.Certificate(FIREBASE_CERT_PATH)
 firebase_admin.initialize_app(cred)
 
