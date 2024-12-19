@@ -1,1 +1,4 @@
 *.env
+firebase-messaging-sw.js
+service-worker.js
+app.js
